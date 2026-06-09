@@ -1,0 +1,511 @@
+{
+  "query": "โครงสร้างของการแทนคิวด้วยอาร์เรย์",
+  "backend": "colpali_endpoint",
+  "colpali_status": "ok",
+  "colpali_score_ready": true,
+  "vlm_rerank_status": "not_used",
+  "grounding_status": "not_used",
+  "endpoint_runtime": {
+    "timeout_sec": 120,
+    "max_retries": 2,
+    "retry_backoff_ms": 700,
+    "local_cache_size": 256,
+    "image_max_side": 896,
+    "jpeg_quality": 80
+  },
+  "scoring_weights": {
+    "channel_weights": {
+      "colpali": 0.5225,
+      "lexical": 0.1081,
+      "region_prior": 0.0721,
+      "region_quality": 0.0541,
+      "structure_prior": 0.0901,
+      "structure_align": 0.0631,
+      "figure_match": 0.0541,
+      "operation_match": 0.036
+    },
+    "pre_vlm_blend": {
+      "base": 0.68,
+      "rrf": 0.32
+    },
+    "rrf_k": 60,
+    "tiny_region_penalty": {
+      "enabled": true,
+      "area_ratio_lt": 0.006,
+      "multiplier": 0.82
+    },
+    "hard_negative": {
+      "rules_loaded": 3,
+      "penalty_max": 0.22,
+      "penalized_candidates": 8
+    }
+  },
+  "coverage_rerank": {
+    "applied": false,
+    "novelty_weight": 0.26,
+    "figure_weight": 0.62,
+    "page_weight": 0.38,
+    "step_target": 4
+  },
+  "grounding_config": {
+    "enabled": false,
+    "top_n": 1,
+    "ensemble_runs": 2,
+    "consensus_min_votes": 2,
+    "temperature": 0.0,
+    "top_p": 0.9
+  },
+  "hard_negative_config": {
+    "rules_path": "indexes/hierarchical/hard_negative_rules.json",
+    "rules_loaded": 3,
+    "penalty_max": 0.22
+  },
+  "topic_prediction": {
+    "topic_id": "3.3",
+    "topic_score": 1.0,
+    "topic_filtered": true,
+    "topic_threshold": 0.18,
+    "topic_scope_ids": [
+      "3.3"
+    ]
+  },
+  "hierarchy_quality": {
+    "garbled_detected": false,
+    "mojibake_ratio": 0.0,
+    "topic_filter_enabled": true
+  },
+  "query_profile": {
+    "has_figure_ref": false,
+    "figure_refs": [],
+    "operation_intent": false,
+    "structure_intent": true,
+    "operation_terms": [],
+    "structure_terms": [
+      "โครงสร้าง",
+      "อาร์เรย์",
+      "คิว"
+    ],
+    "expanded_query_terms_count": 22
+  },
+  "task_metrics": {
+    "region_hit_ratio_at_k": 1.0,
+    "figure_ref_hit_ratio_at_k": 1.0,
+    "structure_hit_ratio_at_k": 1.0,
+    "operation_coverage_ratio_at_k": null,
+    "query_figure_ref_coverage": null,
+    "grounding_success_rate": 0.0,
+    "grounding_consistency_mean": null,
+    "citation_ready_ratio": 1.0,
+    "mean_final_score": 0.393123,
+    "crop_completeness_proxy": 0.75,
+    "small_region_ratio_at_k": 0.125,
+    "region_quality_mean": 0.8751,
+    "unique_figure_refs_at_k": 4,
+    "page_diversity_at_k": 0.25,
+    "procedure_step_coverage_proxy": null
+  },
+  "count": 8,
+  "hits": [
+    {
+      "rank": 1,
+      "id": "data_structure_data_ch1_to_ch5.pdf:31:region:1",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:31",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 31,
+      "image_path": "assets/figure_regions/page_031_region_01.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 277,
+          "y0": 777,
+          "x1": 952,
+          "y1": 867
+        },
+        "bbox_norm": {
+          "x0": 0.217596,
+          "y0": 0.431667,
+          "x1": 0.74784,
+          "y1": 0.481667
+        },
+        "area_ratio": 0.026512,
+        "ink_ratio": 0.092609,
+        "is_fallback": false
+      },
+      "structure_labels": [
+        "Queue",
+        "Queue",
+        "Queue"
+      ],
+      "tags": [
+        "array",
+        "queue"
+      ],
+      "figure_refs": [
+        "ภาพที่ 3.4",
+        "ภาพที่ 3.5",
+        "ภาพที่ 3.6"
+      ],
+      "base_score": 0.705382,
+      "rrf_score": 1.0,
+      "pre_vlm_score": 0.65966,
+      "vlm_score": 0.0,
+      "final_score": 0.65966,
+      "figure_score": 0.0,
+      "operation_score": 0.0,
+      "structure_score": 1.0,
+      "region_quality_score": 0.936088,
+      "vlm_reason": "",
+      "preview": "# 3.3 การแทนคิวด้วยอาร์เรย์\n\nการแทนโครงสร้างคิวด้วยอาร์เรย์ จะต้องกำหนดจำนวนของการจองพื้นที่บนหน่วยความจำ และใช้อาร์เรย์ในการนำข้อมูลเข้าด้านท้ายและนำข้อมูลออกในส่วนหัว ดังภาพที่ 3.4\n\n> [Structure: Queue]\n> - ข้อมูลเข้า\n> - ข้อมูลออก\n\n**ภาพที่ 3.4 การนำเข้าและนำออกข้อมูลในโครงสร้"
+    },
+    {
+      "rank": 2,
+      "id": "data_structure_data_ch1_to_ch5.pdf:32:region:3",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:32",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 32,
+      "image_path": "assets/figure_regions/page_032_region_03.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 278,
+          "y0": 1457,
+          "x1": 948,
+          "y1": 1547
+        },
+        "bbox_norm": {
+          "x0": 0.218382,
+          "y0": 0.809444,
+          "x1": 0.744698,
+          "y1": 0.859444
+        },
+        "area_ratio": 0.026316,
+        "ink_ratio": 0.067546,
+        "is_fallback": false
+      },
+      "structure_labels": [
+        "Array",
+        "Array",
+        "Array"
+      ],
+      "tags": [
+        "array",
+        "queue"
+      ],
+      "figure_refs": [
+        "ภาพที่ 3.7"
+      ],
+      "base_score": 0.617842,
+      "rrf_score": 0.776743,
+      "pre_vlm_score": 0.52869,
+      "vlm_score": 0.0,
+      "final_score": 0.52869,
+      "figure_score": 0.0,
+      "operation_score": 0.0,
+      "structure_score": 0.666667,
+      "region_quality_score": 0.877607,
+      "vlm_reason": "",
+      "preview": "## 3.7 การ Dequeue\n\nจากภาพที่ 3.7 การ Dequeue ข้อมูลจะเริ่มต้นดำเนินการที่ตำแหน่ง front โดยการ Dequeue ในตำแหน่งของ front ก็เปลี่ยนเป็น front = Q[2]=B และหาก Dequeue ข้อมูลอีกตำแหน่ง front ก็จะเปลี่ยนแปลงไปเรื่อย ๆ\n\n### 3.3.2 การดำเนินการแท่นคิวด้วยอาร์เรย์\n\n1. เพิ่มข้อมูลลงในคิว"
+    },
+    {
+      "rank": 3,
+      "id": "data_structure_data_ch1_to_ch5.pdf:32:region:1",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:32",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 32,
+      "image_path": "assets/figure_regions/page_032_region_01.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 278,
+          "y0": 938,
+          "x1": 948,
+          "y1": 1028
+        },
+        "bbox_norm": {
+          "x0": 0.218382,
+          "y0": 0.521111,
+          "x1": 0.744698,
+          "y1": 0.571111
+        },
+        "area_ratio": 0.026316,
+        "ink_ratio": 0.064594,
+        "is_fallback": false
+      },
+      "structure_labels": [
+        "Array",
+        "Array",
+        "Array"
+      ],
+      "tags": [
+        "array",
+        "queue"
+      ],
+      "figure_refs": [
+        "ภาพที่ 3.7"
+      ],
+      "base_score": 0.615701,
+      "rrf_score": 0.689508,
+      "pre_vlm_score": 0.499319,
+      "vlm_score": 0.0,
+      "final_score": 0.499319,
+      "figure_score": 0.0,
+      "operation_score": 0.0,
+      "structure_score": 0.666667,
+      "region_quality_score": 0.870719,
+      "vlm_reason": "",
+      "preview": "## 3.7 การ Dequeue\n\nจากภาพที่ 3.7 การ Dequeue ข้อมูลจะเริ่มต้นดำเนินการที่ตำแหน่ง front โดยการ Dequeue ในตำแหน่งของ front ก็เปลี่ยนเป็น front = Q[2]=B และหาก Dequeue ข้อมูลอีกตำแหน่ง front ก็จะเปลี่ยนแปลงไปเรื่อย ๆ\n\n### 3.3.2 การดำเนินการแท่นคิวด้วยอาร์เรย์\n\n1. เพิ่มข้อมูลลงในคิว"
+    },
+    {
+      "rank": 4,
+      "id": "data_structure_data_ch1_to_ch5.pdf:32:region:4",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:32",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 32,
+      "image_path": "assets/figure_regions/page_032_region_04.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 278,
+          "y0": 422,
+          "x1": 948,
+          "y1": 512
+        },
+        "bbox_norm": {
+          "x0": 0.218382,
+          "y0": 0.234444,
+          "x1": 0.744698,
+          "y1": 0.284444
+        },
+        "area_ratio": 0.026316,
+        "ink_ratio": 0.071327,
+        "is_fallback": false
+      },
+      "structure_labels": [
+        "Array",
+        "Array",
+        "Array"
+      ],
+      "tags": [
+        "array",
+        "queue"
+      ],
+      "figure_refs": [
+        "ภาพที่ 3.7"
+      ],
+      "base_score": 0.617262,
+      "rrf_score": 0.509635,
+      "pre_vlm_score": 0.442821,
+      "vlm_score": 0.0,
+      "final_score": 0.442821,
+      "figure_score": 0.0,
+      "operation_score": 0.0,
+      "structure_score": 0.666667,
+      "region_quality_score": 0.88643,
+      "vlm_reason": "",
+      "preview": "## 3.7 การ Dequeue\n\nจากภาพที่ 3.7 การ Dequeue ข้อมูลจะเริ่มต้นดำเนินการที่ตำแหน่ง front โดยการ Dequeue ในตำแหน่งของ front ก็เปลี่ยนเป็น front = Q[2]=B และหาก Dequeue ข้อมูลอีกตำแหน่ง front ก็จะเปลี่ยนแปลงไปเรื่อย ๆ\n\n### 3.3.2 การดำเนินการแท่นคิวด้วยอาร์เรย์\n\n1. เพิ่มข้อมูลลงในคิว"
+    },
+    {
+      "rank": 5,
+      "id": "data_structure_data_ch1_to_ch5.pdf:31:region:2",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:31",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 31,
+      "image_path": "assets/figure_regions/page_031_region_02.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 278,
+          "y0": 1322,
+          "x1": 948,
+          "y1": 1411
+        },
+        "bbox_norm": {
+          "x0": 0.218382,
+          "y0": 0.734444,
+          "x1": 0.744698,
+          "y1": 0.783889
+        },
+        "area_ratio": 0.026023,
+        "ink_ratio": 0.078601,
+        "is_fallback": false
+      },
+      "structure_labels": [
+        "Queue",
+        "Queue",
+        "Queue"
+      ],
+      "tags": [
+        "array",
+        "queue"
+      ],
+      "figure_refs": [
+        "ภาพที่ 3.4",
+        "ภาพที่ 3.5",
+        "ภาพที่ 3.6"
+      ],
+      "base_score": 0.618794,
+      "rrf_score": 0.456063,
+      "pre_vlm_score": 0.42672,
+      "vlm_score": 0.0,
+      "final_score": 0.42672,
+      "figure_score": 0.0,
+      "operation_score": 0.0,
+      "structure_score": 1.0,
+      "region_quality_score": 0.903402,
+      "vlm_reason": "",
+      "preview": "# 3.3 การแทนคิวด้วยอาร์เรย์\n\nการแทนโครงสร้างคิวด้วยอาร์เรย์ จะต้องกำหนดจำนวนของการจองพื้นที่บนหน่วยความจำ และใช้อาร์เรย์ในการนำข้อมูลเข้าด้านท้ายและนำข้อมูลออกในส่วนหัว ดังภาพที่ 3.4\n\n> [Structure: Queue]\n> - ข้อมูลเข้า\n> - ข้อมูลออก\n\n**ภาพที่ 3.4 การนำเข้าและนำออกข้อมูลในโครงสร้"
+    },
+    {
+      "rank": 6,
+      "id": "data_structure_data_ch1_to_ch5.pdf:32:region:2",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:32",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 32,
+      "image_path": "assets/figure_regions/page_032_region_02.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 278,
+          "y0": 1197,
+          "x1": 948,
+          "y1": 1287
+        },
+        "bbox_norm": {
+          "x0": 0.218382,
+          "y0": 0.665,
+          "x1": 0.744698,
+          "y1": 0.715
+        },
+        "area_ratio": 0.026316,
+        "ink_ratio": 0.066617,
+        "is_fallback": false
+      },
+      "structure_labels": [
+        "Array",
+        "Array",
+        "Array"
+      ],
+      "tags": [
+        "array",
+        "queue"
+      ],
+      "figure_refs": [
+        "ภาพที่ 3.7"
+      ],
+      "base_score": 0.539128,
+      "rrf_score": 0.312142,
+      "pre_vlm_score": 0.326493,
+      "vlm_score": 0.0,
+      "final_score": 0.326493,
+      "figure_score": 0.0,
+      "operation_score": 0.0,
+      "structure_score": 0.666667,
+      "region_quality_score": 0.87544,
+      "vlm_reason": "",
+      "preview": "## 3.7 การ Dequeue\n\nจากภาพที่ 3.7 การ Dequeue ข้อมูลจะเริ่มต้นดำเนินการที่ตำแหน่ง front โดยการ Dequeue ในตำแหน่งของ front ก็เปลี่ยนเป็น front = Q[2]=B และหาก Dequeue ข้อมูลอีกตำแหน่ง front ก็จะเปลี่ยนแปลงไปเรื่อย ๆ\n\n### 3.3.2 การดำเนินการแท่นคิวด้วยอาร์เรย์\n\n1. เพิ่มข้อมูลลงในคิว"
+    },
+    {
+      "rank": 7,
+      "id": "data_structure_data_ch1_to_ch5.pdf:31:region:3",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:31",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 31,
+      "image_path": "assets/figure_regions/page_031_region_03.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 294,
+          "y0": 387,
+          "x1": 956,
+          "y1": 433
+        },
+        "bbox_norm": {
+          "x0": 0.230951,
+          "y0": 0.215,
+          "x1": 0.750982,
+          "y1": 0.240556
+        },
+        "area_ratio": 0.01329,
+        "ink_ratio": 0.101767,
+        "is_fallback": false
+      },
+      "structure_labels": [
+        "Queue",
+        "Queue",
+        "Queue"
+      ],
+      "tags": [
+        "array",
+        "queue"
+      ],
+      "figure_refs": [
+        "ภาพที่ 3.4",
+        "ภาพที่ 3.5",
+        "ภาพที่ 3.6"
+      ],
+      "base_score": 0.484345,
+      "rrf_score": 0.224761,
+      "pre_vlm_score": 0.261278,
+      "vlm_score": 0.0,
+      "final_score": 0.261278,
+      "figure_score": 0.0,
+      "operation_score": 0.0,
+      "structure_score": 1.0,
+      "region_quality_score": 0.957456,
+      "vlm_reason": "",
+      "preview": "# 3.3 การแทนคิวด้วยอาร์เรย์\n\nการแทนโครงสร้างคิวด้วยอาร์เรย์ จะต้องกำหนดจำนวนของการจองพื้นที่บนหน่วยความจำ และใช้อาร์เรย์ในการนำข้อมูลเข้าด้านท้ายและนำข้อมูลออกในส่วนหัว ดังภาพที่ 3.4\n\n> [Structure: Queue]\n> - ข้อมูลเข้า\n> - ข้อมูลออก\n\n**ภาพที่ 3.4 การนำเข้าและนำออกข้อมูลในโครงสร้"
+    },
+    {
+      "rank": 8,
+      "id": "data_structure_data_ch1_to_ch5.pdf:31:region:4",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:31",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 31,
+      "image_path": "assets/figure_regions/page_031_region_04.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 1004,
+          "y0": 1282,
+          "x1": 1128,
+          "y1": 1367
+        },
+        "bbox_norm": {
+          "x0": 0.788688,
+          "y0": 0.712222,
+          "x1": 0.886096,
+          "y1": 0.759444
+        },
+        "area_ratio": 0.0046,
+        "ink_ratio": 0.151233,
+        "is_fallback": false
+      },
+      "structure_labels": [
+        "Queue",
+        "Queue",
+        "Queue"
+      ],
+      "tags": [
+        "array",
+        "queue"
+      ],
+      "figure_refs": [
+        "ภาพที่ 3.4",
+        "ภาพที่ 3.5",
+        "ภาพที่ 3.6"
+      ],
+      "base_score": 0.063063,
+      "rrf_score": 0.0,
+      "pre_vlm_score": 0.0,
+      "vlm_score": 0.0,
+      "final_score": 0.0,
+      "figure_score": 0.0,
+      "operation_score": 0.0,
+      "structure_score": 1.0,
+      "region_quality_score": 0.694,
+      "vlm_reason": "",
+      "preview": "# 3.3 การแทนคิวด้วยอาร์เรย์\n\nการแทนโครงสร้างคิวด้วยอาร์เรย์ จะต้องกำหนดจำนวนของการจองพื้นที่บนหน่วยความจำ และใช้อาร์เรย์ในการนำข้อมูลเข้าด้านท้ายและนำข้อมูลออกในส่วนหัว ดังภาพที่ 3.4\n\n> [Structure: Queue]\n> - ข้อมูลเข้า\n> - ข้อมูลออก\n\n**ภาพที่ 3.4 การนำเข้าและนำออกข้อมูลในโครงสร้"
+    }
+  ],
+  "grounding": []
+}

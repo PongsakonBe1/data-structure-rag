@@ -1,0 +1,41 @@
+{
+  "status": "FAIL",
+  "timestamp_utc": "2026-02-18T05:51:34.460647+00:00",
+  "gate_pass": false,
+  "operational_pass": true,
+  "strict_research_pass": false,
+  "strict_mode": "external_publish_grade",
+  "manual_verified_required": true,
+  "min_manual_verified_samples": 10,
+  "gt_metrics_available": false,
+  "ocr_intrinsic": {
+    "available": false,
+    "samples": 0,
+    "samples_used_rows": 0,
+    "samples_total_rows": 18,
+    "cer_mean": null,
+    "wer_mean": null,
+    "reason": "insufficient_verified_gt_samples"
+  },
+  "reasons": [
+    "strict_research_failed",
+    "missing_verified_gt_samples",
+    "insufficient_verified_gt_samples",
+    "failed_checks:cer_mean,wer_mean"
+  ],
+  "failed_checks": [
+    {
+      "check": "cer_mean",
+      "value": null,
+      "threshold": 0.05
+    },
+    {
+      "check": "wer_mean",
+      "value": null,
+      "threshold": 0.2
+    }
+  ],
+  "artifacts": {
+    "evaluator_report": "logs/ocr_research_grade_external_publish_unverified_latest.json"
+  }
+}

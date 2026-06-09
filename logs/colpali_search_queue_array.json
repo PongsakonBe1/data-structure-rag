@@ -1,0 +1,150 @@
+{
+  "query": "โครงสร้างของการแทนคิวด้วยอาร์เรย์",
+  "mode": "metadata_only",
+  "top_k": 5,
+  "require_structure": true,
+  "require_example": false,
+  "required_tags": [],
+  "count": 5,
+  "hits": [
+    {
+      "rank": 1,
+      "score": 0.915108,
+      "colpali_score": 0.0,
+      "lexical_score": 1.0,
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 13,
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:13",
+      "image_path": "assets/figure_regions/page_013_region_01.png",
+      "image_level": "region",
+      "region_index": 1,
+      "has_structure": true,
+      "has_example": false,
+      "tags": [
+        "array",
+        "binary_tree",
+        "linked_list",
+        "queue",
+        "stack",
+        "tree"
+      ],
+      "structure_labels": [
+        "Binary Tree"
+      ],
+      "figure_refs": [
+        "ภาพที่ 2.1"
+      ],
+      "preview": "# หน่วยเรียนที่ 2\n## อาร์เรย์และลิงค์ลิสต์ (Array and Link list)\n\nอาร์เรย์และลิงค์ลิสต์เป็นโครงสร้างข้อมูลเชิงเส้นที่มีการจัดเรียงข้อมูลแบบต่อเนื่องและเข้าถึงข้อมูลแบบลำดับ ซึ่งจัดเป็นโครงสร้างข้อมูลพื้นฐานสำหรับโครงสร้างข้อมูลแบบอื่น ๆ โดยโครงสร้างข้อมูลแบบอาร์เรย์และลิงค์ลิสต์น"
+    },
+    {
+      "rank": 2,
+      "score": 0.910574,
+      "colpali_score": 0.0,
+      "lexical_score": 1.0,
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 31,
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:31",
+      "image_path": "assets/figure_regions/page_031_region_01.png",
+      "image_level": "region",
+      "region_index": 1,
+      "has_structure": true,
+      "has_example": false,
+      "tags": [
+        "array",
+        "queue"
+      ],
+      "structure_labels": [
+        "Queue",
+        "Queue",
+        "Queue"
+      ],
+      "figure_refs": [
+        "ภาพที่ 3.4",
+        "ภาพที่ 3.5",
+        "ภาพที่ 3.6"
+      ],
+      "preview": "# 3.3 การแทนคิวด้วยอาร์เรย์\n\nการแทนโครงสร้างคิวด้วยอาร์เรย์ จะต้องกำหนดจำนวนของการจองพื้นที่บนหน่วยความจำ และใช้อาร์เรย์ในการนำข้อมูลเข้าด้านท้ายและนำข้อมูลออกในส่วนหัว ดังภาพที่ 3.4\n\n> [Structure: Queue]\n> - ข้อมูลออก -> ข้อมูลเข้า\n\n**ภาพที่ 3.4 การนำเข้าและนำออกข้อมูลในโครงสร้า"
+    },
+    {
+      "rank": 3,
+      "score": 0.86115,
+      "colpali_score": 0.0,
+      "lexical_score": 0.875,
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 17,
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:17",
+      "image_path": "assets/figure_regions/page_017_region_01.png",
+      "image_level": "region",
+      "region_index": 1,
+      "has_structure": true,
+      "has_example": true,
+      "tags": [
+        "array",
+        "ตาราง"
+      ],
+      "structure_labels": [
+        "ตาราง",
+        "Array"
+      ],
+      "figure_refs": [
+        "ตารางที่ 2.1",
+        "ภาพที่ 2.4"
+      ],
+      "preview": "## ตัวอย่างที่ 2.2 อาร์เรย์ NEW จงพื้นที่ไว้ 10 ช่อง คือ NEW [-3:6] ใช้ความกว้างของแต่ละช่องจัดเก็บ 10 ไบต์เก็บในพื้นที่หน่วยความจำตำแหน่งแรกคือ 200 จงหา addr (NEW[6])\n\nจากตัวอย่างระบุค่าได้ คือ b=200, i=3, l₁=-3, L=10\n\naddr(NEW[5]) = b + (i-l₁) × L\n= 200 + (6-(-3)) × 10\n= 200 + "
+    },
+    {
+      "rank": 4,
+      "score": 0.833503,
+      "colpali_score": 0.0,
+      "lexical_score": 0.875,
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 21,
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:21",
+      "image_path": "assets/figure_regions/page_021_region_01.png",
+      "image_level": "region",
+      "region_index": 1,
+      "has_structure": true,
+      "has_example": true,
+      "tags": [
+        "array"
+      ],
+      "structure_labels": [
+        "Array"
+      ],
+      "figure_refs": [
+        "ภาพที่ 2.9"
+      ],
+      "preview": "# ภาพที่ 2.9 การจัดเรียงรูปแบบของคอลัมน์ (Column major)\n\nการคำนวณหาตำแหน่ง addr[i,j] = b+L(u₂-l₂+1)(i-l₁)+L(j-l₂)\n; เมื่อ b คือ ตำแหน่งแรกที่บันทึกข้อมูล\nL คือ ความกว้างของชั้นดิจิตข้อมูล\ni คือ ตำแหน่งที่เป็นตัวชี้ของมิติที่ 1\nj คือ ตำแหน่งที่เป็นตัวชี้ของมิติที่ 2\nu₂ คือ ค่าสูงส"
+    },
+    {
+      "rank": 5,
+      "score": 0.816635,
+      "colpali_score": 0.0,
+      "lexical_score": 0.875,
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 64,
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:64",
+      "image_path": "assets/figure_regions/page_064_region_01.png",
+      "image_level": "region",
+      "region_index": 1,
+      "has_structure": true,
+      "has_example": true,
+      "tags": [
+        "array",
+        "linked_list",
+        "node",
+        "ตาราง"
+      ],
+      "structure_labels": [
+        "Array",
+        "Node",
+        "ตาราง"
+      ],
+      "figure_refs": [
+        "ภาพที่ 5.14",
+        "ตารางที่ 5.2"
+      ],
+      "preview": "# ภาพที่ 5.14 การแทนโครงสร้างในนารีทรีแบบซีเควนเชียล\n\nจากภาพที่ 5.14 แทนด้วยโครงสร้างแบบซีเควนเชียลหรืออาร์เรย์ 1 มิติ จำนวน 15 ช่อง โดยบรรจุข้อมูลลงตามหมายเลขของช่อง ช่องที่ไม่มีข้อมูลจะเว้นว่างไว้ แต่โดยปกติการกำหนดจำนวนช่องของอาร์เรย์นั้นสามารถคำนวณหาค่าได้ การหาความสัมพันธ์ขอ"
+    }
+  ]
+}

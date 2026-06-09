@@ -1,0 +1,15 @@
+{
+  "pages_total": 67,
+  "pages_with_region_anchors": 65,
+  "pages_with_page_anchors": 2,
+  "pages_with_none_anchors": 0,
+  "pages_with_any_anchor": 67,
+  "target_pages": 65,
+  "target_pages_with_any_anchor": 65,
+  "structure_blocks_removed": 79,
+  "image_tags_removed": 0,
+  "figure_ref_pages": 44,
+  "anchor_coverage_ratio": 1.0,
+  "target_anchor_coverage_ratio": 1.0,
+  "output_markdown": "final_extracted_text_only.md"
+}

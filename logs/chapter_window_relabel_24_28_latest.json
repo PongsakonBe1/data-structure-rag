@@ -1,0 +1,62 @@
+{
+  "source": "data_structure_data_ch1_to_ch5.pdf",
+  "page_start": 24,
+  "page_end": 28,
+  "sequence_decoder": "hmm",
+  "allowed_topics": [
+    "2.4",
+    "2.4.1",
+    "2.4.2"
+  ],
+  "changed_pages": 4,
+  "changes": [
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:25",
+      "old": "2.4.1",
+      "new": "2.4.2",
+      "local_best": "2.4.2",
+      "votes": {
+        "2.4.2": 1.78,
+        "2.4.1": 0.21000000000000002,
+        "2.4": 0.9433333333333334
+      },
+      "confidence": 0.9067
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:26",
+      "old": "1",
+      "new": "2.4.2",
+      "local_best": "2.4.2",
+      "votes": {
+        "2.4.2": 1.56,
+        "2.4.1": 0.0,
+        "2.4": 0.87
+      },
+      "confidence": 1.06
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:27",
+      "old": "1",
+      "new": "2.4.2",
+      "local_best": "2.4.2",
+      "votes": {
+        "2.4.2": 1.56,
+        "2.4.1": 0.0,
+        "2.4": 0.87
+      },
+      "confidence": 1.06
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:28",
+      "old": "1",
+      "new": "2.4.2",
+      "local_best": "2.4.2",
+      "votes": {
+        "2.4.2": 1.56,
+        "2.4.1": 0.0,
+        "2.4": 0.87
+      },
+      "confidence": 1.06
+    }
+  ]
+}

@@ -1,0 +1,857 @@
+{
+  "query": "การทำงานของลิงค์ลิสต์แบบทิศทางเดียว",
+  "backend": "colpali_endpoint",
+  "sparse_strategy": "bm25",
+  "sparse_status": "ok",
+  "sparse_score_ready": true,
+  "splade_status": "disabled_by_strategy_bm25",
+  "splade_score_ready": false,
+  "bm25_status": "ok",
+  "bm25_score_ready": true,
+  "colpali_status": "ok",
+  "colpali_status_detail": "ok",
+  "colpali_score_ready": true,
+  "vlm_rerank_status": "not_used",
+  "grounding_status": "not_used",
+  "candidate_quality": {
+    "candidate_count": 11,
+    "image_usable_count": 11,
+    "image_base64_coverage": 1.0,
+    "dropped_no_image_count": 0
+  },
+  "filter_trace": {
+    "initial_records": 188,
+    "after_strict": 11,
+    "after_relax1": 188,
+    "after_relax2": 11,
+    "final_records": 11,
+    "selected_mode": "strict_best_topic"
+  },
+  "endpoint_runtime": {
+    "timeout_sec": 120,
+    "max_retries": 2,
+    "retry_backoff_ms": 700,
+    "local_cache_size": 256,
+    "image_max_side": 896,
+    "jpeg_quality": 80
+  },
+  "splade_runtime": {
+    "enabled": false,
+    "mode": "auto",
+    "provider": "hf-inference",
+    "model": "naver/splade-v3",
+    "device": "auto",
+    "max_length": 256,
+    "batch_size": 8
+  },
+  "bm25_runtime": {
+    "enabled": true,
+    "status": "ok"
+  },
+  "scoring_weights": {
+    "channel_weights": {
+      "colpali": 0.4,
+      "sparse": 0.128,
+      "lexical": 0.04,
+      "region_prior": 0.064,
+      "region_quality": 0.048,
+      "structure_prior": 0.056,
+      "structure_align": 0.04,
+      "topic_scope": 0.096,
+      "figure_match": 0.048,
+      "operation_match": 0.08
+    },
+    "pre_vlm_blend": {
+      "base": 0.68,
+      "rrf": 0.32
+    },
+    "rrf_k": 60,
+    "tiny_region_penalty": {
+      "enabled": true,
+      "area_ratio_lt": 0.006,
+      "multiplier": 0.82
+    },
+    "hard_negative": {
+      "rules_loaded": 7,
+      "penalty_max": 0.22,
+      "penalized_candidates": 1
+    }
+  },
+  "coverage_rerank": {
+    "applied": true,
+    "novelty_weight": 0.26,
+    "figure_weight": 0.62,
+    "page_weight": 0.38,
+    "step_target": 4
+  },
+  "grounding_config": {
+    "enabled": false,
+    "top_n": 1,
+    "ensemble_runs": 2,
+    "consensus_min_votes": 2,
+    "temperature": 0.0,
+    "top_p": 0.9
+  },
+  "hard_negative_config": {
+    "rules_path": "indexes/hierarchical/hard_negative_rules.json",
+    "rules_loaded": 7,
+    "penalty_max": 0.22
+  },
+  "topic_prediction": {
+    "topic_id": "2.4.2",
+    "topic_score": 1.0,
+    "topic_filtered": true,
+    "topic_threshold": 0.18,
+    "topic_scope_ids": [
+      "2.4.2"
+    ],
+    "topic_source": "llm",
+    "topic_filter_reason": "metadata_prefilter_plus_hierarchy:strict_best_topic",
+    "metadata_prefilter_enabled": true,
+    "metadata_filter_strict": true,
+    "heuristic_topic_id": "2.4.2",
+    "heuristic_topic_score": 1.0
+  },
+  "intent_classification": {
+    "use_intent_llm": false,
+    "intent_model": "Qwen/Qwen3-4B-Instruct-2507",
+    "intent_llm_status": "not_used",
+    "intent_llm": {},
+    "ranked_topics": [
+      {
+        "topic_id": "2.4.2",
+        "title": "การทำงานของลิงค์ลิสต์แบบทิศทางเดียว",
+        "score": 1.0
+      },
+      {
+        "topic_id": "2.4",
+        "title": "ลิงค์ลิสต์แบบทิศทางเดียว",
+        "score": 0.964286
+      },
+      {
+        "topic_id": "2.4.1",
+        "title": "โครงสร้างลิงค์ลิสต์แบบทิศทางเดียว",
+        "score": 0.625
+      },
+      {
+        "topic_id": "2.3.1",
+        "title": "ความหมายของลิงค์ลิสต์",
+        "score": 0.375
+      },
+      {
+        "topic_id": "2.3.2",
+        "title": "โครงสร้างของลิงค์ลิสต์",
+        "score": 0.375
+      },
+      {
+        "topic_id": "1.4.2",
+        "title": "โครงสร้างแบบเลือกการทำงาน (Selection)",
+        "score": 0.2
+      },
+      {
+        "topic_id": "2.3",
+        "title": "โครงสร้างลิงค์ลิสต์ (Linked List)",
+        "score": 0.2
+      },
+      {
+        "topic_id": "2",
+        "title": "อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+        "score": 0.142857
+      },
+      {
+        "topic_id": "3.1",
+        "title": "โครงสร้างพื้นฐานของคิว",
+        "score": 0.111111
+      },
+      {
+        "topic_id": "1.1.2",
+        "title": "ความหมายของอัลกอริทึม (Algorithm)",
+        "score": 0.1
+      },
+      {
+        "topic_id": "1.4.1",
+        "title": "โครงสร้างแบบเรียงลำดับ (Sequence)",
+        "score": 0.1
+      },
+      {
+        "topic_id": "1.4.3",
+        "title": "โครงสร้างแบบทำซ้ำ (Repetition)",
+        "score": 0.1
+      }
+    ]
+  },
+  "query_expansion": {
+    "use_query_expansion_llm": false,
+    "query_expansion_model": "Qwen/Qwen3-4B-Instruct-2507",
+    "query_expansion_status": "not_used",
+    "query_expansion_terms": [],
+    "query_expansion_max_terms": 8
+  },
+  "hierarchy_quality": {
+    "garbled_detected": false,
+    "mojibake_ratio": 0.0,
+    "topic_filter_enabled": true
+  },
+  "query_profile": {
+    "has_figure_ref": false,
+    "figure_refs": [],
+    "operation_intent": true,
+    "structure_intent": true,
+    "operation_terms": [
+      "ทำงาน"
+    ],
+    "structure_terms": [
+      "ลิงค์ลิสต์"
+    ],
+    "intent_type": "operation",
+    "expanded_query_terms_count": 18,
+    "llm_expansion_status": "not_used",
+    "llm_expansion_terms": []
+  },
+  "task_metrics": {
+    "region_hit_ratio_at_k": 1.0,
+    "figure_ref_hit_ratio_at_k": 1.0,
+    "structure_hit_ratio_at_k": 0.0,
+    "operation_coverage_ratio_at_k": 0.0909,
+    "query_figure_ref_coverage": null,
+    "grounding_success_rate": 0.0,
+    "grounding_consistency_mean": null,
+    "citation_ready_ratio": 1.0,
+    "mean_final_score": 0.291493,
+    "crop_completeness_proxy": 0.8182,
+    "small_region_ratio_at_k": 0.0,
+    "region_quality_mean": 0.9703,
+    "unique_figure_refs_at_k": 9,
+    "page_diversity_at_k": 0.3636,
+    "procedure_step_coverage_proxy": 1.0
+  },
+  "count": 11,
+  "hits": [
+    {
+      "rank": 1,
+      "id": "data_structure_data_ch1_to_ch5.pdf:26:region:1",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:26",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 26,
+      "image_path": "assets/figure_regions/page_026_region_01.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 419,
+          "y0": 573,
+          "x1": 961,
+          "y1": 646
+        },
+        "bbox_norm": {
+          "x0": 0.329144,
+          "y0": 0.318333,
+          "x1": 0.75491,
+          "y1": 0.358889
+        },
+        "area_ratio": 0.017267,
+        "ink_ratio": 0.152656,
+        "is_fallback": false,
+        "quality_flags": {
+          "is_tiny_before": false,
+          "expanded_from_tiny": false,
+          "is_tiny_after": false
+        }
+      },
+      "structure_labels": [],
+      "tags": [
+        "linked_list"
+      ],
+      "figure_refs": [
+        "ภาพที่ 2.19",
+        "ภาพที่ 2.20"
+      ],
+      "chapter_id": "2",
+      "chapter_title": "อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+      "section_id": "2.4.2",
+      "section_title": "การทำงานของลิงค์ลิสต์แบบทิศทางเดียว",
+      "best_topic_id": "2.4.2",
+      "best_topic_title": "การทำงานของลิงค์ลิสต์แบบทิศทางเดียว",
+      "base_score": 0.653613,
+      "rrf_score": 1.0,
+      "pre_vlm_score": 0.764457,
+      "vlm_score": 0.0,
+      "final_score": 0.764457,
+      "figure_score": 0.0,
+      "operation_score": 0.0,
+      "structure_score": 0.0,
+      "topic_scope_score": 1.0,
+      "region_quality_score": 1.0,
+      "vlm_reason": "",
+      "preview": "# 3. การลบโหนด (Delete node)\n\nการลบโหนด สามารถลบทั้งโหนดและข้อมูลที่ไม่ต้องการออกไป ซึ่งมีหลักการง่าย ๆ\nด้วยการเปลี่ยนลิ้งค์ของโหนดก่อนหน้าที่ต้องการลบให้ไปยังลิ้งค์ของโหนดที่ต้องการลบ\n\nก่อนการลบโหนด\n\nหลังการลบโหนด\n\nภาพที่ 2.19 การลบโหนด\n\n## 4. การแทรกโหนด (Insert Node)\n\nเมื่อมีโ"
+    },
+    {
+      "rank": 2,
+      "id": "data_structure_data_ch1_to_ch5.pdf:27:region:3",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:27",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 27,
+      "image_path": "assets/figure_regions/page_027_region_03.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 402,
+          "y0": 1005,
+          "x1": 980,
+          "y1": 1081
+        },
+        "bbox_norm": {
+          "x0": 0.315789,
+          "y0": 0.558333,
+          "x1": 0.769835,
+          "y1": 0.600556
+        },
+        "area_ratio": 0.019171,
+        "ink_ratio": 0.089943,
+        "is_fallback": false,
+        "quality_flags": {
+          "is_tiny_before": true,
+          "expanded_from_tiny": true,
+          "is_tiny_after": false
+        }
+      },
+      "structure_labels": [],
+      "tags": [
+        "linked_list"
+      ],
+      "figure_refs": [
+        "ภาพที่ 2.21",
+        "ภาพที่ 2.22"
+      ],
+      "chapter_id": "2",
+      "chapter_title": "อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+      "section_id": "2.4.2",
+      "section_title": "การทำงานของลิงค์ลิสต์แบบทิศทางเดียว",
+      "best_topic_id": "2.4.2",
+      "best_topic_title": "การทำงานของลิงค์ลิสต์แบบทิศทางเดียว",
+      "base_score": 0.39411,
+      "rrf_score": 0.555506,
+      "pre_vlm_score": 0.445757,
+      "vlm_score": 0.0,
+      "final_score": 0.445757,
+      "figure_score": 0.0,
+      "operation_score": 0.0,
+      "structure_score": 0.0,
+      "topic_scope_score": 1.0,
+      "region_quality_score": 0.929867,
+      "vlm_reason": "",
+      "preview": "# ก่อนการแทรกโหนด\n\n## หลังการแทรกโหนด\n\nภาพที่ 2.21 การแทรกโหนดตำแหน่งก่อนหน้า\n\nจากภาพที่ 2.21 เมื่อมีการเพิ่มโหนดใหม่ขึ้นมาจะต้องเซตลิงค์ของโหนดให้ชี้ไปยังโหนดเดิมก่อน ซึ่งจะทำให้โหนดข้อมูล 5 เชื่อมต่อโหนดข้อมูล 15 จากนั้นจึงกำหนดลิงค์ของโหนดมาเชื่อมกัน\n\n(3) การแทรกโหนดตำแหน่งกลา"
+    },
+    {
+      "rank": 3,
+      "id": "data_structure_data_ch1_to_ch5.pdf:26:region:2",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:26",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 26,
+      "image_path": "assets/figure_regions/page_026_region_02.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 297,
+          "y0": 432,
+          "x1": 1083,
+          "y1": 502
+        },
+        "bbox_norm": {
+          "x0": 0.233307,
+          "y0": 0.24,
+          "x1": 0.850746,
+          "y1": 0.278889
+        },
+        "area_ratio": 0.024012,
+        "ink_ratio": 0.099218,
+        "is_fallback": false,
+        "quality_flags": {
+          "is_tiny_before": true,
+          "expanded_from_tiny": true,
+          "is_tiny_after": false
+        }
+      },
+      "structure_labels": [],
+      "tags": [
+        "linked_list"
+      ],
+      "figure_refs": [
+        "ภาพที่ 2.19",
+        "ภาพที่ 2.20"
+      ],
+      "chapter_id": "2",
+      "chapter_title": "อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+      "section_id": "2.4.2",
+      "section_title": "การทำงานของลิงค์ลิสต์แบบทิศทางเดียว",
+      "best_topic_id": "2.4.2",
+      "best_topic_title": "การทำงานของลิงค์ลิสต์แบบทิศทางเดียว",
+      "base_score": 0.317332,
+      "rrf_score": 0.614296,
+      "pre_vlm_score": 0.412361,
+      "vlm_score": 0.0,
+      "final_score": 0.412361,
+      "figure_score": 0.0,
+      "operation_score": 0.0,
+      "structure_score": 0.0,
+      "topic_scope_score": 1.0,
+      "region_quality_score": 0.951509,
+      "vlm_reason": "",
+      "preview": "# 3. การลบโหนด (Delete node)\n\nการลบโหนด สามารถลบทั้งโหนดและข้อมูลที่ไม่ต้องการออกไป ซึ่งมีหลักการง่าย ๆ\nด้วยการเปลี่ยนลิ้งค์ของโหนดก่อนหน้าที่ต้องการลบให้ไปยังลิ้งค์ของโหนดที่ต้องการลบ\n\nก่อนการลบโหนด\n\nหลังการลบโหนด\n\nภาพที่ 2.19 การลบโหนด\n\n## 4. การแทรกโหนด (Insert Node)\n\nเมื่อมีโ"
+    },
+    {
+      "rank": 4,
+      "id": "data_structure_data_ch1_to_ch5.pdf:27:region:4",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:27",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 27,
+      "image_path": "assets/figure_regions/page_027_region_04.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 492,
+          "y0": 322,
+          "x1": 866,
+          "y1": 398
+        },
+        "bbox_norm": {
+          "x0": 0.386489,
+          "y0": 0.178889,
+          "x1": 0.680283,
+          "y1": 0.221111
+        },
+        "area_ratio": 0.012405,
+        "ink_ratio": 0.102554,
+        "is_fallback": false,
+        "quality_flags": {
+          "is_tiny_before": true,
+          "expanded_from_tiny": true,
+          "is_tiny_after": false
+        }
+      },
+      "structure_labels": [],
+      "tags": [
+        "linked_list"
+      ],
+      "figure_refs": [
+        "ภาพที่ 2.21",
+        "ภาพที่ 2.22"
+      ],
+      "chapter_id": "2",
+      "chapter_title": "อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+      "section_id": "2.4.2",
+      "section_title": "การทำงานของลิงค์ลิสต์แบบทิศทางเดียว",
+      "best_topic_id": "2.4.2",
+      "best_topic_title": "การทำงานของลิงค์ลิสต์แบบทิศทางเดียว",
+      "base_score": 0.354317,
+      "rrf_score": 0.445465,
+      "pre_vlm_score": 0.383484,
+      "vlm_score": 0.0,
+      "final_score": 0.383484,
+      "figure_score": 0.0,
+      "operation_score": 0.0,
+      "structure_score": 0.0,
+      "topic_scope_score": 1.0,
+      "region_quality_score": 0.959293,
+      "vlm_reason": "",
+      "preview": "# ก่อนการแทรกโหนด\n\n## หลังการแทรกโหนด\n\nภาพที่ 2.21 การแทรกโหนดตำแหน่งก่อนหน้า\n\nจากภาพที่ 2.21 เมื่อมีการเพิ่มโหนดใหม่ขึ้นมาจะต้องเซตลิงค์ของโหนดให้ชี้ไปยังโหนดเดิมก่อน ซึ่งจะทำให้โหนดข้อมูล 5 เชื่อมต่อโหนดข้อมูล 15 จากนั้นจึงกำหนดลิงค์ของโหนดมาเชื่อมกัน\n\n(3) การแทรกโหนดตำแหน่งกลา"
+    },
+    {
+      "rank": 5,
+      "id": "data_structure_data_ch1_to_ch5.pdf:27:region:2",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:27",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 27,
+      "image_path": "assets/figure_regions/page_027_region_02.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 492,
+          "y0": 470,
+          "x1": 866,
+          "y1": 604
+        },
+        "bbox_norm": {
+          "x0": 0.386489,
+          "y0": 0.261111,
+          "x1": 0.680283,
+          "y1": 0.335556
+        },
+        "area_ratio": 0.021871,
+        "ink_ratio": 0.114255,
+        "is_fallback": false,
+        "quality_flags": {
+          "is_tiny_before": true,
+          "expanded_from_tiny": true,
+          "is_tiny_after": false
+        }
+      },
+      "structure_labels": [],
+      "tags": [
+        "linked_list"
+      ],
+      "figure_refs": [
+        "ภาพที่ 2.21",
+        "ภาพที่ 2.22"
+      ],
+      "chapter_id": "2",
+      "chapter_title": "อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+      "section_id": "2.4.2",
+      "section_title": "การทำงานของลิงค์ลิสต์แบบทิศทางเดียว",
+      "best_topic_id": "2.4.2",
+      "best_topic_title": "การทำงานของลิงค์ลิสต์แบบทิศทางเดียว",
+      "base_score": 0.272243,
+      "rrf_score": 0.359585,
+      "pre_vlm_score": 0.300192,
+      "vlm_score": 0.0,
+      "final_score": 0.300192,
+      "figure_score": 0.0,
+      "operation_score": 0.0,
+      "structure_score": 0.0,
+      "topic_scope_score": 1.0,
+      "region_quality_score": 0.986595,
+      "vlm_reason": "",
+      "preview": "# ก่อนการแทรกโหนด\n\n## หลังการแทรกโหนด\n\nภาพที่ 2.21 การแทรกโหนดตำแหน่งก่อนหน้า\n\nจากภาพที่ 2.21 เมื่อมีการเพิ่มโหนดใหม่ขึ้นมาจะต้องเซตลิงค์ของโหนดให้ชี้ไปยังโหนดเดิมก่อน ซึ่งจะทำให้โหนดข้อมูล 5 เชื่อมต่อโหนดข้อมูล 15 จากนั้นจึงกำหนดลิงค์ของโหนดมาเชื่อมกัน\n\n(3) การแทรกโหนดตำแหน่งกลา"
+    },
+    {
+      "rank": 6,
+      "id": "data_structure_data_ch1_to_ch5.pdf:27:region:1",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:27",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 27,
+      "image_path": "assets/figure_regions/page_027_region_01.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 499,
+          "y0": 1166,
+          "x1": 886,
+          "y1": 1265
+        },
+        "bbox_norm": {
+          "x0": 0.391987,
+          "y0": 0.647778,
+          "x1": 0.695994,
+          "y1": 0.702778
+        },
+        "area_ratio": 0.01672,
+        "ink_ratio": 0.139013,
+        "is_fallback": false,
+        "quality_flags": {
+          "is_tiny_before": false,
+          "expanded_from_tiny": false,
+          "is_tiny_after": false
+        }
+      },
+      "structure_labels": [],
+      "tags": [
+        "linked_list"
+      ],
+      "figure_refs": [
+        "ภาพที่ 2.21",
+        "ภาพที่ 2.22"
+      ],
+      "chapter_id": "2",
+      "chapter_title": "อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+      "section_id": "2.4.2",
+      "section_title": "การทำงานของลิงค์ลิสต์แบบทิศทางเดียว",
+      "best_topic_id": "2.4.2",
+      "best_topic_title": "การทำงานของลิงค์ลิสต์แบบทิศทางเดียว",
+      "base_score": 0.23013,
+      "rrf_score": 0.236087,
+      "pre_vlm_score": 0.232036,
+      "vlm_score": 0.0,
+      "final_score": 0.232036,
+      "figure_score": 0.0,
+      "operation_score": 0.0,
+      "structure_score": 0.0,
+      "topic_scope_score": 1.0,
+      "region_quality_score": 1.0,
+      "vlm_reason": "",
+      "preview": "# ก่อนการแทรกโหนด\n\n## หลังการแทรกโหนด\n\nภาพที่ 2.21 การแทรกโหนดตำแหน่งก่อนหน้า\n\nจากภาพที่ 2.21 เมื่อมีการเพิ่มโหนดใหม่ขึ้นมาจะต้องเซตลิงค์ของโหนดให้ชี้ไปยังโหนดเดิมก่อน ซึ่งจะทำให้โหนดข้อมูล 5 เชื่อมต่อโหนดข้อมูล 15 จากนั้นจึงกำหนดลิงค์ของโหนดมาเชื่อมกัน\n\n(3) การแทรกโหนดตำแหน่งกลา"
+    },
+    {
+      "rank": 7,
+      "id": "data_structure_data_ch1_to_ch5.pdf:28:region:2",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:28",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 28,
+      "image_path": "assets/figure_regions/page_028_region_02.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 518,
+          "y0": 1077,
+          "x1": 910,
+          "y1": 1176
+        },
+        "bbox_norm": {
+          "x0": 0.406913,
+          "y0": 0.598333,
+          "x1": 0.714847,
+          "y1": 0.653333
+        },
+        "area_ratio": 0.016936,
+        "ink_ratio": 0.138863,
+        "is_fallback": false,
+        "quality_flags": {
+          "is_tiny_before": false,
+          "expanded_from_tiny": false,
+          "is_tiny_after": false
+        }
+      },
+      "structure_labels": [],
+      "tags": [
+        "linked_list"
+      ],
+      "figure_refs": [
+        "ภาพที่ 2.23"
+      ],
+      "chapter_id": "2",
+      "chapter_title": "อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+      "section_id": "2.4.2",
+      "section_title": "การทำงานของลิงค์ลิสต์แบบทิศทางเดียว",
+      "best_topic_id": "2.4.2",
+      "best_topic_title": "การทำงานของลิงค์ลิสต์แบบทิศทางเดียว",
+      "base_score": 0.230191,
+      "rrf_score": 0.184412,
+      "pre_vlm_score": 0.215541,
+      "vlm_score": 0.0,
+      "final_score": 0.215541,
+      "figure_score": 0.0,
+      "operation_score": 0.0,
+      "structure_score": 0.0,
+      "topic_scope_score": 1.0,
+      "region_quality_score": 1.0,
+      "vlm_reason": "",
+      "preview": "# ก่อนการแทรกโหนด\n\n## หลังการแทรกโหนด\n\n## ภาพที่ 2.23 การแทรกโหนดตำแหน่งท้าย\n\nตัวอย่างที่ 2.5 จงสร้างโหนดต้นลิสต์และเพิ่มโหนด 10 แล้วดำเนินการต่อไปนี้\n\n1. แทรกโหนด 5 ตำแหน่งก่อนหน้า\n\n2. แทรกโหนด 7 ตำแหน่งกลาง\n\n3. ลบโหนดท้ายสุด\n\n### Visual Anchors (Auto)\nsource=data_structure_data"
+    },
+    {
+      "rank": 8,
+      "id": "data_structure_data_ch1_to_ch5.pdf:28:region:4",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:28",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 28,
+      "image_path": "assets/figure_regions/page_028_region_04.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 532,
+          "y0": 863,
+          "x1": 908,
+          "y1": 997
+        },
+        "bbox_norm": {
+          "x0": 0.41791,
+          "y0": 0.479444,
+          "x1": 0.713276,
+          "y1": 0.553889
+        },
+        "area_ratio": 0.021988,
+        "ink_ratio": 0.086654,
+        "is_fallback": false,
+        "quality_flags": {
+          "is_tiny_before": true,
+          "expanded_from_tiny": true,
+          "is_tiny_after": false
+        }
+      },
+      "structure_labels": [],
+      "tags": [
+        "linked_list"
+      ],
+      "figure_refs": [
+        "ภาพที่ 2.23"
+      ],
+      "chapter_id": "2",
+      "chapter_title": "อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+      "section_id": "2.4.2",
+      "section_title": "การทำงานของลิงค์ลิสต์แบบทิศทางเดียว",
+      "best_topic_id": "2.4.2",
+      "best_topic_title": "การทำงานของลิงค์ลิสต์แบบทิศทางเดียว",
+      "base_score": 0.206944,
+      "rrf_score": 0.123002,
+      "pre_vlm_score": 0.180082,
+      "vlm_score": 0.0,
+      "final_score": 0.180082,
+      "figure_score": 0.0,
+      "operation_score": 0.0,
+      "structure_score": 0.0,
+      "topic_scope_score": 1.0,
+      "region_quality_score": 0.922193,
+      "vlm_reason": "",
+      "preview": "# ก่อนการแทรกโหนด\n\n## หลังการแทรกโหนด\n\n## ภาพที่ 2.23 การแทรกโหนดตำแหน่งท้าย\n\nตัวอย่างที่ 2.5 จงสร้างโหนดต้นลิสต์และเพิ่มโหนด 10 แล้วดำเนินการต่อไปนี้\n\n1. แทรกโหนด 5 ตำแหน่งก่อนหน้า\n\n2. แทรกโหนด 7 ตำแหน่งกลาง\n\n3. ลบโหนดท้ายสุด\n\n### Visual Anchors (Auto)\nsource=data_structure_data"
+    },
+    {
+      "rank": 9,
+      "id": "data_structure_data_ch1_to_ch5.pdf:28:region:1",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:28",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 28,
+      "image_path": "assets/figure_regions/page_028_region_01.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 394,
+          "y0": 487,
+          "x1": 986,
+          "y1": 582
+        },
+        "bbox_norm": {
+          "x0": 0.309505,
+          "y0": 0.270556,
+          "x1": 0.774548,
+          "y1": 0.323333
+        },
+        "area_ratio": 0.024544,
+        "ink_ratio": 0.116696,
+        "is_fallback": false,
+        "quality_flags": {
+          "is_tiny_before": false,
+          "expanded_from_tiny": false,
+          "is_tiny_after": false
+        }
+      },
+      "structure_labels": [],
+      "tags": [
+        "linked_list"
+      ],
+      "figure_refs": [
+        "ภาพที่ 2.23"
+      ],
+      "chapter_id": "2",
+      "chapter_title": "อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+      "section_id": "2.4.2",
+      "section_title": "การทำงานของลิงค์ลิสต์แบบทิศทางเดียว",
+      "best_topic_id": "2.4.2",
+      "best_topic_title": "การทำงานของลิงค์ลิสต์แบบทิศทางเดียว",
+      "base_score": 0.186376,
+      "rrf_score": 0.0,
+      "pre_vlm_score": 0.126736,
+      "vlm_score": 0.0,
+      "final_score": 0.126736,
+      "figure_score": 0.0,
+      "operation_score": 0.0,
+      "structure_score": 0.0,
+      "topic_scope_score": 1.0,
+      "region_quality_score": 0.992291,
+      "vlm_reason": "",
+      "preview": "# ก่อนการแทรกโหนด\n\n## หลังการแทรกโหนด\n\n## ภาพที่ 2.23 การแทรกโหนดตำแหน่งท้าย\n\nตัวอย่างที่ 2.5 จงสร้างโหนดต้นลิสต์และเพิ่มโหนด 10 แล้วดำเนินการต่อไปนี้\n\n1. แทรกโหนด 5 ตำแหน่งก่อนหน้า\n\n2. แทรกโหนด 7 ตำแหน่งกลาง\n\n3. ลบโหนดท้ายสุด\n\n### Visual Anchors (Auto)\nsource=data_structure_data"
+    },
+    {
+      "rank": 10,
+      "id": "data_structure_data_ch1_to_ch5.pdf:28:region:3",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:28",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 28,
+      "image_path": "assets/figure_regions/page_028_region_03.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 293,
+          "y0": 329,
+          "x1": 1084,
+          "y1": 401
+        },
+        "bbox_norm": {
+          "x0": 0.230165,
+          "y0": 0.182778,
+          "x1": 0.851532,
+          "y1": 0.222778
+        },
+        "area_ratio": 0.024855,
+        "ink_ratio": 0.09062,
+        "is_fallback": false,
+        "quality_flags": {
+          "is_tiny_before": true,
+          "expanded_from_tiny": true,
+          "is_tiny_after": false
+        }
+      },
+      "structure_labels": [],
+      "tags": [
+        "linked_list"
+      ],
+      "figure_refs": [
+        "ภาพที่ 2.23"
+      ],
+      "chapter_id": "2",
+      "chapter_title": "อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+      "section_id": "2.4.2",
+      "section_title": "การทำงานของลิงค์ลิสต์แบบทิศทางเดียว",
+      "best_topic_id": "2.4.2",
+      "best_topic_title": "การทำงานของลิงค์ลิสต์แบบทิศทางเดียว",
+      "base_score": 0.127663,
+      "rrf_score": 0.002671,
+      "pre_vlm_score": 0.087666,
+      "vlm_score": 0.0,
+      "final_score": 0.087666,
+      "figure_score": 0.0,
+      "operation_score": 0.0,
+      "structure_score": 0.0,
+      "topic_scope_score": 1.0,
+      "region_quality_score": 0.931447,
+      "vlm_reason": "",
+      "preview": "# ก่อนการแทรกโหนด\n\n## หลังการแทรกโหนด\n\n## ภาพที่ 2.23 การแทรกโหนดตำแหน่งท้าย\n\nตัวอย่างที่ 2.5 จงสร้างโหนดต้นลิสต์และเพิ่มโหนด 10 แล้วดำเนินการต่อไปนี้\n\n1. แทรกโหนด 5 ตำแหน่งก่อนหน้า\n\n2. แทรกโหนด 7 ตำแหน่งกลาง\n\n3. ลบโหนดท้ายสุด\n\n### Visual Anchors (Auto)\nsource=data_structure_data"
+    },
+    {
+      "rank": 11,
+      "id": "data_structure_data_ch1_to_ch5.pdf:25:region:1",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:25",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 25,
+      "image_path": "assets/figure_regions/page_025_region_01.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 420,
+          "y0": 1399,
+          "x1": 962,
+          "y1": 1450
+        },
+        "bbox_norm": {
+          "x0": 0.329929,
+          "y0": 0.777222,
+          "x1": 0.755695,
+          "y1": 0.805556
+        },
+        "area_ratio": 0.012063,
+        "ink_ratio": 0.19304,
+        "is_fallback": false,
+        "quality_flags": {
+          "is_tiny_before": false,
+          "expanded_from_tiny": false,
+          "is_tiny_after": false
+        }
+      },
+      "structure_labels": [],
+      "tags": [
+        "linked_list"
+      ],
+      "figure_refs": [
+        "ภาพที่ 2.15",
+        "ภาพที่ 2.16",
+        "ภาพที่ 2.17",
+        "ภาพที่ 2.18"
+      ],
+      "chapter_id": "2",
+      "chapter_title": "อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+      "section_id": "2.4.2",
+      "section_title": "การทำงานของลิงค์ลิสต์แบบทิศทางเดียว",
+      "best_topic_id": "2.4.2",
+      "best_topic_title": "การทำงานของลิงค์ลิสต์แบบทิศทางเดียว",
+      "base_score": 0.221467,
+      "rrf_score": 0.210963,
+      "pre_vlm_score": 0.058106,
+      "vlm_score": 0.0,
+      "final_score": 0.058106,
+      "figure_score": 0.0,
+      "operation_score": 1.0,
+      "structure_score": 1.0,
+      "topic_scope_score": 1.0,
+      "region_quality_score": 1.0,
+      "vlm_reason": "",
+      "preview": "# 27\n\nเก็บในส่วนของข้อมูล และฟิลด์ที่ 2 เก็บค่าของการเชื่อมโยงในส่วนของการเชื่อมโยงก็จะใช้พอยน์เตอร์เป็นตัวเชื่อมโยงไปยังโหนดอื่น ๆ\n\nภาพที่ 2.15 โครงสร้างของโหนดข้อมูล\n\n3. ทิศทางของพอยน์เตอร์ (Pointer Link) สำหรับทิศทางพอยน์เตอร์ของลิงค์ลิสต์แบบทิศทางเดียว จะทำการซื้อไปยังทิศทางเ"
+    }
+  ],
+  "grounding": []
+}

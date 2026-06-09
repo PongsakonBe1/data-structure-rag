@@ -1,0 +1,1079 @@
+{
+  "pdf": "C:/Users/Admin/typhoon_rag/data/data_structure_data_ch1_to_ch5.pdf",
+  "output_dir": "C:/Users/Admin/typhoon_rag/assets/figures",
+  "total_images": 67,
+  "images": [
+    {
+      "page": 1,
+      "image_index": 1,
+      "xref": 56,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_001_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 2,
+      "image_index": 1,
+      "xref": 59,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_002_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 3,
+      "image_index": 1,
+      "xref": 62,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_003_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 4,
+      "image_index": 1,
+      "xref": 65,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_004_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 5,
+      "image_index": 1,
+      "xref": 68,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_005_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 6,
+      "image_index": 1,
+      "xref": 71,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_006_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 7,
+      "image_index": 1,
+      "xref": 74,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_007_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 8,
+      "image_index": 1,
+      "xref": 77,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_008_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 9,
+      "image_index": 1,
+      "xref": 80,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_009_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 10,
+      "image_index": 1,
+      "xref": 83,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_010_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 11,
+      "image_index": 1,
+      "xref": 86,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_011_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 12,
+      "image_index": 1,
+      "xref": 89,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_012_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 13,
+      "image_index": 1,
+      "xref": 95,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_013_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 14,
+      "image_index": 1,
+      "xref": 98,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_014_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 15,
+      "image_index": 1,
+      "xref": 101,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_015_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 16,
+      "image_index": 1,
+      "xref": 104,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_016_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 17,
+      "image_index": 1,
+      "xref": 107,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_017_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 18,
+      "image_index": 1,
+      "xref": 110,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_018_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 19,
+      "image_index": 1,
+      "xref": 113,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_019_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 20,
+      "image_index": 1,
+      "xref": 116,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_020_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 21,
+      "image_index": 1,
+      "xref": 119,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_021_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 22,
+      "image_index": 1,
+      "xref": 122,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_022_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 23,
+      "image_index": 1,
+      "xref": 125,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_023_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 24,
+      "image_index": 1,
+      "xref": 128,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_024_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 25,
+      "image_index": 1,
+      "xref": 131,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_025_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 26,
+      "image_index": 1,
+      "xref": 134,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_026_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 27,
+      "image_index": 1,
+      "xref": 137,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_027_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 28,
+      "image_index": 1,
+      "xref": 140,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_028_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 29,
+      "image_index": 1,
+      "xref": 146,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_029_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 30,
+      "image_index": 1,
+      "xref": 149,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_030_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 31,
+      "image_index": 1,
+      "xref": 152,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_031_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 32,
+      "image_index": 1,
+      "xref": 155,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_032_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 33,
+      "image_index": 1,
+      "xref": 158,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_033_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 34,
+      "image_index": 1,
+      "xref": 161,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_034_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 35,
+      "image_index": 1,
+      "xref": 164,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_035_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 36,
+      "image_index": 1,
+      "xref": 167,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_036_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 37,
+      "image_index": 1,
+      "xref": 170,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_037_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 38,
+      "image_index": 1,
+      "xref": 173,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_038_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 39,
+      "image_index": 1,
+      "xref": 176,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_039_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 40,
+      "image_index": 1,
+      "xref": 182,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_040_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 41,
+      "image_index": 1,
+      "xref": 185,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_041_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 42,
+      "image_index": 1,
+      "xref": 188,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_042_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 43,
+      "image_index": 1,
+      "xref": 191,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_043_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 44,
+      "image_index": 1,
+      "xref": 194,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_044_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 45,
+      "image_index": 1,
+      "xref": 197,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_045_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 46,
+      "image_index": 1,
+      "xref": 200,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_046_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 47,
+      "image_index": 1,
+      "xref": 203,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_047_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 48,
+      "image_index": 1,
+      "xref": 206,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_048_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 49,
+      "image_index": 1,
+      "xref": 209,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_049_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 50,
+      "image_index": 1,
+      "xref": 212,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_050_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 51,
+      "image_index": 1,
+      "xref": 218,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_051_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 52,
+      "image_index": 1,
+      "xref": 221,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_052_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 53,
+      "image_index": 1,
+      "xref": 224,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_053_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 54,
+      "image_index": 1,
+      "xref": 227,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_054_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 55,
+      "image_index": 1,
+      "xref": 230,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_055_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 56,
+      "image_index": 1,
+      "xref": 233,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_056_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 57,
+      "image_index": 1,
+      "xref": 236,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_057_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 58,
+      "image_index": 1,
+      "xref": 239,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_058_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 59,
+      "image_index": 1,
+      "xref": 242,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_059_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 60,
+      "image_index": 1,
+      "xref": 245,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_060_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 61,
+      "image_index": 1,
+      "xref": 248,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_061_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 62,
+      "image_index": 1,
+      "xref": 251,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_062_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 63,
+      "image_index": 1,
+      "xref": 254,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_063_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 64,
+      "image_index": 1,
+      "xref": 257,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_064_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 65,
+      "image_index": 1,
+      "xref": 260,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_065_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 66,
+      "image_index": 1,
+      "xref": 263,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_066_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    },
+    {
+      "page": 67,
+      "image_index": 1,
+      "xref": 266,
+      "path": "C:/Users/Admin/typhoon_rag/assets/figures/page_067_img_01.png",
+      "width": 1273,
+      "height": 1800,
+      "rects": [
+        {
+          "x0": 34.5,
+          "y0": 28.5,
+          "x1": 561.75,
+          "y1": 774.0
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,220 @@
+{
+  "timestamp": "20260224_005631",
+  "config": {
+    "pdf": "data/data_structure_data_ch1_to_ch5.pdf",
+    "toc": "list_hitachi.txt",
+    "gt_jsonl": "eval/ocr_gt_first_mid_last_v3_structured_full.jsonl",
+    "dataset": "eval/visual_task_dataset_top5.jsonl",
+    "endpoint": "macza5546/copali_endpoint",
+    "vision_model": "Qwen/Qwen2.5-VL-7B-Instruct",
+    "caption_model": "Qwen/Qwen2.5-VL-7B-Instruct",
+    "caption_workers": 2,
+    "caption_max_pages": 120,
+    "caption_max_images_per_page": 3,
+    "top_k": 6,
+    "candidate_k": 16,
+    "skip_rescan": true,
+    "preprocess_only": true
+  },
+  "before": {
+    "strict_research_pass": false,
+    "operational_pass": false,
+    "cer_mean": 0.018939,
+    "wer_mean": 0.016134,
+    "figure_ref_recall": 0.897436,
+    "heading_soft_recall_effective": 0.854167,
+    "retrieval_hit_at_k_mean": null,
+    "figure_hit_at_k_mean": null,
+    "endpoint_nonempty_rate": null,
+    "filter_survival_rate": null,
+    "page_recall_at_k_mean": null,
+    "figure_recall_at_k_mean": null,
+    "operation_coverage_ratio_at_k_mean": null
+  },
+  "after": {
+    "strict_research_pass": false,
+    "operational_pass": false,
+    "cer_mean": 0.018939,
+    "wer_mean": 0.016134,
+    "figure_ref_recall": 0.897436,
+    "heading_soft_recall_effective": 0.854167,
+    "retrieval_hit_at_k_mean": null,
+    "figure_hit_at_k_mean": null,
+    "endpoint_nonempty_rate": null,
+    "filter_survival_rate": null,
+    "page_recall_at_k_mean": null,
+    "figure_recall_at_k_mean": null,
+    "operation_coverage_ratio_at_k_mean": null
+  },
+  "delta": {
+    "cer_mean": {
+      "before": 0.018939,
+      "after": 0.018939,
+      "delta_after_minus_before": 0.0
+    },
+    "endpoint_nonempty_rate": {
+      "before": null,
+      "after": null,
+      "delta_after_minus_before": null
+    },
+    "figure_hit_at_k_mean": {
+      "before": null,
+      "after": null,
+      "delta_after_minus_before": null
+    },
+    "figure_recall_at_k_mean": {
+      "before": null,
+      "after": null,
+      "delta_after_minus_before": null
+    },
+    "figure_ref_recall": {
+      "before": 0.897436,
+      "after": 0.897436,
+      "delta_after_minus_before": 0.0
+    },
+    "filter_survival_rate": {
+      "before": null,
+      "after": null,
+      "delta_after_minus_before": null
+    },
+    "heading_soft_recall_effective": {
+      "before": 0.854167,
+      "after": 0.854167,
+      "delta_after_minus_before": 0.0
+    },
+    "operation_coverage_ratio_at_k_mean": {
+      "before": null,
+      "after": null,
+      "delta_after_minus_before": null
+    },
+    "operational_pass": {
+      "before": false,
+      "after": false,
+      "delta_after_minus_before": 0.0
+    },
+    "page_recall_at_k_mean": {
+      "before": null,
+      "after": null,
+      "delta_after_minus_before": null
+    },
+    "retrieval_hit_at_k_mean": {
+      "before": null,
+      "after": null,
+      "delta_after_minus_before": null
+    },
+    "strict_research_pass": {
+      "before": false,
+      "after": false,
+      "delta_after_minus_before": 0.0
+    },
+    "wer_mean": {
+      "before": 0.016134,
+      "after": 0.016134,
+      "delta_after_minus_before": 0.0
+    }
+  },
+  "artifacts": {
+    "before_ocr_json": "logs/ocr_research_grade_before_reingest_20260224_005631.json",
+    "after_ocr_json": "logs/ocr_research_grade_after_reingest_20260224_005631.json",
+    "before_topic_json": "logs/visual_topic_benchmark_before_reingest_20260224_005631.json",
+    "after_topic_json": "logs/visual_topic_benchmark_after_reingest_20260224_005631.json",
+    "before_task_json": "logs/visual_task_metrics_before_reingest_20260224_005631.json",
+    "after_task_json": "logs/visual_task_metrics_after_reingest_20260224_005631.json",
+    "ingest_error_json": "logs/ingest_error_assessment_latest.json",
+    "caption_report_json": "logs/visual_caption_enrich_report_latest.json",
+    "text_only_report_json": "logs/text_only_markdown_report_latest.json",
+    "sequence_links_json": "logs/visual_sequence_links_latest.json",
+    "visual_sidecar_jsonl": "indexes/visual/region_evidence.jsonl",
+    "visual_sidecar_report_json": "logs/visual_evidence_sidecar_report_latest.json",
+    "hierarchy_json": "indexes/hierarchical/topic_hierarchy.json",
+    "colpali_pages_jsonl": "indexes/colpali/pages.jsonl"
+  },
+  "smoke": [],
+  "logs": [
+    {
+      "step": "before_ocr_eval",
+      "code": 0,
+      "tail": "{\n  \"operational_pass\": false,\n  \"strict_research_pass\": false,\n  \"strict_research_note\": \"strict_research uses GT-based CER/WER\",\n  \"strict_mode\": \"external_publish_grade\"\n}\n{\n  \"pdf_pages\": 67,\n  \"pdf_extractable_text_pages\": 0,\n  \"markdown_pages\": 67,\n  \"page_coverage_ratio\": 1.0,\n  \"non_empty_page_ratio\": 1.0\n}\nsaved=logs\\ocr_research_grade_before_reingest_20260224_005631.json\n"
+    },
+    {
+      "step": "before_retrieval_bench",
+      "code": -1,
+      "tail": "skipped: --preprocess-only"
+    },
+    {
+      "step": "backup_final_extracted_content",
+      "code": 0,
+      "tail": "logs\\final_extracted_backup_before_reingest_20260224_005631.md"
+    },
+    {
+      "step": "rescan_ingest",
+      "code": -1,
+      "tail": "skipped by --skip-rescan"
+    },
+    {
+      "step": "extract_pdf_figures",
+      "code": 0,
+      "tail": "pdf=C:\\Users\\Admin\\typhoon_rag\\data\\data_structure_data_ch1_to_ch5.pdf\nimages=67\nmanifest=C:\\Users\\Admin\\typhoon_rag\\logs\\figure_manifest_latest.json\n"
+    },
+    {
+      "step": "extract_structure_regions",
+      "code": 0,
+      "tail": "{\n  \"total_pages\": 67,\n  \"targeted_pages\": 65,\n  \"pages_with_regions\": 65,\n  \"pages_with_regions_ratio\": 1.0,\n  \"total_regions\": 186,\n  \"avg_regions_per_page_with_regions\": 2.861538,\n  \"fallback_pages\": 4,\n  \"tiny_regions_before\": 42,\n  \"tiny_regions_after\": 5,\n  \"target_reason_hist\": {\n    \"operation_keyword\": 36,\n    \"visual_density\": 41,\n    \"figure_ref\": 44,\n    \"structure_block\": 44,\n    \"table_hint\": 28,\n    \"example_marker\": 24\n  }\n}\nsaved_manifest=logs\\figure_regions_manifest_latest.json\n"
+    },
+    {
+      "step": "build_text_only_markdown",
+      "code": 0,
+      "tail": "{\n  \"pages_total\": 67,\n  \"pages_with_region_anchors\": 65,\n  \"pages_with_page_anchors\": 2,\n  \"pages_with_none_anchors\": 0,\n  \"pages_with_any_anchor\": 67,\n  \"target_pages\": 65,\n  \"target_pages_with_any_anchor\": 65,\n  \"structure_blocks_removed\": 79,\n  \"image_tags_removed\": 0,\n  \"figure_ref_pages\": 44,\n  \"anchor_coverage_ratio\": 1.0,\n  \"target_anchor_coverage_ratio\": 1.0,\n  \"output_markdown\": \"final_extracted_text_only.md\"\n}\nsaved_markdown=final_extracted_text_only.md\nsaved_report=logs\\text_only_markdown_report_latest.json\n"
+    },
+    {
+      "step": "enrich_visual_captions",
+      "code": 0,
+      "tail": "    \"page_id\": \"data_structure_data_ch1_to_ch5.pdf:21\",\n      \"image_path\": \"assets/figure_regions/page_021_region_01.png\",\n      \"error\": \"not_json\"\n    },\n    {\n      \"page_id\": \"data_structure_data_ch1_to_ch5.pdf:21\",\n      \"image_path\": \"assets/figure_regions/page_021_region_02.png\",\n      \"error\": \"not_json\"\n    },\n    {\n      \"page_id\": \"data_structure_data_ch1_to_ch5.pdf:32\",\n      \"image_path\": \"assets/figure_regions/page_032_region_01.png\",\n      \"error\": \"not_json\"\n    },\n    {\n      \"page_id\": \"data_structure_data_ch1_to_ch5.pdf:34\",\n      \"image_path\": \"assets/figure_regions/page_034_region_01.png\",\n      \"error\": \"not_json\"\n    },\n    {\n      \"page_id\": \"data_structure_data_ch1_to_ch5.pdf:53\",\n      \"image_path\": \"assets/figure_regions/page_053_region_01.png\",\n      \"error\": \"not_json\"\n    },\n    {\n      \"page_id\": \"data_structure_data_ch1_to_ch5.pdf:53\",\n      \"image_path\": \"assets/figure_regions/page_053_region_03.png\",\n      \"error\": \"not_json\"\n    },\n    {\n      \"page_id\": \"data_structure_data_ch1_to_ch5.pdf:53\",\n      \"image_path\": \"assets/figure_regions/page_053_region_02.png\",\n      \"error\": \"not_json\"\n    },\n    {\n      \"page_id\": \"data_structure_data_ch1_to_ch5.pdf:64\",\n      \"image_path\": \"assets/figure_regions/page_064_region_02.png\",\n      \"error\": \"not_json\"\n    },\n    {\n      \"page_id\": \"data_structure_data_ch1_to_ch5.pdf:64\",\n      \"image_path\": \"assets/figure_regions/page_064_region_03.png\",\n      \"error\": \"not_json\"\n    }\n  ],\n  \"elapsed_sec\": 271.121,\n  \"caption_uncertainty_policy\": \"balanced_evidence\",\n  \"prompt_version\": \"v2_structured_visual_caption_balanced_evidence\"\n}\nsaved_markdown=final_extracted_text_only_structured_full.md\nsaved_cache=logs\\visual_caption_cache_latest.json\nsaved_report=logs\\visual_caption_enrich_report_latest.json\n"
+    },
+    {
+      "step": "link_visual_sequences",
+      "code": 0,
+      "tail": "{\n  \"records\": 186,\n  \"sequence_groups\": 13,\n  \"sequence_candidates_pages\": 63\n}\nsaved_manifest=logs\\figure_regions_manifest_latest.json\nsaved_links=logs\\visual_sequence_links_latest.json\n"
+    },
+    {
+      "step": "build_visual_evidence_sidecar",
+      "code": 0,
+      "tail": "{\n  \"total_records\": 186,\n  \"with_caption\": 166,\n  \"with_caption_ratio\": 0.892473,\n  \"with_diagram_steps\": 76,\n  \"with_diagram_steps_ratio\": 0.408602,\n  \"with_table_cell_visuals\": 80,\n  \"with_table_cell_visuals_ratio\": 0.430108,\n  \"table_records\": 82,\n  \"table_records_with_cell_visuals\": 79,\n  \"table_cell_visual_coverage_table_only\": 0.963415,\n  \"with_sequence_group\": 182,\n  \"with_sequence_group_ratio\": 0.978495,\n  \"generic_caption_ratio\": 0.0,\n  \"uncertainty_ratio\": 0.344086,\n  \"output_jsonl\": \"indexes/visual/region_evidence.jsonl\"\n}\nsaved_jsonl=indexes\\visual\\region_evidence.jsonl\nsaved_report=logs\\visual_evidence_sidecar_report_latest.json\n"
+    },
+    {
+      "step": "audit_extraction_quality",
+      "code": 0,
+      "tail": "pages=67, pages_with_issues=0\nsaved=logs\\extraction_audit_latest.csv\n"
+    },
+    {
+      "step": "evaluate_ingest_error_budget",
+      "code": 0,
+      "tail": "overall_pass=True\n{\n  \"issue_page_ratio\": {\n    \"value\": 0.0,\n    \"threshold\": 0.05,\n    \"pass\": true\n  },\n  \"figure_structure_coverage\": {\n    \"value\": 1.0,\n    \"threshold\": 0.9,\n    \"pass\": true\n  },\n  \"figure_ref_to_region_link_recall\": {\n    \"value\": 1.0,\n    \"threshold\": 0.9,\n    \"pass\": true\n  },\n  \"operation_pages_region_coverage\": {\n    \"value\": 1.0,\n    \"threshold\": 0.9,\n    \"pass\": true\n  },\n  \"table_cell_visual_coverage\": {\n    \"value\": 0.963415,\n    \"threshold\": 0.85,\n    \"pass\": true\n  },\n  \"generic_caption_ratio\": {\n    \"value\": 0.0,\n    \"threshold\": 0.1,\n    \"pass\": true\n  },\n  \"sequence_stitch_coverage\": {\n    \"value\": 0.978495,\n    \"threshold\": 0.8,\n    \"pass\": true\n  },\n  \"caption_injected_ratio\": {\n    \"value\": 0.921569,\n    \"threshold\": 0.35,\n    \"pass\": false\n  }\n}\nsaved=logs\\ingest_error_assessment_latest.json\n"
+    },
+    {
+      "step": "build_document_hierarchy",
+      "code": 0,
+      "tail": "{\n  \"topic_count\": 62,\n  \"page_count\": 67,\n  \"assigned_pages\": 67,\n  \"min_score\": 0.15,\n  \"encoding_policy\": \"utf8_with_legacy_fallback\"\n}\nsaved=indexes\\hierarchical\\topic_hierarchy.json\n"
+    },
+    {
+      "step": "prepare_colpali_corpus",
+      "code": 0,
+      "tail": "{\n  \"total_pages\": 67,\n  \"pages_with_page_image\": 67,\n  \"pages_with_page_image_ratio\": 1.0,\n  \"pages_with_regions\": 65,\n  \"pages_with_regions_ratio\": 0.970149,\n  \"pages_with_structure\": 1,\n  \"pages_with_structure_ratio\": 0.014925,\n  \"pages_with_figure_ref\": 58,\n  \"pages_with_example\": 27,\n  \"records_written\": 188,\n  \"output\": \"indexes/colpali/pages.jsonl\",\n  \"used_region_manifest\": true\n}\nsaved_jsonl=indexes\\colpali\\pages.jsonl\nsaved_report=logs\\colpali_prep_report_latest.json\n"
+    },
+    {
+      "step": "after_ocr_eval",
+      "code": 0,
+      "tail": "{\n  \"operational_pass\": false,\n  \"strict_research_pass\": false,\n  \"strict_research_note\": \"strict_research uses GT-based CER/WER\",\n  \"strict_mode\": \"external_publish_grade\"\n}\n{\n  \"pdf_pages\": 67,\n  \"pdf_extractable_text_pages\": 0,\n  \"markdown_pages\": 67,\n  \"page_coverage_ratio\": 1.0,\n  \"non_empty_page_ratio\": 1.0\n}\nsaved=logs\\ocr_research_grade_after_reingest_20260224_005631.json\n"
+    },
+    {
+      "step": "after_retrieval_bench",
+      "code": -1,
+      "tail": "skipped: --preprocess-only"
+    },
+    {
+      "step": "smoke_retrieval",
+      "code": -1,
+      "tail": "skipped: --preprocess-only"
+    }
+  ]
+}

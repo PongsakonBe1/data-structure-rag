@@ -1,0 +1,176 @@
+{
+  "ok": true,
+  "timestamp_utc": "2026-02-24T12:45:58.676579+00:00",
+  "config": {
+    "endpoint": "macza5546/copali_endpoint",
+    "sparse_strategy": "bm25",
+    "top_k": 8,
+    "candidate_k": 20,
+    "strict_mode": "external_publish_grade"
+  },
+  "failed_step_indexes": [],
+  "summary": {
+    "retrieval_hit_at_k_mean": 1.0,
+    "figure_hit_at_k_mean": 1.0,
+    "endpoint_nonempty_rate": 1.0,
+    "human_pass_rate": 1.0,
+    "ocr_operational_pass": true,
+    "ocr_strict_research_pass": true,
+    "research_gate_ok": true
+  },
+  "artifacts": {
+    "endpoint_healthcheck": "logs/visual_endpoint_healthcheck_latest.json",
+    "topic_benchmark": "logs/visual_topic_benchmark_latest.json",
+    "task_metrics": "logs/visual_task_metrics_latest.json",
+    "human_benchmark": "logs/visual_grounding_human_benchmark_latest.json",
+    "ingest_assessment": "logs/ingest_error_assessment_latest.json",
+    "ocr_research_grade": "logs/ocr_research_grade_latest.json",
+    "research_gate": "logs/research_gate_latest.json"
+  },
+  "steps": [
+    {
+      "cmd": [
+        "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python310\\python.exe",
+        "scripts/check_visual_endpoint.py",
+        "--endpoint",
+        "macza5546/copali_endpoint",
+        "--require-phase2",
+        "--benchmark-runs",
+        "2"
+      ],
+      "returncode": 0,
+      "stdout_tail": "{\n  \"ok\": true,\n  \"endpoint_url\": \"macza5546/copali_endpoint\",\n  \"status_code\": null,\n  \"latency_ms\": 46745.32,\n  \"validation\": \"ok_phase2_register_and_score\",\n  \"phase2\": {\n    \"supported\": true,\n    \"register_and_score_ok\": true,\n    \"register_ok\": false,\n    \"score_cached_ok\": false,\n    \"score_cached_error\": \"\",\n    \"stateless_fallback_ok\": false,\n    \"mode\": \"register_and_score\",\n    \"corpus_id\": \"healthcheck-corpus-v1\",\n    \"latency\": {\n      \"legacy_score\": {\n        \"mean_ms\": 2454.69,\n        \"median_ms\": 2454.69,\n        \"p95_ms\": 2498.54,\n        \"cv\": 0.0179\n      },\n      \"cached_score\": {\n        \"mean_ms\": 5713.67,\n        \"median_ms\": 5713.67,\n        \"p95_ms\": 9036.82,\n        \"cv\": 0.5816\n      },\n      \"speedup_ratio\": 0.43,\n      \"stable\": false,\n      \"warmup_runs\": 2,\n      \"runs\": 2,\n      \"legacy_score_mean_ms\": 2454.69,\n      \"cached_score_mean_ms\": 5713.67\n    }\n  },\n  \"response_preview\": [\n    {\n      \"id\": \"doc.pdf:31:region:1\",\n      \"score\": 0.4172232747077942\n    }\n  ],\n  \"response_text\": null,\n  \"contract\": {\n    \"query\": \"โครงสร้างของการแทนคิวด้วยอาร์เรย์\",\n    \"candidates\": [\n      {\n        \"id\": \"doc.pdf:31:region:1\",\n        \"page_id\": \"doc.pdf:31\",\n        \"source\": \"doc.pdf\",\n        \"page\": 31,\n        \"image_path\": \"assets/figure_regions/page_031_region_01.png\",\n        \"text_preview\": \"Figure 3.4 Queue enqueue/dequeue example\",\n        \"image_base64\": \"<omitted>\"\n      }\n    ]\n  }\n}\nsaved=logs\\visual_endpoint_healthcheck_latest.json\n",
+      "stderr_tail": ""
+    },
+    {
+      "cmd": [
+        "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python310\\python.exe",
+        "scripts/benchmark_visual_topic_retrieval.py",
+        "--dataset",
+        "eval/visual_task_dataset_top5.jsonl",
+        "--endpoint",
+        "macza5546/copali_endpoint",
+        "--pages-jsonl",
+        "indexes/colpali/pages.jsonl",
+        "--hierarchy-index",
+        "indexes/hierarchical/topic_hierarchy.json",
+        "--hard-negative-rules",
+        "indexes/hierarchical/hard_negative_rules.json",
+        "--top-k",
+        "8",
+        "--candidate-k",
+        "20",
+        "--sparse-strategy",
+        "bm25",
+        "--output-json",
+        "logs/visual_topic_benchmark_latest.json",
+        "--output-csv",
+        "logs/visual_topic_benchmark_latest.csv"
+      ],
+      "returncode": 0,
+      "stdout_tail": "\"figure_ref_hit_ratio_at_k\": 1.0,\n      \"operation_coverage_ratio_at_k\": null,\n      \"small_region_ratio_at_k\": 0.0,\n      \"crop_completeness_proxy\": 0.875,\n      \"region_quality_mean\": 0.9448,\n      \"tiny_region_ratio_local\": 0.0,\n      \"avg_region_area_ratio_local\": 0.021887,\n      \"fragmented_crop_risk\": 0.0\n    },\n    {\n      \"query\": \"การทำงานของลิงค์ลิสต์แบบทิศทางเดียว\",\n      \"colpali_status\": \"ok\",\n      \"colpali_status_detail\": \"ok\",\n      \"endpoint_nonempty\": 1.0,\n      \"filter_survival_ratio\": 0.0585,\n      \"candidate_image_coverage\": 1.0,\n      \"pred_topic_id\": \"2.4.2\",\n      \"gold_topic_ids\": \"2.4.2\",\n      \"topic_f1_strict\": 1.0,\n      \"topic_f1_relaxed\": 1.0,\n      \"retrieval_hit_at_k\": 1.0,\n      \"figure_hit_at_k\": 1.0,\n      \"region_hit_ratio_at_k\": 1.0,\n      \"figure_ref_hit_ratio_at_k\": 1.0,\n      \"operation_coverage_ratio_at_k\": 0.0,\n      \"small_region_ratio_at_k\": 0.0,\n      \"crop_completeness_proxy\": 1.0,\n      \"region_quality_mean\": 0.9102,\n      \"tiny_region_ratio_local\": 0.0,\n      \"avg_region_area_ratio_local\": 0.026828,\n      \"fragmented_crop_risk\": 0.0\n    },\n    {\n      \"query\": \"การเพิ่มโหนดในลิงค์ลิสต์แบบทิศทางเดียว\",\n      \"colpali_status\": \"ok\",\n      \"colpali_status_detail\": \"ok\",\n      \"endpoint_nonempty\": 1.0,\n      \"filter_survival_ratio\": 0.0585,\n      \"candidate_image_coverage\": 1.0,\n      \"pred_topic_id\": \"2.4.2\",\n      \"gold_topic_ids\": \"2.4.2\",\n      \"topic_f1_strict\": 1.0,\n      \"topic_f1_relaxed\": 1.0,\n      \"retrieval_hit_at_k\": 1.0,\n      \"figure_hit_at_k\": 1.0,\n      \"region_hit_ratio_at_k\": 1.0,\n      \"figure_ref_hit_ratio_at_k\": 1.0,\n      \"operation_coverage_ratio_at_k\": 1.0,\n      \"small_region_ratio_at_k\": 0.0,\n      \"crop_completeness_proxy\": 0.875,\n      \"region_quality_mean\": 0.9429,\n      \"tiny_region_ratio_local\": 0.0,\n      \"avg_region_area_ratio_local\": 0.023439,\n      \"fragmented_crop_risk\": 0.0\n    }\n  ]\n}\nsaved_json=logs\\visual_topic_benchmark_latest.json\nsaved_csv=logs\\visual_topic_benchmark_latest.csv\n",
+      "stderr_tail": ""
+    },
+    {
+      "cmd": [
+        "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python310\\python.exe",
+        "scripts/benchmark_visual_task_metrics.py",
+        "--dataset",
+        "eval/visual_task_dataset_top5.jsonl",
+        "--endpoint",
+        "macza5546/copali_endpoint",
+        "--top-k",
+        "8",
+        "--candidate-k",
+        "20",
+        "--sparse-strategy",
+        "bm25",
+        "--output-json",
+        "logs/visual_task_metrics_latest.json",
+        "--output-csv",
+        "logs/visual_task_metrics_latest.csv"
+      ],
+      "returncode": 0,
+      "stdout_tail": "\n      \"grounding_success_rate\": 0.0,\n      \"grounding_consistency_mean\": null,\n      \"mean_final_score\": 0.292231\n    },\n    {\n      \"query\": \"การทำงานของลิงค์ลิสต์แบบทิศทางเดียว\",\n      \"backend\": \"colpali_endpoint\",\n      \"colpali_status\": \"ok\",\n      \"colpali_status_detail\": \"ok\",\n      \"endpoint_nonempty\": 1.0,\n      \"filter_survival_ratio\": 0.0585,\n      \"candidate_image_coverage\": 1.0,\n      \"count\": 8,\n      \"page_recall_at_k\": 1.0,\n      \"figure_recall_at_k\": 1.0,\n      \"structure_hit_at_k\": null,\n      \"tag_hit_at_k\": null,\n      \"region_hit_ratio_at_k\": 1.0,\n      \"figure_ref_hit_ratio_at_k\": 1.0,\n      \"operation_coverage_ratio_at_k\": 0.0,\n      \"crop_completeness_proxy\": 1.0,\n      \"small_region_ratio_at_k\": 0.0,\n      \"region_quality_mean\": 0.9102,\n      \"unique_figure_refs_at_k\": 5,\n      \"page_diversity_at_k\": 0.375,\n      \"procedure_step_coverage_proxy\": 1.0,\n      \"grounding_success_rate\": 0.0,\n      \"grounding_consistency_mean\": null,\n      \"mean_final_score\": 0.374559\n    },\n    {\n      \"query\": \"การเพิ่มโหนดในลิงค์ลิสต์แบบทิศทางเดียว\",\n      \"backend\": \"colpali_endpoint\",\n      \"colpali_status\": \"ok\",\n      \"colpali_status_detail\": \"ok\",\n      \"endpoint_nonempty\": 1.0,\n      \"filter_survival_ratio\": 0.0585,\n      \"candidate_image_coverage\": 1.0,\n      \"count\": 8,\n      \"page_recall_at_k\": 1.0,\n      \"figure_recall_at_k\": 1.0,\n      \"structure_hit_at_k\": null,\n      \"tag_hit_at_k\": null,\n      \"region_hit_ratio_at_k\": 1.0,\n      \"figure_ref_hit_ratio_at_k\": 1.0,\n      \"operation_coverage_ratio_at_k\": 1.0,\n      \"crop_completeness_proxy\": 0.875,\n      \"small_region_ratio_at_k\": 0.0,\n      \"region_quality_mean\": 0.9429,\n      \"unique_figure_refs_at_k\": 9,\n      \"page_diversity_at_k\": 0.5,\n      \"procedure_step_coverage_proxy\": 1.0,\n      \"grounding_success_rate\": 0.0,\n      \"grounding_consistency_mean\": null,\n      \"mean_final_score\": 0.350873\n    }\n  ]\n}\nsaved_json=logs\\visual_task_metrics_latest.json\nsaved_csv=logs\\visual_task_metrics_latest.csv\n",
+      "stderr_tail": ""
+    },
+    {
+      "cmd": [
+        "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python310\\python.exe",
+        "scripts/benchmark_visual_grounding_human.py",
+        "--dataset",
+        "eval/visual_grounding_human_labels_ch2_ch3_v2.jsonl",
+        "--endpoint",
+        "macza5546/copali_endpoint",
+        "--top-k",
+        "8",
+        "--candidate-k",
+        "20",
+        "--output-json",
+        "logs/visual_grounding_human_benchmark_latest.json",
+        "--output-csv",
+        "logs/visual_grounding_human_benchmark_latest.csv"
+      ],
+      "returncode": 0,
+      "stdout_tail": "      \"keyword_all_ok\": true,\n      \"step_coverage\": null,\n      \"human_verified_pass\": true,\n      \"backend\": \"colpali_endpoint\",\n      \"colpali_status\": \"ok\"\n    },\n    {\n      \"query\": \"การดำเนินการแทนคิวด้วยวงกลม\",\n      \"annotator\": \"human_committee_v2\",\n      \"label_id\": \"ch3-cq-001\",\n      \"chapter\": \"3\",\n      \"topic_hint\": \"3.3.3\",\n      \"page_hit\": true,\n      \"figure_hit\": true,\n      \"grounded_doc_count\": 3,\n      \"grounded_fact_count\": 16,\n      \"normalized_term_count\": 24,\n      \"chapter_operation_tag_count\": 0,\n      \"keyword_any_recall\": 0.8,\n      \"keyword_all_ok\": true,\n      \"step_coverage\": 1.0,\n      \"human_verified_pass\": true,\n      \"backend\": \"colpali_endpoint\",\n      \"colpali_status\": \"ok\"\n    },\n    {\n      \"query\": \"แนวคิด front/rear ของคิวแบบวงกลม\",\n      \"annotator\": \"human_committee_v2\",\n      \"label_id\": \"ch3-cq-002\",\n      \"chapter\": \"3\",\n      \"topic_hint\": \"3.3.3\",\n      \"page_hit\": true,\n      \"figure_hit\": true,\n      \"grounded_doc_count\": 3,\n      \"grounded_fact_count\": 9,\n      \"normalized_term_count\": 20,\n      \"chapter_operation_tag_count\": 0,\n      \"keyword_any_recall\": 1.0,\n      \"keyword_all_ok\": true,\n      \"step_coverage\": 1.0,\n      \"human_verified_pass\": true,\n      \"backend\": \"colpali_endpoint\",\n      \"colpali_status\": \"ok\"\n    },\n    {\n      \"query\": \"เงื่อนไขคิวเต็มและคิวว่างของคิวแบบวงกลม\",\n      \"annotator\": \"human_committee_v2\",\n      \"label_id\": \"ch3-cq-003\",\n      \"chapter\": \"3\",\n      \"topic_hint\": \"3.3.3\",\n      \"page_hit\": true,\n      \"figure_hit\": true,\n      \"grounded_doc_count\": 3,\n      \"grounded_fact_count\": 14,\n      \"normalized_term_count\": 24,\n      \"chapter_operation_tag_count\": 0,\n      \"keyword_any_recall\": 1.0,\n      \"keyword_all_ok\": true,\n      \"step_coverage\": 1.0,\n      \"human_verified_pass\": true,\n      \"backend\": \"colpali_endpoint\",\n      \"colpali_status\": \"ok\"\n    }\n  ]\n}\nsaved_json=logs\\visual_grounding_human_benchmark_latest.json\nsaved_csv=logs\\visual_grounding_human_benchmark_latest.csv\n",
+      "stderr_tail": ""
+    },
+    {
+      "cmd": [
+        "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python310\\python.exe",
+        "scripts/evaluate_ingest_error_budget.py",
+        "--markdown",
+        "final_extracted_text_only_structured_full.md",
+        "--region-manifest",
+        "logs/figure_regions_manifest_latest.json",
+        "--output",
+        "logs/ingest_error_assessment_latest.json"
+      ],
+      "returncode": 0,
+      "stdout_tail": "overall_pass=True\n{\n  \"issue_page_ratio\": {\n    \"value\": 0.0,\n    \"threshold\": 0.05,\n    \"pass\": true\n  },\n  \"figure_structure_coverage\": {\n    \"value\": 1.0,\n    \"threshold\": 0.9,\n    \"pass\": true\n  },\n  \"figure_ref_to_region_link_recall\": {\n    \"value\": 1.0,\n    \"threshold\": 0.9,\n    \"pass\": true\n  },\n  \"operation_pages_region_coverage\": {\n    \"value\": 1.0,\n    \"threshold\": 0.9,\n    \"pass\": true\n  },\n  \"table_cell_visual_coverage\": {\n    \"value\": 1.0,\n    \"threshold\": 0.85,\n    \"pass\": true\n  },\n  \"generic_caption_ratio\": {\n    \"value\": 0.0,\n    \"threshold\": 0.1,\n    \"pass\": true\n  },\n  \"sequence_stitch_coverage\": {\n    \"value\": 0.968085,\n    \"threshold\": 0.8,\n    \"pass\": true\n  },\n  \"caption_injected_ratio\": {\n    \"value\": 0.038462,\n    \"threshold\": 0.35,\n    \"pass\": true\n  }\n}\nsaved=logs\\ingest_error_assessment_latest.json\n",
+      "stderr_tail": ""
+    },
+    {
+      "cmd": [
+        "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python310\\python.exe",
+        "scripts/evaluate_ocr_research_grade.py",
+        "--pdf",
+        "data/data_structure_data_ch1_to_ch5.pdf",
+        "--markdown",
+        "final_extracted_text_only_structured_full.md",
+        "--toc",
+        "list_hitachi.txt",
+        "--labels",
+        "eval/visual_grounding_human_labels_ch2_ch3_v2.jsonl",
+        "--gt-jsonl",
+        "eval/ocr_gt_first_mid_last_v3_structured_full.jsonl",
+        "--strict-mode",
+        "external_publish_grade",
+        "--output",
+        "logs/ocr_research_grade_latest.json"
+      ],
+      "returncode": 0,
+      "stdout_tail": "{\n  \"operational_pass\": true,\n  \"strict_research_pass\": true,\n  \"strict_research_note\": \"strict_research uses GT-based CER/WER\",\n  \"strict_mode\": \"external_publish_grade\"\n}\n{\n  \"pdf_pages\": 67,\n  \"pdf_extractable_text_pages\": 0,\n  \"markdown_pages\": 67,\n  \"page_coverage_ratio\": 1.0,\n  \"non_empty_page_ratio\": 1.0\n}\nsaved=logs\\ocr_research_grade_latest.json\n",
+      "stderr_tail": ""
+    },
+    {
+      "cmd": [
+        "C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python310\\python.exe",
+        "scripts/run_research_gate.py",
+        "--ocr-report",
+        "logs/ocr_research_grade_latest.json",
+        "--retrieval-report",
+        "logs/visual_topic_benchmark_latest.json",
+        "--task-report",
+        "logs/visual_task_metrics_latest.json",
+        "--output-json",
+        "logs/research_gate_latest.json",
+        "--output-md",
+        "docs/research_gate_latest.md"
+      ],
+      "returncode": 0,
+      "stdout_tail": "{\n  \"ok\": true,\n  \"failed_checks\": [],\n  \"checks\": [\n    {\n      \"name\": \"ocr_research_gate\",\n      \"pass\": true,\n      \"value\": {\n        \"strict_research_pass\": true,\n        \"operational_pass\": true\n      },\n      \"threshold\": \"strict_research_pass=true (or operational_pass=true)\"\n    },\n    {\n      \"name\": \"retrieval_topic_f1\",\n      \"pass\": true,\n      \"value\": 1.0,\n      \"threshold\": \">=0.95\"\n    },\n    {\n      \"name\": \"retrieval_hit_at_k\",\n      \"pass\": true,\n      \"value\": 1.0,\n      \"threshold\": \">=0.95\"\n    },\n    {\n      \"name\": \"figure_hit_at_k\",\n      \"pass\": true,\n      \"value\": 1.0,\n      \"threshold\": \">=0.90\"\n    },\n    {\n      \"name\": \"endpoint_nonempty_rate\",\n      \"pass\": true,\n      \"value\": 1.0,\n      \"threshold\": \">=0.95\"\n    },\n    {\n      \"name\": \"candidate_image_coverage_mean\",\n      \"pass\": true,\n      \"value\": 1.0,\n      \"threshold\": \">=0.90\"\n    },\n    {\n      \"name\": \"filter_survival_rate\",\n      \"pass\": true,\n      \"value\": 0.04788,\n      \"threshold\": \">=0.01\"\n    },\n    {\n      \"name\": \"task_page_recall_at_k\",\n      \"pass\": true,\n      \"value\": 1.0,\n      \"threshold\": \">=0.95\"\n    },\n    {\n      \"name\": \"task_operation_coverage\",\n      \"pass\": true,\n      \"value\": 0.666667,\n      \"threshold\": \">=0.40\"\n    }\n  ],\n  \"inputs\": {\n    \"ocr_report\": \"logs/ocr_research_grade_latest.json\",\n    \"retrieval_report\": \"logs/visual_topic_benchmark_latest.json\",\n    \"task_report\": \"logs/visual_task_metrics_latest.json\"\n  }\n}\nsaved_json=logs\\research_gate_latest.json\nsaved_md=docs\\research_gate_latest.md\n",
+      "stderr_tail": ""
+    }
+  ]
+}

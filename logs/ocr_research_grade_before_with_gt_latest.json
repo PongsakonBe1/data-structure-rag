@@ -1,0 +1,296 @@
+{
+  "overall": {
+    "operational_pass": false,
+    "strict_research_pass": false,
+    "strict_research_note": "strict_research uses GT-based CER/WER"
+  },
+  "inputs": {
+    "pdf": "data/data_structure_data_ch1_to_ch5.pdf",
+    "markdown": "logs/final_extracted_backup_before_rescan_20260213_193549.md",
+    "toc": "list_hitachi.txt",
+    "labels": "eval/visual_grounding_human_labels_ch2_ch3_v2.jsonl",
+    "gt_jsonl": "eval/ocr_gt_first_mid_last_v1.jsonl"
+  },
+  "dataset": {
+    "pdf_pages": 67,
+    "pdf_extractable_text_pages": 0,
+    "markdown_pages": 67,
+    "page_coverage_ratio": 1.0,
+    "non_empty_page_ratio": 0.970149
+  },
+  "ocr_intrinsic": {
+    "available": true,
+    "samples": 18,
+    "cer_mean": 0.211986,
+    "wer_mean": 0.551231,
+    "cer_p95": 0.749347,
+    "wer_p95": 1.372881
+  },
+  "encoding_health": {
+    "replacement_char_count": 0,
+    "replacement_char_ratio": 0.0,
+    "control_char_count": 0,
+    "control_char_ratio": 0.0
+  },
+  "toc_heading": {
+    "count_toc": 57,
+    "matched": 45,
+    "recall": 0.789474,
+    "threshold": 0.65,
+    "examples_low_score": [
+      {
+        "topic_id": "1.2.1",
+        "score": 0.5,
+        "title": "บิต"
+      },
+      {
+        "topic_id": "1.2.2",
+        "score": 0.5714,
+        "title": "ไบต์"
+      },
+      {
+        "topic_id": "1.2.5",
+        "score": 0.5714,
+        "title": "ไฟล์"
+      },
+      {
+        "topic_id": "1.4.1",
+        "score": 0.5789,
+        "title": "โครงสร้างแบบเรียงลำดับ"
+      },
+      {
+        "topic_id": "5.3.2",
+        "score": 0.5909,
+        "title": "แบบอินออร์เดอร์"
+      },
+      {
+        "topic_id": "1.3.3",
+        "score": 0.6122,
+        "title": "เครื่องมือพัฒนา"
+      },
+      {
+        "topic_id": "1.2.3",
+        "score": 0.625,
+        "title": "ฟิลด์"
+      },
+      {
+        "topic_id": "1.4.3",
+        "score": 0.625,
+        "title": "โครงสร้างแบบทำซ้ำ"
+      },
+      {
+        "topic_id": "3.2.1",
+        "score": 0.6286,
+        "title": "การนำข้อมูลเข้า"
+      },
+      {
+        "topic_id": "4.2.1",
+        "score": 0.6286,
+        "title": "การนำข้อมูลเข้า"
+      }
+    ]
+  },
+  "toc_heading_effective": {
+    "count_toc": 49,
+    "matched": 41,
+    "recall": 0.836735,
+    "threshold": 0.65,
+    "examples_low_score": [
+      {
+        "topic_id": "1.2.5",
+        "score": 0.5714,
+        "title": "ไฟล์"
+      },
+      {
+        "topic_id": "1.4.1",
+        "score": 0.5789,
+        "title": "โครงสร้างแบบเรียงลำดับ"
+      },
+      {
+        "topic_id": "1.2.3",
+        "score": 0.625,
+        "title": "ฟิลด์"
+      },
+      {
+        "topic_id": "1.4.3",
+        "score": 0.625,
+        "title": "โครงสร้างแบบทำซ้ำ"
+      },
+      {
+        "topic_id": "3.2.1",
+        "score": 0.6286,
+        "title": "การนำข้อมูลเข้า"
+      },
+      {
+        "topic_id": "4.2.1",
+        "score": 0.6286,
+        "title": "การนำข้อมูลเข้า"
+      },
+      {
+        "topic_id": "1.1.3",
+        "score": 0.6327,
+        "title": "ความสำคัญของการเลือกโครงสร้างข้อมูลที่เหมาะสมกับอัลกอริทึม"
+      },
+      {
+        "topic_id": "2.1.1",
+        "score": 0.64,
+        "title": "ความหมายและลักษณะของอาร์เรย์"
+      }
+    ]
+  },
+  "figure_reference_eval": {
+    "available": true,
+    "total_refs": 39,
+    "hit_refs": 35,
+    "recall": 0.897436,
+    "missing_examples": [
+      {
+        "label_id": "ch2-op-001",
+        "ref": "2.24",
+        "expected_pages": [
+          25,
+          26,
+          27,
+          28
+        ]
+      },
+      {
+        "label_id": "ch2-op-003",
+        "ref": "2.24",
+        "expected_pages": [
+          26,
+          27,
+          28
+        ]
+      },
+      {
+        "label_id": "ch3-queue-002",
+        "ref": "3.5",
+        "expected_pages": [
+          32,
+          33
+        ]
+      },
+      {
+        "label_id": "ch3-queue-002",
+        "ref": "3.6",
+        "expected_pages": [
+          32,
+          33
+        ]
+      }
+    ]
+  },
+  "derived": {
+    "tiny_region_after_ratio": 0.076923,
+    "crop_completeness_proxy_mean": 0.825,
+    "retrieval_hit_at_k_mean": 1.0,
+    "human_grounding_pass_rate": 1.0
+  },
+  "thresholds": {
+    "page_coverage_ratio_min": 0.99,
+    "non_empty_page_ratio_min": 0.99,
+    "heading_soft_recall_min": 0.9,
+    "heading_soft_recall_effective_min": 0.82,
+    "expected_figure_ref_recall_min": 0.85,
+    "replacement_char_ratio_max": 0.0001,
+    "control_char_ratio_max": 0.0001,
+    "issue_page_ratio_max": 0.05,
+    "figure_structure_coverage_min": 0.85,
+    "caption_injected_ratio_max": 0.35,
+    "anchor_coverage_ratio_min": 0.95,
+    "tiny_region_after_ratio_max": 0.1,
+    "crop_completeness_proxy_mean_min": 0.75,
+    "retrieval_hit_at_k_mean_min": 0.9,
+    "human_grounding_pass_rate_min": 0.9,
+    "cer_max": 0.05,
+    "wer_max": 0.2
+  },
+  "checks": {
+    "page_coverage_ratio": {
+      "value": 1.0,
+      "threshold": 0.99,
+      "pass": true
+    },
+    "non_empty_page_ratio": {
+      "value": 0.970149,
+      "threshold": 0.99,
+      "pass": false
+    },
+    "heading_soft_recall": {
+      "value": 0.789474,
+      "threshold": 0.9,
+      "pass": false
+    },
+    "heading_soft_recall_effective": {
+      "value": 0.836735,
+      "threshold": 0.82,
+      "pass": true
+    },
+    "expected_figure_ref_recall": {
+      "value": 0.897436,
+      "threshold": 0.85,
+      "pass": true
+    },
+    "replacement_char_ratio": {
+      "value": 0.0,
+      "threshold": 0.0001,
+      "pass": true
+    },
+    "control_char_ratio": {
+      "value": 0.0,
+      "threshold": 0.0001,
+      "pass": true
+    },
+    "issue_page_ratio": {
+      "value": 0.0,
+      "threshold": 0.05,
+      "pass": true
+    },
+    "figure_structure_coverage": {
+      "value": 1.0,
+      "threshold": 0.85,
+      "pass": true
+    },
+    "caption_injected_ratio": {
+      "value": 0.121495,
+      "threshold": 0.35,
+      "pass": true
+    },
+    "anchor_coverage_ratio": {
+      "value": 1.0,
+      "threshold": 0.95,
+      "pass": true
+    },
+    "tiny_region_after_ratio": {
+      "value": 0.076923,
+      "threshold": 0.1,
+      "pass": true
+    },
+    "crop_completeness_proxy_mean": {
+      "value": 0.825,
+      "threshold": 0.75,
+      "pass": true
+    },
+    "retrieval_hit_at_k_mean": {
+      "value": 1.0,
+      "threshold": 0.9,
+      "pass": true
+    },
+    "human_grounding_pass_rate": {
+      "value": 1.0,
+      "threshold": 0.9,
+      "pass": true
+    },
+    "cer_mean": {
+      "value": 0.211986,
+      "threshold": 0.05,
+      "pass": false
+    },
+    "wer_mean": {
+      "value": 0.551231,
+      "threshold": 0.2,
+      "pass": false
+    }
+  }
+}

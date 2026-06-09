@@ -1,0 +1,622 @@
+{
+  "query": "การดำเนินการแทนคิวด้วยวงกลม",
+  "backend": "colpali_endpoint",
+  "sparse_strategy": "bm25",
+  "sparse_status": "ok",
+  "sparse_score_ready": true,
+  "splade_status": "disabled_by_strategy_bm25",
+  "splade_score_ready": false,
+  "bm25_status": "ok",
+  "bm25_score_ready": true,
+  "colpali_status": "ok",
+  "colpali_status_detail": "ok",
+  "colpali_score_ready": true,
+  "vlm_rerank_status": "not_used",
+  "grounding_status": "ok",
+  "candidate_quality": {
+    "candidate_count": 3,
+    "image_usable_count": 3,
+    "image_base64_coverage": 1.0,
+    "dropped_no_image_count": 0
+  },
+  "filter_trace": {
+    "initial_records": 188,
+    "after_strict": 7,
+    "after_relax1": 4,
+    "after_relax2": 7,
+    "final_records": 3,
+    "selected_mode": "strict_topic_scope"
+  },
+  "endpoint_runtime": {
+    "timeout_sec": 120,
+    "max_retries": 2,
+    "retry_backoff_ms": 700,
+    "local_cache_size": 256,
+    "image_max_side": 896,
+    "jpeg_quality": 80
+  },
+  "splade_runtime": {
+    "enabled": false,
+    "mode": "auto",
+    "provider": "hf-inference",
+    "model": "naver/splade-v3",
+    "device": "auto",
+    "max_length": 256,
+    "batch_size": 8
+  },
+  "bm25_runtime": {
+    "enabled": true,
+    "status": "ok"
+  },
+  "scoring_weights": {
+    "channel_weights": {
+      "colpali": 0.3846,
+      "sparse": 0.1231,
+      "lexical": 0.0385,
+      "region_prior": 0.0615,
+      "region_quality": 0.0462,
+      "structure_prior": 0.0769,
+      "structure_align": 0.0538,
+      "topic_scope": 0.0923,
+      "figure_match": 0.0462,
+      "operation_match": 0.0769
+    },
+    "pre_vlm_blend": {
+      "base": 0.68,
+      "rrf": 0.32
+    },
+    "rrf_k": 60,
+    "tiny_region_penalty": {
+      "enabled": true,
+      "area_ratio_lt": 0.006,
+      "multiplier": 0.82
+    },
+    "hard_negative": {
+      "rules_loaded": 7,
+      "penalty_max": 0.22,
+      "penalized_candidates": 0
+    }
+  },
+  "coverage_rerank": {
+    "applied": true,
+    "novelty_weight": 0.26,
+    "figure_weight": 0.62,
+    "page_weight": 0.38,
+    "step_target": 4
+  },
+  "grounding_config": {
+    "enabled": true,
+    "top_n": 3,
+    "ensemble_runs": 2,
+    "consensus_min_votes": 2,
+    "temperature": 0.0,
+    "top_p": 0.9
+  },
+  "hard_negative_config": {
+    "rules_path": "indexes/hierarchical/hard_negative_rules.json",
+    "rules_loaded": 7,
+    "penalty_max": 0.22
+  },
+  "topic_prediction": {
+    "topic_id": "3.3.3",
+    "topic_score": 1.0,
+    "topic_filtered": true,
+    "topic_threshold": 0.18,
+    "topic_scope_ids": [
+      "3.3.3"
+    ],
+    "topic_source": "llm",
+    "topic_filter_reason": "metadata_prefilter_plus_hierarchy:strict_topic_scope",
+    "metadata_prefilter_enabled": true,
+    "metadata_filter_strict": true,
+    "heuristic_topic_id": "3.3.3",
+    "heuristic_topic_score": 1.0
+  },
+  "intent_classification": {
+    "use_intent_llm": false,
+    "intent_model": "Qwen/Qwen3-4B-Instruct-2507",
+    "intent_llm_status": "not_used",
+    "intent_llm": {},
+    "ranked_topics": [
+      {
+        "topic_id": "3.3.3",
+        "title": "การดำเนินการแทนคิวด้วยวงกลม",
+        "score": 1.0
+      },
+      {
+        "topic_id": "3.3.2",
+        "title": "การดำเนินการแทนคิวด้วยอาร์เรย์",
+        "score": 0.625
+      },
+      {
+        "topic_id": "3.3",
+        "title": "การแทนคิวด้วยอาร์เรย์",
+        "score": 0.5
+      },
+      {
+        "topic_id": "3.2",
+        "title": "การดำเนินการของคิว",
+        "score": 0.428571
+      },
+      {
+        "topic_id": "3.3.1",
+        "title": "โครงสร้างของการแทนคิวด้วยอาร์เรย์",
+        "score": 0.4
+      },
+      {
+        "topic_id": "4.3.1",
+        "title": "การดำเนินการแทนสแตกด้วยอาร์เรย์",
+        "score": 0.4
+      },
+      {
+        "topic_id": "4.3",
+        "title": "การแทนสแตกด้วยอาร์เรย์",
+        "score": 0.3
+      },
+      {
+        "topic_id": "4.2",
+        "title": "การดำเนินการของสแตก",
+        "score": 0.222222
+      },
+      {
+        "topic_id": "5.4",
+        "title": "ทรีกับการดำเนินการด้านนิพจน์",
+        "score": 0.181818
+      },
+      {
+        "topic_id": "3",
+        "title": "คิว (Queues)",
+        "score": 0.142857
+      },
+      {
+        "topic_id": "3.1",
+        "title": "โครงสร้างพื้นฐานของคิว",
+        "score": 0.125
+      },
+      {
+        "topic_id": "5.5",
+        "title": "การแทนโครงสร้างไบนารีทรีแบบซีเควนเชียล",
+        "score": 0.125
+      }
+    ]
+  },
+  "query_expansion": {
+    "use_query_expansion_llm": false,
+    "query_expansion_model": "Qwen/Qwen3-4B-Instruct-2507",
+    "query_expansion_status": "not_used",
+    "query_expansion_terms": [],
+    "query_expansion_max_terms": 8
+  },
+  "hierarchy_quality": {
+    "garbled_detected": false,
+    "mojibake_ratio": 0.0,
+    "topic_filter_enabled": true
+  },
+  "query_profile": {
+    "has_figure_ref": false,
+    "figure_refs": [],
+    "operation_intent": true,
+    "structure_intent": true,
+    "operation_terms": [
+      "วงกลม",
+      "ดำเนินการ"
+    ],
+    "structure_terms": [
+      "คิว"
+    ],
+    "intent_type": "operation",
+    "expanded_query_terms_count": 15,
+    "llm_expansion_status": "not_used",
+    "llm_expansion_terms": []
+  },
+  "task_metrics": {
+    "region_hit_ratio_at_k": 1.0,
+    "figure_ref_hit_ratio_at_k": 1.0,
+    "structure_hit_ratio_at_k": 0.0,
+    "operation_coverage_ratio_at_k": 1.0,
+    "query_figure_ref_coverage": null,
+    "grounding_success_rate": 1.0,
+    "grounding_consistency_mean": 0.7667,
+    "citation_ready_ratio": 1.0,
+    "mean_final_score": 0.346025,
+    "crop_completeness_proxy": 0.6667,
+    "small_region_ratio_at_k": 0.0,
+    "region_quality_mean": 0.8867,
+    "unique_figure_refs_at_k": 4,
+    "page_diversity_at_k": 0.3333,
+    "procedure_step_coverage_proxy": 1.0
+  },
+  "count": 3,
+  "hits": [
+    {
+      "rank": 1,
+      "id": "data_structure_data_ch1_to_ch5.pdf:37:region:2",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:37",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 37,
+      "image_path": "assets/figure_regions/page_037_region_02.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 525,
+          "y0": 698,
+          "x1": 830,
+          "y1": 1003
+        },
+        "bbox_norm": {
+          "x0": 0.412412,
+          "y0": 0.387778,
+          "x1": 0.652003,
+          "y1": 0.557222
+        },
+        "area_ratio": 0.040597,
+        "ink_ratio": 0.066391,
+        "is_fallback": false,
+        "quality_flags": {
+          "is_tiny_before": false,
+          "expanded_from_tiny": false,
+          "is_tiny_after": false
+        }
+      },
+      "structure_labels": [],
+      "tags": [
+        "queue"
+      ],
+      "figure_refs": [
+        "ภาพที่ 3.8",
+        "ภาพที่ 3.9",
+        "ภาพที่ 3.10",
+        "ภาพที่ 3.11"
+      ],
+      "chapter_id": "3",
+      "chapter_title": "คิว (Queues)",
+      "section_id": "3.2",
+      "section_title": "การดำเนินการของคิว",
+      "best_topic_id": "3.2",
+      "best_topic_title": "การดำเนินการของคิว",
+      "base_score": 0.456805,
+      "rrf_score": 1.0,
+      "pre_vlm_score": 0.630628,
+      "vlm_score": 0.0,
+      "final_score": 0.630628,
+      "figure_score": 0.0,
+      "operation_score": 1.0,
+      "structure_score": 1.0,
+      "topic_scope_score": 1.0,
+      "region_quality_score": 0.874912,
+      "vlm_reason": "",
+      "preview": "# ภาพที่ 3.8 แท่นคิวด้วยวงกลม\n\nจากภาพที่ 3.8 สามารถแสดงลักษณะของคิวแบบวงกลม เพื่อให้เกิดความเข้าใจได้ง่าย ดังภาพที่ 3.9\n\nfront= 5\nrear= 10\n\n## ภาพที่ 3.9 คิวแบบวงกลม\n\nจากภาพที่ 3.9 ลักษณะของโครงสร้างของคิววงกลมจะมีการนำเอาคิวท้ายมาเชื่อมต่อกับคิวส่วนหัวและเมื่อมีการ Enqueue ข้อมู"
+    },
+    {
+      "rank": 2,
+      "id": "data_structure_data_ch1_to_ch5.pdf:37:region:1",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:37",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 37,
+      "image_path": "assets/figure_regions/page_037_region_01.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 249,
+          "y0": 270,
+          "x1": 973,
+          "y1": 405
+        },
+        "bbox_norm": {
+          "x0": 0.195601,
+          "y0": 0.15,
+          "x1": 0.764336,
+          "y1": 0.225
+        },
+        "area_ratio": 0.042655,
+        "ink_ratio": 0.090127,
+        "is_fallback": false,
+        "quality_flags": {
+          "is_tiny_before": false,
+          "expanded_from_tiny": false,
+          "is_tiny_after": false
+        }
+      },
+      "structure_labels": [],
+      "tags": [
+        "queue"
+      ],
+      "figure_refs": [
+        "ภาพที่ 3.8",
+        "ภาพที่ 3.9",
+        "ภาพที่ 3.10",
+        "ภาพที่ 3.11"
+      ],
+      "chapter_id": "3",
+      "chapter_title": "คิว (Queues)",
+      "section_id": "3.2",
+      "section_title": "การดำเนินการของคิว",
+      "best_topic_id": "3.2",
+      "best_topic_title": "การดำเนินการของคิว",
+      "base_score": 0.279902,
+      "rrf_score": 0.67848,
+      "pre_vlm_score": 0.407447,
+      "vlm_score": 0.0,
+      "final_score": 0.407447,
+      "figure_score": 0.0,
+      "operation_score": 1.0,
+      "structure_score": 1.0,
+      "topic_scope_score": 1.0,
+      "region_quality_score": 0.930296,
+      "vlm_reason": "",
+      "preview": "# ภาพที่ 3.8 แท่นคิวด้วยวงกลม\n\nจากภาพที่ 3.8 สามารถแสดงลักษณะของคิวแบบวงกลม เพื่อให้เกิดความเข้าใจได้ง่าย ดังภาพที่ 3.9\n\nfront= 5\nrear= 10\n\n## ภาพที่ 3.9 คิวแบบวงกลม\n\nจากภาพที่ 3.9 ลักษณะของโครงสร้างของคิววงกลมจะมีการนำเอาคิวท้ายมาเชื่อมต่อกับคิวส่วนหัวและเมื่อมีการ Enqueue ข้อมู"
+    },
+    {
+      "rank": 3,
+      "id": "data_structure_data_ch1_to_ch5.pdf:37:region:3",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:37",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 37,
+      "image_path": "assets/figure_regions/page_037_region_03.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 958,
+          "y0": 244,
+          "x1": 1174,
+          "y1": 394
+        },
+        "bbox_norm": {
+          "x0": 0.752553,
+          "y0": 0.135556,
+          "x1": 0.922231,
+          "y1": 0.218889
+        },
+        "area_ratio": 0.01414,
+        "ink_ratio": 0.057809,
+        "is_fallback": false,
+        "quality_flags": {
+          "is_tiny_before": true,
+          "expanded_from_tiny": true,
+          "is_tiny_after": false
+        }
+      },
+      "structure_labels": [],
+      "tags": [
+        "queue"
+      ],
+      "figure_refs": [
+        "ภาพที่ 3.8",
+        "ภาพที่ 3.9",
+        "ภาพที่ 3.10",
+        "ภาพที่ 3.11"
+      ],
+      "chapter_id": "3",
+      "chapter_title": "คิว (Queues)",
+      "section_id": "3.2",
+      "section_title": "การดำเนินการของคิว",
+      "best_topic_id": "3.2",
+      "best_topic_title": "การดำเนินการของคิว",
+      "base_score": 0.0,
+      "rrf_score": 0.0,
+      "pre_vlm_score": 0.0,
+      "vlm_score": 0.0,
+      "final_score": 0.0,
+      "figure_score": 0.0,
+      "operation_score": 1.0,
+      "structure_score": 1.0,
+      "topic_scope_score": 1.0,
+      "region_quality_score": 0.854888,
+      "vlm_reason": "",
+      "preview": "# ภาพที่ 3.8 แท่นคิวด้วยวงกลม\n\nจากภาพที่ 3.8 สามารถแสดงลักษณะของคิวแบบวงกลม เพื่อให้เกิดความเข้าใจได้ง่าย ดังภาพที่ 3.9\n\nfront= 5\nrear= 10\n\n## ภาพที่ 3.9 คิวแบบวงกลม\n\nจากภาพที่ 3.9 ลักษณะของโครงสร้างของคิววงกลมจะมีการนำเอาคิวท้ายมาเชื่อมต่อกับคิวส่วนหัวและเมื่อมีการ Enqueue ข้อมู"
+    }
+  ],
+  "grounding": [
+    {
+      "id": "data_structure_data_ch1_to_ch5.pdf:37:region:2",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:37",
+      "grounding": {
+        "parsed": {
+          "structure_type": "circle",
+          "grounded_facts": [
+            "มีตัวอักษร E อยู่ในส่วนที่มีเส้นแบ่ง",
+            "มีตัวอักษร F อยู่ในส่วนที่มีเส้นแบ่ง",
+            "มีตัวอักษร G อยู่ในส่วนที่มีเส้นแบ่ง",
+            "มีตัวอักษร H, G, F, E, I อยู่ในวงกลม",
+            "มีตัวอักษร H อยู่ในส่วนที่มีเส้นแบ่ง",
+            "มีตัวอักษร I อยู่ในส่วนที่มีเส้นแบ่ง",
+            "มีวงกลมแบ่งเป็นส่วนที่มีตัวอักษร",
+            "มีเส้นแบ่งวงกลมเป็นส่วนที่มีตัวอักษร",
+            "คำสำคัญที่ตรวจพบจากหลักฐานภาพ: circular, dequeue, empty, enqueue, front, pointer/link, queue/คิว, rear"
+          ],
+          "limitations": "['ไม่มีข้อมูลเพิ่มเติมเกี่ยวกับการดำเนินการแทนคิวด้วยวงกลม', 'ไม่มีข้อมูลเกี่ยวกับการดำเนินการที่เกี่ยวข้องกับวงกลม']",
+          "normalized_terms": [
+            "circular",
+            "dequeue",
+            "empty",
+            "enqueue",
+            "front",
+            "pointer",
+            "queue",
+            "rear"
+          ],
+          "chapter_operation_tags": [],
+          "postprocess": "glossary_synonym_normalization_v1"
+        },
+        "raw": "```json\n{\n  \"structure_type\": \"circle\",\n  \"grounded_facts\": [\n    \"มีวงกลมแบ่งเป็นส่วนที่มีตัวอักษร\",\n    \"มีตัวอักษร H, G, F, E, I อยู่ในวงกลม\",\n    \"มีเส้นแบ่งวงกลมเป็นส่วนที่มีตัวอักษร\",\n    \"มีตัวอักษร H อยู่ในส่วนที่มีเส้นแบ่ง\",\n    \"มีตัวอักษร G อยู่ในส่วนที่มีเส้นแบ่ง\",\n    \"มีตัวอักษร F อยู่ในส่วนที่มีเส้นแบ่ง\",\n    \"มีตัวอักษร E อยู่ในส่วนที่มีเส้นแบ่ง\",\n    \"มีตัวอักษร I อยู่ในส่วนที่มีเส้นแบ่ง\"\n  ],\n  \"limitations\": [\n    \"ไม่มีข้อมูลเพิ่มเติมเกี่ยวกับการดำเนินการแทนคิวด้วยวงกลม\",\n    \"ไม่มีข้อมูลเกี่ยวกับการดำเนินการที่เกี่ยวข้องกับวงกลม\"\n  ]\n}\n```",
+        "samples": [
+          {
+            "parsed": {
+              "structure_type": "circle",
+              "grounded_facts": [
+                "มีวงกลมแบ่งเป็นส่วนที่มีตัวอักษร",
+                "มีตัวอักษร H, G, F, E, I อยู่ในวงกลม",
+                "มีเส้นแบ่งวงกลมเป็นส่วนที่มีตัวอักษร",
+                "มีตัวอักษร H อยู่ในส่วนที่มีเส้นแบ่ง",
+                "มีตัวอักษร G อยู่ในส่วนที่มีเส้นแบ่ง",
+                "มีตัวอักษร F อยู่ในส่วนที่มีเส้นแบ่ง",
+                "มีตัวอักษร E อยู่ในส่วนที่มีเส้นแบ่ง",
+                "มีตัวอักษร I อยู่ในส่วนที่มีเส้นแบ่ง"
+              ],
+              "limitations": [
+                "ไม่มีข้อมูลเพิ่มเติมเกี่ยวกับการดำเนินการแทนคิวด้วยวงกลม",
+                "ไม่มีข้อมูลเกี่ยวกับการดำเนินการที่เกี่ยวข้องกับวงกลม"
+              ]
+            },
+            "raw": "```json\n{\n  \"structure_type\": \"circle\",\n  \"grounded_facts\": [\n    \"มีวงกลมแบ่งเป็นส่วนที่มีตัวอักษร\",\n    \"มีตัวอักษร H, G, F, E, I อยู่ในวงกลม\",\n    \"มีเส้นแบ่งวงกลมเป็นส่วนที่มีตัวอักษร\",\n    \"มีตัวอักษร H อยู่ในส่วนที่มีเส้นแบ่ง\",\n    \"มีตัวอักษร G อยู่ในส่วนที่มีเส้นแบ่ง\",\n    \"มีตัวอักษร F อยู่ในส่วนที่มีเส้นแบ่ง\",\n    \"มีตัวอักษร E อยู่ในส่วนที่มีเส้นแบ่ง\",\n    \"มีตัวอักษร I อยู่ในส่วนที่มีเส้นแบ่ง\"\n  ],\n  \"limitations\": [\n    \"ไม่มีข้อมูลเพิ่มเติมเกี่ยวกับการดำเนินการแทนคิวด้วยวงกลม\",\n    \"ไม่มีข้อมูลเกี่ยวกับการดำเนินการที่เกี่ยวข้องกับวงกลม\"\n  ]\n}\n```"
+          },
+          {
+            "parsed": {
+              "structure_type": "circle",
+              "grounded_facts": [
+                "มีวงกลมแบ่งเป็นส่วนที่มีตัวอักษร",
+                "มีตัวอักษร H, G, F, E, I อยู่ในวงกลม",
+                "มีเส้นแบ่งวงกลมเป็นส่วนที่มีตัวอักษร",
+                "มีตัวอักษร H อยู่ในส่วนที่มีเส้นแบ่ง",
+                "มีตัวอักษร G อยู่ในส่วนที่มีเส้นแบ่ง",
+                "มีตัวอักษร F อยู่ในส่วนที่มีเส้นแบ่ง",
+                "มีตัวอักษร E อยู่ในส่วนที่มีเส้นแบ่ง",
+                "มีตัวอักษร I อยู่ในส่วนที่มีเส้นแบ่ง"
+              ],
+              "limitations": [
+                "ไม่มีข้อมูลเพิ่มเติมเกี่ยวกับการดำเนินการแทนคิวด้วยวงกลม",
+                "ไม่มีข้อมูลเกี่ยวกับการดำเนินการที่เกี่ยวข้องกับวงกลม"
+              ]
+            },
+            "raw": "```json\n{\n  \"structure_type\": \"circle\",\n  \"grounded_facts\": [\n    \"มีวงกลมแบ่งเป็นส่วนที่มีตัวอักษร\",\n    \"มีตัวอักษร H, G, F, E, I อยู่ในวงกลม\",\n    \"มีเส้นแบ่งวงกลมเป็นส่วนที่มีตัวอักษร\",\n    \"มีตัวอักษร H อยู่ในส่วนที่มีเส้นแบ่ง\",\n    \"มีตัวอักษร G อยู่ในส่วนที่มีเส้นแบ่ง\",\n    \"มีตัวอักษร F อยู่ในส่วนที่มีเส้นแบ่ง\",\n    \"มีตัวอักษร E อยู่ในส่วนที่มีเส้นแบ่ง\",\n    \"มีตัวอักษร I อยู่ในส่วนที่มีเส้นแบ่ง\"\n  ],\n  \"limitations\": [\n    \"ไม่มีข้อมูลเพิ่มเติมเกี่ยวกับการดำเนินการแทนคิวด้วยวงกลม\",\n    \"ไม่มีข้อมูลเกี่ยวกับการดำเนินการที่เกี่ยวข้องกับวงกลม\"\n  ]\n}\n```"
+          }
+        ],
+        "consensus": {
+          "runs": 2,
+          "valid_runs": 2,
+          "vote_threshold": 2,
+          "raw_unique_facts": 8,
+          "consensus_facts": 8,
+          "agreement_ratio": 1.0
+        }
+      }
+    },
+    {
+      "id": "data_structure_data_ch1_to_ch5.pdf:37:region:1",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:37",
+      "grounding": {
+        "parsed": {
+          "structure_type": "linked_list",
+          "grounded_facts": [
+            "ข้อมูล E อยู่ในตำแหน่งที่ 5",
+            "ข้อมูล F อยู่ในตำแหน่งที่ 6",
+            "ข้อมูล G อยู่ในตำแหน่งที่ 7",
+            "คำสำคัญที่ตรวจพบจากหลักฐานภาพ: circular, dequeue, empty, enqueue, front, pointer/link, queue/คิว, rear"
+          ],
+          "limitations": "ภาพไม่แสดงข้อมูลที่ไม่ได้ระบุในตำแหน่ง",
+          "normalized_terms": [
+            "circular",
+            "dequeue",
+            "empty",
+            "enqueue",
+            "front",
+            "pointer",
+            "queue",
+            "rear"
+          ],
+          "chapter_operation_tags": [],
+          "postprocess": "glossary_synonym_normalization_v1"
+        },
+        "raw": "```json\n{\n  \"structure_type\": \"linked_list\",\n  \"grounded_facts\": [\n    \"ข้อมูล E อยู่ในตำแหน่งที่ 5\",\n    \"ข้อมูล F อยู่ในตำแหน่งที่ 6\",\n    \"ข้อมูล G อยู่ในตำแหน่งที่ 7\",\n    \"ข้อมูล H อยู่ในตำแหน่งที่ 8\",\n    \"ข้อมูล I อยู่ในตำแหน่งที่ 9\",\n    \"ข้อมูล J อยู่ในตำแหน่งที่ 10\"\n  ],\n  \"limitations\": \"ภาพไม่แสดงข้อมูลที่ไม่ได้ระบุในตำแหน่ง\"\n}\n```",
+        "samples": [
+          {
+            "parsed": {
+              "structure_type": "linked_list",
+              "grounded_facts": [
+                "ข้อมูล E อยู่ในตำแหน่งที่ 5",
+                "ข้อมูล F อยู่ในตำแหน่งที่ 6",
+                "ข้อมูล G อยู่ในตำแหน่งที่ 7",
+                "ข้อมูล H อยู่ในตำแหน่งที่ 8",
+                "ข้อมูล I อยู่ในตำแหน่งที่ 9",
+                "ข้อมูล J อยู่ในตำแหน่งที่ 10"
+              ],
+              "limitations": "ภาพไม่แสดงข้อมูลที่ไม่ได้ระบุในตำแหน่ง"
+            },
+            "raw": "```json\n{\n  \"structure_type\": \"linked_list\",\n  \"grounded_facts\": [\n    \"ข้อมูล E อยู่ในตำแหน่งที่ 5\",\n    \"ข้อมูล F อยู่ในตำแหน่งที่ 6\",\n    \"ข้อมูล G อยู่ในตำแหน่งที่ 7\",\n    \"ข้อมูล H อยู่ในตำแหน่งที่ 8\",\n    \"ข้อมูล I อยู่ในตำแหน่งที่ 9\",\n    \"ข้อมูล J อยู่ในตำแหน่งที่ 10\"\n  ],\n  \"limitations\": \"ภาพไม่แสดงข้อมูลที่ไม่ได้ระบุในตำแหน่ง\"\n}\n```"
+          },
+          {
+            "parsed": {
+              "structure_type": "ตาราง",
+              "grounded_facts": [
+                "มีช่องว่างในตาราง",
+                "มีข้อความ 'E', 'F', 'G', 'H', 'I', 'J' ในช่อง",
+                "มีเลข '1', '2', '3', '4', '5', '6', '7', '8', '9', '10' ที่ติดกับขอบตาราง",
+                "มีเส้นตรงที่ตัดผ่านช่อง 'E' และ 'J'"
+              ],
+              "limitations": "ไม่มีข้อมูลเพิ่มเติมเกี่ยวกับการดำเนินการแทนคิวด้วยวงกลม"
+            },
+            "raw": "```json\n{\n  \"structure_type\": \"ตาราง\",\n  \"grounded_facts\": [\n    \"มีช่องว่างในตาราง\",\n    \"มีข้อความ 'E', 'F', 'G', 'H', 'I', 'J' ในช่อง\",\n    \"มีเลข '1', '2', '3', '4', '5', '6', '7', '8', '9', '10' ที่ติดกับขอบตาราง\",\n    \"มีเส้นตรงที่ตัดผ่านช่อง 'E' และ 'J'\"\n  ],\n  \"limitations\": \"ไม่มีข้อมูลเพิ่มเติมเกี่ยวกับการดำเนินการแทนคิวด้วยวงกลม\"\n}\n```"
+          }
+        ],
+        "consensus": {
+          "runs": 2,
+          "valid_runs": 2,
+          "vote_threshold": 2,
+          "raw_unique_facts": 10,
+          "consensus_facts": 3,
+          "agreement_ratio": 0.3
+        }
+      }
+    },
+    {
+      "id": "data_structure_data_ch1_to_ch5.pdf:37:region:3",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:37",
+      "grounding": {
+        "parsed": {
+          "structure_type": "queue",
+          "grounded_facts": [
+            "front=5",
+            "rear=10",
+            "คำสำคัญที่ตรวจพบจากหลักฐานภาพ: circular, dequeue, empty, enqueue, front, pointer/link, queue/คิว, rear"
+          ],
+          "limitations": "ภาพไม่แสดงข้อมูลเกี่ยวกับการดำเนินการแทนคิวด้วยวงกลม",
+          "normalized_terms": [
+            "circular",
+            "dequeue",
+            "empty",
+            "enqueue",
+            "front",
+            "pointer",
+            "queue",
+            "rear"
+          ],
+          "chapter_operation_tags": [],
+          "postprocess": "glossary_synonym_normalization_v1"
+        },
+        "raw": "```json\n{\n  \"structure_type\": \"queue\",\n  \"grounded_facts\": [\n    \"front=5\",\n    \"rear=10\"\n  ],\n  \"limitations\": \"ภาพไม่แสดงข้อมูลเกี่ยวกับการดำเนินการแทนคิวด้วยวงกลม\"\n}\n```",
+        "samples": [
+          {
+            "parsed": {
+              "structure_type": "queue",
+              "grounded_facts": [
+                "front=5",
+                "rear=10"
+              ],
+              "limitations": "ภาพไม่แสดงข้อมูลเกี่ยวกับการดำเนินการแทนคิวด้วยวงกลม"
+            },
+            "raw": "```json\n{\n  \"structure_type\": \"queue\",\n  \"grounded_facts\": [\n    \"front=5\",\n    \"rear=10\"\n  ],\n  \"limitations\": \"ภาพไม่แสดงข้อมูลเกี่ยวกับการดำเนินการแทนคิวด้วยวงกลม\"\n}\n```"
+          },
+          {
+            "parsed": {
+              "structure_type": "queue",
+              "grounded_facts": [
+                "front=5",
+                "rear=10"
+              ],
+              "limitations": "ภาพไม่แสดงข้อมูลเกี่ยวกับการดำเนินการแทนคิวด้วยวงกลม"
+            },
+            "raw": "```json\n{\n  \"structure_type\": \"queue\",\n  \"grounded_facts\": [\n    \"front=5\",\n    \"rear=10\"\n  ],\n  \"limitations\": \"ภาพไม่แสดงข้อมูลเกี่ยวกับการดำเนินการแทนคิวด้วยวงกลม\"\n}\n```"
+          }
+        ],
+        "consensus": {
+          "runs": 2,
+          "valid_runs": 2,
+          "vote_threshold": 2,
+          "raw_unique_facts": 2,
+          "consensus_facts": 2,
+          "agreement_ratio": 1.0
+        }
+      }
+    }
+  ]
+}

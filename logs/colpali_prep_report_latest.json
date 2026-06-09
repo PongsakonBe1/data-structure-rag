@@ -1,0 +1,14 @@
+{
+  "total_pages": 67,
+  "pages_with_page_image": 67,
+  "pages_with_page_image_ratio": 1.0,
+  "pages_with_regions": 65,
+  "pages_with_regions_ratio": 0.970149,
+  "pages_with_structure": 1,
+  "pages_with_structure_ratio": 0.014925,
+  "pages_with_figure_ref": 44,
+  "pages_with_example": 24,
+  "records_written": 188,
+  "output": "indexes/colpali/pages.jsonl",
+  "used_region_manifest": true
+}

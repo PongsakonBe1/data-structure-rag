@@ -1,0 +1,28 @@
+{
+  "overall_pass": false,
+  "summary": {
+    "total_pages": 67,
+    "pages_with_issues": 7,
+    "figure_pages": 44,
+    "figure_pages_with_structure": 37,
+    "total_structure_blocks": 51,
+    "total_caption_injected_blocks": 47
+  },
+  "checks": {
+    "issue_page_ratio": {
+      "value": 0.104478,
+      "threshold": 0.05,
+      "pass": false
+    },
+    "figure_structure_coverage": {
+      "value": 0.840909,
+      "threshold": 0.85,
+      "pass": false
+    },
+    "caption_injected_ratio": {
+      "value": 0.921569,
+      "threshold": 0.35,
+      "pass": false
+    }
+  }
+}

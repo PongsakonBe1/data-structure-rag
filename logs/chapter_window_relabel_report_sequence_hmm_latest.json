@@ -1,0 +1,13 @@
+{
+  "source": "data_structure_data_ch1_to_ch5.pdf",
+  "page_start": 24,
+  "page_end": 28,
+  "sequence_decoder": "hmm",
+  "allowed_topics": [
+    "2.4",
+    "2.4.1",
+    "2.4.2"
+  ],
+  "changed_pages": 0,
+  "changes": []
+}

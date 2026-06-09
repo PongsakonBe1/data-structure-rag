@@ -1,0 +1,149 @@
+{
+  "query": "การดำเนินการแทนคิวด้วยวงกลม",
+  "mode": "metadata_only",
+  "top_k": 5,
+  "require_structure": true,
+  "require_example": false,
+  "required_tags": [],
+  "count": 5,
+  "hits": [
+    {
+      "rank": 1,
+      "score": 0.767085,
+      "colpali_score": 0.0,
+      "lexical_score": 0.833333,
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 30,
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:30",
+      "image_path": "assets/figure_regions/page_030_region_01.png",
+      "image_level": "region",
+      "region_index": 1,
+      "has_structure": true,
+      "has_example": false,
+      "tags": [
+        "queue"
+      ],
+      "structure_labels": [
+        "Queue",
+        "Queue"
+      ],
+      "figure_refs": [
+        "ภาพที่ 3.2",
+        "ภาพที่ 3.3"
+      ],
+      "preview": "# 3.2 การดำเนินการของคิว\n\nการดำเนินการพื้นฐานโครงสร้างข้อมูลแบบคิว คือ มีการนำเข้าข้อมูลด้วยการต่อท้ายและดึงข้อมูลออกในส่วนหัว สามารถแบ่งออกเป็น 2 กรณี คือ\n\n## 3.2.1 การนำเข้าข้อมูล (Enqueue)\n\nหากมีการนำเข้าข้อมูลแรกเข้าสู่คิวแล้วข้อมูลนี้จะเป็นข้อมูลอันดับแรก และเมื่อมีการเพิ่มข"
+    },
+    {
+      "rank": 2,
+      "score": 0.767059,
+      "colpali_score": 0.0,
+      "lexical_score": 0.833333,
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 37,
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:37",
+      "image_path": "assets/figure_regions/page_037_region_01.png",
+      "image_level": "region",
+      "region_index": 1,
+      "has_structure": true,
+      "has_example": false,
+      "tags": [
+        "queue"
+      ],
+      "structure_labels": [
+        "Queue"
+      ],
+      "figure_refs": [
+        "ภาพที่ 3.8",
+        "ภาพที่ 3.9",
+        "ภาพที่ 3.10",
+        "ภาพที่ 3.11"
+      ],
+      "preview": "# ภาพที่ 3.8 แท่นคิวด้วยวงกลม\n\nจากภาพที่ 3.8 สามารถแสดงลักษณะของคิวแบบวงกลม เพื่อให้เกิดความเข้าใจได้ง่าย ดังภาพที่ 3.9\n\n> [Structure: Queue]\n> - [1] connects to -> [2]\n> - [2] connects to -> [3]\n> - [3] connects to -> [4]\n> - [4] connects to -> [5]\n> - [5] connects to -> [6]\n> -"
+    },
+    {
+      "rank": 3,
+      "score": 0.76082,
+      "colpali_score": 0.0,
+      "lexical_score": 0.833333,
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 32,
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:32",
+      "image_path": "assets/figure_regions/page_032_region_01.png",
+      "image_level": "region",
+      "region_index": 1,
+      "has_structure": true,
+      "has_example": false,
+      "tags": [
+        "array",
+        "queue"
+      ],
+      "structure_labels": [
+        "Array",
+        "Array",
+        "Array"
+      ],
+      "figure_refs": [
+        "ภาพที่ 3.7"
+      ],
+      "preview": "## 3.7 การ Dequeue\n\nจากภาพที่ 3.7 การ Dequeue ข้อมูลจะเริ่มต้นดำเนินการที่ตำแหน่ง front โดยการ Dequeue ในตำแหน่งของ front ก็เปลี่ยนเป็น front = Q[2]=B และหาก Dequeue ข้อมูลอีกตำแหน่ง front ก็จะเปลี่ยนแปลงไปเรื่อย ๆ\n\n### 3.3.2 การดำเนินการแท่นคิวด้วยอาร์เรย์\n\n1. เพิ่มข้อมูลลงในคิว"
+    },
+    {
+      "rank": 4,
+      "score": 0.615108,
+      "colpali_score": 0.0,
+      "lexical_score": 0.666667,
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 13,
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:13",
+      "image_path": "assets/figure_regions/page_013_region_01.png",
+      "image_level": "region",
+      "region_index": 1,
+      "has_structure": true,
+      "has_example": false,
+      "tags": [
+        "array",
+        "binary_tree",
+        "linked_list",
+        "queue",
+        "stack",
+        "tree"
+      ],
+      "structure_labels": [
+        "Binary Tree"
+      ],
+      "figure_refs": [
+        "ภาพที่ 2.1"
+      ],
+      "preview": "# หน่วยเรียนที่ 2\n## อาร์เรย์และลิงค์ลิสต์ (Array and Link list)\n\nอาร์เรย์และลิงค์ลิสต์เป็นโครงสร้างข้อมูลเชิงเส้นที่มีการจัดเรียงข้อมูลแบบต่อเนื่องและเข้าถึงข้อมูลแบบลำดับ ซึ่งจัดเป็นโครงสร้างข้อมูลพื้นฐานสำหรับโครงสร้างข้อมูลแบบอื่น ๆ โดยโครงสร้างข้อมูลแบบอาร์เรย์และลิงค์ลิสต์น"
+    },
+    {
+      "rank": 5,
+      "score": 0.610574,
+      "colpali_score": 0.0,
+      "lexical_score": 0.666667,
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 31,
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:31",
+      "image_path": "assets/figure_regions/page_031_region_01.png",
+      "image_level": "region",
+      "region_index": 1,
+      "has_structure": true,
+      "has_example": false,
+      "tags": [
+        "array",
+        "queue"
+      ],
+      "structure_labels": [
+        "Queue",
+        "Queue",
+        "Queue"
+      ],
+      "figure_refs": [
+        "ภาพที่ 3.4",
+        "ภาพที่ 3.5",
+        "ภาพที่ 3.6"
+      ],
+      "preview": "# 3.3 การแทนคิวด้วยอาร์เรย์\n\nการแทนโครงสร้างคิวด้วยอาร์เรย์ จะต้องกำหนดจำนวนของการจองพื้นที่บนหน่วยความจำ และใช้อาร์เรย์ในการนำข้อมูลเข้าด้านท้ายและนำข้อมูลออกในส่วนหัว ดังภาพที่ 3.4\n\n> [Structure: Queue]\n> - ข้อมูลออก -> ข้อมูลเข้า\n\n**ภาพที่ 3.4 การนำเข้าและนำออกข้อมูลในโครงสร้า"
+    }
+  ]
+}

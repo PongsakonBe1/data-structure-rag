@@ -1,0 +1,209 @@
+# ==============================================================================
+# WINDSURF / CASCADE AI ASSISTANT RULES: VLM-RAG RESEARCH & IOC EVALUATION
+# ==============================================================================
+
+## 1. PROJECT STRATEGY & PHASES
+This project is currently in the **Evaluation Phase (Phase 1)**. 
+- UI Framework: Streamlit (Crucial for building Expert Evaluation Forms and Data Dashboards).
+- Primary Goal: Validate the RAG system using Expert feedback (IOC) and generate a Confusion Matrix based on In-Scope (IS) and Out-of-Scope (OOS) queries.
+- this is my flowchart
+```mermaid
+---
+config:
+  layout: elk
+  look: neo
+---
+flowchart TB
+ subgraph A["Section A: แหล่งข้อมูลและการกำกับดูแล"]
+        A1["ชุดข้อมูล PDF: data_ch1_to_ch5.pdf"]
+        A2["โครงสร้างสารบัญ: list_hitachi.txt"]
+        A3["นโยบาย: Grounded Only / Citation Required / Abstain when weak"]
+  end
+ subgraph B["Section B: การเตรียมข้อมูลแบบ Offline"]
+        B1["OCR Extraction: ดึงข้อความลง Markdown"]
+        B2["Extract Figures: ดึงรูปภาพประกอบ"]
+        B3["Extract Regions: ระบุตำแหน่งรูปภาพในหน้า"]
+        B4["Cleanup & Visual Anchors: ปรับแต่งเนื้อหาและจุดยึดโยง"]
+        B5["QA Report: รายงานคุณภาพการทำ Ingestion"]
+  end
+ subgraph C["Section C: การทำ Index และ Calibration"]
+        C1["Build Hierarchy: สร้างโครงสร้างหัวข้อลำดับชั้น"]
+        C2["ColPali Corpus: เตรียมข้อมูลแบบ Visual Index"]
+        C3["Hard Negatives: คัดแยกข้อมูลที่อาจทำให้โมเดลสับสน"]
+        C4["Chapter Calibration: ปรับจูนค่าสถิติรายบท"]
+        C5["Penalty Rules: กำหนดกฎการตัดคะแนนข้อมูลลวง"]
+  end
+ subgraph D["Section D: การค้นคืนข้อมูล Online"]
+        D1(("User Query"))
+        D2["Query Profiling: วิเคราะห์เจตนาและหัวข้อ"]
+        D3["Candidate Retrieval: ค้นหาด้วย ColPali + Lexical"]
+        D4["Late Fusion & RRF: รวมคะแนนการค้นหาหลายรูปแบบ"]
+        D5["Apply Penalty: หักคะแนน Hard Negatives"]
+        D6["Select Top K: เลือกผู้สมัครที่ดีที่สุด"]
+  end
+ subgraph E["Section E: การตรวจสอบความถูกต้องและการตัดสินใจ"]
+        E1["Adaptive Crop: ขยายขอบเขตภาพตามคุณภาพ"]
+        E2["VLM Grounding Ensemble: ตรวจสอบความจริงด้วย VLM หลายตัว"]
+        E3["Consensus Voting: ลงมติความสอดคล้องของข้อมูล"]
+        E4["Evidence Stats: ตรวจสอบเกณฑ์หลักฐานรายบท"]
+        E5{"Evidence Gate: ผ่านเกณฑ์?"}
+        E6["ABSTAIN: ปฏิเสธการตอบพร้อมรหัสเหตุผล"]
+        E7["Corrective Retrieval: ค้นหาซ้ำแบบเน้นจุดที่ขาด"]
+  end
+ subgraph F["Section F: การสร้างคำตอบและส่งมอบ"]
+        F1["Build Context: เตรียมบริบทพร้อม Citations"]
+        F2["Generate Answer: สร้างคำตอบภาษาไทย Temp 0.2"]
+        F3{"Citation Validation: อ้างอิงถูกต้อง?"}
+        F4["Citation Repair: ซ่อมแซมจุดอ้างอิง"]
+        F5["Delivery: ส่งคำตอบและรูปหลักฐานไปยัง UI"]
+  end
+ subgraph G["Section G: การประเมินและการปรับปรุง"]
+        G1["Runtime Logs: บันทึกเหตุการณ์ระหว่างทำงาน"]
+        G2["Visual Metrics: วัดผลประสิทธิภาพการตอบเชิงภาพ"]
+        G3["Update Rules: ปรับปรุงกฎและค่า Calibration"]
+        G4["Health Check: ตรวจสอบความพร้อมของ Endpoint"]
+  end
+    A1 --> B1 & B2 & B3
+    A2 --> C1
+    A3 --> E4 & F3
+    B1 --> B4
+    B2 --> B4
+    B3 --> B4
+    B4 --> B5 & C1 & C2
+    C1 --> C3 & C4 & D2
+    C2 --> C3 & D3
+    C3 --> C5
+    C5 --> D5
+    C4 --> E4
+    D1 --> D2
+    D2 --> D3
+    D3 --> D4
+    D4 --> D5
+    D5 --> D6
+    D6 --> E1
+    E1 --> E2
+    E2 --> E3
+    E3 --> E4
+    E4 --> E5
+    E5 -- No --> E7
+    E7 --> D3
+    E5 -- FailHard --> E6
+    E5 -- Yes --> F1
+    F1 --> F2
+    F2 --> F3
+    F3 -- No --> F4
+    F4 --> F5
+    F3 -- Yes --> F5
+    F5 --> G1 & G2
+    G1 --> G3
+    G2 --> G3
+    G4 --> D3
+    G3 --> C4 & C5
+
+     A1:::source
+     A2:::source
+     A3:::source
+     B1:::prep
+     B2:::prep
+     B3:::prep
+     B4:::prep
+     B5:::prep
+     C1:::index
+     C2:::index
+     C3:::index
+     C4:::index
+     C5:::index
+     D1:::retrieval
+     D2:::retrieval
+     D3:::retrieval
+     D4:::retrieval
+     D5:::retrieval
+     D6:::retrieval
+     E1:::decision
+     E2:::decision
+     E3:::decision
+     E4:::decision
+     E5:::decision
+     E6:::decision
+     E7:::decision
+     F1:::generation
+     F2:::generation
+     F3:::generation
+     F4:::generation
+     F5:::generation
+     G1:::eval
+     G2:::eval
+     G3:::eval
+     G4:::eval
+```
+---
+
+## 2. ARCHITECTURE & FLOWCHART
+```mermaid
+flowchart TB
+  subgraph Section_A_to_F[Core RAG Pipeline]
+        A[Document & list_hierarchy.txt] --> C[ColPali Indexing]
+        C --> D[Hybrid Retrieval & Late Fusion]
+        D --> E{Evidence Gate}
+        E -- Pass --> F[Generate Answer]
+        E -- Fail --> F_Abstain[ABSTAIN: Out of Scope / No Evidence]
+  end
+
+  subgraph Section_H[Section H: Expert Evaluation / IOC Matrix]
+        H1(("Expert Evaluator"))
+        H2{"Query Type"}
+        H3["In-Scope (IS) Query\n(From list_hierarchy.txt)"]
+        H4["Out-of-Scope (OOS) Query\n(Related but not in doc)"]
+        
+        H5["Expert Rating UI (Streamlit)\nScore: +1, 0, -1"]
+        H6["Calculate Confusion Matrix"]
+        H7["Export to CSV / Excel"]
+  end
+
+  H1 --> H2
+  H2 -->|Tests| H3
+  H2 -->|Tests| H4
+  H3 --> D
+  H4 --> D
+  
+  F --> H5
+  F_Abstain --> H5
+  H5 --> H6
+  H6 --> H7
+```
+
+---
+
+## 3. CONFUSION MATRIX DEFINITION FOR RAG
+When building evaluation logic or analyzing logs, you MUST strictly follow this confusion matrix logic based on the "Grounded Only" policy:
+
+* **True Positive (TP):** Query is In-Scope (IS) -> RAG Answers Correctly based on document.
+* **True Negative (TN):** Query is Out-of-Scope (OOS) -> RAG strictly **ABSTAINS** (Says it cannot answer based on documents).
+* **False Positive (FP / Hallucination):** Query is OOS -> RAG attempts to Answer (Failed Evidence Gate).
+* **False Negative (FN / Miss):** Query is IS -> RAG Abtains (Failed Retrieval / Too strict Evidence Gate).
+
+---
+
+## 4. AI ASSISTANT PERSONAS
+
+### 🔬 Role 1: AI Researcher (Focus for current sprint)
+* **Focus:** IOC evaluation, data collection, and Streamlit Expert UI.
+* **Tasks:** Build a side-by-side Streamlit UI where the left column is the Chatbot and the right column is the "Expert Rating Form".
+* **Rule:** The form must collect: Evaluator Name, Query, Query Type (IS/OOS), Expected Action, Actual Action, IOC Score (+1, 0, -1), and Comments. Must implement an "Export to CSV" button.
+
+### 🛡️ Role 2: Gatekeeper Architect (Section E)
+* **Focus:** Strict enforcement of TN and TP.
+* **Tasks:** Tune the Prompts and Retrieval logic to ensure the system gracefully abstains from OOS questions to maximize True Negatives.
+
+### 🚀 Role 3: Deployment Ops (Phase 2 - Gradio Migration)
+* **Focus:** Decoupling logic for future hosting.
+* **Tasks:** Ensure core RAG logic (`generate_response`) is fully separated from Streamlit UI code. So that in the future, transitioning to Gradio on Hugging Face Spaces requires minimal effort.
+
+---
+
+## 5. STRICT CODING CONSTRAINTS
+1.  **State Management:** Use `st.session_state` rigorously to keep track of expert ratings for each individual chat turn.
+2.  **Export Format:** Evaluation logs must be saved as CSV. Fields must include timestamp, turn_id, question, system_response, matrix_category (TP/TN/FP/FN), and expert_score.
+3.  **Topic Mapping:** The system must actively try to map every user query to `list_hierarchy.txt` to help the evaluator know if the query was expected to be In-Scope or not.
+4.  **Language:** All Evaluation UI elements and RAG responses must be in Thai.
+```

@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "timestamp_utc": "2026-02-18T07:09:44.756127+00:00",
+  "gate_pass": true,
+  "operational_pass": true,
+  "strict_research_pass": true,
+  "strict_mode": "external_publish_grade",
+  "manual_verified_required": true,
+  "min_manual_verified_samples": 10,
+  "gt_metrics_available": true,
+  "ocr_intrinsic": {
+    "available": true,
+    "samples": 12,
+    "samples_used_rows": 12,
+    "samples_total_rows": 18,
+    "cer_mean": 0.02775,
+    "wer_mean": 0.029326,
+    "reason": null
+  },
+  "reasons": [],
+  "failed_checks": [],
+  "artifacts": {
+    "evaluator_report": "logs/ocr_research_grade_external_publish_latest.json"
+  }
+}

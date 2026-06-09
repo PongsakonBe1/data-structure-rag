@@ -1,0 +1,654 @@
+{
+  "query": "โครงสร้างของการแทนคิวด้วยอาร์เรย์",
+  "backend": "colpali_endpoint",
+  "colpali_status": "ok",
+  "colpali_score_ready": true,
+  "vlm_rerank_status": "ok",
+  "grounding_status": "ok",
+  "endpoint_runtime": {
+    "timeout_sec": 120,
+    "max_retries": 2,
+    "retry_backoff_ms": 700,
+    "local_cache_size": 256,
+    "image_max_side": 896,
+    "jpeg_quality": 80
+  },
+  "scoring_weights": {
+    "channel_weights": {
+      "colpali": 0.5472,
+      "lexical": 0.1132,
+      "region_prior": 0.0755,
+      "region_quality": 0.0566,
+      "structure_prior": 0.066,
+      "structure_align": 0.0472,
+      "figure_match": 0.0566,
+      "operation_match": 0.0377
+    },
+    "pre_vlm_blend": {
+      "base": 0.68,
+      "rrf": 0.32
+    },
+    "rrf_k": 60,
+    "tiny_region_penalty": {
+      "enabled": true,
+      "area_ratio_lt": 0.006,
+      "multiplier": 0.82
+    },
+    "hard_negative": {
+      "rules_loaded": 3,
+      "penalty_max": 0.22,
+      "penalized_candidates": 12
+    }
+  },
+  "coverage_rerank": {
+    "applied": false,
+    "novelty_weight": 0.26,
+    "figure_weight": 0.62,
+    "page_weight": 0.38,
+    "step_target": 4
+  },
+  "grounding_config": {
+    "enabled": true,
+    "top_n": 1,
+    "ensemble_runs": 2,
+    "consensus_min_votes": 2,
+    "temperature": 0.0,
+    "top_p": 0.9
+  },
+  "hard_negative_config": {
+    "rules_path": "indexes/hierarchical/hard_negative_rules.json",
+    "rules_loaded": 3,
+    "penalty_max": 0.22
+  },
+  "topic_prediction": {
+    "topic_id": "3.3.1",
+    "topic_score": 0.99,
+    "topic_filtered": true,
+    "topic_threshold": 0.18,
+    "topic_scope_ids": [
+      "3",
+      "3.1",
+      "3.2",
+      "3.2.1",
+      "3.2.2",
+      "3.3",
+      "3.3.1",
+      "3.3.2",
+      "3.3.3"
+    ],
+    "topic_source": "llm",
+    "topic_filter_reason": "metadata_prefilter_plus_hierarchy:strict_best_topic",
+    "metadata_prefilter_enabled": true,
+    "heuristic_topic_id": "3.3",
+    "heuristic_topic_score": 1.0
+  },
+  "intent_classification": {
+    "use_intent_llm": true,
+    "intent_model": "Qwen/Qwen3-4B-Instruct-2507",
+    "intent_llm_status": "ok",
+    "intent_llm": {
+      "intent_type": "structure",
+      "target_chapter": "3",
+      "target_topic_ids": [
+        "3.3.1"
+      ],
+      "confidence": 0.99,
+      "require_structure": true,
+      "reason": "คำถามถามถึงโครงสร้างของการแทนคิวด้วยอาร์เรย์ ซึ่งตรงกับหัวข้อ 'โครงสร้างของการแทนคิวด้วยอาร์เรย์' (topic_id=3.3.1) ที่มีความสัมพันธ์โดยตรง และต้องการข้อมูลเกี่ยวกับโครงสร้าง จึงต้องการ require_structure=true",
+      "raw": "{\"intent_type\":\"structure\",\"target_chapter\":\"3\",\"target_topic_ids\":[\"3.3.1\"],\"confidence\":0.99,\"require_structure\":true,\"reason\":\"คำถามถามถึงโครงสร้างของการแทนคิวด้วยอาร์เรย์ ซึ่งตรงกับหัวข้อ 'โครงสร้างของการแทนคิวด้วยอาร์เรย์' (topic_id=3.3.1) ที่มีความสัมพันธ์โดยตรง และต้องการข้อมูลเกี่ยวกับโครงสร้าง จึงต้องการ require_structure=true\"}"
+    },
+    "ranked_topics": [
+      {
+        "topic_id": "3.3",
+        "title": "การแทนคิวด้วยอาร์เรย์",
+        "score": 1.0
+      },
+      {
+        "topic_id": "3.3.1",
+        "title": "โครงสร้างของการแทนคิวด้วยอาร์เรย์",
+        "score": 1.0
+      },
+      {
+        "topic_id": "3.3.2",
+        "title": "การดำเนินการแทนคิวด้วยอาร์เรย์",
+        "score": 0.666667
+      },
+      {
+        "topic_id": "4.3",
+        "title": "การแทนสแตกด้วยอาร์เรย์",
+        "score": 0.5
+      },
+      {
+        "topic_id": "4.3.1",
+        "title": "การดำเนินการแทนสแตกด้วยอาร์เรย์",
+        "score": 0.454545
+      },
+      {
+        "topic_id": "3.3.3",
+        "title": "การดำเนินการแทนคิวด้วยวงกลม",
+        "score": 0.4
+      },
+      {
+        "topic_id": "2.1",
+        "title": "โครงสร้างอาร์เรย์ (Array)",
+        "score": 0.333333
+      },
+      {
+        "topic_id": "2.2",
+        "title": "ชนิดของอาร์เรย์",
+        "score": 0.333333
+      },
+      {
+        "topic_id": "3.2",
+        "title": "การดำเนินการของคิว",
+        "score": 0.333333
+      },
+      {
+        "topic_id": "2.1.1",
+        "title": "ความหมายและลักษณะของอาร์เรย์",
+        "score": 0.272727
+      },
+      {
+        "topic_id": "3.1",
+        "title": "โครงสร้างพื้นฐานของคิว",
+        "score": 0.222222
+      },
+      {
+        "topic_id": "1.1.3",
+        "title": "ความสำคัญของการเลือกโครงสร้างข้อมูลที่เหมาะสมกับอัลกอริทึม",
+        "score": 0.2
+      }
+    ]
+  },
+  "hierarchy_quality": {
+    "garbled_detected": false,
+    "mojibake_ratio": 0.0,
+    "topic_filter_enabled": true
+  },
+  "query_profile": {
+    "has_figure_ref": false,
+    "figure_refs": [],
+    "operation_intent": false,
+    "structure_intent": true,
+    "operation_terms": [],
+    "structure_terms": [
+      "โครงสร้าง",
+      "อาร์เรย์",
+      "คิว"
+    ],
+    "intent_type": "structure",
+    "expanded_query_terms_count": 22
+  },
+  "task_metrics": {
+    "region_hit_ratio_at_k": 0.875,
+    "figure_ref_hit_ratio_at_k": 0.625,
+    "structure_hit_ratio_at_k": 0.625,
+    "operation_coverage_ratio_at_k": null,
+    "query_figure_ref_coverage": null,
+    "grounding_success_rate": 1.0,
+    "grounding_consistency_mean": 0.6667,
+    "citation_ready_ratio": 1.0,
+    "mean_final_score": 0.533776,
+    "crop_completeness_proxy": 1.0,
+    "small_region_ratio_at_k": 0.0,
+    "region_quality_mean": 0.8843,
+    "unique_figure_refs_at_k": 4,
+    "page_diversity_at_k": 0.625,
+    "procedure_step_coverage_proxy": null
+  },
+  "count": 8,
+  "hits": [
+    {
+      "rank": 1,
+      "id": "data_structure_data_ch1_to_ch5.pdf:32:region:1",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:32",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 32,
+      "image_path": "assets/figure_regions/page_032_region_01.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 278,
+          "y0": 938,
+          "x1": 948,
+          "y1": 1028
+        },
+        "bbox_norm": {
+          "x0": 0.218382,
+          "y0": 0.521111,
+          "x1": 0.744698,
+          "y1": 0.571111
+        },
+        "area_ratio": 0.026316,
+        "ink_ratio": 0.064594,
+        "is_fallback": false
+      },
+      "structure_labels": [
+        "Array",
+        "Array",
+        "Array"
+      ],
+      "tags": [
+        "array",
+        "queue"
+      ],
+      "figure_refs": [
+        "ภาพที่ 3.7"
+      ],
+      "chapter_id": "3",
+      "chapter_title": "คิว (Queues)",
+      "section_id": "3.3",
+      "section_title": "การแทนคิวด้วยอาร์เรย์",
+      "best_topic_id": "3.3",
+      "best_topic_title": "การแทนคิวด้วยอาร์เรย์",
+      "base_score": 0.697024,
+      "rrf_score": 0.715173,
+      "pre_vlm_score": 0.562832,
+      "vlm_score": 0.0,
+      "final_score": 0.562832,
+      "figure_score": 0.0,
+      "operation_score": 0.0,
+      "structure_score": 1.0,
+      "region_quality_score": 0.870719,
+      "vlm_reason": "not_in_vlm_top_m",
+      "preview": "## 3.7 การ Dequeue\n\nจากภาพที่ 3.7 การ Dequeue ข้อมูลจะเริ่มต้นดำเนินการที่ตำแหน่ง front โดยการ Dequeue ในตำแหน่งของ front ก็เปลี่ยนเป็น front = Q[2]=B และหาก Dequeue ข้อมูลอีกตำแหน่ง front ก็จะเปลี่ยนแปลงไปเรื่อย ๆ\n\n### 3.3.2 การดำเนินการแท่นคิวด้วยอาร์เรย์\n\n1. เพิ่มข้อมูลลงในคิว"
+    },
+    {
+      "rank": 2,
+      "id": "data_structure_data_ch1_to_ch5.pdf:36:page:0",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:36",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 36,
+      "image_path": "C:/Users/Admin/typhoon_rag/assets/figures/page_036_img_01.png",
+      "image_level": "page",
+      "region_meta": {},
+      "structure_labels": [],
+      "tags": [
+        "queue"
+      ],
+      "figure_refs": [],
+      "chapter_id": "3",
+      "chapter_title": "คิว (Queues)",
+      "section_id": "3.3.3",
+      "section_title": "การดำเนินการแทนคิวด้วยวงกลม",
+      "best_topic_id": "3.3.3",
+      "best_topic_title": "การดำเนินการแทนคิวด้วยวงกลม",
+      "base_score": 0.626638,
+      "rrf_score": 0.708187,
+      "pre_vlm_score": 0.552733,
+      "vlm_score": 0.0,
+      "final_score": 0.552733,
+      "figure_score": 0.0,
+      "operation_score": 0.0,
+      "structure_score": 0.666667,
+      "region_quality_score": 0.0,
+      "vlm_reason": "not_in_vlm_top_m",
+      "preview": "# 39\n\nเกิดปัญหาความต้องการ Enqueue ข้อมูลเข้าอีก แต่คิวไม่สามารถที่จะ Enqueue ข้อมูลเข้าได้เพราะคิวจะระดับ rear = maxsize หมายถึง พื้นที่ในการจัดข้อมูลเต็ม หรือ Queue Full แต่ในความเป็นจริงแล้วยังเหลือพื้นที่ในส่วนหน้าอีก ดังนั้นจึงมีการแก้ปัญหาของคิวนี้ด้วยการกำหนดคิววงกลม (Circ"
+    },
+    {
+      "rank": 3,
+      "id": "data_structure_data_ch1_to_ch5.pdf:29:region:1",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:29",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 29,
+      "image_path": "assets/figure_regions/page_029_region_01.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 230,
+          "y0": 228,
+          "x1": 1122,
+          "y1": 327
+        },
+        "bbox_norm": {
+          "x0": 0.180676,
+          "y0": 0.126667,
+          "x1": 0.881383,
+          "y1": 0.181667
+        },
+        "area_ratio": 0.038539,
+        "ink_ratio": 0.077524,
+        "is_fallback": false
+      },
+      "structure_labels": [
+        "Queue"
+      ],
+      "tags": [
+        "queue"
+      ],
+      "figure_refs": [
+        "ภาพที่ 3.1"
+      ],
+      "chapter_id": "3",
+      "chapter_title": "คิว (Queues)",
+      "section_id": "3",
+      "section_title": "คิว (Queues)",
+      "best_topic_id": "3",
+      "best_topic_title": "คิว (Queues)",
+      "base_score": 0.80827,
+      "rrf_score": 1.0,
+      "pre_vlm_score": 0.869623,
+      "vlm_score": 0.0,
+      "final_score": 0.547862,
+      "figure_score": 0.0,
+      "operation_score": 0.0,
+      "structure_score": 0.666667,
+      "region_quality_score": 0.900889,
+      "vlm_reason": "ภาพไม่ได้แสดงข้อมูลเกี่ยวกับโครงสร้างของการแทนคิวด้วยอาร์เรย์",
+      "preview": "# หน่วยเรียนที่ 3\n## คิว (Queues)\n\nคิวเป็นโครงสร้างข้อมูลแบบเชิงเส้น ที่มีลักษณะเฉพาะคือการนำเข้าข้อมูล (Enqueue) ทางด้านส่วนท้ายของคิว และการนำข้อมูลออก (Dequeue) ทางด้านส่วนหัวของคิว โดยข้อมูลที่เข้ามา ก่อนจะต้องออกก่อน ส่วนข้อมูลที่เข้ามาทีหลังต้องออกหลัง ซึ่งเป็นรูปแบบคล้ายกั"
+    },
+    {
+      "rank": 4,
+      "id": "data_structure_data_ch1_to_ch5.pdf:32:region:4",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:32",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 32,
+      "image_path": "assets/figure_regions/page_032_region_04.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 278,
+          "y0": 422,
+          "x1": 948,
+          "y1": 512
+        },
+        "bbox_norm": {
+          "x0": 0.218382,
+          "y0": 0.234444,
+          "x1": 0.744698,
+          "y1": 0.284444
+        },
+        "area_ratio": 0.026316,
+        "ink_ratio": 0.071327,
+        "is_fallback": false
+      },
+      "structure_labels": [
+        "Array",
+        "Array",
+        "Array"
+      ],
+      "tags": [
+        "array",
+        "queue"
+      ],
+      "figure_refs": [
+        "ภาพที่ 3.7"
+      ],
+      "chapter_id": "3",
+      "chapter_title": "คิว (Queues)",
+      "section_id": "3.3",
+      "section_title": "การแทนคิวด้วยอาร์เรย์",
+      "best_topic_id": "3.3",
+      "best_topic_title": "การแทนคิวด้วยอาร์เรย์",
+      "base_score": 0.696799,
+      "rrf_score": 0.647562,
+      "pre_vlm_score": 0.541043,
+      "vlm_score": 0.0,
+      "final_score": 0.541043,
+      "figure_score": 0.0,
+      "operation_score": 0.0,
+      "structure_score": 1.0,
+      "region_quality_score": 0.88643,
+      "vlm_reason": "not_in_vlm_top_m",
+      "preview": "## 3.7 การ Dequeue\n\nจากภาพที่ 3.7 การ Dequeue ข้อมูลจะเริ่มต้นดำเนินการที่ตำแหน่ง front โดยการ Dequeue ในตำแหน่งของ front ก็เปลี่ยนเป็น front = Q[2]=B และหาก Dequeue ข้อมูลอีกตำแหน่ง front ก็จะเปลี่ยนแปลงไปเรื่อย ๆ\n\n### 3.3.2 การดำเนินการแท่นคิวด้วยอาร์เรย์\n\n1. เพิ่มข้อมูลลงในคิว"
+    },
+    {
+      "rank": 5,
+      "id": "data_structure_data_ch1_to_ch5.pdf:30:region:1",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:30",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 30,
+      "image_path": "assets/figure_regions/page_030_region_01.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 304,
+          "y0": 1165,
+          "x1": 869,
+          "y1": 1331
+        },
+        "bbox_norm": {
+          "x0": 0.238806,
+          "y0": 0.647222,
+          "x1": 0.682639,
+          "y1": 0.739444
+        },
+        "area_ratio": 0.040931,
+        "ink_ratio": 0.050347,
+        "is_fallback": false
+      },
+      "structure_labels": [
+        "Queue",
+        "Queue"
+      ],
+      "tags": [
+        "queue"
+      ],
+      "figure_refs": [
+        "ภาพที่ 3.2",
+        "ภาพที่ 3.3"
+      ],
+      "chapter_id": "3",
+      "chapter_title": "คิว (Queues)",
+      "section_id": "3.2",
+      "section_title": "การดำเนินการของคิว",
+      "best_topic_id": "3.2",
+      "best_topic_title": "การดำเนินการของคิว",
+      "base_score": 0.793491,
+      "rrf_score": 0.937493,
+      "pre_vlm_score": 0.839571,
+      "vlm_score": 0.0,
+      "final_score": 0.52893,
+      "figure_score": 0.0,
+      "operation_score": 0.0,
+      "structure_score": 0.666667,
+      "region_quality_score": 0.837476,
+      "vlm_reason": "ภาพแสดงการใช้ Deque แทนคิว ไม่ใช่การแทนคิวด้วยอาร์เรย์",
+      "preview": "# 3.2 การดำเนินการของคิว\n\nการดำเนินการพื้นฐานโครงสร้างข้อมูลแบบคิว คือ มีการนำเข้าข้อมูลด้วยการต่อท้ายและดึงข้อมูลออกในส่วนหัว สามารถแบ่งออกเป็น 2 กรณี คือ\n\n## 3.2.1 การนำเข้าข้อมูล (Enqueue)\n\nหากมีการนำเข้าข้อมูลแรกเข้าสู่คิวแล้วข้อมูลนี้จะเป็นข้อมูลอันดับแรก และเมื่อมีการเพิ่มข"
+    },
+    {
+      "rank": 6,
+      "id": "data_structure_data_ch1_to_ch5.pdf:34:region:3",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:34",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 34,
+      "image_path": "assets/figure_regions/page_034_region_03.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 278,
+          "y0": 590,
+          "x1": 948,
+          "y1": 678
+        },
+        "bbox_norm": {
+          "x0": 0.218382,
+          "y0": 0.327778,
+          "x1": 0.744698,
+          "y1": 0.376667
+        },
+        "area_ratio": 0.025731,
+        "ink_ratio": 0.073372,
+        "is_fallback": false
+      },
+      "structure_labels": [],
+      "tags": [
+        "array",
+        "queue"
+      ],
+      "figure_refs": [],
+      "chapter_id": "3",
+      "chapter_title": "คิว (Queues)",
+      "section_id": "3.2",
+      "section_title": "การดำเนินการของคิว",
+      "best_topic_id": "3.2",
+      "best_topic_title": "การดำเนินการของคิว",
+      "base_score": 0.563288,
+      "rrf_score": 0.452409,
+      "pre_vlm_score": 0.527807,
+      "vlm_score": 0.0,
+      "final_score": 0.527807,
+      "figure_score": 0.0,
+      "operation_score": 0.0,
+      "structure_score": 0.666667,
+      "region_quality_score": 0.891201,
+      "vlm_reason": "not_in_vlm_top_m",
+      "preview": "- remove (q); เขียนแทนความหมายของการดึงข้อมูล D ออกจากคิว q ทางด้าน front\n\n- remove (q); เขียนแทนความหมายของการดึงข้อมูล E ออกจากคิว q ทางด้าน front\n\n3. ตรวจสอบว่ามีข้อมูลอยู่ภายในคิวหรือไม่ (Empty หรือ Underflow) จะไม่สามารถดึงข้อมูลออกจากคิวว่าง หรือคิวที่ไม่มีข้อมูลได้ ดังนั้น"
+    },
+    {
+      "rank": 7,
+      "id": "data_structure_data_ch1_to_ch5.pdf:34:region:2",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:34",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 34,
+      "image_path": "assets/figure_regions/page_034_region_02.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 278,
+          "y0": 331,
+          "x1": 948,
+          "y1": 420
+        },
+        "bbox_norm": {
+          "x0": 0.218382,
+          "y0": 0.183889,
+          "x1": 0.744698,
+          "y1": 0.233333
+        },
+        "area_ratio": 0.026023,
+        "ink_ratio": 0.07357,
+        "is_fallback": false
+      },
+      "structure_labels": [],
+      "tags": [
+        "array",
+        "queue"
+      ],
+      "figure_refs": [],
+      "chapter_id": "3",
+      "chapter_title": "คิว (Queues)",
+      "section_id": "3.2",
+      "section_title": "การดำเนินการของคิว",
+      "best_topic_id": "3.2",
+      "best_topic_title": "การดำเนินการของคิว",
+      "base_score": 0.549293,
+      "rrf_score": 0.447351,
+      "pre_vlm_score": 0.516671,
+      "vlm_score": 0.0,
+      "final_score": 0.516671,
+      "figure_score": 0.0,
+      "operation_score": 0.0,
+      "structure_score": 0.666667,
+      "region_quality_score": 0.891663,
+      "vlm_reason": "not_in_vlm_top_m",
+      "preview": "- remove (q); เขียนแทนความหมายของการดึงข้อมูล D ออกจากคิว q ทางด้าน front\n\n- remove (q); เขียนแทนความหมายของการดึงข้อมูล E ออกจากคิว q ทางด้าน front\n\n3. ตรวจสอบว่ามีข้อมูลอยู่ภายในคิวหรือไม่ (Empty หรือ Underflow) จะไม่สามารถดึงข้อมูลออกจากคิวว่าง หรือคิวที่ไม่มีข้อมูลได้ ดังนั้น"
+    },
+    {
+      "rank": 8,
+      "id": "data_structure_data_ch1_to_ch5.pdf:30:region:2",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:30",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 30,
+      "image_path": "assets/figure_regions/page_030_region_02.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 304,
+          "y0": 622,
+          "x1": 1045,
+          "y1": 706
+        },
+        "bbox_norm": {
+          "x0": 0.238806,
+          "y0": 0.345556,
+          "x1": 0.820896,
+          "y1": 0.392222
+        },
+        "area_ratio": 0.027164,
+        "ink_ratio": 0.082241,
+        "is_fallback": false
+      },
+      "structure_labels": [
+        "Queue",
+        "Queue"
+      ],
+      "tags": [
+        "queue"
+      ],
+      "figure_refs": [
+        "ภาพที่ 3.2",
+        "ภาพที่ 3.3"
+      ],
+      "chapter_id": "3",
+      "chapter_title": "คิว (Queues)",
+      "section_id": "3.2",
+      "section_title": "การดำเนินการของคิว",
+      "best_topic_id": "3.2",
+      "best_topic_title": "การดำเนินการของคิว",
+      "base_score": 0.731085,
+      "rrf_score": 0.888565,
+      "pre_vlm_score": 0.781478,
+      "vlm_score": 0.0,
+      "final_score": 0.492331,
+      "figure_score": 0.0,
+      "operation_score": 0.0,
+      "structure_score": 0.666667,
+      "region_quality_score": 0.911896,
+      "vlm_reason": "ภาพแสดงการเพิ่มข้อมูลเข้าคิวโดยใช้อาร์เรย์ แต่ไม่ได้ระบุว่าเป็นการแทนคิวด้วยอาร์เรย์ คำถามไม่ระบุว่าต้องการความเกี่ยวข้องของภาพกับคำถามผู้ใช้",
+      "preview": "# 3.2 การดำเนินการของคิว\n\nการดำเนินการพื้นฐานโครงสร้างข้อมูลแบบคิว คือ มีการนำเข้าข้อมูลด้วยการต่อท้ายและดึงข้อมูลออกในส่วนหัว สามารถแบ่งออกเป็น 2 กรณี คือ\n\n## 3.2.1 การนำเข้าข้อมูล (Enqueue)\n\nหากมีการนำเข้าข้อมูลแรกเข้าสู่คิวแล้วข้อมูลนี้จะเป็นข้อมูลอันดับแรก และเมื่อมีการเพิ่มข"
+    }
+  ],
+  "grounding": [
+    {
+      "id": "data_structure_data_ch1_to_ch5.pdf:32:region:1",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:32",
+      "grounding": {
+        "parsed": {
+          "structure_type": "Array",
+          "grounded_facts": [
+            "มีข้อมูล 'A' อยู่ในช่องแรก",
+            "มีช่องว่าง 8 ช่อง"
+          ],
+          "limitations": "ภาพไม่ระบุว่ามีข้อมูลในช่องอื่น ๆ หรือไม่"
+        },
+        "raw": "{\n  \"structure_type\": \"Array\",\n  \"grounded_facts\": [\n    \"มีช่องว่าง 8 ช่อง\",\n    \"มีข้อมูล 'A' อยู่ในช่องแรก\",\n    \"มีเส้นที่ยื่นลงมาที่ช่อง 'A'\"\n  ],\n  \"limitations\": \"ภาพไม่ระบุว่ามีข้อมูลในช่องอื่น ๆ หรือไม่\"\n}",
+        "samples": [
+          {
+            "parsed": {
+              "structure_type": "Array",
+              "grounded_facts": [
+                "มีช่องว่าง 8 ช่อง",
+                "มีข้อมูล 'A' อยู่ในช่องแรก",
+                "มีเส้นที่ยื่นลงมาที่ช่อง 'A'"
+              ],
+              "limitations": "ภาพไม่ระบุว่ามีข้อมูลในช่องอื่น ๆ หรือไม่"
+            },
+            "raw": "{\n  \"structure_type\": \"Array\",\n  \"grounded_facts\": [\n    \"มีช่องว่าง 8 ช่อง\",\n    \"มีข้อมูล 'A' อยู่ในช่องแรก\",\n    \"มีเส้นที่ยื่นลงมาที่ช่อง 'A'\"\n  ],\n  \"limitations\": \"ภาพไม่ระบุว่ามีข้อมูลในช่องอื่น ๆ หรือไม่\"\n}"
+          },
+          {
+            "parsed": {
+              "structure_type": "Array",
+              "grounded_facts": [
+                "มีช่องว่าง 8 ช่อง",
+                "มีข้อมูล A อยู่ในช่องแรก"
+              ],
+              "limitations": [
+                "ไม่มีข้อมูลเพิ่มเติมเกี่ยวกับการจัดการข้อมูลในอาร์เรย์"
+              ]
+            },
+            "raw": "{\n  \"structure_type\": \"Array\",\n  \"grounded_facts\": [\n    \"มีช่องว่าง 8 ช่อง\",\n    \"มีข้อมูล A อยู่ในช่องแรก\"\n  ],\n  \"limitations\": [\n    \"ไม่มีข้อมูลเพิ่มเติมเกี่ยวกับการจัดการข้อมูลในอาร์เรย์\"\n  ]\n}"
+          }
+        ],
+        "consensus": {
+          "runs": 2,
+          "valid_runs": 2,
+          "vote_threshold": 2,
+          "raw_unique_facts": 3,
+          "consensus_facts": 2,
+          "agreement_ratio": 0.6667
+        }
+      }
+    }
+  ]
+}

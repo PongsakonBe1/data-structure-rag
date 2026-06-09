@@ -1,0 +1,1119 @@
+{
+  "metadata": {
+    "total_count": 138,
+    "ratio": "1:1 with In-Scope topics (58 items)",
+    "distribution": {
+      "chapter_1_related": 18,
+      "chapter_2_related": 12,
+      "chapter_3_related": 8,
+      "chapter_4_related": 8,
+      "chapter_5_related": 14
+    }
+  },
+  "oos_questions": [
+    {
+      "id": "OOS-01",
+      "chapter": "1",
+      "category": "Topic Shift - Sorting",
+      "question": "อธิบายขั้นตอนวิธีการเรียงลำดับแบบ Quick Sort และวิเคราะห์ Time Complexity",
+      "reason": "เอกสารกล่าวถึง Algorithm แบบทั่วไป แต่ไม่มี Sorting Algorithms ใดๆ",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-02",
+      "chapter": "1",
+      "category": "Topic Shift - Searching",
+      "question": "Binary Search Algorithm ทำงานอย่างไร และมีประสิทธิภาพกว่า Linear Search อย่างไร",
+      "reason": "Searching Algorithms ไม่มีในเอกสารบทที่ 1",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-03",
+      "chapter": "1",
+      "category": "Domain Shift - General Knowledge",
+      "question": "สภาพอากาศวันนี้ในจังหวัดเชียงใหม่เป็นอย่างไร",
+      "reason": "คำถามทั่วไป ไม่เกี่ยวข้องกับ Data Structure",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-04",
+      "chapter": "1",
+      "category": "Adversarial Edge - Bit Manipulation",
+      "question": "การใช้ Bitwise Operation ในการเข้ารหัสข้อมูลแบบ RSA Encryption",
+      "reason": "มีคำว่าบิต แต่ไม่เกี่ยวกับ Cryptography",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-05",
+      "chapter": "1",
+      "category": "Topic Shift - Data Types",
+      "question": "ความแตกต่างระหว่าง Float, Double และ Decimal ในการคำนวณทางการเงิน",
+      "reason": "Floating-point precision ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-06",
+      "chapter": "1",
+      "category": "Domain Shift - Programming",
+      "question": "เขียนโปรแกรม Python ใช้ Pandas วิเคราะห์ข้อมูล CSV และสร้างกราฟ",
+      "reason": "Python/Pandas ไม่ใช่เนื้อหาเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-07",
+      "chapter": "1",
+      "category": "Topic Shift - Complexity",
+      "question": "Big-O Notation แบบ Amortized Analysis ใช้วิเคราะห์อะไร",
+      "reason": "ไม่มีเนื้อหา Amortized Analysis",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-08",
+      "chapter": "1",
+      "category": "Temporal Shift - Modern",
+      "question": "ฟีเจอร์ใหม่ใน Python 3.12 ที่ช่วยให้ประมวลผลเร็วขึ้น",
+      "reason": "ข้อมูลปัจจุบันไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-09",
+      "chapter": "1",
+      "category": "Adversarial Edge - Field",
+      "question": "ฟิลด์แม่เหล็กไฟฟ้า (Electromagnetic Field) ส่งผลต่อการจัดเก็บข้อมูลอย่างไร",
+      "reason": "ใช้คำว่า Field แต่เป็นฟิสิกส์ ไม่ใช่ Data Field",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-10",
+      "chapter": "1",
+      "category": "Topic Shift - Database",
+      "question": "การ Normalization ในฐานข้อมูล relational มีกี่รูปแบบ",
+      "reason": "เอกสารกล่าวถึง Database เบื้องต้น แต่ไม่มี Normalization",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-11",
+      "chapter": "1",
+      "category": "Domain Shift - AI/ML",
+      "question": "Neural Network แบบ Transformer ใช้ Attention Mechanism อย่างไร",
+      "reason": "Machine Learning ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-12",
+      "chapter": "1",
+      "category": "Adversarial Edge - Record",
+      "question": "เรคอร์ดโลกในการวิ่ง 100 เมตร (World Record) ทำลายกี่ครั้งแล้ว",
+      "reason": "ใช้คำว่า Record แต่เป็นสถิติกีฬา ไม่ใช่ Data Record",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-13",
+      "chapter": "1",
+      "category": "Topic Shift - Recursion",
+      "question": "Memoization กับ Tabulation ใน Dynamic Programming ต่างกันอย่างไร",
+      "reason": "Dynamic Programming ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-14",
+      "chapter": "1",
+      "category": "Temporal Shift - Future",
+      "question": "Quantum Algorithm จะเปลี่ยนแปลงการคำนวณ Big-O อย่างไรในอนาคต",
+      "reason": "Quantum Computing ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-15",
+      "chapter": "1",
+      "category": "Adversarial Edge - Flowchart",
+      "question": "ผังงานการผลิตในโรงงานอุตสาหกรรม (Manufacturing Flowchart)",
+      "reason": "ใช้คำว่าผังงานแต่เป็นด้าน Industrial Engineering",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-16",
+      "chapter": "1",
+      "category": "Topic Shift - Hardware",
+      "question": "การทำงานของ CPU Cache L1, L2, L3 มีผลต่อประสิทธิภาพอย่างไร",
+      "reason": "Computer Architecture ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-17",
+      "chapter": "1",
+      "category": "Domain Shift - Web",
+      "question": "การทำงานของ REST API และ JSON Web Token (JWT) Authentication",
+      "reason": "Web Development ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-18",
+      "chapter": "1",
+      "category": "Adversarial Edge - Pseudocode",
+      "question": "รหัสเทียม (Pseudocode) ในการสมัครบัตรเครดิตของธนาคาร",
+      "reason": "ใช้คำว่ารหัสเทียมในบริบทธุรกิจ ไม่ใช่ Algorithm",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-19",
+      "chapter": "2",
+      "category": "Topic Shift - String",
+      "question": "String Matching Algorithm แบบ KMP กับ Boyer-Moore ต่างกันอย่างไร",
+      "reason": "String Algorithms ไม่มีในเอกสารบทที่ 2",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-20",
+      "chapter": "2",
+      "category": "Topic Shift - Advanced Array",
+      "question": "Sparse Array และการบีบอัดข้อมูล (Compression) ในระบบที่มี Memory จำกัด",
+      "reason": "Sparse Array ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-21",
+      "chapter": "2",
+      "category": "Domain Shift - Math",
+      "question": "การคำนวณ Matrix Multiplication ใน Linear Algebra ใช้สำหรับอะไร",
+      "reason": "Matrix Math ไม่ใช่เนื้อหา Array ในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-22",
+      "chapter": "2",
+      "category": "Adversarial Edge - Array Dimension",
+      "question": "อาร์เรย์ 4 มิติและ 5 มิติใช้ใน Computer Graphics และ Tensor Calculation อย่างไร",
+      "reason": "เอกสารมีแค่ Array 1D/2D แต่คำถามขอ 4D/5D",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-23",
+      "chapter": "2",
+      "category": "Topic Shift - Linked List Advanced",
+      "question": "Skip List ใช้ทดแทน Balanced BST ได้อย่างไร",
+      "reason": "Skip List ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-24",
+      "chapter": "2",
+      "category": "Topic Shift - Pointer",
+      "question": "Smart Pointer ใน C++ (unique_ptr, shared_ptr) จัดการ Memory อย่างไร",
+      "reason": "C++ Smart Pointers ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-25",
+      "chapter": "2",
+      "category": "Adversarial Edge - Linked List",
+      "question": "ลิงค์ลิสต์ (Linked List) ในการจัดการ URL ของเว็บไซต์ที่บุ๊กมาร์กไว้",
+      "reason": "ใช้คำว่าลิงค์ในบริบท URL ไม่ใช่ Data Structure",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-26",
+      "chapter": "2",
+      "category": "Temporal Shift - Modern",
+      "question": "Persistent Data Structure ใน Functional Programming คืออะไร",
+      "reason": "Functional Programming concepts ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-27",
+      "chapter": "2",
+      "category": "Topic Shift - Doubly Linked",
+      "question": "Doubly Linked List กับ XOR Linked List ต่างกันอย่างไรในการใช้ Memory",
+      "reason": "Doubly/XOR Linked List ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-28",
+      "chapter": "2",
+      "category": "Domain Shift - OS",
+      "question": "Memory Management ใน Operating System ใช้ Paging และ Segmentation อย่างไร",
+      "reason": "OS Memory Management ไม่ใช่เนื้อหาเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-29",
+      "chapter": "2",
+      "category": "Adversarial Edge - Node",
+      "question": "Node.js กับ Express.js ใช้สร้าง Backend API อย่างไร",
+      "reason": "ใช้คำว่า Node แต่เป็น JavaScript Runtime ไม่ใช่ Linked List Node",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-30",
+      "chapter": "2",
+      "category": "Topic Shift - Hash",
+      "question": "Hash Table กับ Hash Map ต่างกันอย่างไร และการจัดการ Collision",
+      "reason": "Hash Table ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-31",
+      "chapter": "3",
+      "category": "Topic Shift - Priority Queue",
+      "question": "Priority Queue กับ Heap Data Structure มีความสัมพันธ์กันอย่างไร",
+      "reason": "Priority Queue/Heap ไม่มีในเอกสารบทที่ 3",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-32",
+      "chapter": "3",
+      "category": "Topic Shift - Deque",
+      "question": "Double-Ended Queue (Deque) ใช้ทำอะไรได้บ้างที่ Queue ธรรมดาทำไม่ได้",
+      "reason": "Deque ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-33",
+      "chapter": "3",
+      "category": "Adversarial Edge - Queue System",
+      "question": "ระบบคิวออนไลน์ (Queue System) ในร้านค้าอย่าง Queue-It และ Kiosk",
+      "reason": "ใช้คำว่าคิวแต่เป็นระบบร้านค้า ไม่ใช่ Data Structure Queue",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-34",
+      "chapter": "3",
+      "category": "Topic Shift - Concurrent",
+      "question": "Thread-Safe Queue ใน Multi-threaded Programming ต้องจัดการ Race Condition อย่างไร",
+      "reason": "Concurrent Programming ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-35",
+      "chapter": "3",
+      "category": "Domain Shift - Networking",
+      "question": "การทำงานของ TCP/IP Protocol Stack และ Packet Queueing",
+      "reason": "Networking Protocols ไม่ใช่เนื้อหาเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-36",
+      "chapter": "3",
+      "category": "Temporal Shift - Modern",
+      "question": "Lock-Free Queue ใน C++ ใช้สำหรับ High-Frequency Trading อย่างไร",
+      "reason": "Lock-Free Data Structures ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-37",
+      "chapter": "3",
+      "category": "Adversarial Edge - Circular",
+      "question": "Circular Economy (เศรษฐกิจหมุนเวียน) ในการจัดการขยะและทรัพยากร",
+      "reason": "ใช้คำว่า Circular แต่เป็นด้านสิ่งแวดล้อม ไม่ใช่ Circular Queue",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-38",
+      "chapter": "3",
+      "category": "Topic Shift - BFS",
+      "question": "Breadth-First Search (BFS) ใช้ Queue ในการหา Shortest Path อย่างไร",
+      "reason": "Graph Traversal (BFS) ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-39",
+      "chapter": "4",
+      "category": "Topic Shift - Stack Advanced",
+      "question": "Monotonic Stack ใช้แก้ปัญหา Next Greater Element อย่างไร",
+      "reason": "Monotonic Stack ไม่มีในเอกสารบทที่ 4",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-40",
+      "chapter": "4",
+      "category": "Topic Shift - DFS",
+      "question": "Depth-First Search (DFS) ใช้ Stack ในการ Traversal Graph อย่างไร",
+      "reason": "Graph Traversal (DFS) ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-41",
+      "chapter": "4",
+      "category": "Adversarial Edge - Stack",
+      "question": "Call Stack ใน JavaScript Engine V8 จัดการ Asynchronous Function อย่างไร",
+      "reason": "ใช้คำว่า Stack แต่เป็น JavaScript Runtime ไม่ใช่ Data Structure Stack",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-42",
+      "chapter": "4",
+      "category": "Topic Shift - Parentheses",
+      "question": "การใช้ Stack ในการตรวจสอบ Regular Expression Matching",
+      "reason": "Regex matching ด้วย Stack ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-43",
+      "chapter": "4",
+      "category": "Domain Shift - Compiler",
+      "question": "Stack Frame และ Activation Record ใน Compiler Design คืออะไร",
+      "reason": "Compiler Design ไม่ใช่เนื้อหาเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-44",
+      "chapter": "4",
+      "category": "Adversarial Edge - Push Pop",
+      "question": "Push Notification กับ Pop-up Ads ใน Mobile App Marketing ต่างกันอย่างไร",
+      "reason": "ใช้คำว่า Push/Pop แต่เป็นการตลาด ไม่ใช่ Stack Operation",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-45",
+      "chapter": "4",
+      "category": "Topic Shift - Recursion",
+      "question": "การแปลง Recursive Algorithm เป็น Iterative โดยใช้ Explicit Stack",
+      "reason": "Recursion to Iteration conversion ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-46",
+      "chapter": "4",
+      "category": "Temporal Shift - Future",
+      "question": "Quantum Stack ใน Quantum Computing จะเปลี่ยน LIFO paradigm อย่างไร",
+      "reason": "Quantum Computing concepts ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-47",
+      "chapter": "5",
+      "category": "Topic Shift - BST Advanced",
+      "question": "AVL Tree กับ Red-Black Tree ต่างกันอย่างไรในการ Balancing",
+      "reason": "Self-Balancing BST ไม่มีในเอกสารบทที่ 5",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-48",
+      "chapter": "5",
+      "category": "Topic Shift - Heap",
+      "question": "Min-Heap กับ Max-Heap ใช้สร้าง Priority Queue อย่างไร",
+      "reason": "Heap Data Structure ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-49",
+      "chapter": "5",
+      "category": "Adversarial Edge - Tree",
+      "question": "Tree ในการจัดหมวดหมู่สินค้า (Category Tree) ของ E-commerce อย่าง Shopee",
+      "reason": "ใช้คำว่า Tree แต่เป็นระบบจัดหมวดหมู่ ไม่ใช่ Binary Tree",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-50",
+      "chapter": "5",
+      "category": "Topic Shift - Trie",
+      "question": "Trie (Prefix Tree) ใช้สำหรับ Auto-complete และ Spell Checking อย่างไร",
+      "reason": "Trie ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-51",
+      "chapter": "5",
+      "category": "Topic Shift - Graph",
+      "question": "Minimum Spanning Tree กับ Kruskal's Algorithm ทำงานอย่างไร",
+      "reason": "Graph Algorithms ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-52",
+      "chapter": "5",
+      "category": "Domain Shift - Biology",
+      "question": " phylogenetic Tree ในการศึกษาวิวัฒนาการของสายพันธุ์",
+      "reason": "Bioinformatics ไม่ใช่เนื้อหาเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-53",
+      "chapter": "5",
+      "category": "Adversarial Edge - Traversal",
+      "question": "Level-order Traversal ในการหา Shortest Path ใน Social Network Analysis",
+      "reason": "ใช้คำว่า Traversal แต่เป็น Graph/Social Network ไม่ใช่ Tree Traversal",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-54",
+      "chapter": "5",
+      "category": "Topic Shift - Segment Tree",
+      "question": "Segment Tree กับ Fenwick Tree (Binary Indexed Tree) ใช้ Range Query อย่างไร",
+      "reason": "Advanced Tree Structures ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-55",
+      "chapter": "5",
+      "category": "Topic Shift - Tree Operations",
+      "question": "Threaded Binary Tree ใช้ลด Space Complexity จาก Recursive Stack อย่างไร",
+      "reason": "Threaded Binary Tree ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-56",
+      "chapter": "5",
+      "category": "Adversarial Edge - Expression",
+      "question": "Regular Expression (RegEx) ในการ Validate Email Address รูปแบบไหน",
+      "reason": "ใช้คำว่า Expression แต่เป็น RegEx ไม่ใช่ Expression Tree",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-57",
+      "chapter": "5",
+      "category": "Topic Shift - B-Tree",
+      "question": "B-Tree และ B+ Tree ใน Database Indexing ทำงานอย่างไร",
+      "reason": "B-Tree ไม่มีในเอกสาร (มีแค่ Binary Tree)",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-58",
+      "chapter": "5",
+      "category": "Domain Shift - Game",
+      "question": "Decision Tree ใน AI ของเกม Chess และ Go ใช้ Pruning อย่างไร",
+      "reason": "Game AI / Decision Tree ไม่ใช่เนื้อหาเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-59",
+      "chapter": "5",
+      "category": "Temporal Shift - Modern",
+      "question": "Persistent Segment Tree ใน Functional Programming สำหรับ Version Control",
+      "reason": "Persistent Data Structures ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-60",
+      "chapter": "5",
+      "category": "Adversarial Edge - Sequential",
+      "question": "Sequential Access ใน Hard Disk Drive (HDD) กับ Random Access ใน SSD ต่างกันอย่างไร",
+      "reason": "ใช้คำว่า Sequential แต่เป็น Storage Technology ไม่ใช่ Sequential Representation",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-61",
+      "chapter": "1",
+      "category": "Topic Shift - Hash Table",
+      "question": "Hash Table และการจัดการ Collision ด้วย Linear Probing",
+      "reason": "Hash Table ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-62",
+      "chapter": "2",
+      "category": "Domain Shift - OS",
+      "question": "Memory Management ใน Operating System ใช้ Paging อย่างไร",
+      "reason": "OS Memory Management ไม่ใช่เนื้อหาเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-63",
+      "chapter": "3",
+      "category": "Topic Shift - Complexity",
+      "question": "Big O Notation แบบ Big Omega และ Big Theta ใช้วิเคราะห์อะไร",
+      "reason": "Advanced Complexity Analysis ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-64",
+      "chapter": "4",
+      "category": "Adversarial Edge - Byte",
+      "question": "Byte Order Mark (BOM) ใน UTF-8 และ UTF-16 ต่างกันอย่างไร",
+      "reason": "ใช้คำว่า Byte แต่เป็น Unicode Encoding",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-65",
+      "chapter": "5",
+      "category": "Topic Shift - Sorting",
+      "question": "Merge Sort Algorithm ที่ใช้ Divide and Conquer มีขั้นตอนอย่างไร",
+      "reason": "Merge Sort ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-66",
+      "chapter": "1",
+      "category": "Domain Shift - Network",
+      "question": "Data Packet Structure ใน TCP/IP Protocol ประกอบด้วย Field อะไร",
+      "reason": "Networking ไม่ใช่เนื้อหาเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-67",
+      "chapter": "2",
+      "category": "Topic Shift - Searching",
+      "question": "Interpolation Search ที่ปรับปรุงจาก Binary Search ทำงานอย่างไร",
+      "reason": "Advanced Searching ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-68",
+      "chapter": "3",
+      "category": "Temporal Shift - Modern",
+      "question": "Quantum Computing กับ Qubit ต่างจาก Bit อย่างไร",
+      "reason": "Quantum Computing ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-69",
+      "chapter": "4",
+      "category": "Adversarial Edge - Record",
+      "question": "Database Record ใน SQL Table กับ Record ใน Programming ต่างกันอย่างไร",
+      "reason": "ใช้คำว่า Record แต่เป็น Database",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-70",
+      "chapter": "5",
+      "category": "Topic Shift - Recursion",
+      "question": "Tail Recursion Optimization ใน Functional Programming",
+      "reason": "Advanced Recursion ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-71",
+      "chapter": "1",
+      "category": "Topic Shift - Dynamic Array",
+      "question": "Dynamic Array ที่ขยายขนาดอัตโนมัติเมื่อเต็มทำงานอย่างไร",
+      "reason": "Dynamic Array ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-72",
+      "chapter": "2",
+      "category": "Topic Shift - Multi-dimension",
+      "question": "Array 3 มิติ (3D Array) และ 4 มิติ ใช้เก็บข้อมูลอะไร",
+      "reason": "เอกสารมีแค่ Array 1-2 มิติ",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-73",
+      "chapter": "3",
+      "category": "Topic Shift - String",
+      "question": "String เป็น Array of Characters แต่มี Operations อะไรสำคัญ",
+      "reason": "String Data Structure ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-74",
+      "chapter": "4",
+      "category": "Domain Shift - Matrix",
+      "question": "Matrix Multiplication ใน Linear Algebra ใช้ Array อย่างไร",
+      "reason": "Linear Algebra ไม่ใช่เนื้อหาเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-75",
+      "chapter": "5",
+      "category": "Topic Shift - Linked List",
+      "question": "Doubly Linked List ที่มี Pointer ทั้ง Next และ Previous",
+      "reason": "Doubly Linked List ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-76",
+      "chapter": "1",
+      "category": "Topic Shift - Linked List",
+      "question": "Circular Linked List ที่โหนดสุดท้ายชี้กลับมาหา Head",
+      "reason": "Circular Linked List ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-77",
+      "chapter": "2",
+      "category": "Temporal Shift - Modern",
+      "question": "Cache-friendly Data Structure ใน CPU Cache Line",
+      "reason": "Cache Optimization ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-78",
+      "chapter": "3",
+      "category": "Topic Shift - Skip List",
+      "question": "Skip List ที่เพิ่ม Speed ด้วย Express Lane ทำงานอย่างไร",
+      "reason": "Skip List ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-79",
+      "chapter": "4",
+      "category": "Adversarial Edge - Pointer",
+      "question": "Smart Pointer ใน C++ จัดการ Memory Leak อย่างไร",
+      "reason": "Memory Management ขั้นสูง",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-80",
+      "chapter": "5",
+      "category": "Domain Shift - Memory",
+      "question": "Virtual Memory Address Translation ด้วย TLB",
+      "reason": "Memory Management ไม่ใช่เนื้อหาเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-81",
+      "chapter": "1",
+      "category": "Topic Shift - Priority Queue",
+      "question": "Priority Queue ที่ใช้ Heap ภายใน มีการดำเนินการอย่างไร",
+      "reason": "Priority Queue ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-82",
+      "chapter": "2",
+      "category": "Topic Shift - Double-ended",
+      "question": "Deque (Double-ended Queue) Enqueue/Dequeue ทั้งสองทาง",
+      "reason": "Deque ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-83",
+      "chapter": "3",
+      "category": "Domain Shift - Concurrent",
+      "question": "Thread-safe Queue ใน Multi-threading ใช้ Lock อย่างไร",
+      "reason": "Concurrency ไม่ใช่เนื้อหาเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-84",
+      "chapter": "4",
+      "category": "Topic Shift - Heap",
+      "question": "Min-Heap และ Max-Heap ในการจัดเรียงลำดับข้อมูล Priority",
+      "reason": "Heap ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-85",
+      "chapter": "5",
+      "category": "Adversarial Edge - Enqueue",
+      "question": "Message Queue ในระบบ Microservices กับ Queue ต่างกันอย่างไร",
+      "reason": "ใช้คำว่า Queue แต่เป็น System Architecture",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-86",
+      "chapter": "1",
+      "category": "Temporal Shift - Modern",
+      "question": "Lock-free Queue ใช้ CAS ใน Concurrent Programming",
+      "reason": "Advanced Concurrency ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-87",
+      "chapter": "2",
+      "category": "Topic Shift - Queue",
+      "question": "Sliding Window Algorithm ที่ใช้ Queue ในการหา Maximum",
+      "reason": "Algorithm Pattern ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-88",
+      "chapter": "3",
+      "category": "Domain Shift - Network",
+      "question": "Buffer ใน Streaming Video ทำงานเหมือน Queue อย่างไร",
+      "reason": "Media Streaming ไม่ใช่เนื้อหาเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-89",
+      "chapter": "4",
+      "category": "Topic Shift - Monotonic",
+      "question": "Monotonic Queue ในการหา Next Greater Element",
+      "reason": "Advanced Queue ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-90",
+      "chapter": "5",
+      "category": "Adversarial Edge - Dequeue",
+      "question": "Job Dequeue ใน Task Scheduler ของ Operating System",
+      "reason": "ใช้คำว่า Dequeue แต่เป็น OS Scheduling",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-91",
+      "chapter": "1",
+      "category": "Topic Shift - Monotonic Stack",
+      "question": "Monotonic Stack ในการหา Next Greater Element",
+      "reason": "Advanced Stack ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-92",
+      "chapter": "2",
+      "category": "Topic Shift - Stack",
+      "question": "Two Stacks in One Array ใช้ร่วมกันอย่างไรโดยไม่ให้ชนกัน",
+      "reason": "Advanced Stack Implementation ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-93",
+      "chapter": "3",
+      "category": "Domain Shift - Browser",
+      "question": "Browser History Stack กับ Forward Stack ใน Chrome",
+      "reason": "Browser Implementation ไม่ใช่เนื้อหาเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-94",
+      "chapter": "4",
+      "category": "Topic Shift - Recursion",
+      "question": "Recursion Stack Frame ใน Memory มี Stack Pointer อย่างไร",
+      "reason": "System Stack ไม่ใช่ Data Structure Stack",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-95",
+      "chapter": "5",
+      "category": "Temporal Shift - Modern",
+      "question": "Call Stack Trace ในการ Debug โปรแกรม Crash",
+      "reason": "Debugging/Stack Trace ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-96",
+      "chapter": "1",
+      "category": "Topic Shift - Stack",
+      "question": "Min Stack ที่เก็บค่าต่ำสุดใน O(1) เวลา Push/Pop",
+      "reason": "Advanced Stack ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-97",
+      "chapter": "2",
+      "category": "Domain Shift - Security",
+      "question": "Stack Overflow Attack ใน Buffer Overflow อันตรายอย่างไร",
+      "reason": "Security Vulnerability ไม่ใช่เนื้อหาเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-98",
+      "chapter": "3",
+      "category": "Adversarial Edge - Push",
+      "question": "Git Push ใน Version Control กับ Stack Push ต่างกันอย่างไร",
+      "reason": "ใช้คำว่า Push แต่เป็น Git Operation",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-99",
+      "chapter": "4",
+      "category": "Topic Shift - Stack",
+      "question": "Tower of Hanoi ใช้ Stack ใน Recursive Solution อย่างไร",
+      "reason": "Tower of Hanoi เป็น Puzzle",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-100",
+      "chapter": "5",
+      "category": "Domain Shift - Memory",
+      "question": "Stack Segment ใน Process Memory Layout เก็บอะไร",
+      "reason": "Memory Segments ไม่ใช่เนื้อหาเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-101",
+      "chapter": "1",
+      "category": "Topic Shift - AVL Tree",
+      "question": "AVL Tree ที่เป็น Self-balancing Binary Search Tree ทำงานอย่างไร",
+      "reason": "AVL Tree ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-102",
+      "chapter": "2",
+      "category": "Topic Shift - Red-Black",
+      "question": "Red-Black Tree ที่ใช้ใน TreeMap และ TreeSet ของ Java",
+      "reason": "Red-Black Tree ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-103",
+      "chapter": "3",
+      "category": "Topic Shift - Heap",
+      "question": "Binary Heap ในการทำ Priority Queue และ Heap Sort",
+      "reason": "Heap ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-104",
+      "chapter": "4",
+      "category": "Topic Shift - Tree",
+      "question": "N-ary Tree ที่มี Children มากกว่า 2 โหนด ใช้ทำอะไร",
+      "reason": "N-ary Tree ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-105",
+      "chapter": "5",
+      "category": "Topic Shift - Graph",
+      "question": "Adjacency Matrix กับ Adjacency List ใน Graph Representation",
+      "reason": "Graph ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-106",
+      "chapter": "1",
+      "category": "Domain Shift - File System",
+      "question": "B-Tree ใน File System (NTFS, ext4) ทำงานอย่างไร",
+      "reason": "File System Trees ไม่ใช่เนื้อหาเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-107",
+      "chapter": "2",
+      "category": "Topic Shift - Tree",
+      "question": "Suffix Tree ใน String Matching และ Bioinformatics",
+      "reason": "Advanced Tree ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-108",
+      "chapter": "3",
+      "category": "Temporal Shift - Modern",
+      "question": "Merkle Tree ใน Blockchain ใช้ตรวจสอบ Integrity อย่างไร",
+      "reason": "Blockchain ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-109",
+      "chapter": "4",
+      "category": "Topic Shift - Tree",
+      "question": "Huffman Tree ในการบีบอัดข้อมูล (Data Compression)",
+      "reason": "Huffman Coding ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-110",
+      "chapter": "5",
+      "category": "Adversarial Edge - Leaf",
+      "question": "Leaf Node ใน Decision Tree ของ Machine Learning",
+      "reason": "ใช้คำว่า Leaf แต่เป็น ML/AI",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-111",
+      "chapter": "1",
+      "category": "Domain Shift - AI",
+      "question": "Neural Network ใน Deep Learning มี Layers อะไรบ้าง",
+      "reason": "AI/ML ไม่ใช่เนื้อหาเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-112",
+      "chapter": "2",
+      "category": "Topic Shift - Database",
+      "question": "Index ใน Relational Database (B+ Tree Index) ทำงานอย่างไร",
+      "reason": "Database Index ไม่ใช่เนื้อหาเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-113",
+      "chapter": "3",
+      "category": "Domain Shift - Web",
+      "question": "DOM Tree ใน HTML Document Object Model คืออะไร",
+      "reason": "Web Development ไม่ใช่เนื้อหาเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-114",
+      "chapter": "4",
+      "category": "Topic Shift - Algorithm",
+      "question": "Greedy Algorithm กับ Dynamic Programming ต่างกันอย่างไร",
+      "reason": "Algorithm Paradigms ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-115",
+      "chapter": "5",
+      "category": "Temporal Shift - Modern",
+      "question": "Rust Programming กับ Ownership และ Borrowing",
+      "reason": "Rust Language ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-116",
+      "chapter": "1",
+      "category": "Topic Shift - Union-Find",
+      "question": "Disjoint Set Union (Union-Find) ใน Graph Algorithm",
+      "reason": "Union-Find ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-117",
+      "chapter": "2",
+      "category": "Domain Shift - Graphics",
+      "question": "Spatial Data Structure ใน Computer Graphics (Quadtree)",
+      "reason": "Graphics ไม่ใช่เนื้อหาเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-118",
+      "chapter": "3",
+      "category": "Topic Shift - Topological",
+      "question": "Topological Sort ใน Directed Acyclic Graph (DAG)",
+      "reason": "Graph Algorithm ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-119",
+      "chapter": "4",
+      "category": "Domain Shift - Distributed",
+      "question": "Distributed Queue ใน Message Broker เช่น RabbitMQ",
+      "reason": "Distributed Systems ไม่ใช่เนื้อหาเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-120",
+      "chapter": "5",
+      "category": "Topic Shift - Backtracking",
+      "question": "Backtracking Algorithm ในการแก้ N-Queens Problem",
+      "reason": "Backtracking ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-121",
+      "chapter": "1",
+      "category": "Topic Shift - Tree",
+      "question": "Fenwick Tree (Binary Indexed Tree) ใน Range Query",
+      "reason": "Fenwick Tree ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-122",
+      "chapter": "2",
+      "category": "Domain Shift - Compiler",
+      "question": "Abstract Syntax Tree (AST) ใน Compiler คืออะไร",
+      "reason": "Compiler Theory ไม่ใช่เนื้อหาเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-123",
+      "chapter": "3",
+      "category": "Adversarial Edge - Structure",
+      "question": "Molecular Structure ในเคมีกับ Data Structure ต่างกันอย่างไร",
+      "reason": "Chemistry ไม่ใช่เนื้อหาเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-124",
+      "chapter": "4",
+      "category": "Topic Shift - Algorithm",
+      "question": "Kadane Algorithm ในการหา Maximum Subarray Sum",
+      "reason": "Algorithm ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-125",
+      "chapter": "5",
+      "category": "Domain Shift - Finance",
+      "question": "Data Structure ที่ใช้ใน High-frequency Trading",
+      "reason": "Finance/Trading ไม่ใช่เนื้อหาเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-126",
+      "chapter": "1",
+      "category": "Temporal Shift - Modern",
+      "question": "Kotlin Coroutines กับ Channel ใน Asynchronous Programming",
+      "reason": "Modern Language Features ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-127",
+      "chapter": "2",
+      "category": "Topic Shift - Stack",
+      "question": "Explicit Stack ในการแปลง Recursive เป็น Iterative",
+      "reason": "Advanced Recursion ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-128",
+      "chapter": "3",
+      "category": "Domain Shift - Biology",
+      "question": "Genealogy Tree ในการศึกษาพันธุกรรมครอบครัว",
+      "reason": "Biology ไม่ใช่เนื้อหาเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-129",
+      "chapter": "4",
+      "category": "Topic Shift - Crypto",
+      "question": "Hash Function ใน Cryptography (SHA-256) ต่างจาก Hash Table",
+      "reason": "Cryptography ไม่ใช่เนื้อหาเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-130",
+      "chapter": "5",
+      "category": "Adversarial Edge - Array",
+      "question": "Array Formula ใน Excel/Spreadsheet ทำงานอย่างไร",
+      "reason": "ใช้คำว่า Array แต่เป็น Spreadsheet",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-131",
+      "chapter": "1",
+      "category": "Topic Shift - Event",
+      "question": "Event-driven Architecture กับ Event Queue ในระบบ Real-time",
+      "reason": "Software Architecture ไม่ใช่เนื้อหาเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-132",
+      "chapter": "2",
+      "category": "Domain Shift - Game",
+      "question": "Undo/Redo Stack ในการ Implement ฟีเจอร์ Undo ของแอพ",
+      "reason": "Application Features ไม่ใช่เนื้อหาเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-133",
+      "chapter": "3",
+      "category": "Topic Shift - Tree",
+      "question": "Cartesian Tree ในการแก้ Range Minimum Query",
+      "reason": "Advanced Tree ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-134",
+      "chapter": "4",
+      "category": "Temporal Shift - Modern",
+      "question": "WebAssembly (Wasm) กับ Stack-based VM ทำงานอย่างไร",
+      "reason": "WebAssembly ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-135",
+      "chapter": "5",
+      "category": "Topic Shift - Bitwise",
+      "question": "Bitwise Operations ในการ Optimize โปรแกรม (Bitmask DP)",
+      "reason": "Bitwise DP ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-136",
+      "chapter": "1",
+      "category": "Domain Shift - OS",
+      "question": "I/O Scheduling Queue ใน Disk Scheduling Algorithms",
+      "reason": "OS Scheduling ไม่ใช่เนื้อหาเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-137",
+      "chapter": "2",
+      "category": "Topic Shift - Parser",
+      "question": "Shunting Yard Algorithm ของ Dijkstra ในการ Parse Expression",
+      "reason": "Parsing Algorithm ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-138",
+      "chapter": "3",
+      "category": "Adversarial Edge - Root",
+      "question": "Root Access ใน Android Jailbreak กับ Root Node ต่างกันอย่างไร",
+      "reason": "ใช้คำว่า Root แต่เป็น System Security",
+      "expected_behavior": "Abstain"
+    }
+  ]
+}

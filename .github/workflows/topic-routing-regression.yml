@@ -1,0 +1,59 @@
+name: topic-routing-regression
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["main", "master"]
+    paths:
+      - "scripts/regression_topic_routing.py"
+      - "eval/topic_routing_regression_queries.csv"
+      - "eval/topic_routing_ambiguous_queries.csv"
+      - "indexes/hierarchical/topic_hierarchy.json"
+      - "src/app.py"
+      - ".github/workflows/topic-routing-regression.yml"
+  pull_request:
+    paths:
+      - "scripts/regression_topic_routing.py"
+      - "eval/topic_routing_regression_queries.csv"
+      - "eval/topic_routing_ambiguous_queries.csv"
+      - "indexes/hierarchical/topic_hierarchy.json"
+      - "src/app.py"
+      - ".github/workflows/topic-routing-regression.yml"
+
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Compile Regression Script
+        run: python -m py_compile scripts/regression_topic_routing.py
+
+      - name: Run Topic Routing Regression Gate
+        run: |
+          python scripts/regression_topic_routing.py \
+            --enforce \
+            --min-new-accuracy 1.0 \
+            --min-ambiguous-pass-rate 1.0
+
+      - name: Upload Regression Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: topic-routing-regression-artifacts
+          path: |
+            logs/topic_routing_regression_summary_latest.json
+            logs/topic_routing_regression_latest.csv
+            logs/topic_routing_expert_review_latest.csv
+            logs/topic_routing_ambiguous_latest.csv
+            logs/topic_confusion_old_latest.csv
+            logs/topic_confusion_new_latest.csv
+            logs/topic_routing_dashboard_latest.html
+            logs/topic_routing_expert_review_dashboard_latest.html
+          if-no-files-found: error

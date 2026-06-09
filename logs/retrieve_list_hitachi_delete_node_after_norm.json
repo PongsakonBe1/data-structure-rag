@@ -1,0 +1,873 @@
+{
+  "query": "การลบโหนดในลิงค์ลิสต์แบบทิศทางเดียว",
+  "backend": "colpali_endpoint",
+  "colpali_status": "ok",
+  "colpali_score_ready": true,
+  "vlm_rerank_status": "ok",
+  "grounding_status": "ok",
+  "endpoint_runtime": {
+    "timeout_sec": 120,
+    "max_retries": 2,
+    "retry_backoff_ms": 700,
+    "local_cache_size": 256,
+    "image_max_side": 896,
+    "jpeg_quality": 80
+  },
+  "scoring_weights": {
+    "channel_weights": {
+      "colpali": 0.5225,
+      "lexical": 0.1081,
+      "region_prior": 0.0721,
+      "region_quality": 0.0541,
+      "structure_prior": 0.0901,
+      "structure_align": 0.0631,
+      "figure_match": 0.0541,
+      "operation_match": 0.036
+    },
+    "pre_vlm_blend": {
+      "base": 0.68,
+      "rrf": 0.32
+    },
+    "rrf_k": 60,
+    "tiny_region_penalty": {
+      "enabled": true,
+      "area_ratio_lt": 0.006,
+      "multiplier": 0.82
+    },
+    "hard_negative": {
+      "rules_loaded": 7,
+      "penalty_max": 0.22,
+      "penalized_candidates": 2
+    }
+  },
+  "coverage_rerank": {
+    "applied": false,
+    "novelty_weight": 0.26,
+    "figure_weight": 0.62,
+    "page_weight": 0.38,
+    "step_target": 4
+  },
+  "grounding_config": {
+    "enabled": true,
+    "top_n": 3,
+    "ensemble_runs": 2,
+    "consensus_min_votes": 2,
+    "temperature": 0.0,
+    "top_p": 0.9
+  },
+  "hard_negative_config": {
+    "rules_path": "indexes/hierarchical/hard_negative_rules.json",
+    "rules_loaded": 7,
+    "penalty_max": 0.22
+  },
+  "topic_prediction": {
+    "topic_id": "2.4",
+    "topic_score": 0.805556,
+    "topic_filtered": true,
+    "topic_threshold": 0.18,
+    "topic_scope_ids": [
+      "2.4"
+    ],
+    "topic_source": "heuristic",
+    "topic_filter_reason": "metadata_prefilter_plus_hierarchy:relaxed_topic_ids_with_chapter",
+    "metadata_prefilter_enabled": true,
+    "heuristic_topic_id": "2.4",
+    "heuristic_topic_score": 0.805556
+  },
+  "intent_classification": {
+    "use_intent_llm": true,
+    "intent_model": "Qwen/Qwen3-4B-Instruct-2507",
+    "intent_llm_status": "invalid_json",
+    "intent_llm": {
+      "raw": "{\"intent_type\":\"operation\",\"target_chapter\":\"2.4\",\"target_topic_ids\":[\"2.4.1\",\"2.4.2\"],\"confidence\":0.95,\"require_structure\":true,\"reason\":\"คำถามเกี่ยวกับการลบโหนดในลิงค์ลิสต์แบบทิศทางเดียว ซึ่งเป็นการดำเนินการ (operation) ที่เกี่ยวข้องกับการทำงานของโครงสร้างนี้ ดังนั้นต้องเลือกหัวข้อที่เกี่ยวข้องกับโครงสร้างและวิธีการทำงาน หัวข้อ 2.4.1 และ 2.4.2 คือหัวข้อที่เหมาะสมที่สุด โดยเฉพาะ 2.4.2 ที่กล่าวถึงการทำงานของลิงค์ลิสต์แบบทิศทางเดียว ซึ่งครอบคลุมการลบโหนด ดังนั้นต้องตั้งค่า require_structure เป็น true เนื่องจากต้องอธิบายขั้น"
+    },
+    "ranked_topics": [
+      {
+        "topic_id": "2.4",
+        "title": "ลิงค์ลิสต์แบบทิศทางเดียว",
+        "score": 0.805556
+      },
+      {
+        "topic_id": "2.4.1",
+        "title": "โครงสร้างลิงค์ลิสต์แบบทิศทางเดียว",
+        "score": 0.5
+      },
+      {
+        "topic_id": "2.4.2",
+        "title": "การทำงานของลิงค์ลิสต์แบบทิศทางเดียว",
+        "score": 0.454545
+      },
+      {
+        "topic_id": "2.3.1",
+        "title": "ความหมายของลิงค์ลิสต์",
+        "score": 0.181818
+      },
+      {
+        "topic_id": "2.3.2",
+        "title": "โครงสร้างของลิงค์ลิสต์",
+        "score": 0.181818
+      },
+      {
+        "topic_id": "2.3",
+        "title": "โครงสร้างลิงค์ลิสต์ (Linked List)",
+        "score": 0.166667
+      },
+      {
+        "topic_id": "5.3",
+        "title": "การเข้าถึงข้อมูลในไบนารีทรี",
+        "score": 0.142857
+      },
+      {
+        "topic_id": "2",
+        "title": "อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+        "score": 0.125
+      },
+      {
+        "topic_id": "4.3.2",
+        "title": "การประยุกต์ใช้งานสแตกในการเปลงรูปนิพจน์ทางคณิตศาสตร์",
+        "score": 0.105263
+      },
+      {
+        "topic_id": "5.5",
+        "title": "การแทนโครงสร้างไบนารีทรีแบบซีเควนเชียล",
+        "score": 0.105263
+      },
+      {
+        "topic_id": "1.4.1",
+        "title": "โครงสร้างแบบเรียงลำดับ (Sequence)",
+        "score": 0.083333
+      },
+      {
+        "topic_id": "1.4.3",
+        "title": "โครงสร้างแบบทำซ้ำ (Repetition)",
+        "score": 0.083333
+      }
+    ]
+  },
+  "hierarchy_quality": {
+    "garbled_detected": false,
+    "mojibake_ratio": 0.0,
+    "topic_filter_enabled": true
+  },
+  "query_profile": {
+    "has_figure_ref": false,
+    "figure_refs": [],
+    "operation_intent": false,
+    "structure_intent": true,
+    "operation_terms": [],
+    "structure_terms": [
+      "ลิงค์ลิสต์"
+    ],
+    "intent_type": "",
+    "expanded_query_terms_count": 19
+  },
+  "task_metrics": {
+    "region_hit_ratio_at_k": 1.0,
+    "figure_ref_hit_ratio_at_k": 1.0,
+    "structure_hit_ratio_at_k": 1.0,
+    "operation_coverage_ratio_at_k": null,
+    "query_figure_ref_coverage": null,
+    "grounding_success_rate": 1.0,
+    "grounding_consistency_mean": 1.0,
+    "citation_ready_ratio": 1.0,
+    "mean_final_score": 0.25253,
+    "crop_completeness_proxy": 0.75,
+    "small_region_ratio_at_k": 0.0,
+    "region_quality_mean": 0.9694,
+    "unique_figure_refs_at_k": 12,
+    "page_diversity_at_k": 0.625,
+    "procedure_step_coverage_proxy": null
+  },
+  "count": 8,
+  "hits": [
+    {
+      "rank": 1,
+      "id": "data_structure_data_ch1_to_ch5.pdf:26:region:1",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:26",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 26,
+      "image_path": "assets/figure_regions/page_026_region_01.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 419,
+          "y0": 573,
+          "x1": 961,
+          "y1": 646
+        },
+        "bbox_norm": {
+          "x0": 0.329144,
+          "y0": 0.318333,
+          "x1": 0.75491,
+          "y1": 0.358889
+        },
+        "area_ratio": 0.017267,
+        "ink_ratio": 0.152656,
+        "is_fallback": false,
+        "quality_flags": {
+          "is_tiny_before": false,
+          "expanded_from_tiny": false,
+          "is_tiny_after": false
+        }
+      },
+      "structure_labels": [
+        "Linked List",
+        "Linked List",
+        "Linked List",
+        "Linked List"
+      ],
+      "tags": [
+        "linked_list"
+      ],
+      "figure_refs": [
+        "ภาพที่ 2.19",
+        "ภาพที่ 2.20"
+      ],
+      "chapter_id": "2",
+      "chapter_title": "อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+      "section_id": "2.4.2",
+      "section_title": "การทำงานของลิงค์ลิสต์แบบทิศทางเดียว",
+      "best_topic_id": "2.4.2",
+      "best_topic_title": "การทำงานของลิงค์ลิสต์แบบทิศทางเดียว",
+      "base_score": 0.727042,
+      "rrf_score": 1.0,
+      "pre_vlm_score": 0.814388,
+      "vlm_score": 0.0,
+      "final_score": 0.513064,
+      "figure_score": 0.0,
+      "operation_score": 0.0,
+      "structure_score": 0.0,
+      "region_quality_score": 1.0,
+      "vlm_reason": "ภาพแสดงลิงค์ลิสต์แบบทิศทางเดียว แต่ไม่มีการระบุการลบโหนด",
+      "preview": "# 3. การลบโหนด (Delete node)\n\nการลบโหนด สามารถลบทั้งโหนดและข้อมูลที่ไม่ต้องการออกไป ซึ่งมีหลักการง่าย ๆ\nด้วยการเปลี่ยนลิ้งค์ของโหนดก่อนหน้าที่ต้องการลบให้ไปยังลิ้งค์ของโหนดที่ต้องการลบ\n\n> [Structure: Linked List]\n> - Node(3) connects to -> Node(5)\n> - Node(5) connects to -> Node("
+    },
+    {
+      "rank": 2,
+      "id": "data_structure_data_ch1_to_ch5.pdf:26:region:2",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:26",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 26,
+      "image_path": "assets/figure_regions/page_026_region_02.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 297,
+          "y0": 432,
+          "x1": 1083,
+          "y1": 502
+        },
+        "bbox_norm": {
+          "x0": 0.233307,
+          "y0": 0.24,
+          "x1": 0.850746,
+          "y1": 0.278889
+        },
+        "area_ratio": 0.024012,
+        "ink_ratio": 0.099218,
+        "is_fallback": false,
+        "quality_flags": {
+          "is_tiny_before": true,
+          "expanded_from_tiny": true,
+          "is_tiny_after": false
+        }
+      },
+      "structure_labels": [
+        "Linked List",
+        "Linked List",
+        "Linked List",
+        "Linked List"
+      ],
+      "tags": [
+        "linked_list"
+      ],
+      "figure_refs": [
+        "ภาพที่ 2.19",
+        "ภาพที่ 2.20"
+      ],
+      "chapter_id": "2",
+      "chapter_title": "อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+      "section_id": "2.4.2",
+      "section_title": "การทำงานของลิงค์ลิสต์แบบทิศทางเดียว",
+      "best_topic_id": "2.4.2",
+      "best_topic_title": "การทำงานของลิงค์ลิสต์แบบทิศทางเดียว",
+      "base_score": 0.398053,
+      "rrf_score": 0.619302,
+      "pre_vlm_score": 0.468853,
+      "vlm_score": 0.0,
+      "final_score": 0.295377,
+      "figure_score": 0.0,
+      "operation_score": 0.0,
+      "structure_score": 0.0,
+      "region_quality_score": 0.951509,
+      "vlm_reason": "ภาพและข้อความไม่ระบุวิธีการลบโหนดในลิงค์ลิสต์แบบทิศทางเดียว",
+      "preview": "# 3. การลบโหนด (Delete node)\n\nการลบโหนด สามารถลบทั้งโหนดและข้อมูลที่ไม่ต้องการออกไป ซึ่งมีหลักการง่าย ๆ\nด้วยการเปลี่ยนลิ้งค์ของโหนดก่อนหน้าที่ต้องการลบให้ไปยังลิ้งค์ของโหนดที่ต้องการลบ\n\n> [Structure: Linked List]\n> - Node(3) connects to -> Node(5)\n> - Node(5) connects to -> Node("
+    },
+    {
+      "rank": 3,
+      "id": "data_structure_data_ch1_to_ch5.pdf:27:region:4",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:27",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 27,
+      "image_path": "assets/figure_regions/page_027_region_04.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 492,
+          "y0": 322,
+          "x1": 866,
+          "y1": 398
+        },
+        "bbox_norm": {
+          "x0": 0.386489,
+          "y0": 0.178889,
+          "x1": 0.680283,
+          "y1": 0.221111
+        },
+        "area_ratio": 0.012405,
+        "ink_ratio": 0.102554,
+        "is_fallback": false,
+        "quality_flags": {
+          "is_tiny_before": true,
+          "expanded_from_tiny": true,
+          "is_tiny_after": false
+        }
+      },
+      "structure_labels": [
+        "Linked List",
+        "Linked List",
+        "Linked List",
+        "Linked List"
+      ],
+      "tags": [
+        "linked_list"
+      ],
+      "figure_refs": [
+        "ภาพที่ 2.21",
+        "ภาพที่ 2.22"
+      ],
+      "chapter_id": "2",
+      "chapter_title": "อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+      "section_id": "2.4.2",
+      "section_title": "การทำงานของลิงค์ลิสต์แบบทิศทางเดียว",
+      "best_topic_id": "2.4.2",
+      "best_topic_title": "การทำงานของลิงค์ลิสต์แบบทิศทางเดียว",
+      "base_score": 0.317408,
+      "rrf_score": 0.621862,
+      "pre_vlm_score": 0.414833,
+      "vlm_score": 0.0,
+      "final_score": 0.261345,
+      "figure_score": 0.0,
+      "operation_score": 0.0,
+      "structure_score": 0.0,
+      "region_quality_score": 0.959293,
+      "vlm_reason": "ภาพไม่แสดงการลบโหนดในลิงค์ลิสต์แบบทิศทางเดียว",
+      "preview": "# ก่อนการแทรกโหนด\n\n> [Structure: Linked List]\n> - Node(1) connects to -> Node(15)\n> - Node(15) has a cross mark\n\n## หลังการแทรกโหนด\n\n> [Structure: Linked List]\n> - Node(2) connects to -> Node(15)\n> - Node(15) connects to -> Node(5)\n> - Node(5) has a cross mark\n\nภาพที่ 2.21 การแทร"
+    },
+    {
+      "rank": 4,
+      "id": "data_structure_data_ch1_to_ch5.pdf:27:region:3",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:27",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 27,
+      "image_path": "assets/figure_regions/page_027_region_03.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 402,
+          "y0": 1005,
+          "x1": 980,
+          "y1": 1081
+        },
+        "bbox_norm": {
+          "x0": 0.315789,
+          "y0": 0.558333,
+          "x1": 0.769835,
+          "y1": 0.600556
+        },
+        "area_ratio": 0.019171,
+        "ink_ratio": 0.089943,
+        "is_fallback": false,
+        "quality_flags": {
+          "is_tiny_before": true,
+          "expanded_from_tiny": true,
+          "is_tiny_after": false
+        }
+      },
+      "structure_labels": [
+        "Linked List",
+        "Linked List",
+        "Linked List",
+        "Linked List"
+      ],
+      "tags": [
+        "linked_list"
+      ],
+      "figure_refs": [
+        "ภาพที่ 2.21",
+        "ภาพที่ 2.22"
+      ],
+      "chapter_id": "2",
+      "chapter_title": "อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+      "section_id": "2.4.2",
+      "section_title": "การทำงานของลิงค์ลิสต์แบบทิศทางเดียว",
+      "best_topic_id": "2.4.2",
+      "best_topic_title": "การทำงานของลิงค์ลิสต์แบบทิศทางเดียว",
+      "base_score": 0.288973,
+      "rrf_score": 0.551158,
+      "pre_vlm_score": 0.372872,
+      "vlm_score": 0.0,
+      "final_score": 0.234909,
+      "figure_score": 0.0,
+      "operation_score": 0.0,
+      "structure_score": 0.0,
+      "region_quality_score": 0.929867,
+      "vlm_reason": "ภาพและข้อความไม่ได้แสดงขั้นตอนการลบโหนดในลิงค์ลิสต์แบบทิศทางเดียว",
+      "preview": "# ก่อนการแทรกโหนด\n\n> [Structure: Linked List]\n> - Node(1) connects to -> Node(15)\n> - Node(15) has a cross mark\n\n## หลังการแทรกโหนด\n\n> [Structure: Linked List]\n> - Node(2) connects to -> Node(15)\n> - Node(15) connects to -> Node(5)\n> - Node(5) has a cross mark\n\nภาพที่ 2.21 การแทร"
+    },
+    {
+      "rank": 5,
+      "id": "data_structure_data_ch1_to_ch5.pdf:28:region:1",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:28",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 28,
+      "image_path": "assets/figure_regions/page_028_region_01.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 394,
+          "y0": 487,
+          "x1": 986,
+          "y1": 582
+        },
+        "bbox_norm": {
+          "x0": 0.309505,
+          "y0": 0.270556,
+          "x1": 0.774548,
+          "y1": 0.323333
+        },
+        "area_ratio": 0.024544,
+        "ink_ratio": 0.116696,
+        "is_fallback": false,
+        "quality_flags": {
+          "is_tiny_before": false,
+          "expanded_from_tiny": false,
+          "is_tiny_after": false
+        }
+      },
+      "structure_labels": [
+        "Linked List",
+        "Linked List",
+        "Linked List"
+      ],
+      "tags": [
+        "linked_list"
+      ],
+      "figure_refs": [
+        "ภาพที่ 2.23"
+      ],
+      "chapter_id": "2",
+      "chapter_title": "อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+      "section_id": "2.4.2",
+      "section_title": "การทำงานของลิงค์ลิสต์แบบทิศทางเดียว",
+      "best_topic_id": "2.4.2",
+      "best_topic_title": "การทำงานของลิงค์ลิสต์แบบทิศทางเดียว",
+      "base_score": 0.315472,
+      "rrf_score": 0.41245,
+      "pre_vlm_score": 0.346505,
+      "vlm_score": 0.0,
+      "final_score": 0.218298,
+      "figure_score": 0.0,
+      "operation_score": 0.0,
+      "structure_score": 0.0,
+      "region_quality_score": 0.992291,
+      "vlm_reason": "ภาพและข้อความไม่ระบุว่าเป็นการลบโหนดในลิงค์ลิสต์แบบทิศทางเดียว",
+      "preview": "# ก่อนการแทรกโหนด\n\n> [Structure: Linked List]\n> - Node(3) connects to -> Node(5)\n> - Node(5) connects to -> Node(10)\n> - Node(10) connects to -> Node(15)\n> - Node(15) connects to -> NULL\n\n## หลังการแทรกโหนด\n\n> [Structure: Linked List]\n> - Node(3) connects to -> Node(4)\n> - Node(4"
+    },
+    {
+      "rank": 6,
+      "id": "data_structure_data_ch1_to_ch5.pdf:25:region:1",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:25",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 25,
+      "image_path": "assets/figure_regions/page_025_region_01.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 420,
+          "y0": 1399,
+          "x1": 962,
+          "y1": 1450
+        },
+        "bbox_norm": {
+          "x0": 0.329929,
+          "y0": 0.777222,
+          "x1": 0.755695,
+          "y1": 0.805556
+        },
+        "area_ratio": 0.012063,
+        "ink_ratio": 0.19304,
+        "is_fallback": false,
+        "quality_flags": {
+          "is_tiny_before": false,
+          "expanded_from_tiny": false,
+          "is_tiny_after": false
+        }
+      },
+      "structure_labels": [
+        "Linked List",
+        "Linked List",
+        "Linked List"
+      ],
+      "tags": [
+        "linked_list"
+      ],
+      "figure_refs": [
+        "ภาพที่ 2.15",
+        "ภาพที่ 2.16",
+        "ภาพที่ 2.17",
+        "ภาพที่ 2.18"
+      ],
+      "chapter_id": "2",
+      "chapter_title": "อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+      "section_id": "2.4.2",
+      "section_title": "การทำงานของลิงค์ลิสต์แบบทิศทางเดียว",
+      "best_topic_id": "2.4.2",
+      "best_topic_title": "การทำงานของลิงค์ลิสต์แบบทิศทางเดียว",
+      "base_score": 0.360501,
+      "rrf_score": 0.602346,
+      "pre_vlm_score": 0.277891,
+      "vlm_score": 0.0,
+      "final_score": 0.175071,
+      "figure_score": 0.0,
+      "operation_score": 0.0,
+      "structure_score": 1.0,
+      "region_quality_score": 1.0,
+      "vlm_reason": "ภาพและข้อความไม่ระบุวิธีการลบโหนดในลิงค์ลิสต์แบบทิศทางเดียว",
+      "preview": "# 27\n\nเก็บในส่วนของข้อมูล และฟิลด์ที่ 2 เก็บค่าของการเชื่อมโยงในส่วนของการเชื่อมโยงก็จะใช้พอยน์เตอร์เป็นตัวเชื่อมโยงไปยังโหนดอื่น ๆ\n\n> [Structure: Linked List]\n> - Node(5) connects to -> Node(10)\n> - Node(10) connects to -> Node(15)\n> - Node(15) connects to -> NULL\n\nภาพที่ 2.15 โ"
+    },
+    {
+      "rank": 7,
+      "id": "data_structure_data_ch1_to_ch5.pdf:28:region:4",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:28",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 28,
+      "image_path": "assets/figure_regions/page_028_region_04.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 532,
+          "y0": 863,
+          "x1": 908,
+          "y1": 997
+        },
+        "bbox_norm": {
+          "x0": 0.41791,
+          "y0": 0.479444,
+          "x1": 0.713276,
+          "y1": 0.553889
+        },
+        "area_ratio": 0.021988,
+        "ink_ratio": 0.086654,
+        "is_fallback": false,
+        "quality_flags": {
+          "is_tiny_before": true,
+          "expanded_from_tiny": true,
+          "is_tiny_after": false
+        }
+      },
+      "structure_labels": [
+        "Linked List",
+        "Linked List",
+        "Linked List"
+      ],
+      "tags": [
+        "linked_list"
+      ],
+      "figure_refs": [
+        "ภาพที่ 2.23"
+      ],
+      "chapter_id": "2",
+      "chapter_title": "อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+      "section_id": "2.4.2",
+      "section_title": "การทำงานของลิงค์ลิสต์แบบทิศทางเดียว",
+      "best_topic_id": "2.4.2",
+      "best_topic_title": "การทำงานของลิงค์ลิสต์แบบทิศทางเดียว",
+      "base_score": 0.184845,
+      "rrf_score": 0.151637,
+      "pre_vlm_score": 0.174218,
+      "vlm_score": 0.0,
+      "final_score": 0.174218,
+      "figure_score": 0.0,
+      "operation_score": 0.0,
+      "structure_score": 0.0,
+      "region_quality_score": 0.922193,
+      "vlm_reason": "not_in_vlm_top_m",
+      "preview": "# ก่อนการแทรกโหนด\n\n> [Structure: Linked List]\n> - Node(3) connects to -> Node(5)\n> - Node(5) connects to -> Node(10)\n> - Node(10) connects to -> Node(15)\n> - Node(15) connects to -> NULL\n\n## หลังการแทรกโหนด\n\n> [Structure: Linked List]\n> - Node(3) connects to -> Node(4)\n> - Node(4"
+    },
+    {
+      "rank": 8,
+      "id": "data_structure_data_ch1_to_ch5.pdf:24:region:1",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:24",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 24,
+      "image_path": "assets/figure_regions/page_024_region_01.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 324,
+          "y0": 1390,
+          "x1": 1026,
+          "y1": 1445
+        },
+        "bbox_norm": {
+          "x0": 0.254517,
+          "y0": 0.772222,
+          "x1": 0.80597,
+          "y1": 0.802778
+        },
+        "area_ratio": 0.01685,
+        "ink_ratio": 0.172442,
+        "is_fallback": false,
+        "quality_flags": {
+          "is_tiny_before": false,
+          "expanded_from_tiny": false,
+          "is_tiny_after": false
+        }
+      },
+      "structure_labels": [
+        "Linked List",
+        "Linked List"
+      ],
+      "tags": [
+        "linked_list"
+      ],
+      "figure_refs": [
+        "ภาพที่ 2.12",
+        "ภาพที่ 2.13",
+        "ภาพที่ 2.14"
+      ],
+      "chapter_id": "2",
+      "chapter_title": "อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+      "section_id": "2.4.1",
+      "section_title": "โครงสร้างลิงค์ลิสต์แบบทิศทางเดียว",
+      "best_topic_id": "2.4.1",
+      "best_topic_title": "โครงสร้างลิงค์ลิสต์แบบทิศทางเดียว",
+      "base_score": 0.343343,
+      "rrf_score": 0.232756,
+      "pre_vlm_score": 0.147955,
+      "vlm_score": 0.0,
+      "final_score": 0.147955,
+      "figure_score": 0.0,
+      "operation_score": 0.0,
+      "structure_score": 1.0,
+      "region_quality_score": 1.0,
+      "vlm_reason": "not_in_vlm_top_m",
+      "preview": "# 2.4 ลิงค์ลิสต์แบบทิศทางเดียว (Single Linked List)\n\n## 2.4.1 โครงสร้างลิงค์ลิสต์แบบทิศทางเดียว\n\nลิงค์ลิสต์แบบทิศทางเดียวเป็นลิงค์ลิสต์ที่มีการเชื่อมโยงด้วยพอยน์เตอร์ไปในทิศทางเดียวกัน คือ ซึ่งเป็นโครงสร้างที่อยู่ถัดไปในโครงสร้าง ซึ่งลิงค์ลิสต์ในลักษณะนี้ถือเป็นรูปแบบพื้นฐานของลิ"
+    }
+  ],
+  "grounding": [
+    {
+      "id": "data_structure_data_ch1_to_ch5.pdf:26:region:1",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:26",
+      "grounding": {
+        "parsed": {
+          "structure_type": "linked list",
+          "grounded_facts": [
+            "โหนดถัดไปของโหนดที่ถูกลบคือโหนดที่มีค่า 5",
+            "โหนดที่จะถูกลบมีค่า 15",
+            "โหนดที่ถูกลบมีป้ายกำกับ 'ลบโหนด'",
+            "คำสำคัญที่ตรวจพบจากหลักฐานภาพ: delete, empty, insert, linked list/ลิงค์ลิสต์, next, node/โหนด, pointer/link",
+            "แท็กกระบวนการบท 2.4.2 ที่ตรวจพบ: delete, insert, next, node"
+          ],
+          "limitations": "ภาพไม่สามารถแสดงข้อมูลเกี่ยวกับการลบโหนดในลิงค์ลิสต์แบบทิศทางเดียวได้",
+          "normalized_terms": [
+            "delete",
+            "empty",
+            "insert",
+            "linked_list",
+            "next",
+            "node",
+            "pointer"
+          ],
+          "chapter_operation_tags": [
+            "delete",
+            "insert",
+            "next",
+            "node"
+          ],
+          "postprocess": "glossary_synonym_normalization_v1"
+        },
+        "raw": "```json\n{\n  \"structure_type\": \"linked list\",\n  \"grounded_facts\": [\n    \"โหนดที่จะถูกลบมีค่า 15\",\n    \"โหนดที่ถูกลบมีป้ายกำกับ 'ลบโหนด'\",\n    \"โหนดถัดไปของโหนดที่ถูกลบคือโหนดที่มีค่า 5\"\n  ],\n  \"limitations\": \"ภาพไม่สามารถแสดงข้อมูลเกี่ยวกับการลบโหนดในลิงค์ลิสต์แบบทิศทางเดียวได้\"\n}\n```",
+        "samples": [
+          {
+            "parsed": {
+              "structure_type": "linked list",
+              "grounded_facts": [
+                "โหนดที่จะถูกลบมีค่า 15",
+                "โหนดที่ถูกลบมีป้ายกำกับ 'ลบโหนด'",
+                "โหนดถัดไปของโหนดที่ถูกลบคือโหนดที่มีค่า 5"
+              ],
+              "limitations": "ภาพไม่สามารถแสดงข้อมูลเกี่ยวกับการลบโหนดในลิงค์ลิสต์แบบทิศทางเดียวได้"
+            },
+            "raw": "```json\n{\n  \"structure_type\": \"linked list\",\n  \"grounded_facts\": [\n    \"โหนดที่จะถูกลบมีค่า 15\",\n    \"โหนดที่ถูกลบมีป้ายกำกับ 'ลบโหนด'\",\n    \"โหนดถัดไปของโหนดที่ถูกลบคือโหนดที่มีค่า 5\"\n  ],\n  \"limitations\": \"ภาพไม่สามารถแสดงข้อมูลเกี่ยวกับการลบโหนดในลิงค์ลิสต์แบบทิศทางเดียวได้\"\n}\n```"
+          },
+          {
+            "parsed": {
+              "structure_type": "linked list",
+              "grounded_facts": [
+                "โหนดที่จะถูกลบมีค่า 15",
+                "โหนดที่ถูกลบมีป้ายกำกับ 'ลบโหนด'",
+                "โหนดถัดไปของโหนดที่ถูกลบคือโหนดที่มีค่า 5"
+              ],
+              "limitations": "ภาพไม่สามารถแสดงข้อมูลเกี่ยวกับการลบโหนดในลิงค์ลิสต์แบบทิศทางเดียวได้"
+            },
+            "raw": "```json\n{\n  \"structure_type\": \"linked list\",\n  \"grounded_facts\": [\n    \"โหนดที่จะถูกลบมีค่า 15\",\n    \"โหนดที่ถูกลบมีป้ายกำกับ 'ลบโหนด'\",\n    \"โหนดถัดไปของโหนดที่ถูกลบคือโหนดที่มีค่า 5\"\n  ],\n  \"limitations\": \"ภาพไม่สามารถแสดงข้อมูลเกี่ยวกับการลบโหนดในลิงค์ลิสต์แบบทิศทางเดียวได้\"\n}\n```"
+          }
+        ],
+        "consensus": {
+          "runs": 2,
+          "valid_runs": 2,
+          "vote_threshold": 2,
+          "raw_unique_facts": 3,
+          "consensus_facts": 3,
+          "agreement_ratio": 1.0
+        }
+      }
+    },
+    {
+      "id": "data_structure_data_ch1_to_ch5.pdf:26:region:2",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:26",
+      "grounding": {
+        "parsed": {
+          "structure_type": "linked list",
+          "grounded_facts": [
+            "โหนดที่มีค่า 10 ย้ายไปข้างหน้า",
+            "โหนดที่มีค่า 15 ถูกตัดออก",
+            "โหนดที่มีค่า 5 ย้ายไปข้างหน้า",
+            "คำสำคัญที่ตรวจพบจากหลักฐานภาพ: delete, empty, insert, linked list/ลิงค์ลิสต์, next, node/โหนด, pointer/link",
+            "แท็กกระบวนการบท 2.4.2 ที่ตรวจพบ: delete, insert, next, node"
+          ],
+          "limitations": "ข้อมูลนี้ไม่สามารถระบุได้ว่าการลบโหนดนี้เกิดขึ้นเมื่อใด หรือมีการเปลี่ยนแปลงใดๆ ที่ไม่ได้เห็นในภาพ",
+          "normalized_terms": [
+            "delete",
+            "empty",
+            "insert",
+            "linked_list",
+            "next",
+            "node",
+            "pointer"
+          ],
+          "chapter_operation_tags": [
+            "delete",
+            "insert",
+            "next",
+            "node"
+          ],
+          "postprocess": "glossary_synonym_normalization_v1"
+        },
+        "raw": "```json\n{\n  \"structure_type\": \"linked list\",\n  \"grounded_facts\": [\n    \"โหนดที่มีค่า 15 ถูกตัดออก\",\n    \"โหนดที่มีค่า 10 ย้ายไปข้างหน้า\",\n    \"โหนดที่มีค่า 5 ย้ายไปข้างหน้า\"\n  ],\n  \"limitations\": \"ข้อมูลนี้ไม่สามารถระบุได้ว่าการลบโหนดนี้เกิดขึ้นเมื่อใด หรือมีการเปลี่ยนแปลงใดๆ ที่ไม่ได้เห็นในภาพ\"\n}\n```",
+        "samples": [
+          {
+            "parsed": {
+              "structure_type": "linked list",
+              "grounded_facts": [
+                "โหนดที่มีค่า 15 ถูกตัดออก",
+                "โหนดที่มีค่า 10 ย้ายไปข้างหน้า",
+                "โหนดที่มีค่า 5 ย้ายไปข้างหน้า"
+              ],
+              "limitations": "ข้อมูลนี้ไม่สามารถระบุได้ว่าการลบโหนดนี้เกิดขึ้นเมื่อใด หรือมีการเปลี่ยนแปลงใดๆ ที่ไม่ได้เห็นในภาพ"
+            },
+            "raw": "```json\n{\n  \"structure_type\": \"linked list\",\n  \"grounded_facts\": [\n    \"โหนดที่มีค่า 15 ถูกตัดออก\",\n    \"โหนดที่มีค่า 10 ย้ายไปข้างหน้า\",\n    \"โหนดที่มีค่า 5 ย้ายไปข้างหน้า\"\n  ],\n  \"limitations\": \"ข้อมูลนี้ไม่สามารถระบุได้ว่าการลบโหนดนี้เกิดขึ้นเมื่อใด หรือมีการเปลี่ยนแปลงใดๆ ที่ไม่ได้เห็นในภาพ\"\n}\n```"
+          },
+          {
+            "parsed": {
+              "structure_type": "linked list",
+              "grounded_facts": [
+                "โหนดที่มีค่า 15 ถูกตัดออก",
+                "โหนดที่มีค่า 10 ย้ายไปข้างหน้า",
+                "โหนดที่มีค่า 5 ย้ายไปข้างหน้า"
+              ],
+              "limitations": [
+                "ภาพไม่แสดงขั้นตอนการลบโหนด",
+                "ภาพไม่แสดงการเปลี่ยนแปลงในข้อมูลหลังการลบ"
+              ]
+            },
+            "raw": "```json\n{\n  \"structure_type\": \"linked list\",\n  \"grounded_facts\": [\n    \"โหนดที่มีค่า 15 ถูกตัดออก\",\n    \"โหนดที่มีค่า 10 ย้ายไปข้างหน้า\",\n    \"โหนดที่มีค่า 5 ย้ายไปข้างหน้า\"\n  ],\n  \"limitations\": [\n    \"ภาพไม่แสดงขั้นตอนการลบโหนด\",\n    \"ภาพไม่แสดงการเปลี่ยนแปลงในข้อมูลหลังการลบ\"\n  ]\n}\n```"
+          }
+        ],
+        "consensus": {
+          "runs": 2,
+          "valid_runs": 2,
+          "vote_threshold": 2,
+          "raw_unique_facts": 3,
+          "consensus_facts": 3,
+          "agreement_ratio": 1.0
+        }
+      }
+    },
+    {
+      "id": "data_structure_data_ch1_to_ch5.pdf:27:region:4",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:27",
+      "grounding": {
+        "parsed": {
+          "structure_type": "linked list",
+          "grounded_facts": [
+            "โหนดถัดไปของโหนดที่ถูกลบมีค่า 1",
+            "โหนดที่ถูกลบมีค่า 15",
+            "คำสำคัญที่ตรวจพบจากหลักฐานภาพ: delete, insert, linked list/ลิงค์ลิสต์, next, node/โหนด, pointer/link",
+            "แท็กกระบวนการบท 2.4.2 ที่ตรวจพบ: delete, insert, next, node"
+          ],
+          "limitations": "ภาพไม่แสดงข้อมูลเกี่ยวกับการลบโหนดในลิงค์ลิสต์แบบทิศทางเดียว",
+          "normalized_terms": [
+            "delete",
+            "insert",
+            "linked_list",
+            "next",
+            "node",
+            "pointer"
+          ],
+          "chapter_operation_tags": [
+            "delete",
+            "insert",
+            "next",
+            "node"
+          ],
+          "postprocess": "glossary_synonym_normalization_v1"
+        },
+        "raw": "```json\n{\n  \"structure_type\": \"linked list\",\n  \"grounded_facts\": [\n    \"โหนดที่ถูกลบมีค่า 15\",\n    \"โหนดถัดไปของโหนดที่ถูกลบมีค่า 1\"\n  ],\n  \"limitations\": \"ภาพไม่แสดงข้อมูลเกี่ยวกับการลบโหนดในลิงค์ลิสต์แบบทิศทางเดียว\"\n}\n```",
+        "samples": [
+          {
+            "parsed": {
+              "structure_type": "linked list",
+              "grounded_facts": [
+                "โหนดที่ถูกลบมีค่า 15",
+                "โหนดถัดไปของโหนดที่ถูกลบมีค่า 1"
+              ],
+              "limitations": "ภาพไม่แสดงข้อมูลเกี่ยวกับการลบโหนดในลิงค์ลิสต์แบบทิศทางเดียว"
+            },
+            "raw": "```json\n{\n  \"structure_type\": \"linked list\",\n  \"grounded_facts\": [\n    \"โหนดที่ถูกลบมีค่า 15\",\n    \"โหนดถัดไปของโหนดที่ถูกลบมีค่า 1\"\n  ],\n  \"limitations\": \"ภาพไม่แสดงข้อมูลเกี่ยวกับการลบโหนดในลิงค์ลิสต์แบบทิศทางเดียว\"\n}\n```"
+          },
+          {
+            "parsed": {
+              "structure_type": "linked list",
+              "grounded_facts": [
+                "โหนดที่ถูกลบมีค่า 15",
+                "โหนดถัดไปของโหนดที่ถูกลบมีค่า 1"
+              ],
+              "limitations": "ภาพไม่แสดงข้อมูลเกี่ยวกับการลบโหนดในลิงค์ลิสต์แบบทิศทางเดียว"
+            },
+            "raw": "```json\n{\n  \"structure_type\": \"linked list\",\n  \"grounded_facts\": [\n    \"โหนดที่ถูกลบมีค่า 15\",\n    \"โหนดถัดไปของโหนดที่ถูกลบมีค่า 1\"\n  ],\n  \"limitations\": \"ภาพไม่แสดงข้อมูลเกี่ยวกับการลบโหนดในลิงค์ลิสต์แบบทิศทางเดียว\"\n}\n```"
+          }
+        ],
+        "consensus": {
+          "runs": 2,
+          "valid_runs": 2,
+          "vote_threshold": 2,
+          "raw_unique_facts": 2,
+          "consensus_facts": 2,
+          "agreement_ratio": 1.0
+        }
+      }
+    }
+  ]
+}

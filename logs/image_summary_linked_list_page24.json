@@ -1,0 +1,21 @@
+{
+  "image": "assets/figure_regions/page_024_region_01.png",
+  "model": "Qwen/Qwen2.5-VL-7B-Instruct",
+  "question": "อธิบายโครงสร้าง linked list แบบทิศทางเดียวจากรูปนี้",
+  "parsed": {
+    "structure_type": "linked list",
+    "what_it_shows": "โครงสร้างข้อมูล linked list แบบทิศทางเดียว",
+    "key_components": [
+      "count",
+      "head",
+      "data"
+    ],
+    "operations_or_flow": [
+      "การเพิ่มข้อมูล",
+      "การลบข้อมูล",
+      "การค้นหาข้อมูล"
+    ],
+    "limitations": "ไม่มีการระบุว่ามีการเชื่อมต่อข้อมูลอย่างไร ไม่สามารถระบุได้ว่าข้อมูลถูกเชื่อมต่อกันอย่างไร"
+  },
+  "raw": "{\n  \"structure_type\": \"linked list\",\n  \"what_it_shows\": \"โครงสร้างข้อมูล linked list แบบทิศทางเดียว\",\n  \"key_components\": [\"count\", \"head\", \"data\"],\n  \"operations_or_flow\": [\"การเพิ่มข้อมูล\", \"การลบข้อมูล\", \"การค้นหาข้อมูล\"],\n  \"limitations\": \"ไม่มีการระบุว่ามีการเชื่อมต่อข้อมูลอย่างไร ไม่สามารถระบุได้ว่าข้อมูลถูกเชื่อมต่อกันอย่างไร\"\n}"
+}

@@ -1,0 +1,664 @@
+{
+  "query": "การดำเนินการแทนคิวด้วยวงกลม",
+  "backend": "colpali_endpoint",
+  "colpali_status": "ok",
+  "colpali_score_ready": true,
+  "vlm_rerank_status": "ok",
+  "grounding_status": "ok",
+  "endpoint_runtime": {
+    "timeout_sec": 120,
+    "max_retries": 2,
+    "retry_backoff_ms": 700,
+    "local_cache_size": 256,
+    "image_max_side": 896,
+    "jpeg_quality": 80
+  },
+  "scoring_weights": {
+    "channel_weights": {
+      "colpali": 0.5321,
+      "lexical": 0.0826,
+      "region_prior": 0.0734,
+      "region_quality": 0.055,
+      "structure_prior": 0.0642,
+      "structure_align": 0.0459,
+      "figure_match": 0.055,
+      "operation_match": 0.0917
+    },
+    "pre_vlm_blend": {
+      "base": 0.68,
+      "rrf": 0.32
+    },
+    "rrf_k": 60,
+    "tiny_region_penalty": {
+      "enabled": true,
+      "area_ratio_lt": 0.006,
+      "multiplier": 0.82
+    },
+    "hard_negative": {
+      "rules_loaded": 3,
+      "penalty_max": 0.22,
+      "penalized_candidates": 8
+    }
+  },
+  "coverage_rerank": {
+    "applied": true,
+    "novelty_weight": 0.26,
+    "figure_weight": 0.62,
+    "page_weight": 0.38,
+    "step_target": 4
+  },
+  "grounding_config": {
+    "enabled": true,
+    "top_n": 1,
+    "ensemble_runs": 2,
+    "consensus_min_votes": 2,
+    "temperature": 0.0,
+    "top_p": 0.9
+  },
+  "hard_negative_config": {
+    "rules_path": "indexes/hierarchical/hard_negative_rules.json",
+    "rules_loaded": 3,
+    "penalty_max": 0.22
+  },
+  "topic_prediction": {
+    "topic_id": "3.3.3",
+    "topic_score": 0.99,
+    "topic_filtered": true,
+    "topic_threshold": 0.18,
+    "topic_scope_ids": [
+      "3.3",
+      "3.3.3"
+    ],
+    "topic_source": "llm",
+    "topic_filter_reason": "metadata_prefilter_plus_hierarchy:relaxed_topic_ids_no_chapter",
+    "metadata_prefilter_enabled": true,
+    "heuristic_topic_id": "3.3.3",
+    "heuristic_topic_score": 1.0
+  },
+  "intent_classification": {
+    "use_intent_llm": true,
+    "intent_model": "Qwen/Qwen3-4B-Instruct-2507",
+    "intent_llm_status": "ok",
+    "intent_llm": {
+      "intent_type": "operation",
+      "target_chapter": "3",
+      "target_topic_ids": [
+        "3.3.3"
+      ],
+      "confidence": 0.99,
+      "require_structure": true,
+      "reason": "คำถามระบุถึงการดำเนินการแทนคิวด้วยวงกลม ซึ่งตรงกับหัวข้อ 'การดำเนินการแทนคิวด้วยวงกลม' (topic_id=3.3.3) อย่างชัดเจน และเนื้อหาเกี่ยวข้องกับการดำเนินการ จึงต้องใช้ require_structure=true ด้วย",
+      "raw": "{\"intent_type\":\"operation\",\"target_chapter\":\"3\",\"target_topic_ids\":[\"3.3.3\"],\"confidence\":0.99,\"require_structure\":true,\"reason\":\"คำถามระบุถึงการดำเนินการแทนคิวด้วยวงกลม ซึ่งตรงกับหัวข้อ 'การดำเนินการแทนคิวด้วยวงกลม' (topic_id=3.3.3) อย่างชัดเจน และเนื้อหาเกี่ยวข้องกับการดำเนินการ จึงต้องใช้ require_structure=true ด้วย\"}"
+    },
+    "ranked_topics": [
+      {
+        "topic_id": "3.3.3",
+        "title": "การดำเนินการแทนคิวด้วยวงกลม",
+        "score": 1.0
+      },
+      {
+        "topic_id": "3.3.2",
+        "title": "การดำเนินการแทนคิวด้วยอาร์เรย์",
+        "score": 0.625
+      },
+      {
+        "topic_id": "3.3",
+        "title": "การแทนคิวด้วยอาร์เรย์",
+        "score": 0.5
+      },
+      {
+        "topic_id": "3.2",
+        "title": "การดำเนินการของคิว",
+        "score": 0.428571
+      },
+      {
+        "topic_id": "3.3.1",
+        "title": "โครงสร้างของการแทนคิวด้วยอาร์เรย์",
+        "score": 0.4
+      },
+      {
+        "topic_id": "4.3.1",
+        "title": "การดำเนินการแทนสแตกด้วยอาร์เรย์",
+        "score": 0.4
+      },
+      {
+        "topic_id": "4.3",
+        "title": "การแทนสแตกด้วยอาร์เรย์",
+        "score": 0.3
+      },
+      {
+        "topic_id": "4.2",
+        "title": "การดำเนินการของสแตก",
+        "score": 0.222222
+      },
+      {
+        "topic_id": "5.4",
+        "title": "ทรีกับการดำเนินการด้านนิพจน์",
+        "score": 0.181818
+      },
+      {
+        "topic_id": "3",
+        "title": "คิว (Queues)",
+        "score": 0.142857
+      },
+      {
+        "topic_id": "3.1",
+        "title": "โครงสร้างพื้นฐานของคิว",
+        "score": 0.125
+      },
+      {
+        "topic_id": "5.5",
+        "title": "การแทนโครงสร้างไบนารีทรีแบบซีเควนเชียล",
+        "score": 0.125
+      }
+    ]
+  },
+  "hierarchy_quality": {
+    "garbled_detected": false,
+    "mojibake_ratio": 0.0,
+    "topic_filter_enabled": true
+  },
+  "query_profile": {
+    "has_figure_ref": false,
+    "figure_refs": [],
+    "operation_intent": true,
+    "structure_intent": true,
+    "operation_terms": [
+      "วงกลม",
+      "ดำเนินการ"
+    ],
+    "structure_terms": [
+      "คิว"
+    ],
+    "intent_type": "operation",
+    "expanded_query_terms_count": 15
+  },
+  "task_metrics": {
+    "region_hit_ratio_at_k": 0.875,
+    "figure_ref_hit_ratio_at_k": 0.75,
+    "structure_hit_ratio_at_k": 0.75,
+    "operation_coverage_ratio_at_k": 1.0,
+    "query_figure_ref_coverage": null,
+    "grounding_success_rate": 1.0,
+    "grounding_consistency_mean": 1.0,
+    "citation_ready_ratio": 1.0,
+    "mean_final_score": 0.470022,
+    "crop_completeness_proxy": 0.8571,
+    "small_region_ratio_at_k": 0.0,
+    "region_quality_mean": 0.9029,
+    "unique_figure_refs_at_k": 9,
+    "page_diversity_at_k": 0.625,
+    "procedure_step_coverage_proxy": 1.0
+  },
+  "count": 8,
+  "hits": [
+    {
+      "rank": 1,
+      "id": "data_structure_data_ch1_to_ch5.pdf:36:page:0",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:36",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 36,
+      "image_path": "C:/Users/Admin/typhoon_rag/assets/figures/page_036_img_01.png",
+      "image_level": "page",
+      "region_meta": {},
+      "structure_labels": [],
+      "tags": [
+        "queue"
+      ],
+      "figure_refs": [],
+      "chapter_id": "3",
+      "chapter_title": "คิว (Queues)",
+      "section_id": "3.3.3",
+      "section_title": "การดำเนินการแทนคิวด้วยวงกลม",
+      "best_topic_id": "3.3.3",
+      "best_topic_title": "การดำเนินการแทนคิวด้วยวงกลม",
+      "base_score": 0.681257,
+      "rrf_score": 0.790881,
+      "pre_vlm_score": 0.716337,
+      "vlm_score": 0.8,
+      "final_score": 0.747292,
+      "figure_score": 0.0,
+      "operation_score": 1.0,
+      "structure_score": 1.0,
+      "region_quality_score": 0.0,
+      "vlm_reason": "ภาพแสดงขั้นตอนการดำเนินการ Enqueue และ Dequeue ในคิวแบบวงกลม (Circular Queue) โดยมีการอธิบายวิธีการดำเนินการและภาพแสดงการเปลี่ยนแปลงของคิวหลังจากดำเนินการต่างๆ",
+      "preview": "# 39\n\nเกิดปัญหาความต้องการ Enqueue ข้อมูลเข้าอีก แต่คิวไม่สามารถที่จะ Enqueue ข้อมูลเข้าได้เพราะคิวจะระดับ rear = maxsize หมายถึง พื้นที่ในการจัดข้อมูลเต็ม หรือ Queue Full แต่ในความเป็นจริงแล้วยังเหลือพื้นที่ในส่วนหน้าอีก ดังนั้นจึงมีการแก้ปัญหาของคิวนี้ด้วยการกำหนดคิววงกลม (Circ"
+    },
+    {
+      "rank": 2,
+      "id": "data_structure_data_ch1_to_ch5.pdf:30:region:2",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:30",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 30,
+      "image_path": "assets/figure_regions/page_030_region_02.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 304,
+          "y0": 622,
+          "x1": 1045,
+          "y1": 706
+        },
+        "bbox_norm": {
+          "x0": 0.238806,
+          "y0": 0.345556,
+          "x1": 0.820896,
+          "y1": 0.392222
+        },
+        "area_ratio": 0.027164,
+        "ink_ratio": 0.082241,
+        "is_fallback": false
+      },
+      "structure_labels": [
+        "Queue",
+        "Queue"
+      ],
+      "tags": [
+        "queue"
+      ],
+      "figure_refs": [
+        "ภาพที่ 3.2",
+        "ภาพที่ 3.3"
+      ],
+      "chapter_id": "3",
+      "chapter_title": "คิว (Queues)",
+      "section_id": "3.2",
+      "section_title": "การดำเนินการของคิว",
+      "best_topic_id": "3.2",
+      "best_topic_title": "การดำเนินการของคิว",
+      "base_score": 0.757755,
+      "rrf_score": 1.0,
+      "pre_vlm_score": 0.835273,
+      "vlm_score": 0.0,
+      "final_score": 0.526222,
+      "figure_score": 0.0,
+      "operation_score": 0.5,
+      "structure_score": 1.0,
+      "region_quality_score": 0.911896,
+      "vlm_reason": "ภาพแสดงการดำเนินการ Enqueue ซึ่งเป็นการเพิ่มข้อมูลเข้าคิว ไม่ได้แสดงการดำเนินการแทนคิวด้วยวงกลม",
+      "preview": "# 3.2 การดำเนินการของคิว\n\nการดำเนินการพื้นฐานโครงสร้างข้อมูลแบบคิว คือ มีการนำเข้าข้อมูลด้วยการต่อท้ายและดึงข้อมูลออกในส่วนหัว สามารถแบ่งออกเป็น 2 กรณี คือ\n\n## 3.2.1 การนำเข้าข้อมูล (Enqueue)\n\nหากมีการนำเข้าข้อมูลแรกเข้าสู่คิวแล้วข้อมูลนี้จะเป็นข้อมูลอันดับแรก และเมื่อมีการเพิ่มข"
+    },
+    {
+      "rank": 3,
+      "id": "data_structure_data_ch1_to_ch5.pdf:31:region:1",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:31",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 31,
+      "image_path": "assets/figure_regions/page_031_region_01.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 277,
+          "y0": 777,
+          "x1": 952,
+          "y1": 867
+        },
+        "bbox_norm": {
+          "x0": 0.217596,
+          "y0": 0.431667,
+          "x1": 0.74784,
+          "y1": 0.481667
+        },
+        "area_ratio": 0.026512,
+        "ink_ratio": 0.092609,
+        "is_fallback": false
+      },
+      "structure_labels": [
+        "Queue",
+        "Queue",
+        "Queue"
+      ],
+      "tags": [
+        "array",
+        "queue"
+      ],
+      "figure_refs": [
+        "ภาพที่ 3.4",
+        "ภาพที่ 3.5",
+        "ภาพที่ 3.6"
+      ],
+      "chapter_id": "3",
+      "chapter_title": "คิว (Queues)",
+      "section_id": "3.3",
+      "section_title": "การแทนคิวด้วยอาร์เรย์",
+      "best_topic_id": "3.3",
+      "best_topic_title": "การแทนคิวด้วยอาร์เรย์",
+      "base_score": 0.572699,
+      "rrf_score": 0.71563,
+      "pre_vlm_score": 0.478437,
+      "vlm_score": 0.0,
+      "final_score": 0.478437,
+      "figure_score": 0.0,
+      "operation_score": 0.55,
+      "structure_score": 1.0,
+      "region_quality_score": 0.936088,
+      "vlm_reason": "not_in_vlm_top_m",
+      "preview": "# 3.3 การแทนคิวด้วยอาร์เรย์\n\nการแทนโครงสร้างคิวด้วยอาร์เรย์ จะต้องกำหนดจำนวนของการจองพื้นที่บนหน่วยความจำ และใช้อาร์เรย์ในการนำข้อมูลเข้าด้านท้ายและนำข้อมูลออกในส่วนหัว ดังภาพที่ 3.4\n\n> [Structure: Queue]\n> - ข้อมูลเข้า\n> - ข้อมูลออก\n\n**ภาพที่ 3.4 การนำเข้าและนำออกข้อมูลในโครงสร้"
+    },
+    {
+      "rank": 4,
+      "id": "data_structure_data_ch1_to_ch5.pdf:30:region:1",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:30",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 30,
+      "image_path": "assets/figure_regions/page_030_region_01.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 304,
+          "y0": 1165,
+          "x1": 869,
+          "y1": 1331
+        },
+        "bbox_norm": {
+          "x0": 0.238806,
+          "y0": 0.647222,
+          "x1": 0.682639,
+          "y1": 0.739444
+        },
+        "area_ratio": 0.040931,
+        "ink_ratio": 0.050347,
+        "is_fallback": false
+      },
+      "structure_labels": [
+        "Queue",
+        "Queue"
+      ],
+      "tags": [
+        "queue"
+      ],
+      "figure_refs": [
+        "ภาพที่ 3.2",
+        "ภาพที่ 3.3"
+      ],
+      "chapter_id": "3",
+      "chapter_title": "คิว (Queues)",
+      "section_id": "3.2",
+      "section_title": "การดำเนินการของคิว",
+      "best_topic_id": "3.2",
+      "best_topic_title": "การดำเนินการของคิว",
+      "base_score": 0.743128,
+      "rrf_score": 0.853451,
+      "pre_vlm_score": 0.778432,
+      "vlm_score": 0.0,
+      "final_score": 0.490412,
+      "figure_score": 0.0,
+      "operation_score": 0.5,
+      "structure_score": 1.0,
+      "region_quality_score": 0.837476,
+      "vlm_reason": "ภาพแสดงการดำเนินการ Dequeue ไม่ใช่การดำเนินการแทนคิวด้วยวงกลม",
+      "preview": "# 3.2 การดำเนินการของคิว\n\nการดำเนินการพื้นฐานโครงสร้างข้อมูลแบบคิว คือ มีการนำเข้าข้อมูลด้วยการต่อท้ายและดึงข้อมูลออกในส่วนหัว สามารถแบ่งออกเป็น 2 กรณี คือ\n\n## 3.2.1 การนำเข้าข้อมูล (Enqueue)\n\nหากมีการนำเข้าข้อมูลแรกเข้าสู่คิวแล้วข้อมูลนี้จะเป็นข้อมูลอันดับแรก และเมื่อมีการเพิ่มข"
+    },
+    {
+      "rank": 5,
+      "id": "data_structure_data_ch1_to_ch5.pdf:37:region:2",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:37",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 37,
+      "image_path": "assets/figure_regions/page_037_region_02.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 525,
+          "y0": 698,
+          "x1": 830,
+          "y1": 1003
+        },
+        "bbox_norm": {
+          "x0": 0.412412,
+          "y0": 0.387778,
+          "x1": 0.652003,
+          "y1": 0.557222
+        },
+        "area_ratio": 0.040597,
+        "ink_ratio": 0.066391,
+        "is_fallback": false
+      },
+      "structure_labels": [
+        "Queue"
+      ],
+      "tags": [
+        "queue"
+      ],
+      "figure_refs": [
+        "ภาพที่ 3.8",
+        "ภาพที่ 3.9",
+        "ภาพที่ 3.10",
+        "ภาพที่ 3.11"
+      ],
+      "chapter_id": "3",
+      "chapter_title": "คิว (Queues)",
+      "section_id": "3.2",
+      "section_title": "การดำเนินการของคิว",
+      "best_topic_id": "3.2",
+      "best_topic_title": "การดำเนินการของคิว",
+      "base_score": 0.648885,
+      "rrf_score": 0.675758,
+      "pre_vlm_score": 0.657484,
+      "vlm_score": 0.0,
+      "final_score": 0.414215,
+      "figure_score": 0.0,
+      "operation_score": 1.0,
+      "structure_score": 1.0,
+      "region_quality_score": 0.874912,
+      "vlm_reason": "ภาพไม่แสดงการดำเนินการแทนคิวด้วยวงกลม",
+      "preview": "# ภาพที่ 3.8 แท่นคิวด้วยวงกลม\n\nจากภาพที่ 3.8 สามารถแสดงลักษณะของคิวแบบวงกลม เพื่อให้เกิดความเข้าใจได้ง่าย ดังภาพที่ 3.9\n\n> [Structure: Queue]\n> - [1] connects to -> [2]\n> - [2] connects to -> [3]\n> - [3] connects to -> [4]\n> - [4] connects to -> [5]\n> - [5] connects to -> [6]\n> -"
+    },
+    {
+      "rank": 6,
+      "id": "data_structure_data_ch1_to_ch5.pdf:34:region:1",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:34",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 34,
+      "image_path": "assets/figure_regions/page_034_region_01.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 278,
+          "y0": 1294,
+          "x1": 948,
+          "y1": 1383
+        },
+        "bbox_norm": {
+          "x0": 0.218382,
+          "y0": 0.718889,
+          "x1": 0.744698,
+          "y1": 0.768333
+        },
+        "area_ratio": 0.026023,
+        "ink_ratio": 0.065202,
+        "is_fallback": false
+      },
+      "structure_labels": [],
+      "tags": [
+        "array",
+        "queue"
+      ],
+      "figure_refs": [],
+      "chapter_id": "3",
+      "chapter_title": "คิว (Queues)",
+      "section_id": "3.2",
+      "section_title": "การดำเนินการของคิว",
+      "best_topic_id": "3.2",
+      "best_topic_title": "การดำเนินการของคิว",
+      "base_score": 0.598599,
+      "rrf_score": 0.672598,
+      "pre_vlm_score": 0.622279,
+      "vlm_score": 0.0,
+      "final_score": 0.392036,
+      "figure_score": 0.0,
+      "operation_score": 0.5,
+      "structure_score": 1.0,
+      "region_quality_score": 0.872138,
+      "vlm_reason": "ภาพไม่แสดงการดำเนินการแทนคิวด้วยวงกลม",
+      "preview": "- remove (q); เขียนแทนความหมายของการดึงข้อมูล D ออกจากคิว q ทางด้าน front\n\n- remove (q); เขียนแทนความหมายของการดึงข้อมูล E ออกจากคิว q ทางด้าน front\n\n3. ตรวจสอบว่ามีข้อมูลอยู่ภายในคิวหรือไม่ (Empty หรือ Underflow) จะไม่สามารถดึงข้อมูลออกจากคิวว่าง หรือคิวที่ไม่มีข้อมูลได้ ดังนั้น"
+    },
+    {
+      "rank": 7,
+      "id": "data_structure_data_ch1_to_ch5.pdf:37:region:1",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:37",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 37,
+      "image_path": "assets/figure_regions/page_037_region_01.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 249,
+          "y0": 270,
+          "x1": 973,
+          "y1": 405
+        },
+        "bbox_norm": {
+          "x0": 0.195601,
+          "y0": 0.15,
+          "x1": 0.764336,
+          "y1": 0.225
+        },
+        "area_ratio": 0.042655,
+        "ink_ratio": 0.090127,
+        "is_fallback": false
+      },
+      "structure_labels": [
+        "Queue"
+      ],
+      "tags": [
+        "queue"
+      ],
+      "figure_refs": [
+        "ภาพที่ 3.8",
+        "ภาพที่ 3.9",
+        "ภาพที่ 3.10",
+        "ภาพที่ 3.11"
+      ],
+      "chapter_id": "3",
+      "chapter_title": "คิว (Queues)",
+      "section_id": "3.2",
+      "section_title": "การดำเนินการของคิว",
+      "best_topic_id": "3.2",
+      "best_topic_title": "การดำเนินการของคิว",
+      "base_score": 0.586124,
+      "rrf_score": 0.658439,
+      "pre_vlm_score": 0.609265,
+      "vlm_score": 0.0,
+      "final_score": 0.383837,
+      "figure_score": 0.0,
+      "operation_score": 1.0,
+      "structure_score": 1.0,
+      "region_quality_score": 0.930296,
+      "vlm_reason": "ภาพไม่แสดงข้อมูลเกี่ยวกับการดำเนินการแทนคิวด้วยวงกลม",
+      "preview": "# ภาพที่ 3.8 แท่นคิวด้วยวงกลม\n\nจากภาพที่ 3.8 สามารถแสดงลักษณะของคิวแบบวงกลม เพื่อให้เกิดความเข้าใจได้ง่าย ดังภาพที่ 3.9\n\n> [Structure: Queue]\n> - [1] connects to -> [2]\n> - [2] connects to -> [3]\n> - [3] connects to -> [4]\n> - [4] connects to -> [5]\n> - [5] connects to -> [6]\n> -"
+    },
+    {
+      "rank": 8,
+      "id": "data_structure_data_ch1_to_ch5.pdf:31:region:3",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:31",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 31,
+      "image_path": "assets/figure_regions/page_031_region_03.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 294,
+          "y0": 387,
+          "x1": 956,
+          "y1": 433
+        },
+        "bbox_norm": {
+          "x0": 0.230951,
+          "y0": 0.215,
+          "x1": 0.750982,
+          "y1": 0.240556
+        },
+        "area_ratio": 0.01329,
+        "ink_ratio": 0.101767,
+        "is_fallback": false
+      },
+      "structure_labels": [
+        "Queue",
+        "Queue",
+        "Queue"
+      ],
+      "tags": [
+        "array",
+        "queue"
+      ],
+      "figure_refs": [
+        "ภาพที่ 3.4",
+        "ภาพที่ 3.5",
+        "ภาพที่ 3.6"
+      ],
+      "chapter_id": "3",
+      "chapter_title": "คิว (Queues)",
+      "section_id": "3.3",
+      "section_title": "การแทนคิวด้วยอาร์เรย์",
+      "best_topic_id": "3.3",
+      "best_topic_title": "การแทนคิวด้วยอาร์เรย์",
+      "base_score": 0.635255,
+      "rrf_score": 0.713198,
+      "pre_vlm_score": 0.520197,
+      "vlm_score": 0.0,
+      "final_score": 0.327724,
+      "figure_score": 0.0,
+      "operation_score": 0.55,
+      "structure_score": 1.0,
+      "region_quality_score": 0.957456,
+      "vlm_reason": "ภาพไม่แสดงการดำเนินการแทนคิวด้วยวงกลม",
+      "preview": "# 3.3 การแทนคิวด้วยอาร์เรย์\n\nการแทนโครงสร้างคิวด้วยอาร์เรย์ จะต้องกำหนดจำนวนของการจองพื้นที่บนหน่วยความจำ และใช้อาร์เรย์ในการนำข้อมูลเข้าด้านท้ายและนำข้อมูลออกในส่วนหัว ดังภาพที่ 3.4\n\n> [Structure: Queue]\n> - ข้อมูลเข้า\n> - ข้อมูลออก\n\n**ภาพที่ 3.4 การนำเข้าและนำออกข้อมูลในโครงสร้"
+    }
+  ],
+  "grounding": [
+    {
+      "id": "data_structure_data_ch1_to_ch5.pdf:36:page:0",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:36",
+      "grounding": {
+        "parsed": {
+          "structure_type": "การดำเนินการแทนคิวด้วยวงกลม (Circular Queue)",
+          "grounded_facts": [
+            "การดำเนินการ Enqueue ข้อมูลเข้าคิว แต่คิวไม่สามารถที่จะ Enqueue ข้อมูลเข้าได้เพราะคิวจะระดับ rear = maxsize หมายถึง พื้นที่ในการจัดข้อมูลเต็ม หรือ Queue Full",
+            "การใช้คิววงกลมสามารถแก้ปัญหาการมีพื้นที่ว่างในส่วนหัวของคิว ซึ่งทำให้สามารถ Enqueue ข้อมูลเข้ามาข้างคิวได้จนกว่าคิวเต็มจริง ๆ"
+          ],
+          "limitations": "['ภาพไม่แสดงข้อมูลเกี่ยวกับการดำเนินการ Enqueue หรือ Dequeue ที่เกี่ยวข้องกับคิววงกลม', 'ภาพไม่แสดงข้อมูลเกี่ยวกับการจัดการกับคิวที่เต็มหรือว่าง']"
+        },
+        "raw": "```json\n{\n  \"structure_type\": \"การดำเนินการแทนคิวด้วยวงกลม (Circular Queue)\",\n  \"grounded_facts\": [\n    \"การดำเนินการ Enqueue ข้อมูลเข้าคิว แต่คิวไม่สามารถที่จะ Enqueue ข้อมูลเข้าได้เพราะคิวจะระดับ rear = maxsize หมายถึง พื้นที่ในการจัดข้อมูลเต็ม หรือ Queue Full\",\n    \"การใช้คิววงกลมสามารถแก้ปัญหาการมีพื้นที่ว่างในส่วนหัวของคิว ซึ่งทำให้สามารถ Enqueue ข้อมูลเข้ามาข้างคิวได้จนกว่าคิวเต็มจริง ๆ\"\n  ],\n  \"limitations\": [\n    \"ภาพไม่แสดงข้อมูลเกี่ยวกับการดำเนินการ Enqueue หรือ Dequeue ที่เกี่ยวข้องกับคิววงกลม\",\n    \"ภาพไม่แสดงข้อมูลเกี่ยวกับการจัดการกับคิวที่เต็มหรือว่าง\"\n  ]\n}\n```",
+        "samples": [
+          {
+            "parsed": {
+              "structure_type": "การดำเนินการแทนคิวด้วยวงกลม (Circular Queue)",
+              "grounded_facts": [
+                "การดำเนินการ Enqueue ข้อมูลเข้าคิว แต่คิวไม่สามารถที่จะ Enqueue ข้อมูลเข้าได้เพราะคิวจะระดับ rear = maxsize หมายถึง พื้นที่ในการจัดข้อมูลเต็ม หรือ Queue Full",
+                "การใช้คิววงกลมสามารถแก้ปัญหาการมีพื้นที่ว่างในส่วนหัวของคิว ซึ่งทำให้สามารถ Enqueue ข้อมูลเข้ามาข้างคิวได้จนกว่าคิวเต็มจริง ๆ"
+              ],
+              "limitations": [
+                "ภาพไม่แสดงข้อมูลเกี่ยวกับการดำเนินการ Enqueue หรือ Dequeue ที่เกี่ยวข้องกับคิววงกลม",
+                "ภาพไม่แสดงข้อมูลเกี่ยวกับการจัดการกับคิวที่เต็มหรือว่าง"
+              ]
+            },
+            "raw": "```json\n{\n  \"structure_type\": \"การดำเนินการแทนคิวด้วยวงกลม (Circular Queue)\",\n  \"grounded_facts\": [\n    \"การดำเนินการ Enqueue ข้อมูลเข้าคิว แต่คิวไม่สามารถที่จะ Enqueue ข้อมูลเข้าได้เพราะคิวจะระดับ rear = maxsize หมายถึง พื้นที่ในการจัดข้อมูลเต็ม หรือ Queue Full\",\n    \"การใช้คิววงกลมสามารถแก้ปัญหาการมีพื้นที่ว่างในส่วนหัวของคิว ซึ่งทำให้สามารถ Enqueue ข้อมูลเข้ามาข้างคิวได้จนกว่าคิวเต็มจริง ๆ\"\n  ],\n  \"limitations\": [\n    \"ภาพไม่แสดงข้อมูลเกี่ยวกับการดำเนินการ Enqueue หรือ Dequeue ที่เกี่ยวข้องกับคิววงกลม\",\n    \"ภาพไม่แสดงข้อมูลเกี่ยวกับการจัดการกับคิวที่เต็มหรือว่าง\"\n  ]\n}\n```"
+          },
+          {
+            "parsed": {
+              "structure_type": "การดำเนินการแทนคิวด้วยวงกลม (Circular Queue)",
+              "grounded_facts": [
+                "การดำเนินการ Enqueue ข้อมูลเข้าคิว แต่คิวไม่สามารถที่จะ Enqueue ข้อมูลเข้าได้เพราะคิวจะระดับ rear = maxsize หมายถึง พื้นที่ในการจัดข้อมูลเต็ม หรือ Queue Full",
+                "การใช้คิววงกลมสามารถแก้ปัญหาการมีพื้นที่ว่างในส่วนหัวของคิว ซึ่งทำให้สามารถ Enqueue ข้อมูลเข้ามาข้างคิวได้จนกว่าคิวเต็มจริง ๆ"
+              ],
+              "limitations": [
+                "ภาพไม่แสดงข้อมูลเกี่ยวกับการดำเนินการ Enqueue หรือ Dequeue ที่เกี่ยวข้องกับวงกลม",
+                "ภาพไม่แสดงข้อมูลเกี่ยวกับการจัดการกับคิวที่มีพื้นที่ว่าง"
+              ]
+            },
+            "raw": "```json\n{\n  \"structure_type\": \"การดำเนินการแทนคิวด้วยวงกลม (Circular Queue)\",\n  \"grounded_facts\": [\n    \"การดำเนินการ Enqueue ข้อมูลเข้าคิว แต่คิวไม่สามารถที่จะ Enqueue ข้อมูลเข้าได้เพราะคิวจะระดับ rear = maxsize หมายถึง พื้นที่ในการจัดข้อมูลเต็ม หรือ Queue Full\",\n    \"การใช้คิววงกลมสามารถแก้ปัญหาการมีพื้นที่ว่างในส่วนหัวของคิว ซึ่งทำให้สามารถ Enqueue ข้อมูลเข้ามาข้างคิวได้จนกว่าคิวเต็มจริง ๆ\"\n  ],\n  \"limitations\": [\n    \"ภาพไม่แสดงข้อมูลเกี่ยวกับการดำเนินการ Enqueue หรือ Dequeue ที่เกี่ยวข้องกับวงกลม\",\n    \"ภาพไม่แสดงข้อมูลเกี่ยวกับการจัดการกับคิวที่มีพื้นที่ว่าง\"\n  ]\n}\n```"
+          }
+        ],
+        "consensus": {
+          "runs": 2,
+          "valid_runs": 2,
+          "vote_threshold": 2,
+          "raw_unique_facts": 2,
+          "consensus_facts": 2,
+          "agreement_ratio": 1.0
+        }
+      }
+    }
+  ]
+}

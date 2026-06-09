@@ -1,0 +1,144 @@
+{
+  "oos_questions": [
+    {
+      "id": "OOS-01",
+      "category": "Topic Shift - Algorithm",
+      "question": "อธิบายขั้นตอนวิธีการเรียงลำดับแบบ Quick Sort และ Bubble Sort ที่มีประสิทธิภาพต่างกันอย่างไร",
+      "reason": "เอกสารกล่าวถึง Algorithm แบบทั่วไป แต่ไม่มีรายละเอียดของ Sorting Algorithms",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-02",
+      "category": "Topic Shift - Graph",
+      "question": "โครงสร้างข้อมูลแบบ Graph และ BFS/DFS Traversal ใช้สำหรับแก้ปัญหาอะไร",
+      "reason": "เอกสารไม่มีเนื้อหาเกี่ยวกับ Graph Data Structure",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-03",
+      "category": "Topic Shift - Hash Table",
+      "question": "Hash Table และการจัดการ Collision ด้วย Chaining และ Open Addressing",
+      "reason": "Hash Table ไม่อยู่ในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-04",
+      "category": "Domain Shift - Programming",
+      "question": "เขียนโปรแกรม Python ดึงข้อมูลจาก API และบันทึกลง Database",
+      "reason": "คำถามเกี่ยวกับการเขียนโปรแกรม ไม่ใช่ Data Structure ตามเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-05",
+      "category": "Domain Shift - General Knowledge",
+      "question": "ภูมิอากาศของประเทศไทยในฤดูมรสุมเป็นอย่างไร",
+      "reason": "คำถามทั่วไป ไม่เกี่ยวข้องกับเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-06",
+      "category": "Domain Shift - AI/ML",
+      "question": "Convolutional Neural Network (CNN) ใช้สำหรับจัดประเภทภาพอย่างไร",
+      "reason": "เอกสารไม่มีเนื้อหา Machine Learning",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-07",
+      "category": "Temporal Shift - Latest Tech",
+      "question": "เทรนด์ Generative AI และ Large Language Models ในปี 2024 มีอะไรใหม่",
+      "reason": "ข้อมูลปัจจุบันไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-08",
+      "category": "Temporal Shift - Future",
+      "question": "โครงสร้างข้อมูลแบบ Quantum Data Structure มีอะไรบ้าง",
+      "reason": "เทคโนโลยีใหม่ที่ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-09",
+      "category": "Adversarial Edge - Wrong Context",
+      "question": "Binary Search Tree ใช้สำหรับจัดเก็บรูปภาพใน CNN อย่างไร",
+      "reason": "ผสมคำศัพท์ที่มีอยู่ในเอกสารแต่ใช้ในบริบทผิด",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-10",
+      "category": "Adversarial Edge - Similar Terms",
+      "question": "การใช้ Stack ในการ Train Neural Network แบบ Backpropagation",
+      "reason": "มีคำว่า Stack ในเอกสาร แต่ใช้ในบริบทที่ผิด",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-11",
+      "category": "Adversarial Edge - Partial Match",
+      "question": "การใช้ Queue จัดการ Batch Processing ใน Apache Kafka",
+      "reason": "Queue มีในเอกสาร แต่ไม่เกี่ยวกับ Kafka",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-12",
+      "category": "Topic Shift - Advanced Data Structure",
+      "question": "AVL Tree และ Red-Black Tree ต่างกันอย่างไร",
+      "reason": "Balanced BST ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-13",
+      "category": "Topic Shift - File Structure",
+      "question": "B-Tree และ B+ Tree ใช้ในระบบฐานข้อมูลอย่างไร",
+      "reason": "B-Tree ไม่มีในเอกสาร (มีแค่ Binary Tree)",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-14",
+      "category": "Domain Shift - Math",
+      "question": "วิธีการแก้สมการเชิงเส้นด้วย Gaussian Elimination",
+      "reason": "คณิตศาสตร์ ไม่ใช่ Data Structure",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-15",
+      "category": "Domain Shift - Hardware",
+      "question": "สถาปัตยกรรม CPU แบบ RISC และ CISC ต่างกันอย่างไร",
+      "reason": "Computer Architecture ไม่ใช่เนื้อหาเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-16",
+      "category": "Topic Shift - Database",
+      "question": "SQL Joins มีกี่ประเภท และใช้งานอย่างไร",
+      "reason": "เอกสารกล่าวถึง Database เบื้องต้น แต่ไม่มี SQL",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-17",
+      "category": "Topic Shift - Web Dev",
+      "question": "การทำงานของ REST API และ GraphQL ต่างกันอย่างไร",
+      "reason": "Web Development ไม่มีในเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-18",
+      "category": "Adversarial Edge - Misleading",
+      "question": "Array ใน JavaScript กับ Array ในภาษา C ต่างกันอย่างไร",
+      "reason": "มีคำว่า Array แต่เป็นภาษาโปรแกรมมิ่ง ไม่ใช่โครงสร้างข้อมูลทฤษฎี",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-19",
+      "category": "Domain Shift - Career",
+      "question": "สมัครงาน Software Engineer ที่บริษัท Tech ต้องเตรียมตัวอย่างไร",
+      "reason": "คำถามทั่วไป ไม่เกี่ยวกับเอกสาร",
+      "expected_behavior": "Abstain"
+    },
+    {
+      "id": "OOS-20",
+      "category": "Temporal Shift - History",
+      "question": "ประวัติศาสตร์การพัฒนาภาษา C ตั้งแต่เริ่มต้นจนถึงปัจจุบัน",
+      "reason": "ประวัติศาสตร์ไม่ใช่เนื้อหาเอกสาร",
+      "expected_behavior": "Abstain"
+    }
+  ]
+}

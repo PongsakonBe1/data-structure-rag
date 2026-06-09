@@ -1,0 +1,26 @@
+{
+  "input": "eval/ocr_gt_first_mid_last_v3_structured_full.jsonl",
+  "output": "eval/ocr_gt_first_mid_last_v3_structured_full.jsonl",
+  "set_value": true,
+  "selector": {
+    "all": false,
+    "pages": [
+      1,
+      2,
+      5,
+      6,
+      7,
+      8
+    ],
+    "splits": [],
+    "only_unverified": false
+  },
+  "counts": {
+    "total_rows": 18,
+    "matched_rows": 4,
+    "changed_rows": 0,
+    "skipped_only_unverified_rows": 0
+  },
+  "annotator": "human_reviewer",
+  "timestamp_utc": "2026-02-18T06:00:36.896122+00:00"
+}

@@ -1,0 +1,4536 @@
+{
+  "topics": [
+    {
+      "topic_id": "1",
+      "title": "โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+      "level": 1,
+      "parent_id": null,
+      "path": [
+        "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)"
+      ],
+      "tokens": [
+        "โครงสร้าง",
+        "ข้อมูล",
+        "เบื้องต้น",
+        "introduction",
+        "to",
+        "data",
+        "structure"
+      ]
+    },
+    {
+      "topic_id": "1.1",
+      "title": "ความหมายโครงสร้างข้อมูลและอัลกอริทึม",
+      "level": 2,
+      "parent_id": "1",
+      "path": [
+        "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+        "1.1 ความหมายโครงสร้างข้อมูลและอัลกอริทึม"
+      ],
+      "tokens": [
+        "ความหมาย",
+        "โครงสร้าง",
+        "ข้อมูล",
+        "และ",
+        "อัลกอริทึม"
+      ]
+    },
+    {
+      "topic_id": "1.1.1",
+      "title": "ความหมายของโครงสร้างข้อมูล (Data Structure)",
+      "level": 3,
+      "parent_id": "1.1",
+      "path": [
+        "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+        "1.1 ความหมายโครงสร้างข้อมูลและอัลกอริทึม",
+        "1.1.1 ความหมายของโครงสร้างข้อมูล (Data Structure)"
+      ],
+      "tokens": [
+        "ความหมาย",
+        "ของ",
+        "โครงสร้าง",
+        "ข้อมูล",
+        "data",
+        "structure"
+      ]
+    },
+    {
+      "topic_id": "1.1.2",
+      "title": "ความหมายของอัลกอริทึม (Algorithm)",
+      "level": 3,
+      "parent_id": "1.1",
+      "path": [
+        "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+        "1.1 ความหมายโครงสร้างข้อมูลและอัลกอริทึม",
+        "1.1.2 ความหมายของอัลกอริทึม (Algorithm)"
+      ],
+      "tokens": [
+        "ความหมาย",
+        "ของ",
+        "อัลกอริทึม",
+        "algorithm"
+      ]
+    },
+    {
+      "topic_id": "1.1.3",
+      "title": "ความสำคัญของการเลือกโครงสร้างข้อมูลที่เหมาะสมกับอัลกอริทึม",
+      "level": 3,
+      "parent_id": "1.1",
+      "path": [
+        "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+        "1.1 ความหมายโครงสร้างข้อมูลและอัลกอริทึม",
+        "1.1.3 ความสำคัญของการเลือกโครงสร้างข้อมูลที่เหมาะสมกับอัลกอริทึม"
+      ],
+      "tokens": [
+        "ความสำคัญ",
+        "ของ",
+        "การ",
+        "เลือก",
+        "โครงสร้าง",
+        "ข้อมูล",
+        "ที่",
+        "เหมาะสม",
+        "กับ",
+        "อัลกอริทึม"
+      ]
+    },
+    {
+      "topic_id": "1.2",
+      "title": "โครงสร้างข้อมูลพื้นฐาน",
+      "level": 2,
+      "parent_id": "1",
+      "path": [
+        "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+        "1.2 โครงสร้างข้อมูลพื้นฐาน"
+      ],
+      "tokens": [
+        "โครงสร้าง",
+        "ข้อมูล",
+        "พื้นฐาน"
+      ]
+    },
+    {
+      "topic_id": "1.2.1",
+      "title": "บิต (Bit)",
+      "level": 3,
+      "parent_id": "1.2",
+      "path": [
+        "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+        "1.2 โครงสร้างข้อมูลพื้นฐาน",
+        "1.2.1 บิต (Bit)"
+      ],
+      "tokens": [
+        "บิต",
+        "bit"
+      ]
+    },
+    {
+      "topic_id": "1.2.2",
+      "title": "ไบต์ (Byte)",
+      "level": 3,
+      "parent_id": "1.2",
+      "path": [
+        "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+        "1.2 โครงสร้างข้อมูลพื้นฐาน",
+        "1.2.2 ไบต์ (Byte)"
+      ],
+      "tokens": [
+        "ไบต์",
+        "byte"
+      ]
+    },
+    {
+      "topic_id": "1.2.3",
+      "title": "ฟิลด์ (Field)",
+      "level": 3,
+      "parent_id": "1.2",
+      "path": [
+        "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+        "1.2 โครงสร้างข้อมูลพื้นฐาน",
+        "1.2.3 ฟิลด์ (Field)"
+      ],
+      "tokens": [
+        "ฟิลด์",
+        "field"
+      ]
+    },
+    {
+      "topic_id": "1.2.4",
+      "title": "เรคอร์ด (Record)",
+      "level": 3,
+      "parent_id": "1.2",
+      "path": [
+        "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+        "1.2 โครงสร้างข้อมูลพื้นฐาน",
+        "1.2.4 เรคอร์ด (Record)"
+      ],
+      "tokens": [
+        "เร",
+        "คอร์ด",
+        "record"
+      ]
+    },
+    {
+      "topic_id": "1.2.5",
+      "title": "ไฟล์ (File)",
+      "level": 3,
+      "parent_id": "1.2",
+      "path": [
+        "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+        "1.2 โครงสร้างข้อมูลพื้นฐาน",
+        "1.2.5 ไฟล์ (File)"
+      ],
+      "tokens": [
+        "ไฟล์",
+        "file"
+      ]
+    },
+    {
+      "topic_id": "1.2.6",
+      "title": "ฐานข้อมูล (Database)",
+      "level": 3,
+      "parent_id": "1.2",
+      "path": [
+        "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+        "1.2 โครงสร้างข้อมูลพื้นฐาน",
+        "1.2.6 ฐานข้อมูล (Database)"
+      ],
+      "tokens": [
+        "ฐานข้อมูล",
+        "database"
+      ]
+    },
+    {
+      "topic_id": "1.3",
+      "title": "ประเภทของโครงสร้างข้อมูลและอัลกอริทึม",
+      "level": 2,
+      "parent_id": "1",
+      "path": [
+        "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+        "1.3 ประเภทของโครงสร้างข้อมูลและอัลกอริทึม"
+      ],
+      "tokens": [
+        "ประเภท",
+        "ของ",
+        "โครงสร้าง",
+        "ข้อมูล",
+        "และ",
+        "อัลกอริทึม"
+      ]
+    },
+    {
+      "topic_id": "1.3.1",
+      "title": "ประเภทโครงสร้างข้อมูล",
+      "level": 3,
+      "parent_id": "1.3",
+      "path": [
+        "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+        "1.3 ประเภทของโครงสร้างข้อมูลและอัลกอริทึม",
+        "1.3.1 ประเภทโครงสร้างข้อมูล"
+      ],
+      "tokens": [
+        "ประเภท",
+        "โครงสร้าง",
+        "ข้อมูล"
+      ]
+    },
+    {
+      "topic_id": "1.3.2",
+      "title": "ประเภทอัลกอริทึม",
+      "level": 3,
+      "parent_id": "1.3",
+      "path": [
+        "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+        "1.3 ประเภทของโครงสร้างข้อมูลและอัลกอริทึม",
+        "1.3.2 ประเภทอัลกอริทึม"
+      ],
+      "tokens": [
+        "ประเภท",
+        "อัลกอริทึม"
+      ]
+    },
+    {
+      "topic_id": "1.3.3",
+      "title": "เครื่องมือพัฒนา",
+      "level": 3,
+      "parent_id": "1.3",
+      "path": [
+        "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+        "1.3 ประเภทของโครงสร้างข้อมูลและอัลกอริทึม",
+        "1.3.3 เครื่องมือพัฒนา"
+      ],
+      "tokens": [
+        "เครื่องมือ",
+        "พัฒนา"
+      ]
+    },
+    {
+      "topic_id": "1.4",
+      "title": "โครงสร้างการควบคุมพื้นฐาน",
+      "level": 2,
+      "parent_id": "1",
+      "path": [
+        "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+        "1.4 โครงสร้างการควบคุมพื้นฐาน"
+      ],
+      "tokens": [
+        "โครงสร้าง",
+        "การควบคุม",
+        "พื้นฐาน"
+      ]
+    },
+    {
+      "topic_id": "1.4.1",
+      "title": "โครงสร้างแบบเรียงลำดับ (Sequence)",
+      "level": 3,
+      "parent_id": "1.4",
+      "path": [
+        "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+        "1.4 โครงสร้างการควบคุมพื้นฐาน",
+        "1.4.1 โครงสร้างแบบเรียงลำดับ (Sequence)"
+      ],
+      "tokens": [
+        "โครงสร้าง",
+        "แบบ",
+        "เรียงลำดับ",
+        "sequence"
+      ]
+    },
+    {
+      "topic_id": "1.4.2",
+      "title": "โครงสร้างแบบเลือกการทำงาน (Selection)",
+      "level": 3,
+      "parent_id": "1.4",
+      "path": [
+        "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+        "1.4 โครงสร้างการควบคุมพื้นฐาน",
+        "1.4.2 โครงสร้างแบบเลือกการทำงาน (Selection)"
+      ],
+      "tokens": [
+        "โครงสร้าง",
+        "แบบ",
+        "เลือก",
+        "การทำงาน",
+        "selection"
+      ]
+    },
+    {
+      "topic_id": "1.4.3",
+      "title": "โครงสร้างแบบทำซ้ำ (Repetition)",
+      "level": 3,
+      "parent_id": "1.4",
+      "path": [
+        "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+        "1.4 โครงสร้างการควบคุมพื้นฐาน",
+        "1.4.3 โครงสร้างแบบทำซ้ำ (Repetition)"
+      ],
+      "tokens": [
+        "โครงสร้าง",
+        "แบบ",
+        "ทำซ้ำ",
+        "repetition"
+      ]
+    },
+    {
+      "topic_id": "2",
+      "title": "อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+      "level": 1,
+      "parent_id": null,
+      "path": [
+        "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)"
+      ],
+      "tokens": [
+        "อาร์",
+        "เรย์",
+        "และ",
+        "ลิงค์",
+        "ลิสต์",
+        "array",
+        "and",
+        "linked",
+        "list"
+      ]
+    },
+    {
+      "topic_id": "2.1",
+      "title": "โครงสร้างอาร์เรย์ (Array)",
+      "level": 2,
+      "parent_id": "2",
+      "path": [
+        "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+        "2.1 โครงสร้างอาร์เรย์ (Array)"
+      ],
+      "tokens": [
+        "โครงสร้าง",
+        "อาร์",
+        "เรย์",
+        "array"
+      ]
+    },
+    {
+      "topic_id": "2.1.1",
+      "title": "ความหมายและลักษณะของอาร์เรย์",
+      "level": 3,
+      "parent_id": "2.1",
+      "path": [
+        "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+        "2.1 โครงสร้างอาร์เรย์ (Array)",
+        "2.1.1 ความหมายและลักษณะของอาร์เรย์"
+      ],
+      "tokens": [
+        "ความหมาย",
+        "และ",
+        "ลักษณะ",
+        "ของ",
+        "อาร์",
+        "เรย์"
+      ]
+    },
+    {
+      "topic_id": "2.2",
+      "title": "ชนิดของอาร์เรย์",
+      "level": 2,
+      "parent_id": "2",
+      "path": [
+        "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+        "2.2 ชนิดของอาร์เรย์"
+      ],
+      "tokens": [
+        "ชนิด",
+        "ของ",
+        "อาร์",
+        "เรย์"
+      ]
+    },
+    {
+      "topic_id": "2.2.1",
+      "title": "อาร์เรย์ 1 มิติ",
+      "level": 3,
+      "parent_id": "2.2",
+      "path": [
+        "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+        "2.2 ชนิดของอาร์เรย์",
+        "2.2.1 อาร์เรย์ 1 มิติ"
+      ],
+      "tokens": [
+        "อาร์",
+        "เรย์",
+        "1",
+        "มิติ"
+      ]
+    },
+    {
+      "topic_id": "2.1.2",
+      "title": "อาร์เรย์ 2 มิติ",
+      "level": 3,
+      "parent_id": "2.1",
+      "path": [
+        "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+        "2.1 โครงสร้างอาร์เรย์ (Array)",
+        "2.1.2 อาร์เรย์ 2 มิติ"
+      ],
+      "tokens": [
+        "อาร์",
+        "เรย์",
+        "2",
+        "มิติ"
+      ]
+    },
+    {
+      "topic_id": "2.3",
+      "title": "โครงสร้างลิงค์ลิสต์ (Linked List)",
+      "level": 2,
+      "parent_id": "2",
+      "path": [
+        "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+        "2.3 โครงสร้างลิงค์ลิสต์ (Linked List)"
+      ],
+      "tokens": [
+        "โครงสร้าง",
+        "ลิงค์",
+        "ลิสต์",
+        "linked",
+        "list"
+      ]
+    },
+    {
+      "topic_id": "2.3.1",
+      "title": "ความหมายของลิงค์ลิสต์",
+      "level": 3,
+      "parent_id": "2.3",
+      "path": [
+        "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+        "2.3 โครงสร้างลิงค์ลิสต์ (Linked List)",
+        "2.3.1 ความหมายของลิงค์ลิสต์"
+      ],
+      "tokens": [
+        "ความหมาย",
+        "ของ",
+        "ลิงค์",
+        "ลิสต์"
+      ]
+    },
+    {
+      "topic_id": "2.3.2",
+      "title": "โครงสร้างของลิงค์ลิสต์",
+      "level": 3,
+      "parent_id": "2.3",
+      "path": [
+        "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+        "2.3 โครงสร้างลิงค์ลิสต์ (Linked List)",
+        "2.3.2 โครงสร้างของลิงค์ลิสต์"
+      ],
+      "tokens": [
+        "โครงสร้าง",
+        "ของ",
+        "ลิงค์",
+        "ลิสต์"
+      ]
+    },
+    {
+      "topic_id": "2.4",
+      "title": "ลิงค์ลิสต์แบบทิศทางเดียว",
+      "level": 2,
+      "parent_id": "2",
+      "path": [
+        "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+        "2.4 ลิงค์ลิสต์แบบทิศทางเดียว"
+      ],
+      "tokens": [
+        "ลิงค์",
+        "ลิสต์",
+        "แบบ",
+        "ทิศ",
+        "ทางเดียว"
+      ]
+    },
+    {
+      "topic_id": "2.4.1",
+      "title": "โครงสร้างลิงค์ลิสต์แบบทิศทางเดียว",
+      "level": 3,
+      "parent_id": "2.4",
+      "path": [
+        "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+        "2.4 ลิงค์ลิสต์แบบทิศทางเดียว",
+        "2.4.1 โครงสร้างลิงค์ลิสต์แบบทิศทางเดียว"
+      ],
+      "tokens": [
+        "โครงสร้าง",
+        "ลิงค์",
+        "ลิสต์",
+        "แบบ",
+        "ทิศ",
+        "ทางเดียว"
+      ]
+    },
+    {
+      "topic_id": "2.4.2",
+      "title": "การทำงานของลิงค์ลิสต์แบบทิศทางเดียว",
+      "level": 3,
+      "parent_id": "2.4",
+      "path": [
+        "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+        "2.4 ลิงค์ลิสต์แบบทิศทางเดียว",
+        "2.4.2 การทำงานของลิงค์ลิสต์แบบทิศทางเดียว"
+      ],
+      "tokens": [
+        "การทำงาน",
+        "ของ",
+        "ลิงค์",
+        "ลิสต์",
+        "แบบ",
+        "ทิศ",
+        "ทางเดียว"
+      ]
+    },
+    {
+      "topic_id": "3",
+      "title": "คิว (Queues)",
+      "level": 1,
+      "parent_id": null,
+      "path": [
+        "3 คิว (Queues)"
+      ],
+      "tokens": [
+        "คิว",
+        "queues"
+      ]
+    },
+    {
+      "topic_id": "3.1",
+      "title": "โครงสร้างพื้นฐานของคิว",
+      "level": 2,
+      "parent_id": "3",
+      "path": [
+        "3 คิว (Queues)",
+        "3.1 โครงสร้างพื้นฐานของคิว"
+      ],
+      "tokens": [
+        "โครงสร้างพื้นฐาน",
+        "ของ",
+        "คิว"
+      ]
+    },
+    {
+      "topic_id": "3.2",
+      "title": "การดำเนินการของคิว",
+      "level": 2,
+      "parent_id": "3",
+      "path": [
+        "3 คิว (Queues)",
+        "3.2 การดำเนินการของคิว"
+      ],
+      "tokens": [
+        "การ",
+        "ดำเนินการ",
+        "ของ",
+        "คิว"
+      ]
+    },
+    {
+      "topic_id": "3.2.1",
+      "title": "การนำข้อมูลเข้า (Enqueue)",
+      "level": 3,
+      "parent_id": "3.2",
+      "path": [
+        "3 คิว (Queues)",
+        "3.2 การดำเนินการของคิว",
+        "3.2.1 การนำข้อมูลเข้า (Enqueue)"
+      ],
+      "tokens": [
+        "การนำ",
+        "ข้อมูลเข้า",
+        "enqueue"
+      ]
+    },
+    {
+      "topic_id": "3.2.2",
+      "title": "การนำข้อมูลออก (Dequeue)",
+      "level": 3,
+      "parent_id": "3.2",
+      "path": [
+        "3 คิว (Queues)",
+        "3.2 การดำเนินการของคิว",
+        "3.2.2 การนำข้อมูลออก (Dequeue)"
+      ],
+      "tokens": [
+        "การนำ",
+        "ข้อมูลออก",
+        "dequeue"
+      ]
+    },
+    {
+      "topic_id": "3.3",
+      "title": "การแทนคิวด้วยอาร์เรย์",
+      "level": 2,
+      "parent_id": "3",
+      "path": [
+        "3 คิว (Queues)",
+        "3.3 การแทนคิวด้วยอาร์เรย์"
+      ],
+      "tokens": [
+        "การ",
+        "แทน",
+        "คิว",
+        "ด้วย",
+        "อาร์",
+        "เรย์"
+      ]
+    },
+    {
+      "topic_id": "3.3.1",
+      "title": "โครงสร้างของการแทนคิวด้วยอาร์เรย์",
+      "level": 3,
+      "parent_id": "3.3",
+      "path": [
+        "3 คิว (Queues)",
+        "3.3 การแทนคิวด้วยอาร์เรย์",
+        "3.3.1 โครงสร้างของการแทนคิวด้วยอาร์เรย์"
+      ],
+      "tokens": [
+        "โครงสร้าง",
+        "ของ",
+        "การ",
+        "แทน",
+        "คิว",
+        "ด้วย",
+        "อาร์",
+        "เรย์"
+      ]
+    },
+    {
+      "topic_id": "3.3.2",
+      "title": "การดำเนินการแทนคิวด้วยอาร์เรย์",
+      "level": 3,
+      "parent_id": "3.3",
+      "path": [
+        "3 คิว (Queues)",
+        "3.3 การแทนคิวด้วยอาร์เรย์",
+        "3.3.2 การดำเนินการแทนคิวด้วยอาร์เรย์"
+      ],
+      "tokens": [
+        "การ",
+        "ดำเนินการ",
+        "แทน",
+        "คิว",
+        "ด้วย",
+        "อาร์",
+        "เรย์"
+      ]
+    },
+    {
+      "topic_id": "3.3.3",
+      "title": "การดำเนินการแทนคิวด้วยวงกลม",
+      "level": 3,
+      "parent_id": "3.3",
+      "path": [
+        "3 คิว (Queues)",
+        "3.3 การแทนคิวด้วยอาร์เรย์",
+        "3.3.3 การดำเนินการแทนคิวด้วยวงกลม"
+      ],
+      "tokens": [
+        "การ",
+        "ดำเนินการ",
+        "แทน",
+        "คิว",
+        "ด้วย",
+        "วงกลม"
+      ]
+    },
+    {
+      "topic_id": "4",
+      "title": "สแตก (Stack)",
+      "level": 1,
+      "parent_id": null,
+      "path": [
+        "4 สแตก (Stack)"
+      ],
+      "tokens": [
+        "ส",
+        "แตก",
+        "stack"
+      ]
+    },
+    {
+      "topic_id": "4.1",
+      "title": "โครงสร้างของสแตก",
+      "level": 2,
+      "parent_id": "4",
+      "path": [
+        "4 สแตก (Stack)",
+        "4.1 โครงสร้างของสแตก"
+      ],
+      "tokens": [
+        "โครงสร้าง",
+        "ของ",
+        "ส",
+        "แตก"
+      ]
+    },
+    {
+      "topic_id": "4.2",
+      "title": "การดำเนินการของสแตก",
+      "level": 2,
+      "parent_id": "4",
+      "path": [
+        "4 สแตก (Stack)",
+        "4.2 การดำเนินการของสแตก"
+      ],
+      "tokens": [
+        "การ",
+        "ดำเนินการ",
+        "ของ",
+        "ส",
+        "แตก"
+      ]
+    },
+    {
+      "topic_id": "4.2.1",
+      "title": "การนำข้อมูลเข้า (Push)",
+      "level": 3,
+      "parent_id": "4.2",
+      "path": [
+        "4 สแตก (Stack)",
+        "4.2 การดำเนินการของสแตก",
+        "4.2.1 การนำข้อมูลเข้า (Push)"
+      ],
+      "tokens": [
+        "การนำ",
+        "ข้อมูลเข้า",
+        "push"
+      ]
+    },
+    {
+      "topic_id": "4.2.2",
+      "title": "การดึงข้อมูลออก (Pop)",
+      "level": 3,
+      "parent_id": "4.2",
+      "path": [
+        "4 สแตก (Stack)",
+        "4.2 การดำเนินการของสแตก",
+        "4.2.2 การดึงข้อมูลออก (Pop)"
+      ],
+      "tokens": [
+        "การ",
+        "ดึง",
+        "ข้อมูลออก",
+        "pop"
+      ]
+    },
+    {
+      "topic_id": "4.3",
+      "title": "การแทนสแตกด้วยอาร์เรย์",
+      "level": 2,
+      "parent_id": "4",
+      "path": [
+        "4 สแตก (Stack)",
+        "4.3 การแทนสแตกด้วยอาร์เรย์"
+      ],
+      "tokens": [
+        "การ",
+        "แทน",
+        "ส",
+        "แตก",
+        "ด้วย",
+        "อาร์",
+        "เรย์"
+      ]
+    },
+    {
+      "topic_id": "4.3.1",
+      "title": "การดำเนินการแทนสแตกด้วยอาร์เรย์",
+      "level": 3,
+      "parent_id": "4.3",
+      "path": [
+        "4 สแตก (Stack)",
+        "4.3 การแทนสแตกด้วยอาร์เรย์",
+        "4.3.1 การดำเนินการแทนสแตกด้วยอาร์เรย์"
+      ],
+      "tokens": [
+        "การ",
+        "ดำเนินการ",
+        "แทน",
+        "ส",
+        "แตก",
+        "ด้วย",
+        "อาร์",
+        "เรย์"
+      ]
+    },
+    {
+      "topic_id": "4.3.2",
+      "title": "การประยุกต์ใช้งานสแตกในการเปลงรูปนิพจน์ทางคณิตศาสตร์",
+      "level": 3,
+      "parent_id": "4.3",
+      "path": [
+        "4 สแตก (Stack)",
+        "4.3 การแทนสแตกด้วยอาร์เรย์",
+        "4.3.2 การประยุกต์ใช้งานสแตกในการเปลงรูปนิพจน์ทางคณิตศาสตร์"
+      ],
+      "tokens": [
+        "การ",
+        "ประยุกต์",
+        "ใช้งาน",
+        "ส",
+        "แตก",
+        "ใน",
+        "การ",
+        "เปล",
+        "ง",
+        "รูป",
+        "นิพจน์",
+        "ทาง",
+        "คณิตศาสตร์"
+      ]
+    },
+    {
+      "topic_id": "5",
+      "title": "ไบนารีทรี (Binary Tree)",
+      "level": 1,
+      "parent_id": null,
+      "path": [
+        "5 ไบนารีทรี (Binary Tree)"
+      ],
+      "tokens": [
+        "ไบนารี",
+        "ท",
+        "รี",
+        "binary",
+        "tree"
+      ]
+    },
+    {
+      "topic_id": "5.1",
+      "title": "โครงสร้างทรี",
+      "level": 2,
+      "parent_id": "5",
+      "path": [
+        "5 ไบนารีทรี (Binary Tree)",
+        "5.1 โครงสร้างทรี"
+      ],
+      "tokens": [
+        "โครงสร้าง",
+        "ท",
+        "รี"
+      ]
+    },
+    {
+      "topic_id": "5.2",
+      "title": "ชนิดของทรี",
+      "level": 2,
+      "parent_id": "5",
+      "path": [
+        "5 ไบนารีทรี (Binary Tree)",
+        "5.2 ชนิดของทรี"
+      ],
+      "tokens": [
+        "ชนิด",
+        "ของ",
+        "ท",
+        "รี"
+      ]
+    },
+    {
+      "topic_id": "5.2.1",
+      "title": "ทรีทั่วไป (General Tree)",
+      "level": 3,
+      "parent_id": "5.2",
+      "path": [
+        "5 ไบนารีทรี (Binary Tree)",
+        "5.2 ชนิดของทรี",
+        "5.2.1 ทรีทั่วไป (General Tree)"
+      ],
+      "tokens": [
+        "ท",
+        "รี",
+        "ทั่วไป",
+        "general",
+        "tree"
+      ]
+    },
+    {
+      "topic_id": "5.2.2",
+      "title": "ไบนารีทรี (Binary Tree)",
+      "level": 3,
+      "parent_id": "5.2",
+      "path": [
+        "5 ไบนารีทรี (Binary Tree)",
+        "5.2 ชนิดของทรี",
+        "5.2.2 ไบนารีทรี (Binary Tree)"
+      ],
+      "tokens": [
+        "ไบนารี",
+        "ท",
+        "รี",
+        "binary",
+        "tree"
+      ]
+    },
+    {
+      "topic_id": "5.2.3",
+      "title": "ไบนารีทรีแบบสมบูรณ์ (Complete Binary Tree)",
+      "level": 3,
+      "parent_id": "5.2",
+      "path": [
+        "5 ไบนารีทรี (Binary Tree)",
+        "5.2 ชนิดของทรี",
+        "5.2.3 ไบนารีทรีแบบสมบูรณ์ (Complete Binary Tree)"
+      ],
+      "tokens": [
+        "ไบนารี",
+        "ท",
+        "รี",
+        "แบบ",
+        "สมบูรณ์",
+        "complete",
+        "binary",
+        "tree"
+      ]
+    },
+    {
+      "topic_id": "5.3",
+      "title": "การเข้าถึงข้อมูลในไบนารีทรี",
+      "level": 2,
+      "parent_id": "5",
+      "path": [
+        "5 ไบนารีทรี (Binary Tree)",
+        "5.3 การเข้าถึงข้อมูลในไบนารีทรี"
+      ],
+      "tokens": [
+        "การ",
+        "เข้าถึง",
+        "ข้อมูล",
+        "ใน",
+        "ไบนารี",
+        "ท",
+        "รี"
+      ]
+    },
+    {
+      "topic_id": "5.3.1",
+      "title": "แบบพรีออร์เดอร์ (Preorder: Node-Left-Right)",
+      "level": 3,
+      "parent_id": "5.3",
+      "path": [
+        "5 ไบนารีทรี (Binary Tree)",
+        "5.3 การเข้าถึงข้อมูลในไบนารีทรี",
+        "5.3.1 แบบพรีออร์เดอร์ (Preorder: Node-Left-Right)"
+      ],
+      "tokens": [
+        "แบบ",
+        "พ",
+        "รี",
+        "ออร์เดอร์",
+        "preorder",
+        "node-left-right"
+      ]
+    },
+    {
+      "topic_id": "5.3.2",
+      "title": "แบบอินออร์เดอร์ (Inorder: Left-Node-Right)",
+      "level": 3,
+      "parent_id": "5.3",
+      "path": [
+        "5 ไบนารีทรี (Binary Tree)",
+        "5.3 การเข้าถึงข้อมูลในไบนารีทรี",
+        "5.3.2 แบบอินออร์เดอร์ (Inorder: Left-Node-Right)"
+      ],
+      "tokens": [
+        "แบบ",
+        "อิน",
+        "ออร์เดอร์",
+        "inorder",
+        "left-node-right"
+      ]
+    },
+    {
+      "topic_id": "5.3.3",
+      "title": "แบบโพสต์ออร์เดอร์ (Postorder: Left-Right-Node)",
+      "level": 3,
+      "parent_id": "5.3",
+      "path": [
+        "5 ไบนารีทรี (Binary Tree)",
+        "5.3 การเข้าถึงข้อมูลในไบนารีทรี",
+        "5.3.3 แบบโพสต์ออร์เดอร์ (Postorder: Left-Right-Node)"
+      ],
+      "tokens": [
+        "แบบ",
+        "โพสต์",
+        "ออร์เดอร์",
+        "postorder",
+        "left-right-node"
+      ]
+    },
+    {
+      "topic_id": "5.4",
+      "title": "ทรีกับการดำเนินการด้านนิพจน์",
+      "level": 2,
+      "parent_id": "5",
+      "path": [
+        "5 ไบนารีทรี (Binary Tree)",
+        "5.4 ทรีกับการดำเนินการด้านนิพจน์"
+      ],
+      "tokens": [
+        "ท",
+        "รี",
+        "กับ",
+        "การ",
+        "ดำเนินการ",
+        "ด้าน",
+        "นิพจน์"
+      ]
+    },
+    {
+      "topic_id": "5.5",
+      "title": "การแทนโครงสร้างไบนารีทรีแบบซีเควนเชียล",
+      "level": 2,
+      "parent_id": "5",
+      "path": [
+        "5 ไบนารีทรี (Binary Tree)",
+        "5.5 การแทนโครงสร้างไบนารีทรีแบบซีเควนเชียล"
+      ],
+      "tokens": [
+        "การ",
+        "แทน",
+        "โครงสร้าง",
+        "ไบนารี",
+        "ท",
+        "รี",
+        "แบบ",
+        "ซี",
+        "เค",
+        "วน",
+        "เชีย",
+        "ล"
+      ]
+    },
+    {
+      "topic_id": "5.6",
+      "title": "การแปลงทรีเป็นไบนารีทรี",
+      "level": 2,
+      "parent_id": "5",
+      "path": [
+        "5 ไบนารีทรี (Binary Tree)",
+        "5.6 การแปลงทรีเป็นไบนารีทรี"
+      ],
+      "tokens": [
+        "การ",
+        "แปลง",
+        "ท",
+        "รี",
+        "เป็น",
+        "ไบนารี",
+        "ท",
+        "รี"
+      ]
+    }
+  ],
+  "topic_to_pages": {
+    "1": [
+      "data_structure_data_ch1_to_ch5.pdf:1",
+      "data_structure_data_ch1_to_ch5.pdf:8",
+      "data_structure_data_ch1_to_ch5.pdf:9",
+      "data_structure_data_ch1_to_ch5.pdf:10",
+      "data_structure_data_ch1_to_ch5.pdf:11",
+      "data_structure_data_ch1_to_ch5.pdf:12",
+      "data_structure_data_ch1_to_ch5.pdf:26",
+      "data_structure_data_ch1_to_ch5.pdf:27",
+      "data_structure_data_ch1_to_ch5.pdf:39"
+    ],
+    "1.1": [
+      "data_structure_data_ch1_to_ch5.pdf:1",
+      "data_structure_data_ch1_to_ch5.pdf:2",
+      "data_structure_data_ch1_to_ch5.pdf:6",
+      "data_structure_data_ch1_to_ch5.pdf:8",
+      "data_structure_data_ch1_to_ch5.pdf:10",
+      "data_structure_data_ch1_to_ch5.pdf:11",
+      "data_structure_data_ch1_to_ch5.pdf:12",
+      "data_structure_data_ch1_to_ch5.pdf:33",
+      "data_structure_data_ch1_to_ch5.pdf:38",
+      "data_structure_data_ch1_to_ch5.pdf:46",
+      "data_structure_data_ch1_to_ch5.pdf:48"
+    ],
+    "1.1.1": [
+      "data_structure_data_ch1_to_ch5.pdf:1"
+    ],
+    "1.1.2": [],
+    "1.1.3": [
+      "data_structure_data_ch1_to_ch5.pdf:2"
+    ],
+    "1.2": [
+      "data_structure_data_ch1_to_ch5.pdf:3",
+      "data_structure_data_ch1_to_ch5.pdf:7"
+    ],
+    "1.2.1": [],
+    "1.2.2": [],
+    "1.2.3": [
+      "data_structure_data_ch1_to_ch5.pdf:3"
+    ],
+    "1.2.4": [
+      "data_structure_data_ch1_to_ch5.pdf:3"
+    ],
+    "1.2.5": [
+      "data_structure_data_ch1_to_ch5.pdf:3"
+    ],
+    "1.2.6": [],
+    "1.3": [
+      "data_structure_data_ch1_to_ch5.pdf:2",
+      "data_structure_data_ch1_to_ch5.pdf:4",
+      "data_structure_data_ch1_to_ch5.pdf:5",
+      "data_structure_data_ch1_to_ch5.pdf:6",
+      "data_structure_data_ch1_to_ch5.pdf:19",
+      "data_structure_data_ch1_to_ch5.pdf:26",
+      "data_structure_data_ch1_to_ch5.pdf:27",
+      "data_structure_data_ch1_to_ch5.pdf:33",
+      "data_structure_data_ch1_to_ch5.pdf:38",
+      "data_structure_data_ch1_to_ch5.pdf:46",
+      "data_structure_data_ch1_to_ch5.pdf:48",
+      "data_structure_data_ch1_to_ch5.pdf:53"
+    ],
+    "1.3.1": [
+      "data_structure_data_ch1_to_ch5.pdf:4",
+      "data_structure_data_ch1_to_ch5.pdf:5",
+      "data_structure_data_ch1_to_ch5.pdf:46",
+      "data_structure_data_ch1_to_ch5.pdf:48"
+    ],
+    "1.3.2": [
+      "data_structure_data_ch1_to_ch5.pdf:4",
+      "data_structure_data_ch1_to_ch5.pdf:5"
+    ],
+    "1.3.3": [],
+    "1.4": [
+      "data_structure_data_ch1_to_ch5.pdf:6",
+      "data_structure_data_ch1_to_ch5.pdf:7"
+    ],
+    "1.4.1": [
+      "data_structure_data_ch1_to_ch5.pdf:7"
+    ],
+    "1.4.2": [
+      "data_structure_data_ch1_to_ch5.pdf:8",
+      "data_structure_data_ch1_to_ch5.pdf:9"
+    ],
+    "1.4.3": [
+      "data_structure_data_ch1_to_ch5.pdf:9",
+      "data_structure_data_ch1_to_ch5.pdf:10",
+      "data_structure_data_ch1_to_ch5.pdf:11"
+    ],
+    "2": [
+      "data_structure_data_ch1_to_ch5.pdf:23",
+      "data_structure_data_ch1_to_ch5.pdf:28"
+    ],
+    "2.1": [
+      "data_structure_data_ch1_to_ch5.pdf:17",
+      "data_structure_data_ch1_to_ch5.pdf:18",
+      "data_structure_data_ch1_to_ch5.pdf:20",
+      "data_structure_data_ch1_to_ch5.pdf:21"
+    ],
+    "2.1.1": [
+      "data_structure_data_ch1_to_ch5.pdf:22"
+    ],
+    "2.2": [
+      "data_structure_data_ch1_to_ch5.pdf:14",
+      "data_structure_data_ch1_to_ch5.pdf:15",
+      "data_structure_data_ch1_to_ch5.pdf:16"
+    ],
+    "2.2.1": [
+      "data_structure_data_ch1_to_ch5.pdf:12",
+      "data_structure_data_ch1_to_ch5.pdf:14",
+      "data_structure_data_ch1_to_ch5.pdf:15",
+      "data_structure_data_ch1_to_ch5.pdf:16",
+      "data_structure_data_ch1_to_ch5.pdf:17",
+      "data_structure_data_ch1_to_ch5.pdf:18",
+      "data_structure_data_ch1_to_ch5.pdf:19",
+      "data_structure_data_ch1_to_ch5.pdf:20",
+      "data_structure_data_ch1_to_ch5.pdf:21",
+      "data_structure_data_ch1_to_ch5.pdf:64"
+    ],
+    "2.1.2": [
+      "data_structure_data_ch1_to_ch5.pdf:14",
+      "data_structure_data_ch1_to_ch5.pdf:15",
+      "data_structure_data_ch1_to_ch5.pdf:16",
+      "data_structure_data_ch1_to_ch5.pdf:17",
+      "data_structure_data_ch1_to_ch5.pdf:18",
+      "data_structure_data_ch1_to_ch5.pdf:19",
+      "data_structure_data_ch1_to_ch5.pdf:20",
+      "data_structure_data_ch1_to_ch5.pdf:21"
+    ],
+    "2.3": [
+      "data_structure_data_ch1_to_ch5.pdf:23",
+      "data_structure_data_ch1_to_ch5.pdf:28"
+    ],
+    "2.3.1": [
+      "data_structure_data_ch1_to_ch5.pdf:22"
+    ],
+    "2.3.2": [
+      "data_structure_data_ch1_to_ch5.pdf:22",
+      "data_structure_data_ch1_to_ch5.pdf:23",
+      "data_structure_data_ch1_to_ch5.pdf:24"
+    ],
+    "2.4": [
+      "data_structure_data_ch1_to_ch5.pdf:24",
+      "data_structure_data_ch1_to_ch5.pdf:25"
+    ],
+    "2.4.1": [
+      "data_structure_data_ch1_to_ch5.pdf:24",
+      "data_structure_data_ch1_to_ch5.pdf:25"
+    ],
+    "2.4.2": [
+      "data_structure_data_ch1_to_ch5.pdf:25",
+      "data_structure_data_ch1_to_ch5.pdf:26",
+      "data_structure_data_ch1_to_ch5.pdf:27",
+      "data_structure_data_ch1_to_ch5.pdf:28"
+    ],
+    "3": [
+      "data_structure_data_ch1_to_ch5.pdf:29",
+      "data_structure_data_ch1_to_ch5.pdf:35",
+      "data_structure_data_ch1_to_ch5.pdf:36",
+      "data_structure_data_ch1_to_ch5.pdf:39"
+    ],
+    "3.1": [
+      "data_structure_data_ch1_to_ch5.pdf:35",
+      "data_structure_data_ch1_to_ch5.pdf:39",
+      "data_structure_data_ch1_to_ch5.pdf:49"
+    ],
+    "3.2": [
+      "data_structure_data_ch1_to_ch5.pdf:29",
+      "data_structure_data_ch1_to_ch5.pdf:30",
+      "data_structure_data_ch1_to_ch5.pdf:33",
+      "data_structure_data_ch1_to_ch5.pdf:34",
+      "data_structure_data_ch1_to_ch5.pdf:35",
+      "data_structure_data_ch1_to_ch5.pdf:36",
+      "data_structure_data_ch1_to_ch5.pdf:37",
+      "data_structure_data_ch1_to_ch5.pdf:38",
+      "data_structure_data_ch1_to_ch5.pdf:50"
+    ],
+    "3.2.1": [
+      "data_structure_data_ch1_to_ch5.pdf:31",
+      "data_structure_data_ch1_to_ch5.pdf:37"
+    ],
+    "3.2.2": [
+      "data_structure_data_ch1_to_ch5.pdf:29",
+      "data_structure_data_ch1_to_ch5.pdf:30"
+    ],
+    "3.3": [
+      "data_structure_data_ch1_to_ch5.pdf:31",
+      "data_structure_data_ch1_to_ch5.pdf:32",
+      "data_structure_data_ch1_to_ch5.pdf:34"
+    ],
+    "3.3.1": [
+      "data_structure_data_ch1_to_ch5.pdf:31",
+      "data_structure_data_ch1_to_ch5.pdf:32"
+    ],
+    "3.3.2": [
+      "data_structure_data_ch1_to_ch5.pdf:32",
+      "data_structure_data_ch1_to_ch5.pdf:34"
+    ],
+    "3.3.3": [
+      "data_structure_data_ch1_to_ch5.pdf:30",
+      "data_structure_data_ch1_to_ch5.pdf:36",
+      "data_structure_data_ch1_to_ch5.pdf:37"
+    ],
+    "4": [
+      "data_structure_data_ch1_to_ch5.pdf:40",
+      "data_structure_data_ch1_to_ch5.pdf:41",
+      "data_structure_data_ch1_to_ch5.pdf:42",
+      "data_structure_data_ch1_to_ch5.pdf:43",
+      "data_structure_data_ch1_to_ch5.pdf:44",
+      "data_structure_data_ch1_to_ch5.pdf:45",
+      "data_structure_data_ch1_to_ch5.pdf:46",
+      "data_structure_data_ch1_to_ch5.pdf:47",
+      "data_structure_data_ch1_to_ch5.pdf:48",
+      "data_structure_data_ch1_to_ch5.pdf:49"
+    ],
+    "4.1": [
+      "data_structure_data_ch1_to_ch5.pdf:40",
+      "data_structure_data_ch1_to_ch5.pdf:45",
+      "data_structure_data_ch1_to_ch5.pdf:47"
+    ],
+    "4.2": [
+      "data_structure_data_ch1_to_ch5.pdf:41",
+      "data_structure_data_ch1_to_ch5.pdf:42",
+      "data_structure_data_ch1_to_ch5.pdf:45",
+      "data_structure_data_ch1_to_ch5.pdf:47",
+      "data_structure_data_ch1_to_ch5.pdf:50"
+    ],
+    "4.2.1": [
+      "data_structure_data_ch1_to_ch5.pdf:43"
+    ],
+    "4.2.2": [
+      "data_structure_data_ch1_to_ch5.pdf:40",
+      "data_structure_data_ch1_to_ch5.pdf:41",
+      "data_structure_data_ch1_to_ch5.pdf:42",
+      "data_structure_data_ch1_to_ch5.pdf:44"
+    ],
+    "4.3": [],
+    "4.3.1": [
+      "data_structure_data_ch1_to_ch5.pdf:43"
+    ],
+    "4.3.2": [
+      "data_structure_data_ch1_to_ch5.pdf:44"
+    ],
+    "5": [
+      "data_structure_data_ch1_to_ch5.pdf:51",
+      "data_structure_data_ch1_to_ch5.pdf:52",
+      "data_structure_data_ch1_to_ch5.pdf:54",
+      "data_structure_data_ch1_to_ch5.pdf:55",
+      "data_structure_data_ch1_to_ch5.pdf:56",
+      "data_structure_data_ch1_to_ch5.pdf:57",
+      "data_structure_data_ch1_to_ch5.pdf:62",
+      "data_structure_data_ch1_to_ch5.pdf:63",
+      "data_structure_data_ch1_to_ch5.pdf:65",
+      "data_structure_data_ch1_to_ch5.pdf:66"
+    ],
+    "5.1": [
+      "data_structure_data_ch1_to_ch5.pdf:51",
+      "data_structure_data_ch1_to_ch5.pdf:53",
+      "data_structure_data_ch1_to_ch5.pdf:55",
+      "data_structure_data_ch1_to_ch5.pdf:57",
+      "data_structure_data_ch1_to_ch5.pdf:58",
+      "data_structure_data_ch1_to_ch5.pdf:59",
+      "data_structure_data_ch1_to_ch5.pdf:60",
+      "data_structure_data_ch1_to_ch5.pdf:61",
+      "data_structure_data_ch1_to_ch5.pdf:63",
+      "data_structure_data_ch1_to_ch5.pdf:64",
+      "data_structure_data_ch1_to_ch5.pdf:65",
+      "data_structure_data_ch1_to_ch5.pdf:66",
+      "data_structure_data_ch1_to_ch5.pdf:67"
+    ],
+    "5.2": [
+      "data_structure_data_ch1_to_ch5.pdf:52"
+    ],
+    "5.2.1": [
+      "data_structure_data_ch1_to_ch5.pdf:52"
+    ],
+    "5.2.2": [
+      "data_structure_data_ch1_to_ch5.pdf:13",
+      "data_structure_data_ch1_to_ch5.pdf:54",
+      "data_structure_data_ch1_to_ch5.pdf:55",
+      "data_structure_data_ch1_to_ch5.pdf:62"
+    ],
+    "5.2.3": [
+      "data_structure_data_ch1_to_ch5.pdf:67"
+    ],
+    "5.3": [
+      "data_structure_data_ch1_to_ch5.pdf:13",
+      "data_structure_data_ch1_to_ch5.pdf:56",
+      "data_structure_data_ch1_to_ch5.pdf:58",
+      "data_structure_data_ch1_to_ch5.pdf:59",
+      "data_structure_data_ch1_to_ch5.pdf:60",
+      "data_structure_data_ch1_to_ch5.pdf:62"
+    ],
+    "5.3.1": [
+      "data_structure_data_ch1_to_ch5.pdf:56"
+    ],
+    "5.3.2": [],
+    "5.3.3": [
+      "data_structure_data_ch1_to_ch5.pdf:57"
+    ],
+    "5.4": [
+      "data_structure_data_ch1_to_ch5.pdf:61"
+    ],
+    "5.5": [],
+    "5.6": [
+      "data_structure_data_ch1_to_ch5.pdf:13",
+      "data_structure_data_ch1_to_ch5.pdf:49",
+      "data_structure_data_ch1_to_ch5.pdf:50",
+      "data_structure_data_ch1_to_ch5.pdf:51",
+      "data_structure_data_ch1_to_ch5.pdf:53",
+      "data_structure_data_ch1_to_ch5.pdf:54",
+      "data_structure_data_ch1_to_ch5.pdf:55",
+      "data_structure_data_ch1_to_ch5.pdf:58",
+      "data_structure_data_ch1_to_ch5.pdf:59",
+      "data_structure_data_ch1_to_ch5.pdf:60",
+      "data_structure_data_ch1_to_ch5.pdf:61",
+      "data_structure_data_ch1_to_ch5.pdf:62",
+      "data_structure_data_ch1_to_ch5.pdf:63",
+      "data_structure_data_ch1_to_ch5.pdf:64",
+      "data_structure_data_ch1_to_ch5.pdf:65",
+      "data_structure_data_ch1_to_ch5.pdf:66",
+      "data_structure_data_ch1_to_ch5.pdf:67"
+    ]
+  },
+  "page_to_best_topic": {
+    "data_structure_data_ch1_to_ch5.pdf:1": "1.1",
+    "data_structure_data_ch1_to_ch5.pdf:2": "1.1",
+    "data_structure_data_ch1_to_ch5.pdf:3": "1.2",
+    "data_structure_data_ch1_to_ch5.pdf:4": "1.3",
+    "data_structure_data_ch1_to_ch5.pdf:5": "1.3",
+    "data_structure_data_ch1_to_ch5.pdf:6": "1.1",
+    "data_structure_data_ch1_to_ch5.pdf:7": "1.4",
+    "data_structure_data_ch1_to_ch5.pdf:8": "1",
+    "data_structure_data_ch1_to_ch5.pdf:9": "1",
+    "data_structure_data_ch1_to_ch5.pdf:10": "1.1",
+    "data_structure_data_ch1_to_ch5.pdf:11": "1.1",
+    "data_structure_data_ch1_to_ch5.pdf:12": "1",
+    "data_structure_data_ch1_to_ch5.pdf:13": "5.6",
+    "data_structure_data_ch1_to_ch5.pdf:14": "2.2",
+    "data_structure_data_ch1_to_ch5.pdf:15": "2.2",
+    "data_structure_data_ch1_to_ch5.pdf:16": "2.2",
+    "data_structure_data_ch1_to_ch5.pdf:17": "2.2.1",
+    "data_structure_data_ch1_to_ch5.pdf:18": "2.2.1",
+    "data_structure_data_ch1_to_ch5.pdf:19": "2.2.1",
+    "data_structure_data_ch1_to_ch5.pdf:20": "2.2.1",
+    "data_structure_data_ch1_to_ch5.pdf:21": "2.2.1",
+    "data_structure_data_ch1_to_ch5.pdf:22": "2.3.1",
+    "data_structure_data_ch1_to_ch5.pdf:23": "2.3",
+    "data_structure_data_ch1_to_ch5.pdf:24": "2.4.1",
+    "data_structure_data_ch1_to_ch5.pdf:25": "2.4.2",
+    "data_structure_data_ch1_to_ch5.pdf:26": "2.4.2",
+    "data_structure_data_ch1_to_ch5.pdf:27": "2.4.2",
+    "data_structure_data_ch1_to_ch5.pdf:28": "2.4.2",
+    "data_structure_data_ch1_to_ch5.pdf:29": "3",
+    "data_structure_data_ch1_to_ch5.pdf:30": "3.2",
+    "data_structure_data_ch1_to_ch5.pdf:31": "3.3",
+    "data_structure_data_ch1_to_ch5.pdf:32": "3.3",
+    "data_structure_data_ch1_to_ch5.pdf:33": "3.2",
+    "data_structure_data_ch1_to_ch5.pdf:34": "3.2",
+    "data_structure_data_ch1_to_ch5.pdf:35": "3.2",
+    "data_structure_data_ch1_to_ch5.pdf:36": "3.3.3",
+    "data_structure_data_ch1_to_ch5.pdf:37": "3.2",
+    "data_structure_data_ch1_to_ch5.pdf:38": "3.2",
+    "data_structure_data_ch1_to_ch5.pdf:39": "3",
+    "data_structure_data_ch1_to_ch5.pdf:40": "4",
+    "data_structure_data_ch1_to_ch5.pdf:41": "4",
+    "data_structure_data_ch1_to_ch5.pdf:42": "4",
+    "data_structure_data_ch1_to_ch5.pdf:43": "4",
+    "data_structure_data_ch1_to_ch5.pdf:44": "4",
+    "data_structure_data_ch1_to_ch5.pdf:45": "4.2",
+    "data_structure_data_ch1_to_ch5.pdf:46": "4",
+    "data_structure_data_ch1_to_ch5.pdf:47": "4",
+    "data_structure_data_ch1_to_ch5.pdf:48": "4",
+    "data_structure_data_ch1_to_ch5.pdf:49": "4",
+    "data_structure_data_ch1_to_ch5.pdf:50": "4.2",
+    "data_structure_data_ch1_to_ch5.pdf:51": "5",
+    "data_structure_data_ch1_to_ch5.pdf:52": "5.2",
+    "data_structure_data_ch1_to_ch5.pdf:53": "5.6",
+    "data_structure_data_ch1_to_ch5.pdf:54": "5",
+    "data_structure_data_ch1_to_ch5.pdf:55": "5",
+    "data_structure_data_ch1_to_ch5.pdf:56": "5",
+    "data_structure_data_ch1_to_ch5.pdf:57": "5",
+    "data_structure_data_ch1_to_ch5.pdf:58": "5.6",
+    "data_structure_data_ch1_to_ch5.pdf:59": "5.6",
+    "data_structure_data_ch1_to_ch5.pdf:60": "5.6",
+    "data_structure_data_ch1_to_ch5.pdf:61": "5.4",
+    "data_structure_data_ch1_to_ch5.pdf:62": "5",
+    "data_structure_data_ch1_to_ch5.pdf:63": "5",
+    "data_structure_data_ch1_to_ch5.pdf:64": "5.6",
+    "data_structure_data_ch1_to_ch5.pdf:65": "5.6",
+    "data_structure_data_ch1_to_ch5.pdf:66": "5.6",
+    "data_structure_data_ch1_to_ch5.pdf:67": "5.6"
+  },
+  "page_to_top_topics": {
+    "data_structure_data_ch1_to_ch5.pdf:1": [
+      "1.1.1",
+      "1.1",
+      "1"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:2": [
+      "1.1",
+      "1.3",
+      "1.1.3"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:3": [
+      "1.2.5",
+      "1.2.4",
+      "1.2.3"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:4": [
+      "1.3.2",
+      "1.3.1",
+      "1.3"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:5": [
+      "1.3.2",
+      "1.3.1",
+      "1.3"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:6": [
+      "1.1",
+      "1.4",
+      "1.3"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:7": [
+      "1.4.1",
+      "1.4",
+      "1.2"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:8": [
+      "1",
+      "1.4.2",
+      "1.1"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:9": [
+      "1.4.3",
+      "1",
+      "1.4.2"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:10": [
+      "1.1",
+      "1.4.3",
+      "1"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:11": [
+      "1.1",
+      "1.4.3",
+      "1"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:12": [
+      "1",
+      "2.2.1",
+      "1.1"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:13": [
+      "5.6",
+      "5.3",
+      "5.2.2"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:14": [
+      "2.2.1",
+      "2.2",
+      "2.1.2"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:15": [
+      "2.2.1",
+      "2.2",
+      "2.1.2"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:16": [
+      "2.2",
+      "2.2.1",
+      "2.1.2"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:17": [
+      "2.2.1",
+      "2.1.2",
+      "2.1"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:18": [
+      "2.2.1",
+      "2.1.2",
+      "2.1"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:19": [
+      "2.2.1",
+      "2.1.2",
+      "1.3"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:20": [
+      "2.2.1",
+      "2.1.2",
+      "2.1"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:21": [
+      "2.2.1",
+      "2.1.2",
+      "2.1"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:22": [
+      "2.3.1",
+      "2.3.2",
+      "2.1.1"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:23": [
+      "2.3.2",
+      "2.3",
+      "2"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:24": [
+      "2.4.1",
+      "2.4",
+      "2.3.2"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:25": [
+      "2.4.2",
+      "2.4.1",
+      "2.4"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:26": [
+      "2.4.2",
+      "1.3",
+      "1"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:27": [
+      "2.4.2",
+      "1.3",
+      "1"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:28": [
+      "2.4.2",
+      "2",
+      "2.3"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:29": [
+      "3",
+      "3.2.2",
+      "3.2"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:30": [
+      "3.2.2",
+      "3.2",
+      "3.3.3"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:31": [
+      "3.3.1",
+      "3.3",
+      "3.2.1"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:32": [
+      "3.3.2",
+      "3.3",
+      "3.3.1"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:33": [
+      "1.1",
+      "1.3",
+      "3.2"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:34": [
+      "3.3.2",
+      "3.3",
+      "3.2"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:35": [
+      "3.2",
+      "3",
+      "3.1"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:36": [
+      "3.3.3",
+      "3.2",
+      "3"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:37": [
+      "3.2.1",
+      "3.2",
+      "3.3.3"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:38": [
+      "1.3",
+      "1.1",
+      "3.2"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:39": [
+      "3",
+      "1",
+      "3.1"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:40": [
+      "4.1",
+      "4",
+      "4.2.2"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:41": [
+      "4.2",
+      "4",
+      "4.2.2"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:42": [
+      "4.2.2",
+      "4.2",
+      "4"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:43": [
+      "4",
+      "4.3.1",
+      "4.2.1"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:44": [
+      "4",
+      "4.3.2",
+      "4.2.2"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:45": [
+      "4.2",
+      "4.1",
+      "4"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:46": [
+      "1.3",
+      "1.1",
+      "1.3.1"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:47": [
+      "4.2",
+      "4.1",
+      "4"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:48": [
+      "1.3",
+      "1.1",
+      "1.3.1"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:49": [
+      "4",
+      "5.6",
+      "3.1"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:50": [
+      "3.2",
+      "4.2",
+      "5.6"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:51": [
+      "5.1",
+      "5",
+      "5.6"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:52": [
+      "5.2.1",
+      "5.2",
+      "5"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:53": [
+      "5.6",
+      "5.1",
+      "1.3"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:54": [
+      "5.2.2",
+      "5",
+      "5.6"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:55": [
+      "5.6",
+      "5.2.2",
+      "5.1"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:56": [
+      "5.3",
+      "5",
+      "5.3.1"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:57": [
+      "5",
+      "5.1",
+      "5.3.3"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:58": [
+      "5.6",
+      "5.1",
+      "5.3"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:59": [
+      "5.6",
+      "5.3",
+      "5.1"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:60": [
+      "5.6",
+      "5.3",
+      "5.1"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:61": [
+      "5.4",
+      "5.6",
+      "5.1"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:62": [
+      "5.6",
+      "5.3",
+      "5.2.2"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:63": [
+      "5",
+      "5.6",
+      "5.1"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:64": [
+      "5.6",
+      "5.1",
+      "2.2.1"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:65": [
+      "5.6",
+      "5",
+      "5.1"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:66": [
+      "5.6",
+      "5.1",
+      "5"
+    ],
+    "data_structure_data_ch1_to_ch5.pdf:67": [
+      "5.6",
+      "5.1",
+      "5.2.3"
+    ]
+  },
+  "pages": [
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:1",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 1,
+      "best_topic": "1.1",
+      "best_topic_path": [
+        "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+        "1.1 ความหมายโครงสร้างข้อมูลและอัลกอริทึม"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "1.1.1",
+          "score": 1.45,
+          "path": [
+            "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+            "1.1 ความหมายโครงสร้างข้อมูลและอัลกอริทึม",
+            "1.1.1 ความหมายของโครงสร้างข้อมูล (Data Structure)"
+          ]
+        },
+        {
+          "topic_id": "1.1",
+          "score": 1.45,
+          "path": [
+            "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+            "1.1 ความหมายโครงสร้างข้อมูลและอัลกอริทึม"
+          ]
+        },
+        {
+          "topic_id": "1",
+          "score": 1.414286,
+          "path": [
+            "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)"
+          ]
+        }
+      ],
+      "heading_hints": [
+        "1",
+        "1.1",
+        "1.1.1",
+        "1.1.2"
+      ]
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:2",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 2,
+      "best_topic": "1.1",
+      "best_topic_path": [
+        "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+        "1.1 ความหมายโครงสร้างข้อมูลและอัลกอริทึม"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "1.1",
+          "score": 1.0,
+          "path": [
+            "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+            "1.1 ความหมายโครงสร้างข้อมูลและอัลกอริทึม"
+          ]
+        },
+        {
+          "topic_id": "1.3",
+          "score": 0.833333,
+          "path": [
+            "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+            "1.3 ประเภทของโครงสร้างข้อมูลและอัลกอริทึม"
+          ]
+        },
+        {
+          "topic_id": "1.1.3",
+          "score": 0.8,
+          "path": [
+            "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+            "1.1 ความหมายโครงสร้างข้อมูลและอัลกอริทึม",
+            "1.1.3 ความสำคัญของการเลือกโครงสร้างข้อมูลที่เหมาะสมกับอัลกอริทึม"
+          ]
+        }
+      ],
+      "heading_hints": []
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:3",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 3,
+      "best_topic": "1.2",
+      "best_topic_path": [
+        "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+        "1.2 โครงสร้างข้อมูลพื้นฐาน"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "1.2.5",
+          "score": 1.45,
+          "path": [
+            "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+            "1.2 โครงสร้างข้อมูลพื้นฐาน",
+            "1.2.5 ไฟล์ (File)"
+          ]
+        },
+        {
+          "topic_id": "1.2.4",
+          "score": 1.45,
+          "path": [
+            "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+            "1.2 โครงสร้างข้อมูลพื้นฐาน",
+            "1.2.4 เรคอร์ด (Record)"
+          ]
+        },
+        {
+          "topic_id": "1.2.3",
+          "score": 1.45,
+          "path": [
+            "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+            "1.2 โครงสร้างข้อมูลพื้นฐาน",
+            "1.2.3 ฟิลด์ (Field)"
+          ]
+        }
+      ],
+      "heading_hints": [
+        "1",
+        "1.2",
+        "1.2.1",
+        "1.2.2",
+        "1.2.3",
+        "1.2.4",
+        "1.2.5",
+        "1.2.6"
+      ]
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:4",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 4,
+      "best_topic": "1.3",
+      "best_topic_path": [
+        "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+        "1.3 ประเภทของโครงสร้างข้อมูลและอัลกอริทึม"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "1.3.2",
+          "score": 1.45,
+          "path": [
+            "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+            "1.3 ประเภทของโครงสร้างข้อมูลและอัลกอริทึม",
+            "1.3.2 ประเภทอัลกอริทึม"
+          ]
+        },
+        {
+          "topic_id": "1.3.1",
+          "score": 1.45,
+          "path": [
+            "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+            "1.3 ประเภทของโครงสร้างข้อมูลและอัลกอริทึม",
+            "1.3.1 ประเภทโครงสร้างข้อมูล"
+          ]
+        },
+        {
+          "topic_id": "1.3",
+          "score": 1.45,
+          "path": [
+            "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+            "1.3 ประเภทของโครงสร้างข้อมูลและอัลกอริทึม"
+          ]
+        }
+      ],
+      "heading_hints": [
+        "1",
+        "1.3",
+        "1.3.1",
+        "1.3.2"
+      ]
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:5",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 5,
+      "best_topic": "1.3",
+      "best_topic_path": [
+        "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+        "1.3 ประเภทของโครงสร้างข้อมูลและอัลกอริทึม"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "1.3.2",
+          "score": 1.26,
+          "path": [
+            "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+            "1.3 ประเภทของโครงสร้างข้อมูลและอัลกอริทึม",
+            "1.3.2 ประเภทอัลกอริทึม"
+          ]
+        },
+        {
+          "topic_id": "1.3.1",
+          "score": 1.26,
+          "path": [
+            "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+            "1.3 ประเภทของโครงสร้างข้อมูลและอัลกอริทึม",
+            "1.3.1 ประเภทโครงสร้างข้อมูล"
+          ]
+        },
+        {
+          "topic_id": "1.3",
+          "score": 1.26,
+          "path": [
+            "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+            "1.3 ประเภทของโครงสร้างข้อมูลและอัลกอริทึม"
+          ]
+        }
+      ],
+      "heading_hints": [
+        "1",
+        "1.4",
+        "1.4.1"
+      ]
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:6",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 6,
+      "best_topic": "1.1",
+      "best_topic_path": [
+        "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+        "1.1 ความหมายโครงสร้างข้อมูลและอัลกอริทึม"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "1.1",
+          "score": 1.26,
+          "path": [
+            "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+            "1.1 ความหมายโครงสร้างข้อมูลและอัลกอริทึม"
+          ]
+        },
+        {
+          "topic_id": "1.4",
+          "score": 1.116667,
+          "path": [
+            "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+            "1.4 โครงสร้างการควบคุมพื้นฐาน"
+          ]
+        },
+        {
+          "topic_id": "1.3",
+          "score": 1.093333,
+          "path": [
+            "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+            "1.3 ประเภทของโครงสร้างข้อมูลและอัลกอริทึม"
+          ]
+        }
+      ],
+      "heading_hints": [
+        "1",
+        "1.4",
+        "1.4.2"
+      ]
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:7",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 7,
+      "best_topic": "1.4",
+      "best_topic_path": [
+        "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+        "1.4 โครงสร้างการควบคุมพื้นฐาน"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "1.4.1",
+          "score": 1.0,
+          "path": [
+            "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+            "1.4 โครงสร้างการควบคุมพื้นฐาน",
+            "1.4.1 โครงสร้างแบบเรียงลำดับ (Sequence)"
+          ]
+        },
+        {
+          "topic_id": "1.4",
+          "score": 1.0,
+          "path": [
+            "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+            "1.4 โครงสร้างการควบคุมพื้นฐาน"
+          ]
+        },
+        {
+          "topic_id": "1.2",
+          "score": 1.0,
+          "path": [
+            "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+            "1.2 โครงสร้างข้อมูลพื้นฐาน"
+          ]
+        }
+      ],
+      "heading_hints": []
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:8",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 8,
+      "best_topic": "1",
+      "best_topic_path": [
+        "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "1",
+          "score": 1.414286,
+          "path": [
+            "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)"
+          ]
+        },
+        {
+          "topic_id": "1.4.2",
+          "score": 1.26,
+          "path": [
+            "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+            "1.4 โครงสร้างการควบคุมพื้นฐาน",
+            "1.4.2 โครงสร้างแบบเลือกการทำงาน (Selection)"
+          ]
+        },
+        {
+          "topic_id": "1.1",
+          "score": 1.06,
+          "path": [
+            "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+            "1.1 ความหมายโครงสร้างข้อมูลและอัลกอริทึม"
+          ]
+        }
+      ],
+      "heading_hints": [
+        "1",
+        "1.5",
+        "1.5.2"
+      ]
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:9",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 9,
+      "best_topic": "1",
+      "best_topic_path": [
+        "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "1.4.3",
+          "score": 1.26,
+          "path": [
+            "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+            "1.4 โครงสร้างการควบคุมพื้นฐาน",
+            "1.4.3 โครงสร้างแบบทำซ้ำ (Repetition)"
+          ]
+        },
+        {
+          "topic_id": "1",
+          "score": 1.128571,
+          "path": [
+            "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)"
+          ]
+        },
+        {
+          "topic_id": "1.4.2",
+          "score": 1.06,
+          "path": [
+            "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+            "1.4 โครงสร้างการควบคุมพื้นฐาน",
+            "1.4.2 โครงสร้างแบบเลือกการทำงาน (Selection)"
+          ]
+        }
+      ],
+      "heading_hints": [
+        "1",
+        "1.5"
+      ]
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:10",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 10,
+      "best_topic": "1.1",
+      "best_topic_path": [
+        "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+        "1.1 ความหมายโครงสร้างข้อมูลและอัลกอริทึม"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "1.1",
+          "score": 0.8,
+          "path": [
+            "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+            "1.1 ความหมายโครงสร้างข้อมูลและอัลกอริทึม"
+          ]
+        },
+        {
+          "topic_id": "1.4.3",
+          "score": 0.75,
+          "path": [
+            "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+            "1.4 โครงสร้างการควบคุมพื้นฐาน",
+            "1.4.3 โครงสร้างแบบทำซ้ำ (Repetition)"
+          ]
+        },
+        {
+          "topic_id": "1",
+          "score": 0.678571,
+          "path": [
+            "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)"
+          ]
+        }
+      ],
+      "heading_hints": []
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:11",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 11,
+      "best_topic": "1.1",
+      "best_topic_path": [
+        "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+        "1.1 ความหมายโครงสร้างข้อมูลและอัลกอริทึม"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "1.1",
+          "score": 0.8,
+          "path": [
+            "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+            "1.1 ความหมายโครงสร้างข้อมูลและอัลกอริทึม"
+          ]
+        },
+        {
+          "topic_id": "1.4.3",
+          "score": 0.75,
+          "path": [
+            "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+            "1.4 โครงสร้างการควบคุมพื้นฐาน",
+            "1.4.3 โครงสร้างแบบทำซ้ำ (Repetition)"
+          ]
+        },
+        {
+          "topic_id": "1",
+          "score": 0.678571,
+          "path": [
+            "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)"
+          ]
+        }
+      ],
+      "heading_hints": []
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:12",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 12,
+      "best_topic": "1",
+      "best_topic_path": [
+        "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "1",
+          "score": 0.392857,
+          "path": [
+            "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)"
+          ]
+        },
+        {
+          "topic_id": "2.2.1",
+          "score": 0.25,
+          "path": [
+            "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+            "2.2 ชนิดของอาร์เรย์",
+            "2.2.1 อาร์เรย์ 1 มิติ"
+          ]
+        },
+        {
+          "topic_id": "1.1",
+          "score": 0.2,
+          "path": [
+            "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+            "1.1 ความหมายโครงสร้างข้อมูลและอัลกอริทึม"
+          ]
+        }
+      ],
+      "heading_hints": []
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:13",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 13,
+      "best_topic": "5.6",
+      "best_topic_path": [
+        "5 ไบนารีทรี (Binary Tree)",
+        "5.6 การแปลงทรีเป็นไบนารีทรี"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "5.6",
+          "score": 1.0,
+          "path": [
+            "5 ไบนารีทรี (Binary Tree)",
+            "5.6 การแปลงทรีเป็นไบนารีทรี"
+          ]
+        },
+        {
+          "topic_id": "5.3",
+          "score": 1.0,
+          "path": [
+            "5 ไบนารีทรี (Binary Tree)",
+            "5.3 การเข้าถึงข้อมูลในไบนารีทรี"
+          ]
+        },
+        {
+          "topic_id": "5.2.2",
+          "score": 1.0,
+          "path": [
+            "5 ไบนารีทรี (Binary Tree)",
+            "5.2 ชนิดของทรี",
+            "5.2.2 ไบนารีทรี (Binary Tree)"
+          ]
+        }
+      ],
+      "heading_hints": [
+        "2",
+        "2.1",
+        "2.1.1",
+        "2.1.2"
+      ]
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:14",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 14,
+      "best_topic": "2.2",
+      "best_topic_path": [
+        "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+        "2.2 ชนิดของอาร์เรย์"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "2.2.1",
+          "score": 1.45,
+          "path": [
+            "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+            "2.2 ชนิดของอาร์เรย์",
+            "2.2.1 อาร์เรย์ 1 มิติ"
+          ]
+        },
+        {
+          "topic_id": "2.2",
+          "score": 1.45,
+          "path": [
+            "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+            "2.2 ชนิดของอาร์เรย์"
+          ]
+        },
+        {
+          "topic_id": "2.1.2",
+          "score": 1.26,
+          "path": [
+            "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+            "2.1 โครงสร้างอาร์เรย์ (Array)",
+            "2.1.2 อาร์เรย์ 2 มิติ"
+          ]
+        }
+      ],
+      "heading_hints": [
+        "2",
+        "2.2",
+        "2.2.1"
+      ]
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:15",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 15,
+      "best_topic": "2.2",
+      "best_topic_path": [
+        "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+        "2.2 ชนิดของอาร์เรย์"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "2.2.1",
+          "score": 1.0,
+          "path": [
+            "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+            "2.2 ชนิดของอาร์เรย์",
+            "2.2.1 อาร์เรย์ 1 มิติ"
+          ]
+        },
+        {
+          "topic_id": "2.2",
+          "score": 1.0,
+          "path": [
+            "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+            "2.2 ชนิดของอาร์เรย์"
+          ]
+        },
+        {
+          "topic_id": "2.1.2",
+          "score": 1.0,
+          "path": [
+            "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+            "2.1 โครงสร้างอาร์เรย์ (Array)",
+            "2.1.2 อาร์เรย์ 2 มิติ"
+          ]
+        }
+      ],
+      "heading_hints": []
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:16",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 16,
+      "best_topic": "2.2",
+      "best_topic_path": [
+        "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+        "2.2 ชนิดของอาร์เรย์"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "2.2",
+          "score": 1.0,
+          "path": [
+            "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+            "2.2 ชนิดของอาร์เรย์"
+          ]
+        },
+        {
+          "topic_id": "2.2.1",
+          "score": 0.75,
+          "path": [
+            "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+            "2.2 ชนิดของอาร์เรย์",
+            "2.2.1 อาร์เรย์ 1 มิติ"
+          ]
+        },
+        {
+          "topic_id": "2.1.2",
+          "score": 0.75,
+          "path": [
+            "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+            "2.1 โครงสร้างอาร์เรย์ (Array)",
+            "2.1.2 อาร์เรย์ 2 มิติ"
+          ]
+        }
+      ],
+      "heading_hints": []
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:17",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 17,
+      "best_topic": "2.2.1",
+      "best_topic_path": [
+        "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+        "2.2 ชนิดของอาร์เรย์",
+        "2.2.1 อาร์เรย์ 1 มิติ"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "2.2.1",
+          "score": 1.26,
+          "path": [
+            "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+            "2.2 ชนิดของอาร์เรย์",
+            "2.2.1 อาร์เรย์ 1 มิติ"
+          ]
+        },
+        {
+          "topic_id": "2.1.2",
+          "score": 1.26,
+          "path": [
+            "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+            "2.1 โครงสร้างอาร์เรย์ (Array)",
+            "2.1.2 อาร์เรย์ 2 มิติ"
+          ]
+        },
+        {
+          "topic_id": "2.1",
+          "score": 1.26,
+          "path": [
+            "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+            "2.1 โครงสร้างอาร์เรย์ (Array)"
+          ]
+        }
+      ],
+      "heading_hints": [
+        "2",
+        "2.2",
+        "2.2.2"
+      ]
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:18",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 18,
+      "best_topic": "2.2.1",
+      "best_topic_path": [
+        "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+        "2.2 ชนิดของอาร์เรย์",
+        "2.2.1 อาร์เรย์ 1 มิติ"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "2.2.1",
+          "score": 1.0,
+          "path": [
+            "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+            "2.2 ชนิดของอาร์เรย์",
+            "2.2.1 อาร์เรย์ 1 มิติ"
+          ]
+        },
+        {
+          "topic_id": "2.1.2",
+          "score": 1.0,
+          "path": [
+            "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+            "2.1 โครงสร้างอาร์เรย์ (Array)",
+            "2.1.2 อาร์เรย์ 2 มิติ"
+          ]
+        },
+        {
+          "topic_id": "2.1",
+          "score": 1.0,
+          "path": [
+            "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+            "2.1 โครงสร้างอาร์เรย์ (Array)"
+          ]
+        }
+      ],
+      "heading_hints": []
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:19",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 19,
+      "best_topic": "2.2.1",
+      "best_topic_path": [
+        "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+        "2.2 ชนิดของอาร์เรย์",
+        "2.2.1 อาร์เรย์ 1 มิติ"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "2.2.1",
+          "score": 1.0,
+          "path": [
+            "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+            "2.2 ชนิดของอาร์เรย์",
+            "2.2.1 อาร์เรย์ 1 มิติ"
+          ]
+        },
+        {
+          "topic_id": "2.1.2",
+          "score": 1.0,
+          "path": [
+            "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+            "2.1 โครงสร้างอาร์เรย์ (Array)",
+            "2.1.2 อาร์เรย์ 2 มิติ"
+          ]
+        },
+        {
+          "topic_id": "1.3",
+          "score": 0.833333,
+          "path": [
+            "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+            "1.3 ประเภทของโครงสร้างข้อมูลและอัลกอริทึม"
+          ]
+        }
+      ],
+      "heading_hints": []
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:20",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 20,
+      "best_topic": "2.2.1",
+      "best_topic_path": [
+        "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+        "2.2 ชนิดของอาร์เรย์",
+        "2.2.1 อาร์เรย์ 1 มิติ"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "2.2.1",
+          "score": 1.0,
+          "path": [
+            "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+            "2.2 ชนิดของอาร์เรย์",
+            "2.2.1 อาร์เรย์ 1 มิติ"
+          ]
+        },
+        {
+          "topic_id": "2.1.2",
+          "score": 1.0,
+          "path": [
+            "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+            "2.1 โครงสร้างอาร์เรย์ (Array)",
+            "2.1.2 อาร์เรย์ 2 มิติ"
+          ]
+        },
+        {
+          "topic_id": "2.1",
+          "score": 1.0,
+          "path": [
+            "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+            "2.1 โครงสร้างอาร์เรย์ (Array)"
+          ]
+        }
+      ],
+      "heading_hints": []
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:21",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 21,
+      "best_topic": "2.2.1",
+      "best_topic_path": [
+        "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+        "2.2 ชนิดของอาร์เรย์",
+        "2.2.1 อาร์เรย์ 1 มิติ"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "2.2.1",
+          "score": 1.0,
+          "path": [
+            "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+            "2.2 ชนิดของอาร์เรย์",
+            "2.2.1 อาร์เรย์ 1 มิติ"
+          ]
+        },
+        {
+          "topic_id": "2.1.2",
+          "score": 1.0,
+          "path": [
+            "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+            "2.1 โครงสร้างอาร์เรย์ (Array)",
+            "2.1.2 อาร์เรย์ 2 มิติ"
+          ]
+        },
+        {
+          "topic_id": "2.1",
+          "score": 1.0,
+          "path": [
+            "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+            "2.1 โครงสร้างอาร์เรย์ (Array)"
+          ]
+        }
+      ],
+      "heading_hints": []
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:22",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 22,
+      "best_topic": "2.3.1",
+      "best_topic_path": [
+        "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+        "2.3 โครงสร้างลิงค์ลิสต์ (Linked List)",
+        "2.3.1 ความหมายของลิงค์ลิสต์"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "2.3.1",
+          "score": 1.45,
+          "path": [
+            "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+            "2.3 โครงสร้างลิงค์ลิสต์ (Linked List)",
+            "2.3.1 ความหมายของลิงค์ลิสต์"
+          ]
+        },
+        {
+          "topic_id": "2.3.2",
+          "score": 1.26,
+          "path": [
+            "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+            "2.3 โครงสร้างลิงค์ลิสต์ (Linked List)",
+            "2.3.2 โครงสร้างของลิงค์ลิสต์"
+          ]
+        },
+        {
+          "topic_id": "2.1.1",
+          "score": 1.26,
+          "path": [
+            "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+            "2.1 โครงสร้างอาร์เรย์ (Array)",
+            "2.1.1 ความหมายและลักษณะของอาร์เรย์"
+          ]
+        }
+      ],
+      "heading_hints": [
+        "2",
+        "2.3",
+        "2.3.1"
+      ]
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:23",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 23,
+      "best_topic": "2.3",
+      "best_topic_path": [
+        "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+        "2.3 โครงสร้างลิงค์ลิสต์ (Linked List)"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "2.3.2",
+          "score": 1.45,
+          "path": [
+            "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+            "2.3 โครงสร้างลิงค์ลิสต์ (Linked List)",
+            "2.3.2 โครงสร้างของลิงค์ลิสต์"
+          ]
+        },
+        {
+          "topic_id": "2.3",
+          "score": 1.45,
+          "path": [
+            "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+            "2.3 โครงสร้างลิงค์ลิสต์ (Linked List)"
+          ]
+        },
+        {
+          "topic_id": "2",
+          "score": 1.255556,
+          "path": [
+            "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)"
+          ]
+        }
+      ],
+      "heading_hints": [
+        "2",
+        "2.3",
+        "2.3.2"
+      ]
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:24",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 24,
+      "best_topic": "2.4.1",
+      "best_topic_path": [
+        "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+        "2.4 ลิงค์ลิสต์แบบทิศทางเดียว",
+        "2.4.1 โครงสร้างลิงค์ลิสต์แบบทิศทางเดียว"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "2.4.1",
+          "score": 2.56,
+          "path": [
+            "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+            "2.4 ลิงค์ลิสต์แบบทิศทางเดียว",
+            "2.4.1 โครงสร้างลิงค์ลิสต์แบบทิศทางเดียว"
+          ]
+        },
+        {
+          "topic_id": "2.4",
+          "score": 1.45,
+          "path": [
+            "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+            "2.4 ลิงค์ลิสต์แบบทิศทางเดียว"
+          ]
+        },
+        {
+          "topic_id": "2.3.2",
+          "score": 1.26,
+          "path": [
+            "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+            "2.3 โครงสร้างลิงค์ลิสต์ (Linked List)",
+            "2.3.2 โครงสร้างของลิงค์ลิสต์"
+          ]
+        }
+      ],
+      "heading_hints": [
+        "2",
+        "2.4",
+        "2.4.1"
+      ],
+      "relabel_info": {
+        "method": "toc_constrained_weak_vote",
+        "allowed_topics": [
+          "2.4",
+          "2.4.1",
+          "2.4.2"
+        ],
+        "confidence": 2.56,
+        "votes": {
+          "2.4": 1.93,
+          "2.4.1": 2.56,
+          "2.4.2": 0.0
+        }
+      }
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:25",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 25,
+      "best_topic": "2.4.2",
+      "best_topic_path": [
+        "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+        "2.4 ลิงค์ลิสต์แบบทิศทางเดียว",
+        "2.4.2 การทำงานของลิงค์ลิสต์แบบทิศทางเดียว"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "2.4.2",
+          "score": 1.78,
+          "path": [
+            "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+            "2.4 ลิงค์ลิสต์แบบทิศทางเดียว",
+            "2.4.2 การทำงานของลิงค์ลิสต์แบบทิศทางเดียว"
+          ]
+        },
+        {
+          "topic_id": "2.4.1",
+          "score": 1.0,
+          "path": [
+            "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+            "2.4 ลิงค์ลิสต์แบบทิศทางเดียว",
+            "2.4.1 โครงสร้างลิงค์ลิสต์แบบทิศทางเดียว"
+          ]
+        },
+        {
+          "topic_id": "2.4",
+          "score": 1.0,
+          "path": [
+            "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+            "2.4 ลิงค์ลิสต์แบบทิศทางเดียว"
+          ]
+        }
+      ],
+      "heading_hints": [],
+      "relabel_info": {
+        "method": "toc_constrained_weak_vote",
+        "allowed_topics": [
+          "2.4",
+          "2.4.1",
+          "2.4.2"
+        ],
+        "confidence": 1.78,
+        "votes": {
+          "2.4": 1.0433,
+          "2.4.1": 0.11,
+          "2.4.2": 1.78
+        }
+      }
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:26",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 26,
+      "best_topic": "2.4.2",
+      "best_topic_path": [
+        "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+        "2.4 ลิงค์ลิสต์แบบทิศทางเดียว",
+        "2.4.2 การทำงานของลิงค์ลิสต์แบบทิศทางเดียว"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "2.4.2",
+          "score": 1.56,
+          "path": [
+            "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+            "2.4 ลิงค์ลิสต์แบบทิศทางเดียว",
+            "2.4.2 การทำงานของลิงค์ลิสต์แบบทิศทางเดียว"
+          ]
+        },
+        {
+          "topic_id": "1.3",
+          "score": 0.833333,
+          "path": [
+            "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+            "1.3 ประเภทของโครงสร้างข้อมูลและอัลกอริทึม"
+          ]
+        },
+        {
+          "topic_id": "1",
+          "score": 0.821429,
+          "path": [
+            "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)"
+          ]
+        }
+      ],
+      "heading_hints": [],
+      "relabel_info": {
+        "method": "toc_constrained_weak_vote",
+        "allowed_topics": [
+          "2.4",
+          "2.4.1",
+          "2.4.2"
+        ],
+        "confidence": 1.56,
+        "votes": {
+          "2.4": 0.87,
+          "2.4.1": 0.0,
+          "2.4.2": 1.56
+        }
+      }
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:27",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 27,
+      "best_topic": "2.4.2",
+      "best_topic_path": [
+        "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+        "2.4 ลิงค์ลิสต์แบบทิศทางเดียว",
+        "2.4.2 การทำงานของลิงค์ลิสต์แบบทิศทางเดียว"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "2.4.2",
+          "score": 1.56,
+          "path": [
+            "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+            "2.4 ลิงค์ลิสต์แบบทิศทางเดียว",
+            "2.4.2 การทำงานของลิงค์ลิสต์แบบทิศทางเดียว"
+          ]
+        },
+        {
+          "topic_id": "1.3",
+          "score": 0.833333,
+          "path": [
+            "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+            "1.3 ประเภทของโครงสร้างข้อมูลและอัลกอริทึม"
+          ]
+        },
+        {
+          "topic_id": "1",
+          "score": 0.821429,
+          "path": [
+            "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)"
+          ]
+        }
+      ],
+      "heading_hints": [],
+      "relabel_info": {
+        "method": "toc_constrained_weak_vote",
+        "allowed_topics": [
+          "2.4",
+          "2.4.1",
+          "2.4.2"
+        ],
+        "confidence": 1.56,
+        "votes": {
+          "2.4": 0.87,
+          "2.4.1": 0.0,
+          "2.4.2": 1.56
+        }
+      }
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:28",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 28,
+      "best_topic": "2.4.2",
+      "best_topic_path": [
+        "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+        "2.4 ลิงค์ลิสต์แบบทิศทางเดียว",
+        "2.4.2 การทำงานของลิงค์ลิสต์แบบทิศทางเดียว"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "2.4.2",
+          "score": 1.56,
+          "path": [
+            "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+            "2.4 ลิงค์ลิสต์แบบทิศทางเดียว",
+            "2.4.2 การทำงานของลิงค์ลิสต์แบบทิศทางเดียว"
+          ]
+        },
+        {
+          "topic_id": "2",
+          "score": 0.694444,
+          "path": [
+            "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)"
+          ]
+        },
+        {
+          "topic_id": "2.3",
+          "score": 0.6,
+          "path": [
+            "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+            "2.3 โครงสร้างลิงค์ลิสต์ (Linked List)"
+          ]
+        }
+      ],
+      "heading_hints": [],
+      "relabel_info": {
+        "method": "toc_constrained_weak_vote",
+        "allowed_topics": [
+          "2.4",
+          "2.4.1",
+          "2.4.2"
+        ],
+        "confidence": 1.56,
+        "votes": {
+          "2.4": 0.87,
+          "2.4.1": 0.0,
+          "2.4.2": 1.56
+        }
+      }
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:29",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 29,
+      "best_topic": "3",
+      "best_topic_path": [
+        "3 คิว (Queues)"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "3",
+          "score": 1.45,
+          "path": [
+            "3 คิว (Queues)"
+          ]
+        },
+        {
+          "topic_id": "3.2.2",
+          "score": 1.26,
+          "path": [
+            "3 คิว (Queues)",
+            "3.2 การดำเนินการของคิว",
+            "3.2.2 การนำข้อมูลออก (Dequeue)"
+          ]
+        },
+        {
+          "topic_id": "3.2",
+          "score": 1.26,
+          "path": [
+            "3 คิว (Queues)",
+            "3.2 การดำเนินการของคิว"
+          ]
+        }
+      ],
+      "heading_hints": [
+        "3",
+        "3.1"
+      ]
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:30",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 30,
+      "best_topic": "3.2",
+      "best_topic_path": [
+        "3 คิว (Queues)",
+        "3.2 การดำเนินการของคิว"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "3.2.2",
+          "score": 1.45,
+          "path": [
+            "3 คิว (Queues)",
+            "3.2 การดำเนินการของคิว",
+            "3.2.2 การนำข้อมูลออก (Dequeue)"
+          ]
+        },
+        {
+          "topic_id": "3.2",
+          "score": 1.45,
+          "path": [
+            "3 คิว (Queues)",
+            "3.2 การดำเนินการของคิว"
+          ]
+        },
+        {
+          "topic_id": "3.3.3",
+          "score": 1.093333,
+          "path": [
+            "3 คิว (Queues)",
+            "3.3 การแทนคิวด้วยอาร์เรย์",
+            "3.3.3 การดำเนินการแทนคิวด้วยวงกลม"
+          ]
+        }
+      ],
+      "heading_hints": [
+        "3",
+        "3.2",
+        "3.2.1",
+        "3.2.2"
+      ]
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:31",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 31,
+      "best_topic": "3.3",
+      "best_topic_path": [
+        "3 คิว (Queues)",
+        "3.3 การแทนคิวด้วยอาร์เรย์"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "3.3.1",
+          "score": 1.45,
+          "path": [
+            "3 คิว (Queues)",
+            "3.3 การแทนคิวด้วยอาร์เรย์",
+            "3.3.1 โครงสร้างของการแทนคิวด้วยอาร์เรย์"
+          ]
+        },
+        {
+          "topic_id": "3.3",
+          "score": 1.45,
+          "path": [
+            "3 คิว (Queues)",
+            "3.3 การแทนคิวด้วยอาร์เรย์"
+          ]
+        },
+        {
+          "topic_id": "3.2.1",
+          "score": 1.26,
+          "path": [
+            "3 คิว (Queues)",
+            "3.2 การดำเนินการของคิว",
+            "3.2.1 การนำข้อมูลเข้า (Enqueue)"
+          ]
+        }
+      ],
+      "heading_hints": [
+        "3",
+        "3.3",
+        "3.3.1"
+      ]
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:32",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 32,
+      "best_topic": "3.3",
+      "best_topic_path": [
+        "3 คิว (Queues)",
+        "3.3 การแทนคิวด้วยอาร์เรย์"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "3.3.2",
+          "score": 1.45,
+          "path": [
+            "3 คิว (Queues)",
+            "3.3 การแทนคิวด้วยอาร์เรย์",
+            "3.3.2 การดำเนินการแทนคิวด้วยอาร์เรย์"
+          ]
+        },
+        {
+          "topic_id": "3.3",
+          "score": 1.45,
+          "path": [
+            "3 คิว (Queues)",
+            "3.3 การแทนคิวด้วยอาร์เรย์"
+          ]
+        },
+        {
+          "topic_id": "3.3.1",
+          "score": 1.26,
+          "path": [
+            "3 คิว (Queues)",
+            "3.3 การแทนคิวด้วยอาร์เรย์",
+            "3.3.1 โครงสร้างของการแทนคิวด้วยอาร์เรย์"
+          ]
+        }
+      ],
+      "heading_hints": [
+        "3",
+        "3.3",
+        "3.3.2",
+        "3.7"
+      ]
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:33",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 33,
+      "best_topic": "3.2",
+      "best_topic_path": [
+        "3 คิว (Queues)",
+        "3.2 การดำเนินการของคิว"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "1.1",
+          "score": 1.0,
+          "path": [
+            "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+            "1.1 ความหมายโครงสร้างข้อมูลและอัลกอริทึม"
+          ]
+        },
+        {
+          "topic_id": "1.3",
+          "score": 0.833333,
+          "path": [
+            "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+            "1.3 ประเภทของโครงสร้างข้อมูลและอัลกอริทึม"
+          ]
+        },
+        {
+          "topic_id": "3.2",
+          "score": 0.75,
+          "path": [
+            "3 คิว (Queues)",
+            "3.2 การดำเนินการของคิว"
+          ]
+        }
+      ],
+      "heading_hints": []
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:34",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 34,
+      "best_topic": "3.2",
+      "best_topic_path": [
+        "3 คิว (Queues)",
+        "3.2 การดำเนินการของคิว"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "3.3.2",
+          "score": 1.0,
+          "path": [
+            "3 คิว (Queues)",
+            "3.3 การแทนคิวด้วยอาร์เรย์",
+            "3.3.2 การดำเนินการแทนคิวด้วยอาร์เรย์"
+          ]
+        },
+        {
+          "topic_id": "3.3",
+          "score": 1.0,
+          "path": [
+            "3 คิว (Queues)",
+            "3.3 การแทนคิวด้วยอาร์เรย์"
+          ]
+        },
+        {
+          "topic_id": "3.2",
+          "score": 1.0,
+          "path": [
+            "3 คิว (Queues)",
+            "3.2 การดำเนินการของคิว"
+          ]
+        }
+      ],
+      "heading_hints": []
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:35",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 35,
+      "best_topic": "3.2",
+      "best_topic_path": [
+        "3 คิว (Queues)",
+        "3.2 การดำเนินการของคิว"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "3.2",
+          "score": 0.75,
+          "path": [
+            "3 คิว (Queues)",
+            "3.2 การดำเนินการของคิว"
+          ]
+        },
+        {
+          "topic_id": "3",
+          "score": 0.75,
+          "path": [
+            "3 คิว (Queues)"
+          ]
+        },
+        {
+          "topic_id": "3.1",
+          "score": 0.666667,
+          "path": [
+            "3 คิว (Queues)",
+            "3.1 โครงสร้างพื้นฐานของคิว"
+          ]
+        }
+      ],
+      "heading_hints": []
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:36",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 36,
+      "best_topic": "3.3.3",
+      "best_topic_path": [
+        "3 คิว (Queues)",
+        "3.3 การแทนคิวด้วยอาร์เรย์",
+        "3.3.3 การดำเนินการแทนคิวด้วยวงกลม"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "3.3.3",
+          "score": 1.45,
+          "path": [
+            "3 คิว (Queues)",
+            "3.3 การแทนคิวด้วยอาร์เรย์",
+            "3.3.3 การดำเนินการแทนคิวด้วยวงกลม"
+          ]
+        },
+        {
+          "topic_id": "3.2",
+          "score": 1.26,
+          "path": [
+            "3 คิว (Queues)",
+            "3.2 การดำเนินการของคิว"
+          ]
+        },
+        {
+          "topic_id": "3",
+          "score": 1.2,
+          "path": [
+            "3 คิว (Queues)"
+          ]
+        }
+      ],
+      "heading_hints": [
+        "3",
+        "3.3",
+        "3.3.3"
+      ]
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:37",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 37,
+      "best_topic": "3.2",
+      "best_topic_path": [
+        "3 คิว (Queues)",
+        "3.2 การดำเนินการของคิว"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "3.2.1",
+          "score": 1.0,
+          "path": [
+            "3 คิว (Queues)",
+            "3.2 การดำเนินการของคิว",
+            "3.2.1 การนำข้อมูลเข้า (Enqueue)"
+          ]
+        },
+        {
+          "topic_id": "3.2",
+          "score": 1.0,
+          "path": [
+            "3 คิว (Queues)",
+            "3.2 การดำเนินการของคิว"
+          ]
+        },
+        {
+          "topic_id": "3.3.3",
+          "score": 0.833333,
+          "path": [
+            "3 คิว (Queues)",
+            "3.3 การแทนคิวด้วยอาร์เรย์",
+            "3.3.3 การดำเนินการแทนคิวด้วยวงกลม"
+          ]
+        }
+      ],
+      "heading_hints": []
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:38",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 38,
+      "best_topic": "3.2",
+      "best_topic_path": [
+        "3 คิว (Queues)",
+        "3.2 การดำเนินการของคิว"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "1.3",
+          "score": 0.833333,
+          "path": [
+            "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+            "1.3 ประเภทของโครงสร้างข้อมูลและอัลกอริทึม"
+          ]
+        },
+        {
+          "topic_id": "1.1",
+          "score": 0.8,
+          "path": [
+            "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+            "1.1 ความหมายโครงสร้างข้อมูลและอัลกอริทึม"
+          ]
+        },
+        {
+          "topic_id": "3.2",
+          "score": 0.75,
+          "path": [
+            "3 คิว (Queues)",
+            "3.2 การดำเนินการของคิว"
+          ]
+        }
+      ],
+      "heading_hints": []
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:39",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 39,
+      "best_topic": "3",
+      "best_topic_path": [
+        "3 คิว (Queues)"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "3",
+          "score": 0.75,
+          "path": [
+            "3 คิว (Queues)"
+          ]
+        },
+        {
+          "topic_id": "1",
+          "score": 0.535714,
+          "path": [
+            "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)"
+          ]
+        },
+        {
+          "topic_id": "3.1",
+          "score": 0.333333,
+          "path": [
+            "3 คิว (Queues)",
+            "3.1 โครงสร้างพื้นฐานของคิว"
+          ]
+        }
+      ],
+      "heading_hints": []
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:40",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 40,
+      "best_topic": "4",
+      "best_topic_path": [
+        "4 สแตก (Stack)"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "4.1",
+          "score": 1.45,
+          "path": [
+            "4 สแตก (Stack)",
+            "4.1 โครงสร้างของสแตก"
+          ]
+        },
+        {
+          "topic_id": "4",
+          "score": 1.45,
+          "path": [
+            "4 สแตก (Stack)"
+          ]
+        },
+        {
+          "topic_id": "4.2.2",
+          "score": 1.26,
+          "path": [
+            "4 สแตก (Stack)",
+            "4.2 การดำเนินการของสแตก",
+            "4.2.2 การดึงข้อมูลออก (Pop)"
+          ]
+        }
+      ],
+      "heading_hints": [
+        "4",
+        "4.1"
+      ]
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:41",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 41,
+      "best_topic": "4",
+      "best_topic_path": [
+        "4 สแตก (Stack)"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "4.2",
+          "score": 1.45,
+          "path": [
+            "4 สแตก (Stack)",
+            "4.2 การดำเนินการของสแตก"
+          ]
+        },
+        {
+          "topic_id": "4",
+          "score": 1.45,
+          "path": [
+            "4 สแตก (Stack)"
+          ]
+        },
+        {
+          "topic_id": "4.2.2",
+          "score": 1.26,
+          "path": [
+            "4 สแตก (Stack)",
+            "4.2 การดำเนินการของสแตก",
+            "4.2.2 การดึงข้อมูลออก (Pop)"
+          ]
+        }
+      ],
+      "heading_hints": [
+        "4",
+        "4.2"
+      ]
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:42",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 42,
+      "best_topic": "4",
+      "best_topic_path": [
+        "4 สแตก (Stack)"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "4.2.2",
+          "score": 1.45,
+          "path": [
+            "4 สแตก (Stack)",
+            "4.2 การดำเนินการของสแตก",
+            "4.2.2 การดึงข้อมูลออก (Pop)"
+          ]
+        },
+        {
+          "topic_id": "4.2",
+          "score": 1.45,
+          "path": [
+            "4 สแตก (Stack)",
+            "4.2 การดำเนินการของสแตก"
+          ]
+        },
+        {
+          "topic_id": "4",
+          "score": 1.45,
+          "path": [
+            "4 สแตก (Stack)"
+          ]
+        }
+      ],
+      "heading_hints": [
+        "4",
+        "4.2",
+        "4.2.2",
+        "4.2.3"
+      ]
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:43",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 43,
+      "best_topic": "4",
+      "best_topic_path": [
+        "4 สแตก (Stack)"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "4",
+          "score": 1.45,
+          "path": [
+            "4 สแตก (Stack)"
+          ]
+        },
+        {
+          "topic_id": "4.3.1",
+          "score": 1.325,
+          "path": [
+            "4 สแตก (Stack)",
+            "4.3 การแทนสแตกด้วยอาร์เรย์",
+            "4.3.1 การดำเนินการแทนสแตกด้วยอาร์เรย์"
+          ]
+        },
+        {
+          "topic_id": "4.2.1",
+          "score": 1.26,
+          "path": [
+            "4 สแตก (Stack)",
+            "4.2 การดำเนินการของสแตก",
+            "4.2.1 การนำข้อมูลเข้า (Push)"
+          ]
+        }
+      ],
+      "heading_hints": [
+        "4",
+        "4.3",
+        "4.3.1"
+      ]
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:44",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 44,
+      "best_topic": "4",
+      "best_topic_path": [
+        "4 สแตก (Stack)"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "4",
+          "score": 1.45,
+          "path": [
+            "4 สแตก (Stack)"
+          ]
+        },
+        {
+          "topic_id": "4.3.2",
+          "score": 1.366667,
+          "path": [
+            "4 สแตก (Stack)",
+            "4.3 การแทนสแตกด้วยอาร์เรย์",
+            "4.3.2 การประยุกต์ใช้งานสแตกในการเปลงรูปนิพจน์ทางคณิตศาสตร์"
+          ]
+        },
+        {
+          "topic_id": "4.2.2",
+          "score": 1.26,
+          "path": [
+            "4 สแตก (Stack)",
+            "4.2 การดำเนินการของสแตก",
+            "4.2.2 การดึงข้อมูลออก (Pop)"
+          ]
+        }
+      ],
+      "heading_hints": [
+        "4",
+        "4.3",
+        "4.3.2"
+      ]
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:45",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 45,
+      "best_topic": "4.2",
+      "best_topic_path": [
+        "4 สแตก (Stack)",
+        "4.2 การดำเนินการของสแตก"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "4.2",
+          "score": 1.0,
+          "path": [
+            "4 สแตก (Stack)",
+            "4.2 การดำเนินการของสแตก"
+          ]
+        },
+        {
+          "topic_id": "4.1",
+          "score": 1.0,
+          "path": [
+            "4 สแตก (Stack)",
+            "4.1 โครงสร้างของสแตก"
+          ]
+        },
+        {
+          "topic_id": "4",
+          "score": 0.916667,
+          "path": [
+            "4 สแตก (Stack)"
+          ]
+        }
+      ],
+      "heading_hints": []
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:46",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 46,
+      "best_topic": "4",
+      "best_topic_path": [
+        "4 สแตก (Stack)"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "1.3",
+          "score": 0.833333,
+          "path": [
+            "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+            "1.3 ประเภทของโครงสร้างข้อมูลและอัลกอริทึม"
+          ]
+        },
+        {
+          "topic_id": "1.1",
+          "score": 0.8,
+          "path": [
+            "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+            "1.1 ความหมายโครงสร้างข้อมูลและอัลกอริทึม"
+          ]
+        },
+        {
+          "topic_id": "1.3.1",
+          "score": 0.666667,
+          "path": [
+            "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+            "1.3 ประเภทของโครงสร้างข้อมูลและอัลกอริทึม",
+            "1.3.1 ประเภทโครงสร้างข้อมูล"
+          ]
+        }
+      ],
+      "heading_hints": []
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:47",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 47,
+      "best_topic": "4",
+      "best_topic_path": [
+        "4 สแตก (Stack)"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "4.2",
+          "score": 1.0,
+          "path": [
+            "4 สแตก (Stack)",
+            "4.2 การดำเนินการของสแตก"
+          ]
+        },
+        {
+          "topic_id": "4.1",
+          "score": 1.0,
+          "path": [
+            "4 สแตก (Stack)",
+            "4.1 โครงสร้างของสแตก"
+          ]
+        },
+        {
+          "topic_id": "4",
+          "score": 1.0,
+          "path": [
+            "4 สแตก (Stack)"
+          ]
+        }
+      ],
+      "heading_hints": []
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:48",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 48,
+      "best_topic": "4",
+      "best_topic_path": [
+        "4 สแตก (Stack)"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "1.3",
+          "score": 0.833333,
+          "path": [
+            "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+            "1.3 ประเภทของโครงสร้างข้อมูลและอัลกอริทึม"
+          ]
+        },
+        {
+          "topic_id": "1.1",
+          "score": 0.8,
+          "path": [
+            "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+            "1.1 ความหมายโครงสร้างข้อมูลและอัลกอริทึม"
+          ]
+        },
+        {
+          "topic_id": "1.3.1",
+          "score": 0.666667,
+          "path": [
+            "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+            "1.3 ประเภทของโครงสร้างข้อมูลและอัลกอริทึม",
+            "1.3.1 ประเภทโครงสร้างข้อมูล"
+          ]
+        }
+      ],
+      "heading_hints": []
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:49",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 49,
+      "best_topic": "4",
+      "best_topic_path": [
+        "4 สแตก (Stack)"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "4",
+          "score": 0.583333,
+          "path": [
+            "4 สแตก (Stack)"
+          ]
+        },
+        {
+          "topic_id": "5.6",
+          "score": 0.333333,
+          "path": [
+            "5 ไบนารีทรี (Binary Tree)",
+            "5.6 การแปลงทรีเป็นไบนารีทรี"
+          ]
+        },
+        {
+          "topic_id": "3.1",
+          "score": 0.333333,
+          "path": [
+            "3 คิว (Queues)",
+            "3.1 โครงสร้างพื้นฐานของคิว"
+          ]
+        }
+      ],
+      "heading_hints": []
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:50",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 50,
+      "best_topic": "4.2",
+      "best_topic_path": [
+        "4 สแตก (Stack)",
+        "4.2 การดำเนินการของสแตก"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "3.2",
+          "score": 0.5,
+          "path": [
+            "3 คิว (Queues)",
+            "3.2 การดำเนินการของคิว"
+          ]
+        },
+        {
+          "topic_id": "4.2",
+          "score": 0.4,
+          "path": [
+            "4 สแตก (Stack)",
+            "4.2 การดำเนินการของสแตก"
+          ]
+        },
+        {
+          "topic_id": "5.6",
+          "score": 0.333333,
+          "path": [
+            "5 ไบนารีทรี (Binary Tree)",
+            "5.6 การแปลงทรีเป็นไบนารีทรี"
+          ]
+        }
+      ],
+      "heading_hints": []
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:51",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 51,
+      "best_topic": "5",
+      "best_topic_path": [
+        "5 ไบนารีทรี (Binary Tree)"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "5.1",
+          "score": 1.45,
+          "path": [
+            "5 ไบนารีทรี (Binary Tree)",
+            "5.1 โครงสร้างทรี"
+          ]
+        },
+        {
+          "topic_id": "5",
+          "score": 1.45,
+          "path": [
+            "5 ไบนารีทรี (Binary Tree)"
+          ]
+        },
+        {
+          "topic_id": "5.6",
+          "score": 1.26,
+          "path": [
+            "5 ไบนารีทรี (Binary Tree)",
+            "5.6 การแปลงทรีเป็นไบนารีทรี"
+          ]
+        }
+      ],
+      "heading_hints": [
+        "5",
+        "5.1"
+      ]
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:52",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 52,
+      "best_topic": "5.2",
+      "best_topic_path": [
+        "5 ไบนารีทรี (Binary Tree)",
+        "5.2 ชนิดของทรี"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "5.2.1",
+          "score": 1.45,
+          "path": [
+            "5 ไบนารีทรี (Binary Tree)",
+            "5.2 ชนิดของทรี",
+            "5.2.1 ทรีทั่วไป (General Tree)"
+          ]
+        },
+        {
+          "topic_id": "5.2",
+          "score": 1.45,
+          "path": [
+            "5 ไบนารีทรี (Binary Tree)",
+            "5.2 ชนิดของทรี"
+          ]
+        },
+        {
+          "topic_id": "5",
+          "score": 1.3,
+          "path": [
+            "5 ไบนารีทรี (Binary Tree)"
+          ]
+        }
+      ],
+      "heading_hints": [
+        "5",
+        "5.2",
+        "5.2.1"
+      ]
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:53",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 53,
+      "best_topic": "5.6",
+      "best_topic_path": [
+        "5 ไบนารีทรี (Binary Tree)",
+        "5.6 การแปลงทรีเป็นไบนารีทรี"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "5.6",
+          "score": 1.0,
+          "path": [
+            "5 ไบนารีทรี (Binary Tree)",
+            "5.6 การแปลงทรีเป็นไบนารีทรี"
+          ]
+        },
+        {
+          "topic_id": "5.1",
+          "score": 1.0,
+          "path": [
+            "5 ไบนารีทรี (Binary Tree)",
+            "5.1 โครงสร้างทรี"
+          ]
+        },
+        {
+          "topic_id": "1.3",
+          "score": 0.833333,
+          "path": [
+            "1 โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+            "1.3 ประเภทของโครงสร้างข้อมูลและอัลกอริทึม"
+          ]
+        }
+      ],
+      "heading_hints": []
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:54",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 54,
+      "best_topic": "5",
+      "best_topic_path": [
+        "5 ไบนารีทรี (Binary Tree)"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "5.2.2",
+          "score": 1.45,
+          "path": [
+            "5 ไบนารีทรี (Binary Tree)",
+            "5.2 ชนิดของทรี",
+            "5.2.2 ไบนารีทรี (Binary Tree)"
+          ]
+        },
+        {
+          "topic_id": "5",
+          "score": 1.45,
+          "path": [
+            "5 ไบนารีทรี (Binary Tree)"
+          ]
+        },
+        {
+          "topic_id": "5.6",
+          "score": 1.26,
+          "path": [
+            "5 ไบนารีทรี (Binary Tree)",
+            "5.6 การแปลงทรีเป็นไบนารีทรี"
+          ]
+        }
+      ],
+      "heading_hints": [
+        "5",
+        "5.2",
+        "5.2.2"
+      ]
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:55",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 55,
+      "best_topic": "5",
+      "best_topic_path": [
+        "5 ไบนารีทรี (Binary Tree)"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "5.6",
+          "score": 1.0,
+          "path": [
+            "5 ไบนารีทรี (Binary Tree)",
+            "5.6 การแปลงทรีเป็นไบนารีทรี"
+          ]
+        },
+        {
+          "topic_id": "5.2.2",
+          "score": 1.0,
+          "path": [
+            "5 ไบนารีทรี (Binary Tree)",
+            "5.2 ชนิดของทรี",
+            "5.2.2 ไบนารีทรี (Binary Tree)"
+          ]
+        },
+        {
+          "topic_id": "5.1",
+          "score": 1.0,
+          "path": [
+            "5 ไบนารีทรี (Binary Tree)",
+            "5.1 โครงสร้างทรี"
+          ]
+        }
+      ],
+      "heading_hints": []
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:56",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 56,
+      "best_topic": "5",
+      "best_topic_path": [
+        "5 ไบนารีทรี (Binary Tree)"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "5.3",
+          "score": 1.45,
+          "path": [
+            "5 ไบนารีทรี (Binary Tree)",
+            "5.3 การเข้าถึงข้อมูลในไบนารีทรี"
+          ]
+        },
+        {
+          "topic_id": "5",
+          "score": 1.45,
+          "path": [
+            "5 ไบนารีทรี (Binary Tree)"
+          ]
+        },
+        {
+          "topic_id": "5.3.1",
+          "score": 1.283333,
+          "path": [
+            "5 ไบนารีทรี (Binary Tree)",
+            "5.3 การเข้าถึงข้อมูลในไบนารีทรี",
+            "5.3.1 แบบพรีออร์เดอร์ (Preorder: Node-Left-Right)"
+          ]
+        }
+      ],
+      "heading_hints": [
+        "5",
+        "5.3",
+        "5.3.1"
+      ]
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:57",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 57,
+      "best_topic": "5",
+      "best_topic_path": [
+        "5 ไบนารีทรี (Binary Tree)"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "5",
+          "score": 1.45,
+          "path": [
+            "5 ไบนารีทรี (Binary Tree)"
+          ]
+        },
+        {
+          "topic_id": "5.1",
+          "score": 1.26,
+          "path": [
+            "5 ไบนารีทรี (Binary Tree)",
+            "5.1 โครงสร้างทรี"
+          ]
+        },
+        {
+          "topic_id": "5.3.3",
+          "score": 1.25,
+          "path": [
+            "5 ไบนารีทรี (Binary Tree)",
+            "5.3 การเข้าถึงข้อมูลในไบนารีทรี",
+            "5.3.3 แบบโพสต์ออร์เดอร์ (Postorder: Left-Right-Node)"
+          ]
+        }
+      ],
+      "heading_hints": [
+        "5",
+        "5.3",
+        "5.3.2",
+        "5.3.3"
+      ]
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:58",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 58,
+      "best_topic": "5.6",
+      "best_topic_path": [
+        "5 ไบนารีทรี (Binary Tree)",
+        "5.6 การแปลงทรีเป็นไบนารีทรี"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "5.6",
+          "score": 1.0,
+          "path": [
+            "5 ไบนารีทรี (Binary Tree)",
+            "5.6 การแปลงทรีเป็นไบนารีทรี"
+          ]
+        },
+        {
+          "topic_id": "5.1",
+          "score": 1.0,
+          "path": [
+            "5 ไบนารีทรี (Binary Tree)",
+            "5.1 โครงสร้างทรี"
+          ]
+        },
+        {
+          "topic_id": "5.3",
+          "score": 0.857143,
+          "path": [
+            "5 ไบนารีทรี (Binary Tree)",
+            "5.3 การเข้าถึงข้อมูลในไบนารีทรี"
+          ]
+        }
+      ],
+      "heading_hints": []
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:59",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 59,
+      "best_topic": "5.6",
+      "best_topic_path": [
+        "5 ไบนารีทรี (Binary Tree)",
+        "5.6 การแปลงทรีเป็นไบนารีทรี"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "5.6",
+          "score": 1.0,
+          "path": [
+            "5 ไบนารีทรี (Binary Tree)",
+            "5.6 การแปลงทรีเป็นไบนารีทรี"
+          ]
+        },
+        {
+          "topic_id": "5.3",
+          "score": 1.0,
+          "path": [
+            "5 ไบนารีทรี (Binary Tree)",
+            "5.3 การเข้าถึงข้อมูลในไบนารีทรี"
+          ]
+        },
+        {
+          "topic_id": "5.1",
+          "score": 1.0,
+          "path": [
+            "5 ไบนารีทรี (Binary Tree)",
+            "5.1 โครงสร้างทรี"
+          ]
+        }
+      ],
+      "heading_hints": []
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:60",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 60,
+      "best_topic": "5.6",
+      "best_topic_path": [
+        "5 ไบนารีทรี (Binary Tree)",
+        "5.6 การแปลงทรีเป็นไบนารีทรี"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "5.6",
+          "score": 1.0,
+          "path": [
+            "5 ไบนารีทรี (Binary Tree)",
+            "5.6 การแปลงทรีเป็นไบนารีทรี"
+          ]
+        },
+        {
+          "topic_id": "5.3",
+          "score": 1.0,
+          "path": [
+            "5 ไบนารีทรี (Binary Tree)",
+            "5.3 การเข้าถึงข้อมูลในไบนารีทรี"
+          ]
+        },
+        {
+          "topic_id": "5.1",
+          "score": 1.0,
+          "path": [
+            "5 ไบนารีทรี (Binary Tree)",
+            "5.1 โครงสร้างทรี"
+          ]
+        }
+      ],
+      "heading_hints": []
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:61",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 61,
+      "best_topic": "5.4",
+      "best_topic_path": [
+        "5 ไบนารีทรี (Binary Tree)",
+        "5.4 ทรีกับการดำเนินการด้านนิพจน์"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "5.4",
+          "score": 1.45,
+          "path": [
+            "5 ไบนารีทรี (Binary Tree)",
+            "5.4 ทรีกับการดำเนินการด้านนิพจน์"
+          ]
+        },
+        {
+          "topic_id": "5.6",
+          "score": 1.26,
+          "path": [
+            "5 ไบนารีทรี (Binary Tree)",
+            "5.6 การแปลงทรีเป็นไบนารีทรี"
+          ]
+        },
+        {
+          "topic_id": "5.1",
+          "score": 1.26,
+          "path": [
+            "5 ไบนารีทรี (Binary Tree)",
+            "5.1 โครงสร้างทรี"
+          ]
+        }
+      ],
+      "heading_hints": [
+        "5",
+        "5.4"
+      ]
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:62",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 62,
+      "best_topic": "5",
+      "best_topic_path": [
+        "5 ไบนารีทรี (Binary Tree)"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "5.6",
+          "score": 1.0,
+          "path": [
+            "5 ไบนารีทรี (Binary Tree)",
+            "5.6 การแปลงทรีเป็นไบนารีทรี"
+          ]
+        },
+        {
+          "topic_id": "5.3",
+          "score": 1.0,
+          "path": [
+            "5 ไบนารีทรี (Binary Tree)",
+            "5.3 การเข้าถึงข้อมูลในไบนารีทรี"
+          ]
+        },
+        {
+          "topic_id": "5.2.2",
+          "score": 1.0,
+          "path": [
+            "5 ไบนารีทรี (Binary Tree)",
+            "5.2 ชนิดของทรี",
+            "5.2.2 ไบนารีทรี (Binary Tree)"
+          ]
+        }
+      ],
+      "heading_hints": []
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:63",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 63,
+      "best_topic": "5",
+      "best_topic_path": [
+        "5 ไบนารีทรี (Binary Tree)"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "5",
+          "score": 1.45,
+          "path": [
+            "5 ไบนารีทรี (Binary Tree)"
+          ]
+        },
+        {
+          "topic_id": "5.6",
+          "score": 1.26,
+          "path": [
+            "5 ไบนารีทรี (Binary Tree)",
+            "5.6 การแปลงทรีเป็นไบนารีทรี"
+          ]
+        },
+        {
+          "topic_id": "5.1",
+          "score": 1.26,
+          "path": [
+            "5 ไบนารีทรี (Binary Tree)",
+            "5.1 โครงสร้างทรี"
+          ]
+        }
+      ],
+      "heading_hints": [
+        "5",
+        "5.5"
+      ]
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:64",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 64,
+      "best_topic": "5.6",
+      "best_topic_path": [
+        "5 ไบนารีทรี (Binary Tree)",
+        "5.6 การแปลงทรีเป็นไบนารีทรี"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "5.6",
+          "score": 1.0,
+          "path": [
+            "5 ไบนารีทรี (Binary Tree)",
+            "5.6 การแปลงทรีเป็นไบนารีทรี"
+          ]
+        },
+        {
+          "topic_id": "5.1",
+          "score": 1.0,
+          "path": [
+            "5 ไบนารีทรี (Binary Tree)",
+            "5.1 โครงสร้างทรี"
+          ]
+        },
+        {
+          "topic_id": "2.2.1",
+          "score": 1.0,
+          "path": [
+            "2 อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+            "2.2 ชนิดของอาร์เรย์",
+            "2.2.1 อาร์เรย์ 1 มิติ"
+          ]
+        }
+      ],
+      "heading_hints": []
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:65",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 65,
+      "best_topic": "5.6",
+      "best_topic_path": [
+        "5 ไบนารีทรี (Binary Tree)",
+        "5.6 การแปลงทรีเป็นไบนารีทรี"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "5.6",
+          "score": 1.45,
+          "path": [
+            "5 ไบนารีทรี (Binary Tree)",
+            "5.6 การแปลงทรีเป็นไบนารีทรี"
+          ]
+        },
+        {
+          "topic_id": "5",
+          "score": 1.3,
+          "path": [
+            "5 ไบนารีทรี (Binary Tree)"
+          ]
+        },
+        {
+          "topic_id": "5.1",
+          "score": 1.26,
+          "path": [
+            "5 ไบนารีทรี (Binary Tree)",
+            "5.1 โครงสร้างทรี"
+          ]
+        }
+      ],
+      "heading_hints": [
+        "5",
+        "5.6"
+      ]
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:66",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 66,
+      "best_topic": "5.6",
+      "best_topic_path": [
+        "5 ไบนารีทรี (Binary Tree)",
+        "5.6 การแปลงทรีเป็นไบนารีทรี"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "5.6",
+          "score": 1.0,
+          "path": [
+            "5 ไบนารีทรี (Binary Tree)",
+            "5.6 การแปลงทรีเป็นไบนารีทรี"
+          ]
+        },
+        {
+          "topic_id": "5.1",
+          "score": 1.0,
+          "path": [
+            "5 ไบนารีทรี (Binary Tree)",
+            "5.1 โครงสร้างทรี"
+          ]
+        },
+        {
+          "topic_id": "5",
+          "score": 0.85,
+          "path": [
+            "5 ไบนารีทรี (Binary Tree)"
+          ]
+        }
+      ],
+      "heading_hints": []
+    },
+    {
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:67",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 67,
+      "best_topic": "5.6",
+      "best_topic_path": [
+        "5 ไบนารีทรี (Binary Tree)",
+        "5.6 การแปลงทรีเป็นไบนารีทรี"
+      ],
+      "top_topics": [
+        {
+          "topic_id": "5.6",
+          "score": 0.833333,
+          "path": [
+            "5 ไบนารีทรี (Binary Tree)",
+            "5.6 การแปลงทรีเป็นไบนารีทรี"
+          ]
+        },
+        {
+          "topic_id": "5.1",
+          "score": 0.666667,
+          "path": [
+            "5 ไบนารีทรี (Binary Tree)",
+            "5.1 โครงสร้างทรี"
+          ]
+        },
+        {
+          "topic_id": "5.2.3",
+          "score": 0.625,
+          "path": [
+            "5 ไบนารีทรี (Binary Tree)",
+            "5.2 ชนิดของทรี",
+            "5.2.3 ไบนารีทรีแบบสมบูรณ์ (Complete Binary Tree)"
+          ]
+        }
+      ],
+      "heading_hints": []
+    }
+  ],
+  "summary": {
+    "topic_count": 62,
+    "page_count": 67,
+    "assigned_pages": 67,
+    "min_score": 0.15,
+    "encoding_policy": "utf8_strict"
+  }
+}

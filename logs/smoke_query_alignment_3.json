@@ -1,0 +1,292 @@
+{
+  "query": "???????????????????????????????????",
+  "backend": "colpali_endpoint",
+  "sparse_strategy": "bm25",
+  "sparse_status": "ok",
+  "sparse_score_ready": true,
+  "splade_status": "disabled_by_strategy_bm25",
+  "splade_score_ready": false,
+  "bm25_status": "ok",
+  "bm25_score_ready": true,
+  "colpali_status": "ok",
+  "colpali_status_detail": "ok",
+  "colpali_score_ready": true,
+  "vlm_rerank_status": "not_used",
+  "grounding_status": "not_used",
+  "candidate_quality": {
+    "candidate_count": 2,
+    "image_usable_count": 2,
+    "image_base64_coverage": 1.0,
+    "dropped_no_image_count": 0
+  },
+  "filter_trace": {
+    "initial_records": 162,
+    "after_strict": 0,
+    "after_relax1": 2,
+    "after_relax2": 2,
+    "final_records": 2,
+    "selected_mode": "strict_no_match->relax1:relaxed_topic_ids_with_chapter"
+  },
+  "endpoint_runtime": {
+    "timeout_sec": 120,
+    "max_retries": 2,
+    "retry_backoff_ms": 700,
+    "local_cache_size": 256,
+    "image_max_side": 896,
+    "jpeg_quality": 80
+  },
+  "splade_runtime": {
+    "enabled": false,
+    "mode": "auto",
+    "provider": "hf-inference",
+    "model": "naver/splade-v3",
+    "device": "auto",
+    "max_length": 256,
+    "batch_size": 8
+  },
+  "bm25_runtime": {
+    "enabled": true,
+    "status": "ok"
+  },
+  "scoring_weights": {
+    "channel_weights": {
+      "colpali": 0.4098,
+      "sparse": 0.1311,
+      "lexical": 0.0656,
+      "region_prior": 0.0656,
+      "region_quality": 0.0492,
+      "structure_prior": 0.0574,
+      "structure_align": 0.041,
+      "topic_scope": 0.0984,
+      "figure_match": 0.0492,
+      "operation_match": 0.0328
+    },
+    "pre_vlm_blend": {
+      "base": 0.68,
+      "rrf": 0.32
+    },
+    "rrf_k": 60,
+    "tiny_region_penalty": {
+      "enabled": true,
+      "area_ratio_lt": 0.006,
+      "multiplier": 0.82
+    },
+    "hard_negative": {
+      "rules_loaded": 7,
+      "penalty_max": 0.22,
+      "penalized_candidates": 0
+    }
+  },
+  "coverage_rerank": {
+    "applied": false,
+    "novelty_weight": 0.26,
+    "figure_weight": 0.62,
+    "page_weight": 0.38,
+    "step_target": 4
+  },
+  "grounding_config": {
+    "enabled": false,
+    "top_n": 1,
+    "ensemble_runs": 2,
+    "consensus_min_votes": 2,
+    "temperature": 0.0,
+    "top_p": 0.9
+  },
+  "hard_negative_config": {
+    "rules_path": "indexes/hierarchical/hard_negative_rules.json",
+    "rules_loaded": 7,
+    "penalty_max": 0.22
+  },
+  "topic_prediction": {
+    "topic_id": "1.1.1",
+    "topic_score": 0.25,
+    "topic_filtered": true,
+    "topic_threshold": 0.18,
+    "topic_scope_ids": [
+      "1.1.1"
+    ],
+    "topic_source": "heuristic",
+    "topic_filter_reason": "metadata_prefilter_plus_hierarchy:strict_no_match->relax1:relaxed_topic_ids_with_chapter",
+    "metadata_prefilter_enabled": true,
+    "metadata_filter_strict": true,
+    "heuristic_topic_id": "1.1.1",
+    "heuristic_topic_score": 0.25
+  },
+  "intent_classification": {
+    "use_intent_llm": false,
+    "intent_model": "Qwen/Qwen3-4B-Instruct-2507",
+    "intent_llm_status": "not_used",
+    "intent_llm": {},
+    "ranked_topics": [
+      {
+        "topic_id": "1",
+        "title": "โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+        "score": 0.25
+      },
+      {
+        "topic_id": "1.1",
+        "title": "ความหมายโครงสร้างข้อมูลและอัลกอริทึม",
+        "score": 0.25
+      },
+      {
+        "topic_id": "1.1.1",
+        "title": "ความหมายของโครงสร้างข้อมูล (Data Structure)",
+        "score": 0.25
+      },
+      {
+        "topic_id": "1.1.2",
+        "title": "ความหมายของอัลกอริทึม (Algorithm)",
+        "score": 0.25
+      },
+      {
+        "topic_id": "1.1.3",
+        "title": "ความสำคัญของการเลือกโครงสร้างข้อมูลที่เหมาะสมกับอัลกอริทึม",
+        "score": 0.25
+      },
+      {
+        "topic_id": "1.2",
+        "title": "โครงสร้างข้อมูลพื้นฐาน",
+        "score": 0.25
+      },
+      {
+        "topic_id": "1.2.1",
+        "title": "บิต (Bit)",
+        "score": 0.25
+      },
+      {
+        "topic_id": "1.2.2",
+        "title": "ไบต์ (Byte)",
+        "score": 0.25
+      },
+      {
+        "topic_id": "1.2.3",
+        "title": "ฟิลด์ (Field)",
+        "score": 0.25
+      },
+      {
+        "topic_id": "1.2.4",
+        "title": "เรคอร์ด (Record)",
+        "score": 0.25
+      },
+      {
+        "topic_id": "1.2.5",
+        "title": "ไฟล์ (File)",
+        "score": 0.25
+      },
+      {
+        "topic_id": "1.2.6",
+        "title": "ฐานข้อมูล (Database)",
+        "score": 0.25
+      }
+    ]
+  },
+  "query_expansion": {
+    "use_query_expansion_llm": false,
+    "query_expansion_model": "Qwen/Qwen3-4B-Instruct-2507",
+    "query_expansion_status": "not_used",
+    "query_expansion_terms": [],
+    "query_expansion_max_terms": 8
+  },
+  "hierarchy_quality": {
+    "garbled_detected": false,
+    "mojibake_ratio": 0.0,
+    "topic_filter_enabled": true
+  },
+  "query_profile": {
+    "has_figure_ref": false,
+    "figure_refs": [],
+    "operation_intent": false,
+    "structure_intent": false,
+    "operation_terms": [],
+    "structure_terms": [],
+    "intent_type": "",
+    "expanded_query_terms_count": 0,
+    "llm_expansion_status": "not_used",
+    "llm_expansion_terms": []
+  },
+  "task_metrics": {
+    "region_hit_ratio_at_k": 0.0,
+    "figure_ref_hit_ratio_at_k": 0.0,
+    "structure_hit_ratio_at_k": 0.0,
+    "operation_coverage_ratio_at_k": null,
+    "query_figure_ref_coverage": null,
+    "grounding_success_rate": 0.0,
+    "grounding_consistency_mean": null,
+    "citation_ready_ratio": 1.0,
+    "mean_final_score": 0.245463,
+    "crop_completeness_proxy": null,
+    "small_region_ratio_at_k": null,
+    "region_quality_mean": 0.0,
+    "unique_figure_refs_at_k": 0,
+    "page_diversity_at_k": 1.0,
+    "procedure_step_coverage_proxy": null
+  },
+  "count": 2,
+  "hits": [
+    {
+      "rank": 1,
+      "id": "data_structure_data_ch1_to_ch5.pdf:1:page:0",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:1",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 1,
+      "image_path": "C:/Users/Admin/typhoon_rag/assets/figures/page_001_img_01.png",
+      "image_level": "page",
+      "region_meta": {},
+      "structure_labels": [],
+      "tags": [],
+      "figure_refs": [],
+      "chapter_id": "1",
+      "chapter_title": "โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+      "section_id": "1.1",
+      "section_title": "ความหมายโครงสร้างข้อมูลและอัลกอริทึม",
+      "best_topic_id": "1.1",
+      "best_topic_title": "ความหมายโครงสร้างข้อมูลและอัลกอริทึม",
+      "base_score": 0.409836,
+      "rrf_score": 1.0,
+      "pre_vlm_score": 0.490925,
+      "vlm_score": 0.0,
+      "final_score": 0.490925,
+      "figure_score": 0.0,
+      "operation_score": 0.0,
+      "structure_score": 0.0,
+      "topic_scope_score": 1.0,
+      "region_quality_score": 0.0,
+      "vlm_reason": "",
+      "preview": "# หน่วยเรียนที่ 1\n## โครงสร้างข้อมูลเบื้องต้น (Data Structure)\n\nโครงสร้างข้อมูลเป็นความรู้พื้นฐานสำหรับการเริ่มต้นพัฒนาหรือเขียนโปรแกรมคอมพิวเตอร์ โดยโครงสร้างข้อมูลแต่ละชนิดมีความแตกต่างกัน การเลือกโครงสร้างข้อมูลเพื่อนำไปใช้ในการพัฒนาอัลกอริทึมสำหรับแก้ปัญหาจึงจำเป็นต้องใช้โครง"
+    },
+    {
+      "rank": 2,
+      "id": "data_structure_data_ch1_to_ch5.pdf:2:page:0",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:2",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 2,
+      "image_path": "C:/Users/Admin/typhoon_rag/assets/figures/page_002_img_01.png",
+      "image_level": "page",
+      "region_meta": {},
+      "structure_labels": [],
+      "tags": [
+        "flowchart"
+      ],
+      "figure_refs": [],
+      "chapter_id": "1",
+      "chapter_title": "โครงสร้างข้อมูลเบื้องต้น (Introduction to Data Structure)",
+      "section_id": "1.1",
+      "section_title": "ความหมายโครงสร้างข้อมูลและอัลกอริทึม",
+      "best_topic_id": "1.1",
+      "best_topic_title": "ความหมายโครงสร้างข้อมูลและอัลกอริทึม",
+      "base_score": 0.0,
+      "rrf_score": 0.0,
+      "pre_vlm_score": 0.0,
+      "vlm_score": 0.0,
+      "final_score": 0.0,
+      "figure_score": 0.0,
+      "operation_score": 0.0,
+      "structure_score": 0.0,
+      "topic_scope_score": 1.0,
+      "region_quality_score": 0.0,
+      "vlm_reason": "",
+      "preview": "ขนิชธ์ นามี (2548 : 3) ได้ให้ความหมายของอัลกอริทึมไว้ว่า อัลกอริทึม หมายถึง ลำดับขั้นตอนในการทำงานของโปรแกรมเพื่อแก้ปัญหาใดปัญหาหนึ่ง ซึ่งถ้าปฏิบัติตามขั้นตอนอย่างถูกต้องแล้ว จะต้องสามารถช่วยแก้ปัญหาหรือประมวลผลตามต้องการได้สำเร็จ\n\nวิวัฒน์ ภิสิทธิภูญญู และอมร มุสิกสาร (2550 : 11)"
+    }
+  ],
+  "grounding": []
+}

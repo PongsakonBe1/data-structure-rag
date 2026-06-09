@@ -1,0 +1,351 @@
+{
+  "query": "การทำงานของลิงค์ลิสต์แบบทิศทางเดียว",
+  "backend": "colpali_endpoint",
+  "sparse_strategy": "bm25",
+  "sparse_status": "ok",
+  "sparse_score_ready": true,
+  "splade_status": "disabled_by_strategy_bm25",
+  "splade_score_ready": false,
+  "bm25_status": "ok",
+  "bm25_score_ready": true,
+  "colpali_status": "ok",
+  "colpali_status_detail": "ok",
+  "colpali_score_ready": true,
+  "vlm_rerank_status": "not_used",
+  "grounding_status": "not_used",
+  "candidate_quality": {
+    "candidate_count": 2,
+    "image_usable_count": 2,
+    "image_base64_coverage": 1.0,
+    "dropped_no_image_count": 0
+  },
+  "filter_trace": {
+    "initial_records": 188,
+    "after_strict": 0,
+    "after_relax1": 1,
+    "after_relax2": 2,
+    "final_records": 2,
+    "selected_mode": "strict_no_match->relax1:fallback_all_records->topic_neighborhood_fallback"
+  },
+  "endpoint_runtime": {
+    "timeout_sec": 120,
+    "max_retries": 2,
+    "retry_backoff_ms": 700,
+    "local_cache_size": 256,
+    "image_max_side": 896,
+    "jpeg_quality": 80
+  },
+  "splade_runtime": {
+    "enabled": false,
+    "mode": "auto",
+    "provider": "hf-inference",
+    "model": "naver/splade-v3",
+    "device": "auto",
+    "max_length": 256,
+    "batch_size": 8
+  },
+  "bm25_runtime": {
+    "enabled": true,
+    "status": "ok"
+  },
+  "scoring_weights": {
+    "channel_weights": {
+      "colpali": 0.4,
+      "sparse": 0.128,
+      "lexical": 0.04,
+      "region_prior": 0.064,
+      "region_quality": 0.048,
+      "structure_prior": 0.056,
+      "structure_align": 0.04,
+      "topic_scope": 0.096,
+      "figure_match": 0.048,
+      "operation_match": 0.08
+    },
+    "pre_vlm_blend": {
+      "base": 0.68,
+      "rrf": 0.32
+    },
+    "rrf_k": 60,
+    "tiny_region_penalty": {
+      "enabled": true,
+      "area_ratio_lt": 0.006,
+      "multiplier": 0.82
+    },
+    "hard_negative": {
+      "rules_loaded": 7,
+      "penalty_max": 0.22,
+      "penalized_candidates": 2
+    }
+  },
+  "coverage_rerank": {
+    "applied": true,
+    "novelty_weight": 0.26,
+    "figure_weight": 0.62,
+    "page_weight": 0.38,
+    "step_target": 4
+  },
+  "grounding_config": {
+    "enabled": false,
+    "top_n": 1,
+    "ensemble_runs": 2,
+    "consensus_min_votes": 2,
+    "temperature": 0.0,
+    "top_p": 0.9
+  },
+  "hard_negative_config": {
+    "rules_path": "indexes/hierarchical/hard_negative_rules.json",
+    "rules_loaded": 7,
+    "penalty_max": 0.22
+  },
+  "topic_prediction": {
+    "topic_id": "2.4.2",
+    "topic_score": 1.0,
+    "topic_filtered": true,
+    "topic_threshold": 0.18,
+    "topic_scope_ids": [
+      "2.4.2"
+    ],
+    "topic_source": "llm",
+    "topic_filter_reason": "metadata_prefilter_plus_hierarchy:strict_no_match->relax1:fallback_all_records->topic_neighborhood_fallback",
+    "metadata_prefilter_enabled": true,
+    "metadata_filter_strict": true,
+    "heuristic_topic_id": "2.4.2",
+    "heuristic_topic_score": 1.0
+  },
+  "intent_classification": {
+    "use_intent_llm": false,
+    "intent_model": "Qwen/Qwen3-4B-Instruct-2507",
+    "intent_llm_status": "not_used",
+    "intent_llm": {},
+    "ranked_topics": [
+      {
+        "topic_id": "2.4.2",
+        "title": "การทำงานของลิงค์ลิสต์แบบทิศทางเดียว",
+        "score": 1.0
+      },
+      {
+        "topic_id": "2.4",
+        "title": "ลิงค์ลิสต์แบบทิศทางเดียว",
+        "score": 0.964286
+      },
+      {
+        "topic_id": "2.4.1",
+        "title": "โครงสร้างลิงค์ลิสต์แบบทิศทางเดียว",
+        "score": 0.625
+      },
+      {
+        "topic_id": "2.3.1",
+        "title": "ความหมายของลิงค์ลิสต์",
+        "score": 0.375
+      },
+      {
+        "topic_id": "2.3.2",
+        "title": "โครงสร้างของลิงค์ลิสต์",
+        "score": 0.375
+      },
+      {
+        "topic_id": "1.4.2",
+        "title": "โครงสร้างแบบเลือกการทำงาน (Selection)",
+        "score": 0.2
+      },
+      {
+        "topic_id": "2.3",
+        "title": "โครงสร้างลิงค์ลิสต์ (Linked List)",
+        "score": 0.2
+      },
+      {
+        "topic_id": "2",
+        "title": "อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+        "score": 0.142857
+      },
+      {
+        "topic_id": "3.1",
+        "title": "โครงสร้างพื้นฐานของคิว",
+        "score": 0.111111
+      },
+      {
+        "topic_id": "1.1.2",
+        "title": "ความหมายของอัลกอริทึม (Algorithm)",
+        "score": 0.1
+      },
+      {
+        "topic_id": "1.4.1",
+        "title": "โครงสร้างแบบเรียงลำดับ (Sequence)",
+        "score": 0.1
+      },
+      {
+        "topic_id": "1.4.3",
+        "title": "โครงสร้างแบบทำซ้ำ (Repetition)",
+        "score": 0.1
+      }
+    ]
+  },
+  "query_expansion": {
+    "use_query_expansion_llm": false,
+    "query_expansion_model": "Qwen/Qwen3-4B-Instruct-2507",
+    "query_expansion_status": "not_used",
+    "query_expansion_terms": [],
+    "query_expansion_max_terms": 8
+  },
+  "hierarchy_quality": {
+    "garbled_detected": false,
+    "mojibake_ratio": 0.0,
+    "topic_filter_enabled": true
+  },
+  "query_profile": {
+    "has_figure_ref": false,
+    "figure_refs": [],
+    "operation_intent": true,
+    "structure_intent": true,
+    "operation_terms": [
+      "ทำงาน"
+    ],
+    "structure_terms": [
+      "ลิงค์ลิสต์"
+    ],
+    "intent_type": "operation",
+    "expanded_query_terms_count": 18,
+    "llm_expansion_status": "not_used",
+    "llm_expansion_terms": []
+  },
+  "task_metrics": {
+    "region_hit_ratio_at_k": 1.0,
+    "figure_ref_hit_ratio_at_k": 1.0,
+    "structure_hit_ratio_at_k": 0.0,
+    "operation_coverage_ratio_at_k": 1.0,
+    "query_figure_ref_coverage": null,
+    "grounding_success_rate": 0.0,
+    "grounding_consistency_mean": null,
+    "citation_ready_ratio": 1.0,
+    "mean_final_score": 0.33296,
+    "crop_completeness_proxy": 0.5,
+    "small_region_ratio_at_k": 0.0,
+    "region_quality_mean": 1.0,
+    "unique_figure_refs_at_k": 8,
+    "page_diversity_at_k": 1.0,
+    "procedure_step_coverage_proxy": 1.0
+  },
+  "count": 2,
+  "hits": [
+    {
+      "rank": 1,
+      "id": "data_structure_data_ch1_to_ch5.pdf:25:region:1",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:25",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 25,
+      "image_path": "assets/figure_regions/page_025_region_01.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 420,
+          "y0": 1399,
+          "x1": 962,
+          "y1": 1450
+        },
+        "bbox_norm": {
+          "x0": 0.329929,
+          "y0": 0.777222,
+          "x1": 0.755695,
+          "y1": 0.805556
+        },
+        "area_ratio": 0.012063,
+        "ink_ratio": 0.19304,
+        "is_fallback": false,
+        "quality_flags": {
+          "is_tiny_before": false,
+          "expanded_from_tiny": false,
+          "is_tiny_after": false
+        }
+      },
+      "structure_labels": [],
+      "tags": [
+        "linked_list"
+      ],
+      "figure_refs": [
+        "ภาพที่ 2.15",
+        "ภาพที่ 2.16",
+        "ภาพที่ 2.17",
+        "ภาพที่ 2.18",
+        "ภาพที่ 3.8"
+      ],
+      "chapter_id": "2",
+      "chapter_title": "อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+      "section_id": "2.4.1",
+      "section_title": "โครงสร้างลิงค์ลิสต์แบบทิศทางเดียว",
+      "best_topic_id": "2.4.1",
+      "best_topic_title": "โครงสร้างลิงค์ลิสต์แบบทิศทางเดียว",
+      "base_score": 0.744,
+      "rrf_score": 1.0,
+      "pre_vlm_score": 0.66592,
+      "vlm_score": 0.0,
+      "final_score": 0.66592,
+      "figure_score": 0.0,
+      "operation_score": 1.0,
+      "structure_score": 1.0,
+      "topic_scope_score": 1.0,
+      "region_quality_score": 1.0,
+      "vlm_reason": "",
+      "preview": "# 27\n\nเก็บในส่วนของข้อมูล และฟิลด์ที่ 2 เก็บค่าของการเชื่อมโยงในส่วนของการเชื่อมโยงก็จะใช้พอยน์เตอร์เป็นตัวเชื่อมโยงไปยังโหนดอื่น ๆ\n\nภาพที่ 2.15 โครงสร้างของโหนดข้อมูล\n\n3. ทิศทางของพอยน์เตอร์ (Pointer Link) สำหรับทิศทางพอยน์เตอร์ของลิงค์ลิสต์แบบทิศทางเดียว จะทำการซื้อไปยังทิศทางเ"
+    },
+    {
+      "rank": 2,
+      "id": "data_structure_data_ch1_to_ch5.pdf:24:region:1",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:24",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 24,
+      "image_path": "assets/figure_regions/page_024_region_01.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 324,
+          "y0": 1390,
+          "x1": 1026,
+          "y1": 1445
+        },
+        "bbox_norm": {
+          "x0": 0.254517,
+          "y0": 0.772222,
+          "x1": 0.80597,
+          "y1": 0.802778
+        },
+        "area_ratio": 0.01685,
+        "ink_ratio": 0.172442,
+        "is_fallback": false,
+        "quality_flags": {
+          "is_tiny_before": false,
+          "expanded_from_tiny": false,
+          "is_tiny_after": false
+        }
+      },
+      "structure_labels": [],
+      "tags": [
+        "linked_list"
+      ],
+      "figure_refs": [
+        "ภาพที่ 2.12",
+        "ภาพที่ 2.13",
+        "ภาพที่ 2.14",
+        "ภาพที่ 3.8"
+      ],
+      "chapter_id": "2",
+      "chapter_title": "อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+      "section_id": "2.4.1",
+      "section_title": "โครงสร้างลิงค์ลิสต์แบบทิศทางเดียว",
+      "best_topic_id": "2.4.1",
+      "best_topic_title": "โครงสร้างลิงค์ลิสต์แบบทิศทางเดียว",
+      "base_score": 0.064,
+      "rrf_score": 0.0,
+      "pre_vlm_score": 0.0,
+      "vlm_score": 0.0,
+      "final_score": 0.0,
+      "figure_score": 0.0,
+      "operation_score": 0.55,
+      "structure_score": 1.0,
+      "topic_scope_score": 0.82,
+      "region_quality_score": 1.0,
+      "vlm_reason": "",
+      "preview": "# 2.4 ลิงค์ลิสต์แบบทิศทางเดียว (Single Linked List)\n\n## 2.4.1 โครงสร้างลิงค์ลิสต์แบบทิศทางเดียว\n\nลิงค์ลิสต์แบบทิศทางเดียวเป็นลิงค์ลิสต์ที่มีการเชื่อมโยงด้วยพอยน์เตอร์ไปในทิศทางเดียวกัน คือ ซึ่งเป็นโครงสร้างที่อยู่ถัดไปในโครงสร้าง ซึ่งลิงค์ลิสต์ในลักษณะนี้ถือเป็นรูปแบบพื้นฐานของลิ"
+    }
+  ],
+  "grounding": []
+}

@@ -1,0 +1,46 @@
+{
+  "queries_total": 45,
+  "direct_total": 45,
+  "queries_with_expected": 45,
+  "old_pass": 1,
+  "new_pass": 45,
+  "old_accuracy": 0.0222,
+  "new_accuracy": 1.0,
+  "improved_count": 44,
+  "regressed_count": 0,
+  "ambiguous_total": 45,
+  "ambiguous_pass": 6,
+  "ambiguous_pass_rate": 0.1333,
+  "direct_answer_stats": {
+    "cache_hits": 45,
+    "live_generated": 45,
+    "live_errors": 0,
+    "live_enabled": true,
+    "hf_model_id": "Qwen/Qwen3-4B-Instruct-2507",
+    "force_thai_answers": true
+  },
+  "ambiguous_answer_stats": {
+    "cache_hits": 45,
+    "live_generated": 0,
+    "live_errors": 0,
+    "live_enabled": false,
+    "hf_model_id": "Qwen/Qwen3-4B-Instruct-2507"
+  },
+  "thresholds": {
+    "min_new_accuracy": 1.0,
+    "min_ambiguous_pass_rate": 1.0,
+    "enforce": false
+  },
+  "files": {
+    "regression_csv": "logs/topic_routing_regression_latest.csv",
+    "confusion_old_csv": "logs/topic_confusion_old_latest.csv",
+    "confusion_new_csv": "logs/topic_confusion_new_latest.csv",
+    "ambiguous_csv": "logs/topic_routing_ambiguous_latest.csv",
+    "direct_answers_csv": "logs/topic_routing_direct_answers_latest.csv",
+    "ambiguous_answers_csv": "logs/topic_routing_ambiguous_answers_latest.csv",
+    "expert_review_csv": "logs/topic_routing_expert_review_latest.csv",
+    "dashboard_html": "logs/topic_routing_dashboard_latest.html",
+    "expert_dashboard_html": "logs/topic_routing_expert_review_dashboard_latest.html",
+    "answers_csv": "eval/topic_routing_answers_seed.csv"
+  }
+}

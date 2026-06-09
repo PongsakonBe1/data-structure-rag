@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Topic Routing Regression Dashboard</title>
+  <style>
+    :root {{
+      --bg: #f7f8fa;
+      --surface: #ffffff;
+      --text: #1e293b;
+      --muted: #64748b;
+      --accent: #0f766e;
+      --ok: #15803d;
+      --bad: #b91c1c;
+      --border: #e2e8f0;
+    }}
+    body {{
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }}
+    .container {{
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 20px;
+    }}
+    h1, h2 {{
+      margin: 0 0 12px;
+    }}
+    .sub {{
+      color: var(--muted);
+      margin-bottom: 16px;
+    }}
+    .cards {{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px;
+      margin-bottom: 16px;
+    }}
+    .card {{
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px;
+    }}
+    .card .k {{
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 6px;
+    }}
+    .card .v {{
+      font-size: 22px;
+      font-weight: 700;
+    }}
+    .panel {{
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px;
+      margin-bottom: 14px;
+    }}
+    .toolbar {{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 10px;
+    }}
+    input, select {{
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 10px;
+      font-size: 14px;
+      background: #fff;
+    }}
+    .table-wrap {{
+      overflow: auto;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }}
+    table {{
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 980px;
+      background: #fff;
+    }}
+    th, td {{
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+      padding: 8px;
+      font-size: 13px;
+      vertical-align: top;
+    }}
+    th {{
+      position: sticky;
+      top: 0;
+      background: #f8fafc;
+      z-index: 1;
+    }}
+    .pill {{
+      display: inline-block;
+      border-radius: 999px;
+      padding: 2px 8px;
+      font-size: 12px;
+      font-weight: 600;
+    }}
+    .ok {{ background: #dcfce7; color: var(--ok); }}
+    .bad {{ background: #fee2e2; color: var(--bad); }}
+    .same {{ background: #e2e8f0; color: #334155; }}
+    .heat-grid {{
+      overflow: auto;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }}
+    .heat-grid table {{
+      min-width: 760px;
+    }}
+    .small {{
+      color: var(--muted);
+      font-size: 12px;
+    }}
+    a {{
+      color: var(--accent);
+      text-decoration: none;
+    }}
+    a:hover {{
+      text-decoration: underline;
+    }}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Topic Routing Regression Dashboard</h1>
+    <div class="sub">Regression + confusion matrix + expert review (รวมคำถามและคำตอบที่แชทตอบ)</div>
+
+    <div class="cards">
+      <div class="card"><div class="k">Queries</div><div class="v" id="kQueries"></div></div>
+      <div class="card"><div class="k">Old Accuracy</div><div class="v" id="kOldAcc"></div></div>
+      <div class="card"><div class="k">New Accuracy</div><div class="v" id="kNewAcc"></div></div>
+      <div class="card"><div class="k">Improved</div><div class="v" id="kImproved"></div></div>
+      <div class="card"><div class="k">Regressed</div><div class="v" id="kRegressed"></div></div>
+      <div class="card"><div class="k">Ambiguous Pass Rate</div><div class="v" id="kAmbRate"></div></div>
+      <div class="card"><div class="k">Direct Queries</div><div class="v" id="kDirect"></div></div>
+      <div class="card"><div class="k">Ambiguous Queries</div><div class="v" id="kAmbTotal"></div></div>
+    </div>
+
+    <div class="panel">
+      <h2>Regression Table</h2>
+      <div class="toolbar">
+        <select id="categoryFilter">
+          <option value="all">all</option>
+          <option value="direct">direct</option>
+          <option value="ambiguous_in_domain">ambiguous_in_domain</option>
+        </select>
+        <select id="passFilter">
+          <option value="all">all results</option>
+          <option value="pass">pass only</option>
+          <option value="fail">fail only</option>
+        </select>
+        <input id="searchInput" type="text" placeholder="ค้นหาคำถาม..." />
+      </div>
+      <div class="table-wrap">
+        <table id="regTable">
+          <thead>
+            <tr>
+              <th>order</th>
+              <th>category</th>
+              <th>question</th>
+              <th>assistant_answer</th>
+              <th>expected</th>
+              <th>old</th>
+              <th>new</th>
+              <th>old pass/fail</th>
+              <th>new pass/fail</th>
+              <th>delta</th>
+            </tr>
+          </thead>
+          <tbody id="regBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>Confusion Matrix (Old)</h2>
+      <div class="small">expected_topic_id เป็นแถว, predicted_topic_id เป็นคอลัมน์</div>
+      <div id="heatOld" class="heat-grid"></div>
+    </div>
+
+    <div class="panel">
+      <h2>Confusion Matrix (New)</h2>
+      <div class="small">expected_topic_id เป็นแถว, predicted_topic_id เป็นคอลัมน์</div>
+      <div id="heatNew" class="heat-grid"></div>
+    </div>
+
+    <div class="panel">
+      <h2>Ambiguous In-domain Check</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>order</th>
+              <th>question</th>
+              <th>should_attempt</th>
+              <th>attempted</th>
+              <th>pred_topic_id</th>
+              <th>assistant_answer</th>
+              <th>pass/fail</th>
+            </tr>
+          </thead>
+          <tbody id="ambBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>Expert Review CSV</h2>
+      <div class="small">ไฟล์สำหรับผู้เชี่ยวชาญตรวจเนื้อหา: <a href="../{html.escape(expert_review_csv_path)}">{html.escape(expert_review_csv_path)}</a></div>
+      <div class="small">คอลัมน์หลัก: question, expected_topic, predicted_topic, assistant_answer, answer_correct(Y/N)</div>
+    </div>
+  </div>
+
+  <script>
+    const DATA = {payload_json};
+
+    const $ = (id) => document.getElementById(id);
+    const pct = (x) => (x === null || x === undefined || Number.isNaN(x)) ? "-" : `${{(Number(x) * 100).toFixed(2)}}%`;
+    const esc = (s) => String(s ?? "").replace(/[&<>]/g, (m) => ({{"&":"&amp;","<":"&lt;",">":"&gt;"}}[m]));
+    const pill = (v) => {{
+      if (v === "pass") return `<span class="pill ok">pass</span>`;
+      if (v === "fail") return `<span class="pill bad">fail</span>`;
+      if (v === "improved") return `<span class="pill ok">improved</span>`;
+      if (v === "regressed") return `<span class="pill bad">regressed</span>`;
+      if (v === "same") return `<span class="pill same">same</span>`;
+      return esc(v);
+    }};
+
+    function renderSummary() {{
+      const s = DATA.summary || {{}};
+      $("kQueries").textContent = s.queries_total ?? "-";
+      $("kOldAcc").textContent = pct(s.old_accuracy);
+      $("kNewAcc").textContent = pct(s.new_accuracy);
+      $("kImproved").textContent = s.improved_count ?? "-";
+      $("kRegressed").textContent = s.regressed_count ?? "-";
+      $("kAmbRate").textContent = pct(s.ambiguous_pass_rate);
+      $("kDirect").textContent = s.direct_total ?? "-";
+      $("kAmbTotal").textContent = s.ambiguous_total ?? "-";
+    }}
+
+    function renderRegressionTable() {{
+      const tbody = $("regBody");
+      const rows = DATA.rows || [];
+      const category = $("categoryFilter").value;
+      const passFilter = $("passFilter").value;
+      const q = $("searchInput").value.trim().toLowerCase();
+      let htmlRows = "";
+      for (const r of rows) {{
+        if (category !== "all" && r.category !== category) continue;
+        if (passFilter !== "all" && r.new_pass_fail !== passFilter) continue;
+        const hay = `${{r.question || ""}} ${{r.assistant_answer || ""}} ${{r.expected_topic_id || ""}} ${{r.new_topic_id || ""}}`.toLowerCase();
+        if (q && !hay.includes(q)) continue;
+        htmlRows += `<tr>
+          <td>${{esc(r.order)}}</td>
+          <td>${{esc(r.category)}}</td>
+          <td>${{esc(r.question)}}</td>
+          <td>${{esc(r.assistant_answer)}}</td>
+          <td>${{esc(r.expected_topic_id)}}</td>
+          <td>${{esc(r.old_topic_id)}}</td>
+          <td>${{esc(r.new_topic_id)}}</td>
+          <td>${{pill(r.old_pass_fail)}}</td>
+          <td>${{pill(r.new_pass_fail)}}</td>
+          <td>${{pill(r.delta)}}</td>
+        </tr>`;
+      }}
+      tbody.innerHTML = htmlRows || '<tr><td colspan="10">no rows</td></tr>';
+    }}
+
+    function renderAmbiguousTable() {{
+      const tbody = $("ambBody");
+      const rows = DATA.ambiguousRows || [];
+      let htmlRows = "";
+      for (const r of rows) {{
+        htmlRows += `<tr>
+          <td>${{esc(r.order)}}</td>
+          <td>${{esc(r.question)}}</td>
+          <td>${{esc(r.should_attempt)}}</td>
+          <td>${{esc(r.attempted)}}</td>
+          <td>${{esc(r.pred_topic_id)}}</td>
+          <td>${{esc(r.assistant_answer)}}</td>
+          <td>${{pill(r.pass_fail)}}</td>
+        </tr>`;
+      }}
+      tbody.innerHTML = htmlRows || '<tr><td colspan="7">no rows</td></tr>';
+    }}
+
+    function renderHeatmap(targetId, conf) {{
+      const host = $(targetId);
+      if (!conf || !conf.rows || !conf.cols) {{
+        host.innerHTML = "<div class='small'>no data</div>";
+        return;
+      }}
+      const maxV = Math.max(1, Number(conf.max_value || 0));
+      let html = "<table><thead><tr><th>expected \\ predicted</th>";
+      for (const c of conf.cols) html += `<th>${{esc(c)}}</th>`;
+      html += "</tr></thead><tbody>";
+      for (let i = 0; i < conf.rows.length; i++) {{
+        html += `<tr><th>${{esc(conf.rows[i])}}</th>`;
+        const mRow = conf.matrix[i] || [];
+        for (let j = 0; j < conf.cols.length; j++) {{
+          const v = Number(mRow[j] || 0);
+          const alpha = 0.08 + (v / maxV) * 0.92;
+          const bg = `rgba(15, 118, 110, ${{alpha.toFixed(3)}})`;
+          const fg = alpha > 0.55 ? "#ffffff" : "#0f172a";
+          html += `<td style="background:${{bg}};color:${{fg}};text-align:right;font-weight:600;">${{v}}</td>`;
+        }}
+        html += "</tr>";
+      }}
+      html += "</tbody></table>";
+      host.innerHTML = html;
+    }}
+
+    renderSummary();
+    renderRegressionTable();
+    renderAmbiguousTable();
+    renderHeatmap("heatOld", DATA.confOld);
+    renderHeatmap("heatNew", DATA.confNew);
+    $("categoryFilter").addEventListener("change", renderRegressionTable);
+    $("passFilter").addEventListener("change", renderRegressionTable);
+    $("searchInput").addEventListener("input", renderRegressionTable);
+  </script>
+</body>
+</html>

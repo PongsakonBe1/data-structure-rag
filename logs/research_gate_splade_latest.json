@@ -1,0 +1,72 @@
+{
+  "ok": false,
+  "failed_checks": [
+    "retrieval_hit_at_k",
+    "figure_hit_at_k",
+    "task_page_recall_at_k"
+  ],
+  "checks": [
+    {
+      "name": "ocr_research_gate",
+      "pass": true,
+      "value": {
+        "strict_research_pass": true,
+        "operational_pass": true
+      },
+      "threshold": "strict_research_pass=true (or operational_pass=true)"
+    },
+    {
+      "name": "retrieval_topic_f1",
+      "pass": true,
+      "value": 1.0,
+      "threshold": ">=0.95"
+    },
+    {
+      "name": "retrieval_hit_at_k",
+      "pass": false,
+      "value": 0.8,
+      "threshold": ">=0.95"
+    },
+    {
+      "name": "figure_hit_at_k",
+      "pass": false,
+      "value": 0.8,
+      "threshold": ">=0.90"
+    },
+    {
+      "name": "endpoint_nonempty_rate",
+      "pass": true,
+      "value": 1.0,
+      "threshold": ">=0.95"
+    },
+    {
+      "name": "candidate_image_coverage_mean",
+      "pass": true,
+      "value": 1.0,
+      "threshold": ">=0.90"
+    },
+    {
+      "name": "filter_survival_rate",
+      "pass": true,
+      "value": 0.1461,
+      "threshold": ">=0.01"
+    },
+    {
+      "name": "task_page_recall_at_k",
+      "pass": false,
+      "value": 0.4,
+      "threshold": ">=0.95"
+    },
+    {
+      "name": "task_operation_coverage",
+      "pass": true,
+      "value": 0.83335,
+      "threshold": ">=0.40"
+    }
+  ],
+  "inputs": {
+    "ocr_report": "logs/ocr_research_grade_structured_full_with_gt_v3_latest.json",
+    "retrieval_report": "logs/visual_topic_benchmark_splade_latest.json",
+    "task_report": "logs/visual_task_metrics_splade_latest.json"
+  }
+}

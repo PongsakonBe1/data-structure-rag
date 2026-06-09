@@ -1,0 +1,41 @@
+{
+  "overall_pass": true,
+  "summary": {
+    "targeted_pages": 54,
+    "pages_with_regions": 54,
+    "fallback_pages": 1,
+    "records_written": 164,
+    "total_pages": 67
+  },
+  "smoke": {
+    "linked_list_top3_structure_ratio": 1.0,
+    "queue_array_top3_structure_ratio": 1.0,
+    "circular_queue_top3_structure_ratio": 1.0
+  },
+  "checks": {
+    "ingest_error_budget_pass": {
+      "value": true,
+      "pass": true
+    },
+    "region_coverage": {
+      "value": 1.0,
+      "threshold": 0.8,
+      "pass": true
+    },
+    "fallback_ratio": {
+      "value": 0.018519,
+      "threshold": 0.2,
+      "pass": true
+    },
+    "rows_per_page": {
+      "value": 2.447761,
+      "threshold": 1.2,
+      "pass": true
+    },
+    "smoke_structure_precision": {
+      "value": 1.0,
+      "threshold": 0.75,
+      "pass": true
+    }
+  }
+}

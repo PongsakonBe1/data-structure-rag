@@ -1,0 +1,2 @@
+Timestamp,Question,Answer_Length,Human_Feedback,Predicted_Topic,RAGAS_Faithfulness,RAGAS_Answer_Relevance,RAGAS_Context_Precision
+2026-02-12T02:02:25.634375,อยากเข้าใจเรื่องกระบวนการการท่องไปในทรี,5175,POSITIVE,Tree Traversal,0.5,1.0,1.0

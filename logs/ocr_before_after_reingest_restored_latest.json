@@ -1,0 +1,34 @@
+{
+  "config": {
+    "gt_jsonl": "eval/ocr_gt_first_mid_last_v3_structured_full.jsonl",
+    "before": "logs/final_extracted_backup_before_reingest_20260223_103718.md",
+    "after": "final_extracted_text_only_structured_full.md",
+    "cer_threshold": 0.05,
+    "wer_threshold": 0.2,
+    "strict_mode": "external_publish_grade",
+    "manual_verified_only": true,
+    "invalid_gt_rows_skipped": 0
+  },
+  "before": {
+    "samples": 12,
+    "cer_mean": 0.080759,
+    "wer_mean": 0.234134,
+    "cer_p95": 0.25908,
+    "wer_p95": 1.116279,
+    "pass": false
+  },
+  "after": {
+    "samples": 12,
+    "cer_mean": 0.018939,
+    "wer_mean": 0.016134,
+    "cer_p95": 0.055142,
+    "wer_p95": 0.032787,
+    "pass": true
+  },
+  "delta_after_minus_before": {
+    "cer_mean": -0.06182,
+    "wer_mean": -0.218,
+    "cer_p95": -0.203938,
+    "wer_p95": -1.083492
+  }
+}

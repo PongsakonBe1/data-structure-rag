@@ -1,0 +1,36 @@
+{
+  "input": "eval\\ocr_gt_first_mid_last_v3_structured_full.jsonl",
+  "baseline": "eval\\ocr_gt_first_mid_last_v3_structured_full_manual.jsonl",
+  "invalid_lines_found": 4,
+  "invalid_line_examples": [
+    {
+      "line": 5,
+      "error": "Unterminated string starting at: line 1 column 87 (char 86)",
+      "preview": "{\"page\": 5, \"source\": \"data_structure_data_ch1_to_ch5.pdf\", \"split\": \"first\", \"text\": \"แก้ปัญหา โดยวะเล้นปัญหาบางส่วนไว้ก่อน เพื่อจะแก้ปัญหาที่มีขนาดเล็กลงกว่าเดิม เนื่องจากปัญหาที่มีขนาดเล็กกว่าสามาร"
+    },
+    {
+      "line": 6,
+      "error": "Extra data: line 1 column 2 (char 1)",
+      "preview": "8. อัลกอริทึมแบบการแปลงและเอาชนะ (Transform and Conquer Algorithm) เป็นการแก้ไขปัญหาด้วยวิธีการเปลี่ยนรูปแบบของปัญหาที่ต้องการแก้ไขให้อยู่ในรูปแบบอื่นก่อน ด้วยคาดหวังเมื่อเปลี่ยนรูปแบบของปัญหาแล้วจะสา"
+    },
+    {
+      "line": 10,
+      "error": "Unterminated string starting at: line 1 column 89 (char 88)",
+      "preview": "{\"page\": 33, \"source\": \"data_structure_data_ch1_to_ch5.pdf\", \"split\": \"middle\", \"text\": \"36 - insert (q,D); เขียนแทนความหมายของการเพิ่มข้อมูล D ผ่านทาง rear เข้ามายังคิวชื่อ q - insert (q,E); เขียนแทน"
+    },
+    {
+      "line": 11,
+      "error": "Extra data: line 1 column 2 (char 1)",
+      "preview": "2. ดึงข้อมูลออกจากคิว (Dequeue) ข้อมูลจะถูกดึงออกจากคิวผ่านทาง front ถ้าข้อมูลที่อยู่ภายในคิวมีเพียงตัวเดียว ค่า front จะมีค่าเท่ากับ rear (อยู่ในตำแหน่งเดียวกัน) - remove (q); เขียนแทนความหมายของการด"
+    }
+  ],
+  "replaced_pages": [
+    5,
+    32,
+    33,
+    34,
+    35,
+    36
+  ],
+  "output_rows": 18
+}

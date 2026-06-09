@@ -1,0 +1,465 @@
+{
+  "query": "การดำเนินการแทนคิวด้วยอาร์เรย์",
+  "backend": "colpali_endpoint",
+  "sparse_strategy": "bm25",
+  "sparse_status": "ok",
+  "sparse_score_ready": true,
+  "splade_status": "disabled_by_strategy_bm25",
+  "splade_score_ready": false,
+  "bm25_status": "ok",
+  "bm25_score_ready": true,
+  "colpali_status": "ok",
+  "colpali_status_detail": "ok",
+  "colpali_score_ready": true,
+  "vlm_rerank_status": "not_used",
+  "grounding_status": "not_used",
+  "candidate_quality": {
+    "candidate_count": 4,
+    "image_usable_count": 4,
+    "image_base64_coverage": 1.0,
+    "dropped_no_image_count": 0
+  },
+  "filter_trace": {
+    "initial_records": 188,
+    "after_strict": 0,
+    "after_relax1": 4,
+    "after_relax2": 4,
+    "final_records": 4,
+    "selected_mode": "strict_no_match->relax1:relaxed_topic_ids_no_chapter"
+  },
+  "endpoint_runtime": {
+    "timeout_sec": 120,
+    "max_retries": 2,
+    "retry_backoff_ms": 700,
+    "local_cache_size": 256,
+    "image_max_side": 896,
+    "jpeg_quality": 80
+  },
+  "splade_runtime": {
+    "enabled": false,
+    "mode": "auto",
+    "provider": "hf-inference",
+    "model": "naver/splade-v3",
+    "device": "auto",
+    "max_length": 256,
+    "batch_size": 8
+  },
+  "bm25_runtime": {
+    "enabled": true,
+    "status": "ok"
+  },
+  "scoring_weights": {
+    "channel_weights": {
+      "colpali": 0.4,
+      "sparse": 0.128,
+      "lexical": 0.04,
+      "region_prior": 0.064,
+      "region_quality": 0.048,
+      "structure_prior": 0.056,
+      "structure_align": 0.04,
+      "topic_scope": 0.096,
+      "figure_match": 0.048,
+      "operation_match": 0.08
+    },
+    "pre_vlm_blend": {
+      "base": 0.68,
+      "rrf": 0.32
+    },
+    "rrf_k": 60,
+    "tiny_region_penalty": {
+      "enabled": true,
+      "area_ratio_lt": 0.006,
+      "multiplier": 0.82
+    },
+    "hard_negative": {
+      "rules_loaded": 7,
+      "penalty_max": 0.22,
+      "penalized_candidates": 4
+    }
+  },
+  "coverage_rerank": {
+    "applied": true,
+    "novelty_weight": 0.26,
+    "figure_weight": 0.62,
+    "page_weight": 0.38,
+    "step_target": 4
+  },
+  "grounding_config": {
+    "enabled": false,
+    "top_n": 1,
+    "ensemble_runs": 2,
+    "consensus_min_votes": 2,
+    "temperature": 0.0,
+    "top_p": 0.9
+  },
+  "hard_negative_config": {
+    "rules_path": "indexes/hierarchical/hard_negative_rules.json",
+    "rules_loaded": 7,
+    "penalty_max": 0.22
+  },
+  "topic_prediction": {
+    "topic_id": "3.3.2",
+    "topic_score": 1.0,
+    "topic_filtered": true,
+    "topic_threshold": 0.18,
+    "topic_scope_ids": [
+      "3.3.2"
+    ],
+    "topic_source": "llm",
+    "topic_filter_reason": "metadata_prefilter_plus_hierarchy:strict_no_match->relax1:relaxed_topic_ids_no_chapter",
+    "metadata_prefilter_enabled": true,
+    "metadata_filter_strict": true,
+    "heuristic_topic_id": "3.3.2",
+    "heuristic_topic_score": 1.0
+  },
+  "intent_classification": {
+    "use_intent_llm": false,
+    "intent_model": "Qwen/Qwen3-4B-Instruct-2507",
+    "intent_llm_status": "not_used",
+    "intent_llm": {},
+    "ranked_topics": [
+      {
+        "topic_id": "3.3",
+        "title": "การแทนคิวด้วยอาร์เรย์",
+        "score": 1.0
+      },
+      {
+        "topic_id": "3.3.2",
+        "title": "การดำเนินการแทนคิวด้วยอาร์เรย์",
+        "score": 1.0
+      },
+      {
+        "topic_id": "3.3.1",
+        "title": "โครงสร้างของการแทนคิวด้วยอาร์เรย์",
+        "score": 0.666667
+      },
+      {
+        "topic_id": "4.3.1",
+        "title": "การดำเนินการแทนสแตกด้วยอาร์เรย์",
+        "score": 0.666667
+      },
+      {
+        "topic_id": "3.3.3",
+        "title": "การดำเนินการแทนคิวด้วยวงกลม",
+        "score": 0.625
+      },
+      {
+        "topic_id": "4.3",
+        "title": "การแทนสแตกด้วยอาร์เรย์",
+        "score": 0.555556
+      },
+      {
+        "topic_id": "3.2",
+        "title": "การดำเนินการของคิว",
+        "score": 0.375
+      },
+      {
+        "topic_id": "2.1",
+        "title": "โครงสร้างอาร์เรย์ (Array)",
+        "score": 0.222222
+      },
+      {
+        "topic_id": "2.2",
+        "title": "ชนิดของอาร์เรย์",
+        "score": 0.222222
+      },
+      {
+        "topic_id": "2.2.1",
+        "title": "อาร์เรย์ 1 มิติ",
+        "score": 0.222222
+      },
+      {
+        "topic_id": "2.1.2",
+        "title": "อาร์เรย์ 2 มิติ",
+        "score": 0.222222
+      },
+      {
+        "topic_id": "4.2",
+        "title": "การดำเนินการของสแตก",
+        "score": 0.2
+      }
+    ]
+  },
+  "query_expansion": {
+    "use_query_expansion_llm": false,
+    "query_expansion_model": "Qwen/Qwen3-4B-Instruct-2507",
+    "query_expansion_status": "not_used",
+    "query_expansion_terms": [],
+    "query_expansion_max_terms": 8
+  },
+  "hierarchy_quality": {
+    "garbled_detected": false,
+    "mojibake_ratio": 0.0,
+    "topic_filter_enabled": true
+  },
+  "query_profile": {
+    "has_figure_ref": false,
+    "figure_refs": [],
+    "operation_intent": true,
+    "structure_intent": true,
+    "operation_terms": [
+      "ดำเนินการ"
+    ],
+    "structure_terms": [
+      "อาร์เรย์",
+      "คิว"
+    ],
+    "intent_type": "operation",
+    "expanded_query_terms_count": 21,
+    "llm_expansion_status": "not_used",
+    "llm_expansion_terms": []
+  },
+  "task_metrics": {
+    "region_hit_ratio_at_k": 1.0,
+    "figure_ref_hit_ratio_at_k": 1.0,
+    "structure_hit_ratio_at_k": 0.0,
+    "operation_coverage_ratio_at_k": 1.0,
+    "query_figure_ref_coverage": null,
+    "grounding_success_rate": 0.0,
+    "grounding_consistency_mean": null,
+    "citation_ready_ratio": 1.0,
+    "mean_final_score": 0.162046,
+    "crop_completeness_proxy": 1.0,
+    "small_region_ratio_at_k": 0.0,
+    "region_quality_mean": 0.8775,
+    "unique_figure_refs_at_k": 2,
+    "page_diversity_at_k": 0.25,
+    "procedure_step_coverage_proxy": 0.5
+  },
+  "count": 4,
+  "hits": [
+    {
+      "rank": 1,
+      "id": "data_structure_data_ch1_to_ch5.pdf:32:region:1",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:32",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 32,
+      "image_path": "assets/figure_regions/page_032_region_01.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 278,
+          "y0": 938,
+          "x1": 948,
+          "y1": 1028
+        },
+        "bbox_norm": {
+          "x0": 0.218382,
+          "y0": 0.521111,
+          "x1": 0.744698,
+          "y1": 0.571111
+        },
+        "area_ratio": 0.026316,
+        "ink_ratio": 0.064594,
+        "is_fallback": false,
+        "quality_flags": {
+          "is_tiny_before": false,
+          "expanded_from_tiny": false,
+          "is_tiny_after": false
+        }
+      },
+      "structure_labels": [],
+      "tags": [
+        "array",
+        "queue"
+      ],
+      "figure_refs": [
+        "ภาพที่ 3.7",
+        "ภาพที่ 3.8"
+      ],
+      "chapter_id": "3",
+      "chapter_title": "คิว (Queues)",
+      "section_id": "3.3",
+      "section_title": "การแทนคิวด้วยอาร์เรย์",
+      "best_topic_id": "3.3",
+      "best_topic_title": "การแทนคิวด้วยอาร์เรย์",
+      "base_score": 0.464,
+      "rrf_score": 1.0,
+      "pre_vlm_score": 0.49552,
+      "vlm_score": 0.0,
+      "final_score": 0.49552,
+      "figure_score": 0.0,
+      "operation_score": 1.0,
+      "structure_score": 1.0,
+      "topic_scope_score": 1.0,
+      "region_quality_score": 0.870719,
+      "vlm_reason": "",
+      "preview": "## 3.7 การ Dequeue\n\nจากภาพที่ 3.7 การ Dequeue ข้อมูลจะเริ่มต้นดำเนินการที่ตำแหน่ง front โดยการ Dequeue ในตำแหน่งของ front ก็เปลี่ยนเป็น front = Q[2]=B และหาก Dequeue ข้อมูลอีกตำแหน่ง front ก็จะเปลี่ยนแปลงไปเรื่อย ๆ\n\n### 3.3.2 การดำเนินการแท่นคิวด้วยอาร์เรย์\n\n1. เพิ่มข้อมูลลงในคิว"
+    },
+    {
+      "rank": 2,
+      "id": "data_structure_data_ch1_to_ch5.pdf:32:region:3",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:32",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 32,
+      "image_path": "assets/figure_regions/page_032_region_03.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 278,
+          "y0": 1457,
+          "x1": 948,
+          "y1": 1547
+        },
+        "bbox_norm": {
+          "x0": 0.218382,
+          "y0": 0.809444,
+          "x1": 0.744698,
+          "y1": 0.859444
+        },
+        "area_ratio": 0.026316,
+        "ink_ratio": 0.067546,
+        "is_fallback": false,
+        "quality_flags": {
+          "is_tiny_before": false,
+          "expanded_from_tiny": false,
+          "is_tiny_after": false
+        }
+      },
+      "structure_labels": [],
+      "tags": [
+        "array",
+        "queue"
+      ],
+      "figure_refs": [
+        "ภาพที่ 3.7",
+        "ภาพที่ 3.8"
+      ],
+      "chapter_id": "3",
+      "chapter_title": "คิว (Queues)",
+      "section_id": "3.3",
+      "section_title": "การแทนคิวด้วยอาร์เรย์",
+      "best_topic_id": "3.3",
+      "best_topic_title": "การแทนคิวด้วยอาร์เรย์",
+      "base_score": 0.118654,
+      "rrf_score": 0.632267,
+      "pre_vlm_score": 0.14301,
+      "vlm_score": 0.0,
+      "final_score": 0.14301,
+      "figure_score": 0.0,
+      "operation_score": 1.0,
+      "structure_score": 1.0,
+      "topic_scope_score": 1.0,
+      "region_quality_score": 0.877607,
+      "vlm_reason": "",
+      "preview": "## 3.7 การ Dequeue\n\nจากภาพที่ 3.7 การ Dequeue ข้อมูลจะเริ่มต้นดำเนินการที่ตำแหน่ง front โดยการ Dequeue ในตำแหน่งของ front ก็เปลี่ยนเป็น front = Q[2]=B และหาก Dequeue ข้อมูลอีกตำแหน่ง front ก็จะเปลี่ยนแปลงไปเรื่อย ๆ\n\n### 3.3.2 การดำเนินการแท่นคิวด้วยอาร์เรย์\n\n1. เพิ่มข้อมูลลงในคิว"
+    },
+    {
+      "rank": 3,
+      "id": "data_structure_data_ch1_to_ch5.pdf:32:region:4",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:32",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 32,
+      "image_path": "assets/figure_regions/page_032_region_04.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 278,
+          "y0": 422,
+          "x1": 948,
+          "y1": 512
+        },
+        "bbox_norm": {
+          "x0": 0.218382,
+          "y0": 0.234444,
+          "x1": 0.744698,
+          "y1": 0.284444
+        },
+        "area_ratio": 0.026316,
+        "ink_ratio": 0.071327,
+        "is_fallback": false,
+        "quality_flags": {
+          "is_tiny_before": false,
+          "expanded_from_tiny": false,
+          "is_tiny_after": false
+        }
+      },
+      "structure_labels": [],
+      "tags": [
+        "array",
+        "queue"
+      ],
+      "figure_refs": [
+        "ภาพที่ 3.7",
+        "ภาพที่ 3.8"
+      ],
+      "chapter_id": "3",
+      "chapter_title": "คิว (Queues)",
+      "section_id": "3.3",
+      "section_title": "การแทนคิวด้วยอาร์เรย์",
+      "best_topic_id": "3.3",
+      "best_topic_title": "การแทนคิวด้วยอาร์เรย์",
+      "base_score": 0.081596,
+      "rrf_score": 0.294271,
+      "pre_vlm_score": 0.009652,
+      "vlm_score": 0.0,
+      "final_score": 0.009652,
+      "figure_score": 0.0,
+      "operation_score": 1.0,
+      "structure_score": 1.0,
+      "topic_scope_score": 1.0,
+      "region_quality_score": 0.88643,
+      "vlm_reason": "",
+      "preview": "## 3.7 การ Dequeue\n\nจากภาพที่ 3.7 การ Dequeue ข้อมูลจะเริ่มต้นดำเนินการที่ตำแหน่ง front โดยการ Dequeue ในตำแหน่งของ front ก็เปลี่ยนเป็น front = Q[2]=B และหาก Dequeue ข้อมูลอีกตำแหน่ง front ก็จะเปลี่ยนแปลงไปเรื่อย ๆ\n\n### 3.3.2 การดำเนินการแท่นคิวด้วยอาร์เรย์\n\n1. เพิ่มข้อมูลลงในคิว"
+    },
+    {
+      "rank": 4,
+      "id": "data_structure_data_ch1_to_ch5.pdf:32:region:2",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:32",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 32,
+      "image_path": "assets/figure_regions/page_032_region_02.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 278,
+          "y0": 1197,
+          "x1": 948,
+          "y1": 1287
+        },
+        "bbox_norm": {
+          "x0": 0.218382,
+          "y0": 0.665,
+          "x1": 0.744698,
+          "y1": 0.715
+        },
+        "area_ratio": 0.026316,
+        "ink_ratio": 0.066617,
+        "is_fallback": false,
+        "quality_flags": {
+          "is_tiny_before": false,
+          "expanded_from_tiny": false,
+          "is_tiny_after": false
+        }
+      },
+      "structure_labels": [],
+      "tags": [
+        "array",
+        "queue"
+      ],
+      "figure_refs": [
+        "ภาพที่ 3.7",
+        "ภาพที่ 3.8"
+      ],
+      "chapter_id": "3",
+      "chapter_title": "คิว (Queues)",
+      "section_id": "3.3",
+      "section_title": "การแทนคิวด้วยอาร์เรย์",
+      "best_topic_id": "3.3",
+      "best_topic_title": "การแทนคิวด้วยอาร์เรย์",
+      "base_score": 0.059258,
+      "rrf_score": 0.0,
+      "pre_vlm_score": 0.0,
+      "vlm_score": 0.0,
+      "final_score": 0.0,
+      "figure_score": 0.0,
+      "operation_score": 1.0,
+      "structure_score": 1.0,
+      "topic_scope_score": 1.0,
+      "region_quality_score": 0.87544,
+      "vlm_reason": "",
+      "preview": "## 3.7 การ Dequeue\n\nจากภาพที่ 3.7 การ Dequeue ข้อมูลจะเริ่มต้นดำเนินการที่ตำแหน่ง front โดยการ Dequeue ในตำแหน่งของ front ก็เปลี่ยนเป็น front = Q[2]=B และหาก Dequeue ข้อมูลอีกตำแหน่ง front ก็จะเปลี่ยนแปลงไปเรื่อย ๆ\n\n### 3.3.2 การดำเนินการแท่นคิวด้วยอาร์เรย์\n\n1. เพิ่มข้อมูลลงในคิว"
+    }
+  ],
+  "grounding": []
+}

@@ -1,0 +1,47 @@
+[
+  {
+    "query": "??????????????????????????????",
+    "rc": 0,
+    "colpali_status": "ok",
+    "topic_id": "1.1.1",
+    "top_pages": [
+      "data_structure_data_ch1_to_ch5.pdf:1",
+      "data_structure_data_ch1_to_ch5.pdf:2"
+    ],
+    "top_topic_ids": [
+      "1.1",
+      "1.1"
+    ],
+    "query_term_coverage_top3": 0.0
+  },
+  {
+    "query": "??????????????????",
+    "rc": 0,
+    "colpali_status": "ok",
+    "topic_id": "1.1.1",
+    "top_pages": [
+      "data_structure_data_ch1_to_ch5.pdf:1",
+      "data_structure_data_ch1_to_ch5.pdf:2"
+    ],
+    "top_topic_ids": [
+      "1.1",
+      "1.1"
+    ],
+    "query_term_coverage_top3": 0.0
+  },
+  {
+    "query": "???????????????????????????????????",
+    "rc": 0,
+    "colpali_status": "ok",
+    "topic_id": "1.1.1",
+    "top_pages": [
+      "data_structure_data_ch1_to_ch5.pdf:1",
+      "data_structure_data_ch1_to_ch5.pdf:2"
+    ],
+    "top_topic_ids": [
+      "1.1",
+      "1.1"
+    ],
+    "query_term_coverage_top3": 0.0
+  }
+]

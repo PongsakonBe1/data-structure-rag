@@ -1,0 +1,3 @@
+{"query":"โครงสร้างของการแทนคิวด้วยอาร์เรย์","require_structure":true,"expected_pages":[31,32],"expected_figure_refs":["3.4","3.5","3.6"],"expected_structure_labels":["Queue"],"expected_tags":["queue","array"]}
+{"query":"การดำเนินการแทนคิวด้วยวงกลม","require_structure":true,"expected_pages":[37],"expected_figure_refs":["3.8","3.9","3.10","3.11"],"expected_structure_labels":["Queue"],"expected_tags":["queue"]}
+{"query":"โครงสร้างลิงค์ลิสต์แบบทิศทางเดียว","require_structure":true,"expected_pages":[24,25],"expected_figure_refs":["2.12","2.13","2.14","2.15","2.16","2.17","2.18"],"expected_structure_labels":["Linked List"],"expected_tags":["linked_list"]}

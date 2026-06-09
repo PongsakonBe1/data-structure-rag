@@ -1,0 +1,5 @@
+{"query":"โครงสร้างของการแทนคิวด้วยอาร์เรย์","require_structure":true,"expected_topic_id":"3.3.1","expected_pages":[31,32],"expected_figure_refs":["3.4","3.5","3.6","3.7"]}
+{"query":"การดำเนินการแทนคิวด้วยวงกลม","require_structure":true,"expected_topic_id":"3.3.3","expected_pages":[36,37],"expected_figure_refs":["3.8","3.9","3.10","3.11"]}
+{"query":"โครงสร้างลิงค์ลิสต์แบบทิศทางเดียว","require_structure":true,"expected_topic_id":"2.4.1","expected_pages":[24,25],"expected_figure_refs":["2.12","2.13","2.14"]}
+{"query":"การทำงานของลิงค์ลิสต์แบบทิศทางเดียว","require_structure":true,"expected_topic_id":"2.4.2","expected_pages":[25,26,27,28],"expected_figure_refs":["2.15","2.16","2.17","2.18","2.19","2.20","2.21","2.22","2.23"]}
+{"query":"การเพิ่มโหนดในลิงค์ลิสต์แบบทิศทางเดียว","require_structure":true,"expected_topic_id":"2.4.2","expected_pages":[25,27,28],"expected_figure_refs":["2.18","2.21","2.22","2.23"]}

@@ -1,0 +1,5 @@
+mode,queries,recall_at_k,mrr_at_k,ndcg_at_k
+dense,4,1.0000,1.0000,0.9597
+bm25,4,1.0000,0.7083,0.8665
+hybrid,4,1.0000,1.0000,0.9819
+hybrid_rerank,4,1.0000,1.0000,0.9958

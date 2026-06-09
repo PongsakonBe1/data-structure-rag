@@ -1,0 +1,727 @@
+{
+  "query": "โครงสร้างลิงค์ลิสต์แบบทิศทางเดียว",
+  "backend": "colpali_endpoint",
+  "colpali_status": "ok",
+  "colpali_score_ready": true,
+  "vlm_rerank_status": "ok",
+  "grounding_status": "ok",
+  "endpoint_runtime": {
+    "timeout_sec": 120,
+    "max_retries": 2,
+    "retry_backoff_ms": 700,
+    "local_cache_size": 256,
+    "image_max_side": 896,
+    "jpeg_quality": 80
+  },
+  "scoring_weights": {
+    "channel_weights": {
+      "colpali": 0.5225,
+      "lexical": 0.1081,
+      "region_prior": 0.0721,
+      "region_quality": 0.0541,
+      "structure_prior": 0.0901,
+      "structure_align": 0.0631,
+      "figure_match": 0.0541,
+      "operation_match": 0.036
+    },
+    "pre_vlm_blend": {
+      "base": 0.68,
+      "rrf": 0.32
+    },
+    "rrf_k": 60,
+    "tiny_region_penalty": {
+      "enabled": true,
+      "area_ratio_lt": 0.006,
+      "multiplier": 0.82
+    },
+    "hard_negative": {
+      "rules_loaded": 6,
+      "penalty_max": 0.22,
+      "penalized_candidates": 11
+    }
+  },
+  "coverage_rerank": {
+    "applied": false,
+    "novelty_weight": 0.26,
+    "figure_weight": 0.62,
+    "page_weight": 0.38,
+    "step_target": 4
+  },
+  "grounding_config": {
+    "enabled": true,
+    "top_n": 1,
+    "ensemble_runs": 2,
+    "consensus_min_votes": 2,
+    "temperature": 0.0,
+    "top_p": 0.9
+  },
+  "hard_negative_config": {
+    "rules_path": "indexes/hierarchical/hard_negative_rules.json",
+    "rules_loaded": 6,
+    "penalty_max": 0.22
+  },
+  "topic_prediction": {
+    "topic_id": "2.4.1",
+    "topic_score": 0.98,
+    "topic_filtered": true,
+    "topic_threshold": 0.18,
+    "topic_scope_ids": [
+      "2.4",
+      "2.4.1",
+      "2.4.2"
+    ],
+    "topic_source": "llm",
+    "topic_filter_reason": "metadata_prefilter_plus_hierarchy:relaxed_topic_ids_with_chapter",
+    "metadata_prefilter_enabled": true,
+    "heuristic_topic_id": "2.4",
+    "heuristic_topic_score": 1.0
+  },
+  "intent_classification": {
+    "use_intent_llm": true,
+    "intent_model": "Qwen/Qwen3-4B-Instruct-2507",
+    "intent_llm_status": "ok",
+    "intent_llm": {
+      "intent_type": "structure",
+      "target_chapter": "2.4",
+      "target_topic_ids": [
+        "2.4.1"
+      ],
+      "confidence": 0.98,
+      "require_structure": true,
+      "reason": "คำถามระบุถึง 'โครงสร้างลิงค์ลิสต์แบบทิศทางเดียว' ซึ่งตรงกับหัวข้อที่มีการระบุชัดเจนใน topic_id=2.4.1 ซึ่งเป็นหัวข้อย่อยที่อธิบายโครงสร้างโดยตรง ดังนั้นจึงต้องการข้อมูลด้านโครงสร้าง จึงตั้งค่า require_structure เป็น true",
+      "raw": "{\"intent_type\":\"structure\",\"target_chapter\":\"2.4\",\"target_topic_ids\":[\"2.4.1\"],\"confidence\":0.98,\"require_structure\":true,\"reason\":\"คำถามระบุถึง 'โครงสร้างลิงค์ลิสต์แบบทิศทางเดียว' ซึ่งตรงกับหัวข้อที่มีการระบุชัดเจนใน topic_id=2.4.1 ซึ่งเป็นหัวข้อย่อยที่อธิบายโครงสร้างโดยตรง ดังนั้นจึงต้องการข้อมูลด้านโครงสร้าง จึงตั้งค่า require_structure เป็น true\"}"
+    },
+    "ranked_topics": [
+      {
+        "topic_id": "2.4",
+        "title": "ลิงค์ลิสต์แบบทิศทางเดียว",
+        "score": 1.0
+      },
+      {
+        "topic_id": "2.4.1",
+        "title": "โครงสร้างลิงค์ลิสต์แบบทิศทางเดียว",
+        "score": 1.0
+      },
+      {
+        "topic_id": "2.4.2",
+        "title": "การทำงานของลิงค์ลิสต์แบบทิศทางเดียว",
+        "score": 0.625
+      },
+      {
+        "topic_id": "2.3.2",
+        "title": "โครงสร้างของลิงค์ลิสต์",
+        "score": 0.428571
+      },
+      {
+        "topic_id": "2.3",
+        "title": "โครงสร้างลิงค์ลิสต์ (Linked List)",
+        "score": 0.375
+      },
+      {
+        "topic_id": "1.4.1",
+        "title": "โครงสร้างแบบเรียงลำดับ (Sequence)",
+        "score": 0.25
+      },
+      {
+        "topic_id": "1.4.3",
+        "title": "โครงสร้างแบบทำซ้ำ (Repetition)",
+        "score": 0.25
+      },
+      {
+        "topic_id": "2.3.1",
+        "title": "ความหมายของลิงค์ลิสต์",
+        "score": 0.25
+      },
+      {
+        "topic_id": "1.4.2",
+        "title": "โครงสร้างแบบเลือกการทำงาน (Selection)",
+        "score": 0.222222
+      },
+      {
+        "topic_id": "2",
+        "title": "อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+        "score": 0.153846
+      },
+      {
+        "topic_id": "1.2",
+        "title": "โครงสร้างข้อมูลพื้นฐาน",
+        "score": 0.125
+      },
+      {
+        "topic_id": "1.3.1",
+        "title": "ประเภทโครงสร้างข้อมูล",
+        "score": 0.125
+      }
+    ]
+  },
+  "hierarchy_quality": {
+    "garbled_detected": false,
+    "mojibake_ratio": 0.0,
+    "topic_filter_enabled": true
+  },
+  "query_profile": {
+    "has_figure_ref": false,
+    "figure_refs": [],
+    "operation_intent": false,
+    "structure_intent": true,
+    "operation_terms": [],
+    "structure_terms": [
+      "โครงสร้าง",
+      "ลิงค์ลิสต์"
+    ],
+    "intent_type": "structure",
+    "expanded_query_terms_count": 17
+  },
+  "task_metrics": {
+    "region_hit_ratio_at_k": 1.0,
+    "figure_ref_hit_ratio_at_k": 1.0,
+    "structure_hit_ratio_at_k": 1.0,
+    "operation_coverage_ratio_at_k": null,
+    "query_figure_ref_coverage": null,
+    "grounding_success_rate": 1.0,
+    "grounding_consistency_mean": 1.0,
+    "citation_ready_ratio": 1.0,
+    "mean_final_score": 0.527951,
+    "crop_completeness_proxy": 0.75,
+    "small_region_ratio_at_k": 0.0,
+    "region_quality_mean": 0.9237,
+    "unique_figure_refs_at_k": 10,
+    "page_diversity_at_k": 0.625,
+    "procedure_step_coverage_proxy": null
+  },
+  "count": 8,
+  "hits": [
+    {
+      "rank": 1,
+      "id": "data_structure_data_ch1_to_ch5.pdf:31:region:3",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:31",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 31,
+      "image_path": "assets/figure_regions/page_031_region_03.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 294,
+          "y0": 387,
+          "x1": 956,
+          "y1": 433
+        },
+        "bbox_norm": {
+          "x0": 0.230951,
+          "y0": 0.215,
+          "x1": 0.750982,
+          "y1": 0.240556
+        },
+        "area_ratio": 0.01329,
+        "ink_ratio": 0.101767,
+        "is_fallback": false,
+        "quality_flags": {
+          "is_tiny_before": false,
+          "expanded_from_tiny": false,
+          "is_tiny_after": false
+        }
+      },
+      "structure_labels": [
+        "Queue",
+        "Queue",
+        "Queue"
+      ],
+      "tags": [
+        "array",
+        "queue"
+      ],
+      "figure_refs": [
+        "ภาพที่ 3.4",
+        "ภาพที่ 3.5",
+        "ภาพที่ 3.6"
+      ],
+      "chapter_id": "3",
+      "chapter_title": "คิว (Queues)",
+      "section_id": "3.3",
+      "section_title": "การแทนคิวด้วยอาร์เรย์",
+      "best_topic_id": "3.3",
+      "best_topic_title": "การแทนคิวด้วยอาร์เรย์",
+      "base_score": 0.610516,
+      "rrf_score": 0.848445,
+      "pre_vlm_score": 0.686653,
+      "vlm_score": 1.0,
+      "final_score": 0.802591,
+      "figure_score": 0.0,
+      "operation_score": 0.0,
+      "structure_score": 0.5,
+      "region_quality_score": 0.957456,
+      "vlm_reason": "ภาพแสดงโครงสร้างของลิงค์ลิสต์แบบทิศทางเดียว ซึ่งตรงกับคำถามที่ถาม",
+      "preview": "# 3.3 การแทนคิวด้วยอาร์เรย์\n\nการแทนโครงสร้างคิวด้วยอาร์เรย์ จะต้องกำหนดจำนวนของการจองพื้นที่บนหน่วยความจำ และใช้อาร์เรย์ในการนำข้อมูลเข้าด้านท้ายและนำข้อมูลออกในส่วนหัว ดังภาพที่ 3.4\n\n> [Structure: Queue]\n> - ข้อมูลเข้า\n> - ข้อมูลออก\n\n**ภาพที่ 3.4 การนำเข้าและนำออกข้อมูลในโครงสร้"
+    },
+    {
+      "rank": 2,
+      "id": "data_structure_data_ch1_to_ch5.pdf:26:region:1",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:26",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 26,
+      "image_path": "assets/figure_regions/page_026_region_01.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 419,
+          "y0": 573,
+          "x1": 961,
+          "y1": 646
+        },
+        "bbox_norm": {
+          "x0": 0.329144,
+          "y0": 0.318333,
+          "x1": 0.75491,
+          "y1": 0.358889
+        },
+        "area_ratio": 0.017267,
+        "ink_ratio": 0.152656,
+        "is_fallback": false,
+        "quality_flags": {
+          "is_tiny_before": false,
+          "expanded_from_tiny": false,
+          "is_tiny_after": false
+        }
+      },
+      "structure_labels": [
+        "Linked List",
+        "Linked List",
+        "Linked List",
+        "Linked List"
+      ],
+      "tags": [
+        "linked_list"
+      ],
+      "figure_refs": [
+        "ภาพที่ 2.19",
+        "ภาพที่ 2.20"
+      ],
+      "chapter_id": "2",
+      "chapter_title": "อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+      "section_id": "2.4.2",
+      "section_title": "การทำงานของลิงค์ลิสต์แบบทิศทางเดียว",
+      "best_topic_id": "2.4.2",
+      "best_topic_title": "การทำงานของลิงค์ลิสต์แบบทิศทางเดียว",
+      "base_score": 0.577926,
+      "rrf_score": 1.0,
+      "pre_vlm_score": 0.592989,
+      "vlm_score": 1.0,
+      "final_score": 0.743583,
+      "figure_score": 0.0,
+      "operation_score": 0.0,
+      "structure_score": 0.5,
+      "region_quality_score": 1.0,
+      "vlm_reason": "ภาพแสดงโครงสร้างลิงค์ลิสต์แบบทิศทางเดียวที่มีการเชื่อมต่อระหว่าง node แต่ละ node ด้วยข้อมูลและค่าตัวแปร head ที่ใช้เป็นตัวเริ่มต้นในการเรียกใช้โครงสร้างนี้",
+      "preview": "# 3. การลบโหนด (Delete node)\n\nการลบโหนด สามารถลบทั้งโหนดและข้อมูลที่ไม่ต้องการออกไป ซึ่งมีหลักการง่าย ๆ\nด้วยการเปลี่ยนลิ้งค์ของโหนดก่อนหน้าที่ต้องการลบให้ไปยังลิ้งค์ของโหนดที่ต้องการลบ\n\n> [Structure: Linked List]\n> - Node(3) connects to -> Node(5)\n> - Node(5) connects to -> Node("
+    },
+    {
+      "rank": 3,
+      "id": "data_structure_data_ch1_to_ch5.pdf:27:region:3",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:27",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 27,
+      "image_path": "assets/figure_regions/page_027_region_03.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 402,
+          "y0": 1005,
+          "x1": 980,
+          "y1": 1081
+        },
+        "bbox_norm": {
+          "x0": 0.315789,
+          "y0": 0.558333,
+          "x1": 0.769835,
+          "y1": 0.600556
+        },
+        "area_ratio": 0.019171,
+        "ink_ratio": 0.089943,
+        "is_fallback": false,
+        "quality_flags": {
+          "is_tiny_before": true,
+          "expanded_from_tiny": true,
+          "is_tiny_after": false
+        }
+      },
+      "structure_labels": [
+        "Linked List",
+        "Linked List",
+        "Linked List",
+        "Linked List"
+      ],
+      "tags": [
+        "linked_list"
+      ],
+      "figure_refs": [
+        "ภาพที่ 2.21",
+        "ภาพที่ 2.22"
+      ],
+      "chapter_id": "2",
+      "chapter_title": "อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+      "section_id": "2.4.2",
+      "section_title": "การทำงานของลิงค์ลิสต์แบบทิศทางเดียว",
+      "best_topic_id": "2.4.2",
+      "best_topic_title": "การทำงานของลิงค์ลิสต์แบบทิศทางเดียว",
+      "base_score": 0.39921,
+      "rrf_score": 0.700328,
+      "pre_vlm_score": 0.375568,
+      "vlm_score": 1.0,
+      "final_score": 0.606608,
+      "figure_score": 0.0,
+      "operation_score": 0.0,
+      "structure_score": 0.5,
+      "region_quality_score": 0.929867,
+      "vlm_reason": "ภาพแสดงโครงสร้างของลิงค์ลิสต์แบบทิศทางเดียวที่มีการเชื่อมต่อระหว่าง node แต่ละ node ด้วย pointer",
+      "preview": "# ก่อนการแทรกโหนด\n\n> [Structure: Linked List]\n> - Node(1) connects to -> Node(15)\n> - Node(15) has a cross mark\n\n## หลังการแทรกโหนด\n\n> [Structure: Linked List]\n> - Node(2) connects to -> Node(15)\n> - Node(15) connects to -> Node(5)\n> - Node(5) has a cross mark\n\nภาพที่ 2.21 การแทร"
+    },
+    {
+      "rank": 4,
+      "id": "data_structure_data_ch1_to_ch5.pdf:30:region:2",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:30",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 30,
+      "image_path": "assets/figure_regions/page_030_region_02.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 304,
+          "y0": 622,
+          "x1": 1045,
+          "y1": 706
+        },
+        "bbox_norm": {
+          "x0": 0.238806,
+          "y0": 0.345556,
+          "x1": 0.820896,
+          "y1": 0.392222
+        },
+        "area_ratio": 0.027164,
+        "ink_ratio": 0.082241,
+        "is_fallback": false,
+        "quality_flags": {
+          "is_tiny_before": false,
+          "expanded_from_tiny": false,
+          "is_tiny_after": false
+        }
+      },
+      "structure_labels": [
+        "Queue",
+        "Queue"
+      ],
+      "tags": [
+        "queue"
+      ],
+      "figure_refs": [
+        "ภาพที่ 3.2",
+        "ภาพที่ 3.3"
+      ],
+      "chapter_id": "3",
+      "chapter_title": "คิว (Queues)",
+      "section_id": "3.2",
+      "section_title": "การดำเนินการของคิว",
+      "best_topic_id": "3.2",
+      "best_topic_title": "การดำเนินการของคิว",
+      "base_score": 0.290991,
+      "rrf_score": 0.51121,
+      "pre_vlm_score": 0.361461,
+      "vlm_score": 1.0,
+      "final_score": 0.59772,
+      "figure_score": 0.0,
+      "operation_score": 0.0,
+      "structure_score": 0.5,
+      "region_quality_score": 0.911896,
+      "vlm_reason": "ภาพแสดงโครงสร้างลิงค์ลิสต์แบบทิศทางเดียวที่มีการenqueueข้อมูลใหม่เข้าไป",
+      "preview": "# 3.2 การดำเนินการของคิว\n\nการดำเนินการพื้นฐานโครงสร้างข้อมูลแบบคิว คือ มีการนำเข้าข้อมูลด้วยการต่อท้ายและดึงข้อมูลออกในส่วนหัว สามารถแบ่งออกเป็น 2 กรณี คือ\n\n## 3.2.1 การนำเข้าข้อมูล (Enqueue)\n\nหากมีการนำเข้าข้อมูลแรกเข้าสู่คิวแล้วข้อมูลนี้จะเป็นข้อมูลอันดับแรก และเมื่อมีการเพิ่มข"
+    },
+    {
+      "rank": 5,
+      "id": "data_structure_data_ch1_to_ch5.pdf:29:region:1",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:29",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 29,
+      "image_path": "assets/figure_regions/page_029_region_01.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 230,
+          "y0": 228,
+          "x1": 1122,
+          "y1": 327
+        },
+        "bbox_norm": {
+          "x0": 0.180676,
+          "y0": 0.126667,
+          "x1": 0.881383,
+          "y1": 0.181667
+        },
+        "area_ratio": 0.038539,
+        "ink_ratio": 0.077524,
+        "is_fallback": false,
+        "quality_flags": {
+          "is_tiny_before": false,
+          "expanded_from_tiny": false,
+          "is_tiny_after": false
+        }
+      },
+      "structure_labels": [
+        "Queue"
+      ],
+      "tags": [
+        "queue"
+      ],
+      "figure_refs": [
+        "ภาพที่ 3.1"
+      ],
+      "chapter_id": "3",
+      "chapter_title": "คิว (Queues)",
+      "section_id": "3",
+      "section_title": "คิว (Queues)",
+      "best_topic_id": "3",
+      "best_topic_title": "คิว (Queues)",
+      "base_score": 0.567645,
+      "rrf_score": 0.864013,
+      "pre_vlm_score": 0.662483,
+      "vlm_score": 0.0,
+      "final_score": 0.417364,
+      "figure_score": 0.0,
+      "operation_score": 0.0,
+      "structure_score": 0.5,
+      "region_quality_score": 0.900889,
+      "vlm_reason": "ภาพและข้อความไม่เกี่ยวข้องกับโครงสร้างลิงค์ลิสต์แบบทิศทางเดียว",
+      "preview": "# หน่วยเรียนที่ 3\n## คิว (Queues)\n\nคิวเป็นโครงสร้างข้อมูลแบบเชิงเส้น ที่มีลักษณะเฉพาะคือการนำเข้าข้อมูล (Enqueue) ทางด้านส่วนท้ายของคิว และการนำข้อมูลออก (Dequeue) ทางด้านส่วนหัวของคิว โดยข้อมูลที่เข้ามา ก่อนจะต้องออกก่อน ส่วนข้อมูลที่เข้ามาทีหลังต้องออกหลัง ซึ่งเป็นรูปแบบคล้ายกั"
+    },
+    {
+      "rank": 6,
+      "id": "data_structure_data_ch1_to_ch5.pdf:29:region:3",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:29",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 29,
+      "image_path": "assets/figure_regions/page_029_region_03.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 630,
+          "y0": 855,
+          "x1": 1154,
+          "y1": 925
+        },
+        "bbox_norm": {
+          "x0": 0.494894,
+          "y0": 0.475,
+          "x1": 0.90652,
+          "y1": 0.513889
+        },
+        "area_ratio": 0.016008,
+        "ink_ratio": 0.074046,
+        "is_fallback": false,
+        "quality_flags": {
+          "is_tiny_before": true,
+          "expanded_from_tiny": true,
+          "is_tiny_after": false
+        }
+      },
+      "structure_labels": [
+        "Queue"
+      ],
+      "tags": [
+        "queue"
+      ],
+      "figure_refs": [
+        "ภาพที่ 3.1"
+      ],
+      "chapter_id": "3",
+      "chapter_title": "คิว (Queues)",
+      "section_id": "3",
+      "section_title": "คิว (Queues)",
+      "best_topic_id": "3",
+      "best_topic_title": "คิว (Queues)",
+      "base_score": 0.530425,
+      "rrf_score": 0.784848,
+      "pre_vlm_score": 0.61184,
+      "vlm_score": 0.0,
+      "final_score": 0.385459,
+      "figure_score": 0.0,
+      "operation_score": 0.0,
+      "structure_score": 0.5,
+      "region_quality_score": 0.892774,
+      "vlm_reason": "ภาพแสดง Deque ซึ่งเป็นโครงสร้างข้อมูลที่สามารถเพิ่มหรือลบข้อมูลที่ท้ายและที่ต้นของข้อมูลได้ ไม่ใช่ลิงค์ลิสต์แบบทิศทางเดียว",
+      "preview": "# หน่วยเรียนที่ 3\n## คิว (Queues)\n\nคิวเป็นโครงสร้างข้อมูลแบบเชิงเส้น ที่มีลักษณะเฉพาะคือการนำเข้าข้อมูล (Enqueue) ทางด้านส่วนท้ายของคิว และการนำข้อมูลออก (Dequeue) ทางด้านส่วนหัวของคิว โดยข้อมูลที่เข้ามา ก่อนจะต้องออกก่อน ส่วนข้อมูลที่เข้ามาทีหลังต้องออกหลัง ซึ่งเป็นรูปแบบคล้ายกั"
+    },
+    {
+      "rank": 7,
+      "id": "data_structure_data_ch1_to_ch5.pdf:27:region:4",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:27",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 27,
+      "image_path": "assets/figure_regions/page_027_region_04.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 492,
+          "y0": 322,
+          "x1": 866,
+          "y1": 398
+        },
+        "bbox_norm": {
+          "x0": 0.386489,
+          "y0": 0.178889,
+          "x1": 0.680283,
+          "y1": 0.221111
+        },
+        "area_ratio": 0.012405,
+        "ink_ratio": 0.102554,
+        "is_fallback": false,
+        "quality_flags": {
+          "is_tiny_before": true,
+          "expanded_from_tiny": true,
+          "is_tiny_after": false
+        }
+      },
+      "structure_labels": [
+        "Linked List",
+        "Linked List",
+        "Linked List",
+        "Linked List"
+      ],
+      "tags": [
+        "linked_list"
+      ],
+      "figure_refs": [
+        "ภาพที่ 2.21",
+        "ภาพที่ 2.22"
+      ],
+      "chapter_id": "2",
+      "chapter_title": "อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+      "section_id": "2.4.2",
+      "section_title": "การทำงานของลิงค์ลิสต์แบบทิศทางเดียว",
+      "best_topic_id": "2.4.2",
+      "best_topic_title": "การทำงานของลิงค์ลิสต์แบบทิศทางเดียว",
+      "base_score": 0.401581,
+      "rrf_score": 0.64305,
+      "pre_vlm_score": 0.358851,
+      "vlm_score": 0.0,
+      "final_score": 0.358851,
+      "figure_score": 0.0,
+      "operation_score": 0.0,
+      "structure_score": 0.5,
+      "region_quality_score": 0.959293,
+      "vlm_reason": "not_in_vlm_top_m",
+      "preview": "# ก่อนการแทรกโหนด\n\n> [Structure: Linked List]\n> - Node(1) connects to -> Node(15)\n> - Node(15) has a cross mark\n\n## หลังการแทรกโหนด\n\n> [Structure: Linked List]\n> - Node(2) connects to -> Node(15)\n> - Node(15) connects to -> Node(5)\n> - Node(5) has a cross mark\n\nภาพที่ 2.21 การแทร"
+    },
+    {
+      "rank": 8,
+      "id": "data_structure_data_ch1_to_ch5.pdf:30:region:1",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:30",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 30,
+      "image_path": "assets/figure_regions/page_030_region_01.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 304,
+          "y0": 1165,
+          "x1": 869,
+          "y1": 1331
+        },
+        "bbox_norm": {
+          "x0": 0.238806,
+          "y0": 0.647222,
+          "x1": 0.682639,
+          "y1": 0.739444
+        },
+        "area_ratio": 0.040931,
+        "ink_ratio": 0.050347,
+        "is_fallback": false,
+        "quality_flags": {
+          "is_tiny_before": false,
+          "expanded_from_tiny": false,
+          "is_tiny_after": false
+        }
+      },
+      "structure_labels": [
+        "Queue",
+        "Queue"
+      ],
+      "tags": [
+        "queue"
+      ],
+      "figure_refs": [
+        "ภาพที่ 3.2",
+        "ภาพที่ 3.3"
+      ],
+      "chapter_id": "3",
+      "chapter_title": "คิว (Queues)",
+      "section_id": "3.2",
+      "section_title": "การดำเนินการของคิว",
+      "best_topic_id": "3.2",
+      "best_topic_title": "การดำเนินการของคิว",
+      "base_score": 0.39209,
+      "rrf_score": 0.711619,
+      "pre_vlm_score": 0.494339,
+      "vlm_score": 0.0,
+      "final_score": 0.311434,
+      "figure_score": 0.0,
+      "operation_score": 0.0,
+      "structure_score": 0.5,
+      "region_quality_score": 0.837476,
+      "vlm_reason": "ภาพแสดงโครงสร้าง Deque ไม่ใช่ลิงค์ลิสต์แบบทิศทางเดียว",
+      "preview": "# 3.2 การดำเนินการของคิว\n\nการดำเนินการพื้นฐานโครงสร้างข้อมูลแบบคิว คือ มีการนำเข้าข้อมูลด้วยการต่อท้ายและดึงข้อมูลออกในส่วนหัว สามารถแบ่งออกเป็น 2 กรณี คือ\n\n## 3.2.1 การนำเข้าข้อมูล (Enqueue)\n\nหากมีการนำเข้าข้อมูลแรกเข้าสู่คิวแล้วข้อมูลนี้จะเป็นข้อมูลอันดับแรก และเมื่อมีการเพิ่มข"
+    }
+  ],
+  "grounding": [
+    {
+      "id": "data_structure_data_ch1_to_ch5.pdf:31:region:3",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:31",
+      "grounding": {
+        "parsed": {
+          "structure_type": "linked list",
+          "grounded_facts": [
+            "มีการระบุว่าเป็น 'ข้อมูล' ที่อยู่ในช่องสุดท้ายของลิงค์ลิสต์",
+            "มีการระบุว่าเป็น 'ข้อมูล' ที่อยู่ในช่องแรกของลิงค์ลิสต์"
+          ],
+          "limitations": "['ภาพไม่สามารถแสดงข้อมูลทั้งหมดในลิงค์ลิสต์', 'ภาพไม่สามารถแสดงการเชื่อมต่อระหว่างข้อมูลแต่ละช่อง']"
+        },
+        "raw": "```json\n{\n  \"structure_type\": \"linked list\",\n  \"grounded_facts\": [\n    \"มีการระบุว่าเป็น 'ข้อมูล' ที่อยู่ในช่องแรกของลิงค์ลิสต์\",\n    \"มีการระบุว่าเป็น 'ข้อมูล' ที่อยู่ในช่องสุดท้ายของลิงค์ลิสต์\"\n  ],\n  \"limitations\": [\n    \"ภาพไม่สามารถแสดงข้อมูลทั้งหมดในลิงค์ลิสต์\",\n    \"ภาพไม่สามารถแสดงการเชื่อมต่อระหว่างข้อมูลแต่ละช่อง\"\n  ]\n}\n```",
+        "samples": [
+          {
+            "parsed": {
+              "structure_type": "linked list",
+              "grounded_facts": [
+                "มีการระบุว่าเป็น 'ข้อมูล' ที่อยู่ในช่องแรกของลิงค์ลิสต์",
+                "มีการระบุว่าเป็น 'ข้อมูล' ที่อยู่ในช่องสุดท้ายของลิงค์ลิสต์"
+              ],
+              "limitations": [
+                "ภาพไม่สามารถแสดงข้อมูลทั้งหมดในลิงค์ลิสต์",
+                "ภาพไม่สามารถแสดงการเชื่อมต่อระหว่างข้อมูลแต่ละช่อง"
+              ]
+            },
+            "raw": "```json\n{\n  \"structure_type\": \"linked list\",\n  \"grounded_facts\": [\n    \"มีการระบุว่าเป็น 'ข้อมูล' ที่อยู่ในช่องแรกของลิงค์ลิสต์\",\n    \"มีการระบุว่าเป็น 'ข้อมูล' ที่อยู่ในช่องสุดท้ายของลิงค์ลิสต์\"\n  ],\n  \"limitations\": [\n    \"ภาพไม่สามารถแสดงข้อมูลทั้งหมดในลิงค์ลิสต์\",\n    \"ภาพไม่สามารถแสดงการเชื่อมต่อระหว่างข้อมูลแต่ละช่อง\"\n  ]\n}\n```"
+          },
+          {
+            "parsed": {
+              "structure_type": "linked list",
+              "grounded_facts": [
+                "มีการระบุว่าเป็น 'ข้อมูล' ที่อยู่ในช่องแรกของลิงค์ลิสต์",
+                "มีการระบุว่าเป็น 'ข้อมูล' ที่อยู่ในช่องสุดท้ายของลิงค์ลิสต์"
+              ],
+              "limitations": [
+                "ภาพไม่สามารถแสดงข้อมูลทั้งหมดในลิงค์ลิสต์",
+                "ภาพไม่สามารถแสดงการเชื่อมต่อระหว่างข้อมูลแต่ละช่อง"
+              ]
+            },
+            "raw": "```json\n{\n  \"structure_type\": \"linked list\",\n  \"grounded_facts\": [\n    \"มีการระบุว่าเป็น 'ข้อมูล' ที่อยู่ในช่องแรกของลิงค์ลิสต์\",\n    \"มีการระบุว่าเป็น 'ข้อมูล' ที่อยู่ในช่องสุดท้ายของลิงค์ลิสต์\"\n  ],\n  \"limitations\": [\n    \"ภาพไม่สามารถแสดงข้อมูลทั้งหมดในลิงค์ลิสต์\",\n    \"ภาพไม่สามารถแสดงการเชื่อมต่อระหว่างข้อมูลแต่ละช่อง\"\n  ]\n}\n```"
+          }
+        ],
+        "consensus": {
+          "runs": 2,
+          "valid_runs": 2,
+          "vote_threshold": 2,
+          "raw_unique_facts": 2,
+          "consensus_facts": 2,
+          "agreement_ratio": 1.0
+        }
+      }
+    }
+  ]
+}

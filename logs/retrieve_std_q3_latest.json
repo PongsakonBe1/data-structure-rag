@@ -1,0 +1,693 @@
+{
+  "query": "การทำงานของลิงค์ลิสต์แบบทิศทางเดียว",
+  "backend": "colpali_endpoint",
+  "colpali_status": "ok",
+  "colpali_score_ready": true,
+  "vlm_rerank_status": "ok",
+  "grounding_status": "ok",
+  "endpoint_runtime": {
+    "timeout_sec": 120,
+    "max_retries": 2,
+    "retry_backoff_ms": 700,
+    "local_cache_size": 256,
+    "image_max_side": 896,
+    "jpeg_quality": 80
+  },
+  "scoring_weights": {
+    "channel_weights": {
+      "colpali": 0.5321,
+      "lexical": 0.0826,
+      "region_prior": 0.0734,
+      "region_quality": 0.055,
+      "structure_prior": 0.0642,
+      "structure_align": 0.0459,
+      "figure_match": 0.055,
+      "operation_match": 0.0917
+    },
+    "pre_vlm_blend": {
+      "base": 0.68,
+      "rrf": 0.32
+    },
+    "rrf_k": 60,
+    "tiny_region_penalty": {
+      "enabled": true,
+      "area_ratio_lt": 0.006,
+      "multiplier": 0.82
+    },
+    "hard_negative": {
+      "rules_loaded": 3,
+      "penalty_max": 0.22,
+      "penalized_candidates": 0
+    }
+  },
+  "coverage_rerank": {
+    "applied": true,
+    "novelty_weight": 0.26,
+    "figure_weight": 0.62,
+    "page_weight": 0.38,
+    "step_target": 4
+  },
+  "grounding_config": {
+    "enabled": true,
+    "top_n": 1,
+    "ensemble_runs": 2,
+    "consensus_min_votes": 2,
+    "temperature": 0.0,
+    "top_p": 0.9
+  },
+  "hard_negative_config": {
+    "rules_path": "indexes/hierarchical/hard_negative_rules.json",
+    "rules_loaded": 3,
+    "penalty_max": 0.22
+  },
+  "topic_prediction": {
+    "topic_id": "2.4.2",
+    "topic_score": 0.99,
+    "topic_filtered": true,
+    "topic_threshold": 0.18,
+    "topic_scope_ids": [
+      "2.4",
+      "2.4.2"
+    ],
+    "topic_source": "llm",
+    "topic_filter_reason": "metadata_prefilter_plus_hierarchy:relaxed_topic_ids_no_chapter",
+    "metadata_prefilter_enabled": true,
+    "heuristic_topic_id": "2.4.2",
+    "heuristic_topic_score": 1.0
+  },
+  "intent_classification": {
+    "use_intent_llm": true,
+    "intent_model": "Qwen/Qwen3-4B-Instruct-2507",
+    "intent_llm_status": "ok",
+    "intent_llm": {
+      "intent_type": "operation",
+      "target_chapter": "2.4",
+      "target_topic_ids": [
+        "2.4.2"
+      ],
+      "confidence": 0.99,
+      "require_structure": false,
+      "reason": "คำถามถามถึง 'การทำงาน' ของลิงค์ลิสต์แบบทิศทางเดียว ซึ่งสอดคล้องกับหัวข้อ 'การทำงานของลิงค์ลิสต์แบบทิศทางเดียว' (topic_id=2.4.2) ที่มีความสัมพันธ์โดยตรง และมีคะแนนความสอดคล้องสูงสุด",
+      "raw": "{\"intent_type\":\"definition\",\"target_chapter\":\"2.4\",\"target_topic_ids\":[\"2.4.2\"],\"confidence\":0.99,\"require_structure\":false,\"reason\":\"คำถามถามถึง 'การทำงาน' ของลิงค์ลิสต์แบบทิศทางเดียว ซึ่งสอดคล้องกับหัวข้อ 'การทำงานของลิงค์ลิสต์แบบทิศทางเดียว' (topic_id=2.4.2) ที่มีความสัมพันธ์โดยตรง และมีคะแนนความสอดคล้องสูงสุด\"}"
+    },
+    "ranked_topics": [
+      {
+        "topic_id": "2.4.2",
+        "title": "การทำงานของลิงค์ลิสต์แบบทิศทางเดียว",
+        "score": 1.0
+      },
+      {
+        "topic_id": "2.4",
+        "title": "ลิงค์ลิสต์แบบทิศทางเดียว",
+        "score": 0.964286
+      },
+      {
+        "topic_id": "2.4.1",
+        "title": "โครงสร้างลิงค์ลิสต์แบบทิศทางเดียว",
+        "score": 0.625
+      },
+      {
+        "topic_id": "2.3.1",
+        "title": "ความหมายของลิงค์ลิสต์",
+        "score": 0.375
+      },
+      {
+        "topic_id": "2.3.2",
+        "title": "โครงสร้างของลิงค์ลิสต์",
+        "score": 0.375
+      },
+      {
+        "topic_id": "1.4.2",
+        "title": "โครงสร้างแบบเลือกการทำงาน (Selection)",
+        "score": 0.2
+      },
+      {
+        "topic_id": "2.3",
+        "title": "โครงสร้างลิงค์ลิสต์ (Linked List)",
+        "score": 0.2
+      },
+      {
+        "topic_id": "2",
+        "title": "อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+        "score": 0.142857
+      },
+      {
+        "topic_id": "3.1",
+        "title": "โครงสร้างพื้นฐานของคิว",
+        "score": 0.111111
+      },
+      {
+        "topic_id": "1.1.2",
+        "title": "ความหมายของอัลกอริทึม (Algorithm)",
+        "score": 0.1
+      },
+      {
+        "topic_id": "1.4.1",
+        "title": "โครงสร้างแบบเรียงลำดับ (Sequence)",
+        "score": 0.1
+      },
+      {
+        "topic_id": "1.4.3",
+        "title": "โครงสร้างแบบทำซ้ำ (Repetition)",
+        "score": 0.1
+      }
+    ]
+  },
+  "hierarchy_quality": {
+    "garbled_detected": false,
+    "mojibake_ratio": 0.0,
+    "topic_filter_enabled": true
+  },
+  "query_profile": {
+    "has_figure_ref": false,
+    "figure_refs": [],
+    "operation_intent": true,
+    "structure_intent": true,
+    "operation_terms": [
+      "ทำงาน"
+    ],
+    "structure_terms": [
+      "ลิงค์ลิสต์"
+    ],
+    "intent_type": "operation",
+    "expanded_query_terms_count": 18
+  },
+  "task_metrics": {
+    "region_hit_ratio_at_k": 1.0,
+    "figure_ref_hit_ratio_at_k": 1.0,
+    "structure_hit_ratio_at_k": 1.0,
+    "operation_coverage_ratio_at_k": 0.25,
+    "query_figure_ref_coverage": null,
+    "grounding_success_rate": 1.0,
+    "grounding_consistency_mean": 1.0,
+    "citation_ready_ratio": 1.0,
+    "mean_final_score": 0.283416,
+    "crop_completeness_proxy": 0.5,
+    "small_region_ratio_at_k": 0.0,
+    "region_quality_mean": 0.999,
+    "unique_figure_refs_at_k": 12,
+    "page_diversity_at_k": 0.625,
+    "procedure_step_coverage_proxy": 1.0
+  },
+  "count": 8,
+  "hits": [
+    {
+      "rank": 1,
+      "id": "data_structure_data_ch1_to_ch5.pdf:26:region:1",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:26",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 26,
+      "image_path": "assets/figure_regions/page_026_region_01.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 419,
+          "y0": 573,
+          "x1": 961,
+          "y1": 646
+        },
+        "bbox_norm": {
+          "x0": 0.329144,
+          "y0": 0.318333,
+          "x1": 0.75491,
+          "y1": 0.358889
+        },
+        "area_ratio": 0.017267,
+        "ink_ratio": 0.152656,
+        "is_fallback": false
+      },
+      "structure_labels": [
+        "Linked List",
+        "Linked List",
+        "Linked List",
+        "Linked List"
+      ],
+      "tags": [
+        "linked_list"
+      ],
+      "figure_refs": [
+        "ภาพที่ 2.19",
+        "ภาพที่ 2.20"
+      ],
+      "chapter_id": "2",
+      "chapter_title": "อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+      "section_id": "2.3",
+      "section_title": "โครงสร้างลิงค์ลิสต์ (Linked List)",
+      "best_topic_id": "2.3",
+      "best_topic_title": "โครงสร้างลิงค์ลิสต์ (Linked List)",
+      "base_score": 0.696345,
+      "rrf_score": 1.0,
+      "pre_vlm_score": 0.793515,
+      "vlm_score": 0.0,
+      "final_score": 0.499914,
+      "figure_score": 0.0,
+      "operation_score": 0.0,
+      "structure_score": 0.0,
+      "region_quality_score": 1.0,
+      "vlm_reason": "ภาพแสดงลิงค์ลิสต์แบบทิศทางเดียว แต่ไม่มีข้อความประกอบที่อธิบายการทำงานของลิงค์ลิสต์",
+      "preview": "# 3. การลบโหนด (Delete node)\n\nการลบโหนด สามารถลบทั้งโหนดและข้อมูลที่ไม่ต้องการออกไป ซึ่งมีหลักการง่าย ๆ\nด้วยการเปลี่ยนลิ้งค์ของโหนดก่อนหน้าที่ต้องการลบให้ไปยังลิ้งค์ของโหนดที่ต้องการลบ\n\n> [Structure: Linked List]\n> - Node(3) connects to -> Node(5)\n> - Node(5) connects to -> Node("
+    },
+    {
+      "rank": 2,
+      "id": "data_structure_data_ch1_to_ch5.pdf:25:region:1",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:25",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 25,
+      "image_path": "assets/figure_regions/page_025_region_01.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 420,
+          "y0": 1399,
+          "x1": 962,
+          "y1": 1450
+        },
+        "bbox_norm": {
+          "x0": 0.329929,
+          "y0": 0.777222,
+          "x1": 0.755695,
+          "y1": 0.805556
+        },
+        "area_ratio": 0.012063,
+        "ink_ratio": 0.19304,
+        "is_fallback": false
+      },
+      "structure_labels": [
+        "Linked List",
+        "Linked List",
+        "Linked List"
+      ],
+      "tags": [
+        "linked_list"
+      ],
+      "figure_refs": [
+        "ภาพที่ 2.15",
+        "ภาพที่ 2.16",
+        "ภาพที่ 2.17",
+        "ภาพที่ 2.18"
+      ],
+      "chapter_id": "2",
+      "chapter_title": "อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+      "section_id": "2.4",
+      "section_title": "ลิงค์ลิสต์แบบทิศทางเดียว",
+      "best_topic_id": "2.4",
+      "best_topic_title": "ลิงค์ลิสต์แบบทิศทางเดียว",
+      "base_score": 0.426042,
+      "rrf_score": 0.599011,
+      "pre_vlm_score": 0.481392,
+      "vlm_score": 0.0,
+      "final_score": 0.303277,
+      "figure_score": 0.0,
+      "operation_score": 1.0,
+      "structure_score": 1.0,
+      "region_quality_score": 1.0,
+      "vlm_reason": "ภาพแสดงลิงค์ลิสต์แบบทิศทางเดียว แต่ไม่มีข้อความประกอบที่อธิบายการทำงานของลิงค์ลิสต์",
+      "preview": "# 27\n\nเก็บในส่วนของข้อมูล และฟิลด์ที่ 2 เก็บค่าของการเชื่อมโยงในส่วนของการเชื่อมโยงก็จะใช้พอยน์เตอร์เป็นตัวเชื่อมโยงไปยังโหนดอื่น ๆ\n\n> [Structure: Linked List]\n> - Node(5) connects to -> Node(10)\n> - Node(10) connects to -> Node(15)\n> - Node(15) connects to -> NULL\n\nภาพที่ 2.15 โ"
+    },
+    {
+      "rank": 3,
+      "id": "data_structure_data_ch1_to_ch5.pdf:27:region:3",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:27",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 27,
+      "image_path": "assets/figure_regions/page_027_region_03.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 492,
+          "y0": 1017,
+          "x1": 890,
+          "y1": 1069
+        },
+        "bbox_norm": {
+          "x0": 0.386489,
+          "y0": 0.565,
+          "x1": 0.699136,
+          "y1": 0.593889
+        },
+        "area_ratio": 0.009032,
+        "ink_ratio": 0.190906,
+        "is_fallback": false
+      },
+      "structure_labels": [
+        "Linked List",
+        "Linked List",
+        "Linked List",
+        "Linked List"
+      ],
+      "tags": [
+        "linked_list"
+      ],
+      "figure_refs": [
+        "ภาพที่ 2.21",
+        "ภาพที่ 2.22"
+      ],
+      "chapter_id": "2",
+      "chapter_title": "อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+      "section_id": "2.3",
+      "section_title": "โครงสร้างลิงค์ลิสต์ (Linked List)",
+      "best_topic_id": "2.3",
+      "best_topic_title": "โครงสร้างลิงค์ลิสต์ (Linked List)",
+      "base_score": 0.392136,
+      "rrf_score": 0.70829,
+      "pre_vlm_score": 0.493305,
+      "vlm_score": 0.0,
+      "final_score": 0.310782,
+      "figure_score": 0.0,
+      "operation_score": 0.0,
+      "structure_score": 0.0,
+      "region_quality_score": 1.0,
+      "vlm_reason": "ภาพแสดงลิงค์ลิสต์แบบทิศทางเดียว แต่ไม่มีข้อความหรือคำอธิบายเพิ่มเติมเกี่ยวกับการทำงานของลิงค์ลิสต์",
+      "preview": "# ก่อนการแทรกโหนด\n\n> [Structure: Linked List]\n> - Node(1) connects to -> Node(15)\n> - Node(15) has a cross mark\n\n## หลังการแทรกโหนด\n\n> [Structure: Linked List]\n> - Node(2) connects to -> Node(15)\n> - Node(15) connects to -> Node(5)\n> - Node(5) has a cross mark\n\nภาพที่ 2.21 การแทร"
+    },
+    {
+      "rank": 4,
+      "id": "data_structure_data_ch1_to_ch5.pdf:27:region:2",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:27",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 27,
+      "image_path": "assets/figure_regions/page_027_region_02.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 550,
+          "y0": 491,
+          "x1": 808,
+          "y1": 583
+        },
+        "bbox_norm": {
+          "x0": 0.43205,
+          "y0": 0.272778,
+          "x1": 0.634721,
+          "y1": 0.323889
+        },
+        "area_ratio": 0.010359,
+        "ink_ratio": 0.181791,
+        "is_fallback": false
+      },
+      "structure_labels": [
+        "Linked List",
+        "Linked List",
+        "Linked List",
+        "Linked List"
+      ],
+      "tags": [
+        "linked_list"
+      ],
+      "figure_refs": [
+        "ภาพที่ 2.21",
+        "ภาพที่ 2.22"
+      ],
+      "chapter_id": "2",
+      "chapter_title": "อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+      "section_id": "2.3",
+      "section_title": "โครงสร้างลิงค์ลิสต์ (Linked List)",
+      "best_topic_id": "2.3",
+      "best_topic_title": "โครงสร้างลิงค์ลิสต์ (Linked List)",
+      "base_score": 0.289295,
+      "rrf_score": 0.607173,
+      "pre_vlm_score": 0.391016,
+      "vlm_score": 0.0,
+      "final_score": 0.24634,
+      "figure_score": 0.0,
+      "operation_score": 0.0,
+      "structure_score": 0.0,
+      "region_quality_score": 1.0,
+      "vlm_reason": "ภาพแสดงโครงสร้างของลิงค์ลิสต์แบบทิศทางเดียว แต่ไม่มีข้อความหรือคำอธิบายที่ชัดเจนเกี่ยวกับการทำงานของลิงค์ลิสต์",
+      "preview": "# ก่อนการแทรกโหนด\n\n> [Structure: Linked List]\n> - Node(1) connects to -> Node(15)\n> - Node(15) has a cross mark\n\n## หลังการแทรกโหนด\n\n> [Structure: Linked List]\n> - Node(2) connects to -> Node(15)\n> - Node(15) connects to -> Node(5)\n> - Node(5) has a cross mark\n\nภาพที่ 2.21 การแทร"
+    },
+    {
+      "rank": 5,
+      "id": "data_structure_data_ch1_to_ch5.pdf:28:region:1",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:28",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 28,
+      "image_path": "assets/figure_regions/page_028_region_01.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 394,
+          "y0": 487,
+          "x1": 986,
+          "y1": 582
+        },
+        "bbox_norm": {
+          "x0": 0.309505,
+          "y0": 0.270556,
+          "x1": 0.774548,
+          "y1": 0.323333
+        },
+        "area_ratio": 0.024544,
+        "ink_ratio": 0.116696,
+        "is_fallback": false
+      },
+      "structure_labels": [
+        "Linked List",
+        "Linked List",
+        "Linked List"
+      ],
+      "tags": [
+        "linked_list"
+      ],
+      "figure_refs": [
+        "ภาพที่ 2.23"
+      ],
+      "chapter_id": "2",
+      "chapter_title": "อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+      "section_id": "2",
+      "section_title": "อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+      "best_topic_id": "2",
+      "best_topic_title": "อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+      "base_score": 0.232756,
+      "rrf_score": 0.262578,
+      "pre_vlm_score": 0.242299,
+      "vlm_score": 0.0,
+      "final_score": 0.242299,
+      "figure_score": 0.0,
+      "operation_score": 0.0,
+      "structure_score": 0.0,
+      "region_quality_score": 0.992291,
+      "vlm_reason": "not_in_vlm_top_m",
+      "preview": "# ก่อนการแทรกโหนด\n\n> [Structure: Linked List]\n> - Node(3) connects to -> Node(5)\n> - Node(5) connects to -> Node(10)\n> - Node(10) connects to -> Node(15)\n> - Node(15) connects to -> NULL\n\n## หลังการแทรกโหนด\n\n> [Structure: Linked List]\n> - Node(3) connects to -> Node(4)\n> - Node(4"
+    },
+    {
+      "rank": 6,
+      "id": "data_structure_data_ch1_to_ch5.pdf:24:region:1",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:24",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 24,
+      "image_path": "assets/figure_regions/page_024_region_01.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 324,
+          "y0": 1390,
+          "x1": 1026,
+          "y1": 1445
+        },
+        "bbox_norm": {
+          "x0": 0.254517,
+          "y0": 0.772222,
+          "x1": 0.80597,
+          "y1": 0.802778
+        },
+        "area_ratio": 0.01685,
+        "ink_ratio": 0.172442,
+        "is_fallback": false
+      },
+      "structure_labels": [
+        "Linked List",
+        "Linked List"
+      ],
+      "tags": [
+        "linked_list"
+      ],
+      "figure_refs": [
+        "ภาพที่ 2.12",
+        "ภาพที่ 2.13",
+        "ภาพที่ 2.14"
+      ],
+      "chapter_id": "2",
+      "chapter_title": "อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+      "section_id": "2.4",
+      "section_title": "ลิงค์ลิสต์แบบทิศทางเดียว",
+      "best_topic_id": "2.4",
+      "best_topic_title": "ลิงค์ลิสต์แบบทิศทางเดียว",
+      "base_score": 0.326232,
+      "rrf_score": 0.440877,
+      "pre_vlm_score": 0.362918,
+      "vlm_score": 0.0,
+      "final_score": 0.228638,
+      "figure_score": 0.0,
+      "operation_score": 0.55,
+      "structure_score": 1.0,
+      "region_quality_score": 1.0,
+      "vlm_reason": "ภาพแสดงลิงค์ลิสต์แบบทิศทางเดียว แต่ไม่มีข้อความประกอบที่อธิบายการทำงานของลิงค์ลิสต์",
+      "preview": "# 2.4 ลิงค์ลิสต์แบบทิศทางเดียว (Single Linked List)\n\n## 2.4.1 โครงสร้างลิงค์ลิสต์แบบทิศทางเดียว\n\nลิงค์ลิสต์แบบทิศทางเดียวเป็นลิงค์ลิสต์ที่มีการเชื่อมโยงด้วยพอยน์เตอร์ไปในทิศทางเดียวกัน คือ ซึ่งเป็นโครงสร้างที่อยู่ถัดไปในโครงสร้าง ซึ่งลิงค์ลิสต์ในลักษณะนี้ถือเป็นรูปแบบพื้นฐานของลิ"
+    },
+    {
+      "rank": 7,
+      "id": "data_structure_data_ch1_to_ch5.pdf:28:region:4",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:28",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 28,
+      "image_path": "assets/figure_regions/page_028_region_04.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 590,
+          "y0": 884,
+          "x1": 850,
+          "y1": 976
+        },
+        "bbox_norm": {
+          "x0": 0.463472,
+          "y0": 0.491111,
+          "x1": 0.667714,
+          "y1": 0.542222
+        },
+        "area_ratio": 0.010439,
+        "ink_ratio": 0.182525,
+        "is_fallback": false
+      },
+      "structure_labels": [
+        "Linked List",
+        "Linked List",
+        "Linked List"
+      ],
+      "tags": [
+        "linked_list"
+      ],
+      "figure_refs": [
+        "ภาพที่ 2.23"
+      ],
+      "chapter_id": "2",
+      "chapter_title": "อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+      "section_id": "2",
+      "section_title": "อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+      "best_topic_id": "2",
+      "best_topic_title": "อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+      "base_score": 0.272967,
+      "rrf_score": 0.512769,
+      "pre_vlm_score": 0.349703,
+      "vlm_score": 0.0,
+      "final_score": 0.220313,
+      "figure_score": 0.0,
+      "operation_score": 0.0,
+      "structure_score": 0.0,
+      "region_quality_score": 1.0,
+      "vlm_reason": "",
+      "preview": "# ก่อนการแทรกโหนด\n\n> [Structure: Linked List]\n> - Node(3) connects to -> Node(5)\n> - Node(5) connects to -> Node(10)\n> - Node(10) connects to -> Node(15)\n> - Node(15) connects to -> NULL\n\n## หลังการแทรกโหนด\n\n> [Structure: Linked List]\n> - Node(3) connects to -> Node(4)\n> - Node(4"
+    },
+    {
+      "rank": 8,
+      "id": "data_structure_data_ch1_to_ch5.pdf:28:region:2",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:28",
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 28,
+      "image_path": "assets/figure_regions/page_028_region_02.png",
+      "image_level": "region",
+      "region_meta": {
+        "bbox": {
+          "x0": 518,
+          "y0": 1077,
+          "x1": 910,
+          "y1": 1176
+        },
+        "bbox_norm": {
+          "x0": 0.406913,
+          "y0": 0.598333,
+          "x1": 0.714847,
+          "y1": 0.653333
+        },
+        "area_ratio": 0.016936,
+        "ink_ratio": 0.138863,
+        "is_fallback": false
+      },
+      "structure_labels": [
+        "Linked List",
+        "Linked List",
+        "Linked List"
+      ],
+      "tags": [
+        "linked_list"
+      ],
+      "figure_refs": [
+        "ภาพที่ 2.23"
+      ],
+      "chapter_id": "2",
+      "chapter_title": "อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+      "section_id": "2",
+      "section_title": "อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+      "best_topic_id": "2",
+      "best_topic_title": "อาร์เรย์และลิงค์ลิสต์ (Array and Linked list)",
+      "base_score": 0.274313,
+      "rrf_score": 0.487343,
+      "pre_vlm_score": 0.342483,
+      "vlm_score": 0.0,
+      "final_score": 0.215764,
+      "figure_score": 0.0,
+      "operation_score": 0.0,
+      "structure_score": 0.0,
+      "region_quality_score": 1.0,
+      "vlm_reason": "ภาพแสดงลิงค์ลิสต์แบบทิศทางเดียว แต่ไม่มีข้อความประกอบที่อธิบายการทำงานของลิงค์ลิสต์",
+      "preview": "# ก่อนการแทรกโหนด\n\n> [Structure: Linked List]\n> - Node(3) connects to -> Node(5)\n> - Node(5) connects to -> Node(10)\n> - Node(10) connects to -> Node(15)\n> - Node(15) connects to -> NULL\n\n## หลังการแทรกโหนด\n\n> [Structure: Linked List]\n> - Node(3) connects to -> Node(4)\n> - Node(4"
+    }
+  ],
+  "grounding": [
+    {
+      "id": "data_structure_data_ch1_to_ch5.pdf:26:region:1",
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:26",
+      "grounding": {
+        "parsed": {
+          "structure_type": "linked list",
+          "grounded_facts": [
+            "มี node ที่มี pointer ต่อไป",
+            "มี node ที่ไม่มี pointer ต่อไป",
+            "มีการเชื่อมต่อระหว่าง node ด้วย pointer"
+          ],
+          "limitations": "['ไม่มีการระบุว่า node ที่ไม่มี pointer ต่อไปคือ node ที่สุดท้ายของลิงค์ลิสต์']"
+        },
+        "raw": "```json\n{\n  \"structure_type\": \"linked list\",\n  \"grounded_facts\": [\n    \"มีการเชื่อมต่อระหว่าง node ด้วย pointer\",\n    \"มี node ที่ไม่มี pointer ต่อไป\",\n    \"มี node ที่มี pointer ต่อไป\"\n  ],\n  \"limitations\": [\n    \"ไม่มีการระบุว่า node ที่ไม่มี pointer ต่อไปคือ node ที่สุดท้ายของลิงค์ลิสต์\"\n  ]\n}\n```",
+        "samples": [
+          {
+            "parsed": {
+              "structure_type": "linked list",
+              "grounded_facts": [
+                "มีการเชื่อมต่อระหว่าง node ด้วย pointer",
+                "มี node ที่ไม่มี pointer ต่อไป",
+                "มี node ที่มี pointer ต่อไป"
+              ],
+              "limitations": [
+                "ไม่มีการระบุว่า node ที่ไม่มี pointer ต่อไปคือ node ที่สุดท้ายของลิงค์ลิสต์"
+              ]
+            },
+            "raw": "```json\n{\n  \"structure_type\": \"linked list\",\n  \"grounded_facts\": [\n    \"มีการเชื่อมต่อระหว่าง node ด้วย pointer\",\n    \"มี node ที่ไม่มี pointer ต่อไป\",\n    \"มี node ที่มี pointer ต่อไป\"\n  ],\n  \"limitations\": [\n    \"ไม่มีการระบุว่า node ที่ไม่มี pointer ต่อไปคือ node ที่สุดท้ายของลิงค์ลิสต์\"\n  ]\n}\n```"
+          },
+          {
+            "parsed": {
+              "structure_type": "linked list",
+              "grounded_facts": [
+                "มีการเชื่อมต่อระหว่าง node ด้วย pointer",
+                "มี node ที่ไม่มี pointer ต่อไป",
+                "มี node ที่มี pointer ต่อไป"
+              ],
+              "limitations": [
+                "ไม่มีการระบุว่า node ที่ไม่มี pointer ต่อไปคือ node ที่สุดท้ายของลิงค์ลิสต์"
+              ]
+            },
+            "raw": "```json\n{\n  \"structure_type\": \"linked list\",\n  \"grounded_facts\": [\n    \"มีการเชื่อมต่อระหว่าง node ด้วย pointer\",\n    \"มี node ที่ไม่มี pointer ต่อไป\",\n    \"มี node ที่มี pointer ต่อไป\"\n  ],\n  \"limitations\": [\n    \"ไม่มีการระบุว่า node ที่ไม่มี pointer ต่อไปคือ node ที่สุดท้ายของลิงค์ลิสต์\"\n  ]\n}\n```"
+          }
+        ],
+        "consensus": {
+          "runs": 2,
+          "valid_runs": 2,
+          "vote_threshold": 2,
+          "raw_unique_facts": 3,
+          "consensus_facts": 3,
+          "agreement_ratio": 1.0
+        }
+      }
+    }
+  ]
+}

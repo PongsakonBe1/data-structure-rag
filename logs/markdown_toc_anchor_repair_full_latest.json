@@ -1,0 +1,107 @@
+{
+  "input_markdown": "final_extracted_text_only.md",
+  "output_markdown": "final_extracted_text_only_structured_full.md",
+  "injected_count": 57,
+  "injected_examples": [
+    {
+      "topic_id": "1.1",
+      "title": "ความหมายโครงสร้างข้อมูลและอัลกอริทึม",
+      "page": 1
+    },
+    {
+      "topic_id": "1.1.1",
+      "title": "ความหมายของโครงสร้างข้อมูล (Data Structure)",
+      "page": 1
+    },
+    {
+      "topic_id": "1.1.2",
+      "title": "ความหมายของอัลกอริทึม (Algorithm)",
+      "page": 1
+    },
+    {
+      "topic_id": "1.1.3",
+      "title": "ความสำคัญของการเลือกโครงสร้างข้อมูลที่เหมาะสมกับอัลกอริทึม",
+      "page": 2
+    },
+    {
+      "topic_id": "1.2",
+      "title": "โครงสร้างข้อมูลพื้นฐาน",
+      "page": 3
+    },
+    {
+      "topic_id": "1.2.1",
+      "title": "บิต (Bit)",
+      "page": 3
+    },
+    {
+      "topic_id": "1.2.2",
+      "title": "ไบต์ (Byte)",
+      "page": 3
+    },
+    {
+      "topic_id": "1.2.3",
+      "title": "ฟิลด์ (Field)",
+      "page": 3
+    },
+    {
+      "topic_id": "1.2.4",
+      "title": "เรคอร์ด (Record)",
+      "page": 3
+    },
+    {
+      "topic_id": "1.2.5",
+      "title": "ไฟล์ (File)",
+      "page": 3
+    },
+    {
+      "topic_id": "1.2.6",
+      "title": "ฐานข้อมูล (Database)",
+      "page": 3
+    },
+    {
+      "topic_id": "1.3",
+      "title": "ประเภทของโครงสร้างข้อมูลและอัลกอริทึม",
+      "page": 2
+    },
+    {
+      "topic_id": "1.3.1",
+      "title": "ประเภทโครงสร้างข้อมูล",
+      "page": 4
+    },
+    {
+      "topic_id": "1.3.2",
+      "title": "ประเภทอัลกอริทึม",
+      "page": 4
+    },
+    {
+      "topic_id": "1.3.3",
+      "title": "เครื่องมือพัฒนา",
+      "page": 2
+    },
+    {
+      "topic_id": "1.4",
+      "title": "โครงสร้างการควบคุมพื้นฐาน",
+      "page": 6
+    },
+    {
+      "topic_id": "1.4.1",
+      "title": "โครงสร้างแบบเรียงลำดับ (Sequence)",
+      "page": 7
+    },
+    {
+      "topic_id": "1.4.2",
+      "title": "โครงสร้างแบบเลือกการทำงาน (Selection)",
+      "page": 8
+    },
+    {
+      "topic_id": "1.4.3",
+      "title": "โครงสร้างแบบทำซ้ำ (Repetition)",
+      "page": 9
+    },
+    {
+      "topic_id": "2.1",
+      "title": "โครงสร้างอาร์เรย์ (Array)",
+      "page": 17
+    }
+  ]
+}

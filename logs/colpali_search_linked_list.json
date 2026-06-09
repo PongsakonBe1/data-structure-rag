@@ -1,0 +1,150 @@
+{
+  "query": "โครงสร้างลิงค์ลิสต์แบบทิศทางเดียว",
+  "mode": "metadata_only",
+  "top_k": 5,
+  "require_structure": true,
+  "require_example": false,
+  "required_tags": [],
+  "count": 5,
+  "hits": [
+    {
+      "rank": 1,
+      "score": 0.906129,
+      "colpali_score": 0.0,
+      "lexical_score": 1.0,
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 24,
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:24",
+      "image_path": "assets/figure_regions/page_024_region_01.png",
+      "image_level": "region",
+      "region_index": 1,
+      "has_structure": true,
+      "has_example": false,
+      "tags": [
+        "linked_list"
+      ],
+      "structure_labels": [
+        "Linked List",
+        "Linked List",
+        "Linked List"
+      ],
+      "figure_refs": [
+        "ภาพที่ 2.12",
+        "ภาพที่ 2.13",
+        "ภาพที่ 2.14"
+      ],
+      "preview": "# 2.4 ลิงค์ลิสต์แบบทิศทางเดียว (Single Linked List)\n\n## 2.4.1 โครงสร้างลิงค์ลิสต์แบบทิศทางเดียว\n\nลิงค์ลิสต์แบบทิศทางเดียวเป็นลิงค์ลิสต์ที่มีการเชื่อมโยงด้วยพอยน์เตอร์ไปในทิศทางเดียวกัน คือ ซึ่งเป็นโครงสร้างที่อยู่ถัดไปในโครงสร้าง ซึ่งลิงค์ลิสต์ในลักษณะนี้ถือเป็นรูปแบบพื้นฐานของลิ"
+    },
+    {
+      "rank": 2,
+      "score": 0.904279,
+      "colpali_score": 0.0,
+      "lexical_score": 1.0,
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 25,
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:25",
+      "image_path": "assets/figure_regions/page_025_region_01.png",
+      "image_level": "region",
+      "region_index": 1,
+      "has_structure": true,
+      "has_example": false,
+      "tags": [
+        "linked_list"
+      ],
+      "structure_labels": [
+        "Linked List",
+        "Linked List",
+        "Linked List",
+        "Linked List"
+      ],
+      "figure_refs": [
+        "ภาพที่ 2.15",
+        "ภาพที่ 2.16",
+        "ภาพที่ 2.17",
+        "ภาพที่ 2.18"
+      ],
+      "preview": "# 27\n\nเก็บในส่วนของข้อมูล และฟิลด์ที่ 2 เก็บค่าของการเชื่อมโยงในส่วนของการเชื่อมโยงก็จะใช้พอยน์เตอร์เป็นตัวเชื่อมโยงไปยังโหนดอื่น ๆ\n\n> [Structure: Linked List]\n> - Node(5) connects to -> Node(10)\n> - Node(10) connects to -> Node(15)\n> - Node(15) connects to -> NULL\n\nภาพที่ 2.15 โ"
+    },
+    {
+      "rank": 3,
+      "score": 0.615108,
+      "colpali_score": 0.0,
+      "lexical_score": 0.666667,
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 13,
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:13",
+      "image_path": "assets/figure_regions/page_013_region_01.png",
+      "image_level": "region",
+      "region_index": 1,
+      "has_structure": true,
+      "has_example": false,
+      "tags": [
+        "array",
+        "binary_tree",
+        "linked_list",
+        "queue",
+        "stack",
+        "tree"
+      ],
+      "structure_labels": [
+        "Binary Tree"
+      ],
+      "figure_refs": [
+        "ภาพที่ 2.1"
+      ],
+      "preview": "# หน่วยเรียนที่ 2\n## อาร์เรย์และลิงค์ลิสต์ (Array and Link list)\n\nอาร์เรย์และลิงค์ลิสต์เป็นโครงสร้างข้อมูลเชิงเส้นที่มีการจัดเรียงข้อมูลแบบต่อเนื่องและเข้าถึงข้อมูลแบบลำดับ ซึ่งจัดเป็นโครงสร้างข้อมูลพื้นฐานสำหรับโครงสร้างข้อมูลแบบอื่น ๆ โดยโครงสร้างข้อมูลแบบอาร์เรย์และลิงค์ลิสต์น"
+    },
+    {
+      "rank": 4,
+      "score": 0.6,
+      "colpali_score": 0.0,
+      "lexical_score": 0.666667,
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 23,
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:23",
+      "image_path": "assets/figure_regions/page_023_region_01.png",
+      "image_level": "region",
+      "region_index": 1,
+      "has_structure": true,
+      "has_example": false,
+      "tags": [
+        "linked_list",
+        "node"
+      ],
+      "structure_labels": [
+        "Node",
+        "Linked List"
+      ],
+      "figure_refs": [
+        "ภาพที่ 2.10",
+        "ภาพที่ 2.11"
+      ],
+      "preview": "# 25\n\nกล่าวโดยสรุปได้ว่า ลิงค์ลิสต์ หมายถึง ข้อมูลที่ถูกนำมาจัดเก็บเรียงกันในลักษณะเส้นตรง โดยข้อมูลจะถูกจัดเรียงเป็นชุด ๆ เรียกว่า โหนด (Node) ซึ่งแต่ละโหนดจะประกอบด้วยข้อมูล 2 ส่วน คือ ส่วนของข้อมูล (data) และส่วนลิงค์ข้อมูล (link)\n\n> [Structure: Node]\n> - data\n> - link\n\nภาพที่"
+    },
+    {
+      "rank": 5,
+      "score": 0.505344,
+      "colpali_score": 0.0,
+      "lexical_score": 0.5,
+      "source": "data_structure_data_ch1_to_ch5.pdf",
+      "page": 5,
+      "page_id": "data_structure_data_ch1_to_ch5.pdf:5",
+      "image_path": "assets/figure_regions/page_005_region_01.png",
+      "image_level": "region",
+      "region_index": 1,
+      "has_structure": true,
+      "has_example": false,
+      "tags": [
+        "flowchart",
+        "ตาราง"
+      ],
+      "structure_labels": [
+        "ตาราง"
+      ],
+      "figure_refs": [
+        "ตารางที่ 1.2"
+      ],
+      "preview": "# 8. อัลกอริทึมแบบการแปลงและเอาชนะ (Transform and Conquer Algorithm)\nเป็นการแก้ไขปัญหาด้วยวิธีการเปลี่ยนรูปแบบของปัญหาที่ต้องการแก้ไขให้อยู่ในรูปแบบอื่นก่อน ด้วยคาดหวังเมื่อเปลี่ยนรูปแบบของปัญหาแล้วจะสามารถแก้ปัญหาได้ง่ายและรวดเร็วขึ้น เช่น การนำข้อมูลที่ต้องการค้นหามาจัดเรียงข้อ"
+    }
+  ]
+}

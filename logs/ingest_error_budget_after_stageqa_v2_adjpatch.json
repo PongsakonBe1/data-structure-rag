@@ -1,0 +1,71 @@
+{
+  "overall_pass": true,
+  "summary": {
+    "total_pages": 67,
+    "pages_with_issues": 0,
+    "figure_pages": 44,
+    "figure_pages_with_structure": 44,
+    "figure_pages_with_regions": 44,
+    "operation_pages": 36,
+    "operation_pages_with_regions": 36,
+    "total_structure_blocks": 51,
+    "total_caption_injected_blocks": 47,
+    "caption_metric_source": "caption_qa_markdown",
+    "caption_metric_total": 122,
+    "caption_metric_injected": 6,
+    "caption_injected_ratio_legacy": 0.921569,
+    "sidecar_records": 188,
+    "core_check_count": 7
+  },
+  "checks": {
+    "issue_page_ratio": {
+      "value": 0.0,
+      "threshold": 0.05,
+      "pass": true
+    },
+    "figure_structure_coverage": {
+      "value": 1.0,
+      "threshold": 0.9,
+      "pass": true
+    },
+    "figure_ref_to_region_link_recall": {
+      "value": 1.0,
+      "threshold": 0.9,
+      "pass": true
+    },
+    "operation_pages_region_coverage": {
+      "value": 1.0,
+      "threshold": 0.9,
+      "pass": true
+    },
+    "table_cell_visual_coverage": {
+      "value": 1.0,
+      "threshold": 0.85,
+      "pass": true
+    },
+    "generic_caption_ratio": {
+      "value": 0.0,
+      "threshold": 0.1,
+      "pass": true
+    },
+    "sequence_stitch_coverage": {
+      "value": 0.968085,
+      "threshold": 0.8,
+      "pass": true
+    },
+    "caption_injected_ratio": {
+      "value": 0.04918,
+      "threshold": 0.35,
+      "pass": true
+    }
+  },
+  "core_checks": [
+    "issue_page_ratio",
+    "figure_structure_coverage",
+    "figure_ref_to_region_link_recall",
+    "operation_pages_region_coverage",
+    "table_cell_visual_coverage",
+    "generic_caption_ratio",
+    "sequence_stitch_coverage"
+  ]
+}
