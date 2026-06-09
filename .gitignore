@@ -42,14 +42,23 @@ ENV/
 data/*.pdf
 data/*.zip
 data/*.tar.gz
-indexes/
-*.faiss
-*.index
+
+# Model weights (large files)
 *.bin
 *.pt
 *.pth
 *.ckpt
 *.safetensors
+
+# Allow index files (small, needed for RAG)
+# These are required for the app to work on Streamlit Cloud
+!indexes/
+!indexes/**/*.json
+!indexes/**/*.jsonl
+!indexes/**/*.pkl
+!indexes/**/*.faiss
+!indexes/**/*.index
+!indexes/**/index.*
 
 # Logs (too large)
 logs/__debug_*

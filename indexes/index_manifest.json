@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "generated_at": "2026-02-23T04:04:45.626200",
+  "files": {
+    "bm25_index.pkl": {
+      "sha256": "e3f4da68bc01b861adc9073441a7f8d36aae37546e86767b9024f59140381647",
+      "size": 830746
+    },
+    "faiss_index/index.faiss": {
+      "sha256": "9cc912d16cb738f38ad9e6b0a050afb95c70365ee4751a603216952f5ab8228b",
+      "size": 1454125
+    },
+    "faiss_index/index.pkl": {
+      "sha256": "8d91615bec04b08e359661674a6e82f9ed26b30f340e67432e31d4f8e861b73a",
+      "size": 491756
+    }
+  }
+}
