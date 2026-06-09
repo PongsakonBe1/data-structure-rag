@@ -55,9 +55,20 @@ except ImportError:
 DOTENV_PATH = PROJECT_ROOT / ".env"
 load_dotenv(DOTENV_PATH)
 
-HF_TOKEN = (os.getenv("HUGGINGFACE_READ_TOKEN") or os.getenv("HUGGINGFACE_API_KEY") or "").strip()
+# อ่าน HF Token จาก Streamlit Secrets ก่อน แล้ว fallback ไป .env (สำหรับ local dev)
+HF_TOKEN = (
+    st.secrets.get("huggingface", {}).get("token") 
+    or st.secrets.get("huggingface", {}).get("api_key")
+    or st.secrets.get("HUGGINGFACE_READ_TOKEN")
+    or st.secrets.get("HUGGINGFACE_API_KEY")
+    or os.getenv("HUGGINGFACE_READ_TOKEN")
+    or os.getenv("HUGGINGFACE_API_KEY")
+    or ""
+).strip()
+
 if not HF_TOKEN:
-    st.error("❌ ไม่พบ HUGGINGFACE_READ_TOKEN หรือ HUGGINGFACE_API_KEY ในไฟล์ .env")
+    st.error("❌ ไม่พบ HUGGINGFACE_READ_TOKEN หรือ HUGGINGFACE_API_KEY")
+    st.error("กรุณาเพิ่ม Secrets ใน Streamlit Cloud (Settings → Secrets) หรือสร้างไฟล์ .env สำหรับ local")
     st.stop()
 
 CHAT_MODEL_ID = "Qwen/Qwen3-4B-Instruct-2507" 
