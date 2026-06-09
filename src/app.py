@@ -3190,8 +3190,10 @@ def _convert_hf_space_id_to_url(value: str) -> str:
     if value.startswith("http://") or value.startswith("https://"):
         return value
     # If it's a Space ID format (user/space-name), convert to URL
+    # Hugging Face Spaces convert both '/' and '_' to '-' in the URL
     if "/" in value and "." not in value:
-        return f"https://{value.replace('/', '-')}.hf.space"
+        space_path = value.replace('/', '-').replace('_', '-')
+        return f"https://{space_path}.hf.space"
     return value
 
 def resolve_colpali_endpoint_url(preferred: str = "") -> str:
