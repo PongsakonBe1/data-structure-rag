@@ -3181,16 +3181,31 @@ def read_dotenv_value(key: str, dotenv_path: Path = DOTENV_PATH) -> str:
     return ""
 
 
+def _convert_hf_space_id_to_url(value: str) -> str:
+    """Convert Hugging Face Space ID (user/space) to full URL (user-space.hf.space)"""
+    value = value.strip()
+    if not value:
+        return ""
+    # If already a full URL, return as-is
+    if value.startswith("http://") or value.startswith("https://"):
+        return value
+    # If it's a Space ID format (user/space-name), convert to URL
+    if "/" in value and "." not in value:
+        return f"https://{value.replace('/', '-')}.hf.space"
+    return value
+
 def resolve_colpali_endpoint_url(preferred: str = "") -> str:
     # ลำดับ priority: preferred > st.secrets > .env > global var
-    return (
+    raw = (
         str(preferred or "").strip()
         or st.secrets.get("colpali", {}).get("endpoint_url")
+        or st.secrets.get("colpali", {}).get("space_id")
         or st.secrets.get("COLPALI_ENDPOINT_URL")
         or read_dotenv_value("COLPALI_ENDPOINT_URL", DOTENV_PATH)
         or os.getenv("COLPALI_ENDPOINT_URL", "").strip()
         or VISUAL_RETRIEVAL_ENDPOINT_URL
     )
+    return _convert_hf_space_id_to_url(raw)
 
 
 def build_visual_endpoint_contract_payload(query: str = "โครงสร้างของการแทนคิวด้วยอาร์เรย์") -> dict:
