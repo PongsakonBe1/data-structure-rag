@@ -148,7 +148,12 @@ VISUAL_GROUNDING_ENSEMBLE_RUNS = max(1, int(os.getenv("VISUAL_GROUNDING_ENSEMBLE
 VISUAL_GROUNDING_CONSENSUS_MIN_VOTES = max(1, int(os.getenv("VISUAL_GROUNDING_CONSENSUS_MIN_VOTES", "2")))
 VISUAL_GROUNDING_TEMPERATURE = float(os.getenv("VISUAL_GROUNDING_TEMPERATURE", "0.0"))
 VISUAL_GROUNDING_TOP_P = float(os.getenv("VISUAL_GROUNDING_TOP_P", "0.9"))
-VISUAL_RETRIEVAL_ENDPOINT_URL = os.getenv("COLPALI_ENDPOINT_URL", "").strip()
+# อ่าน ColPali Endpoint จาก Streamlit Secrets ก่อน แล้ว fallback ไป .env
+VISUAL_RETRIEVAL_ENDPOINT_URL = (
+    st.secrets.get("colpali", {}).get("endpoint_url")
+    or st.secrets.get("COLPALI_ENDPOINT_URL")
+    or os.getenv("COLPALI_ENDPOINT_URL", "")
+).strip()
 VISUAL_RETRIEVAL_ENDPOINT_TIMEOUT_SEC = int(os.getenv("VISUAL_RETRIEVAL_ENDPOINT_TIMEOUT_SEC", "30"))
 VISUAL_ENDPOINT_AUTOWARM_ON_STARTUP = os.getenv("VISUAL_ENDPOINT_AUTOWARM_ON_STARTUP", "1").strip().lower() in {"1", "true", "yes", "on"}
 VISUAL_ENDPOINT_AUTOWARM_TIMEOUT_SEC = max(5, int(os.getenv("VISUAL_ENDPOINT_AUTOWARM_TIMEOUT_SEC", "20")))
@@ -3177,8 +3182,11 @@ def read_dotenv_value(key: str, dotenv_path: Path = DOTENV_PATH) -> str:
 
 
 def resolve_colpali_endpoint_url(preferred: str = "") -> str:
+    # ลำดับ priority: preferred > st.secrets > .env > global var
     return (
         str(preferred or "").strip()
+        or st.secrets.get("colpali", {}).get("endpoint_url")
+        or st.secrets.get("COLPALI_ENDPOINT_URL")
         or read_dotenv_value("COLPALI_ENDPOINT_URL", DOTENV_PATH)
         or os.getenv("COLPALI_ENDPOINT_URL", "").strip()
         or VISUAL_RETRIEVAL_ENDPOINT_URL
