@@ -394,3 +394,5 @@ Timestamp,Question,Predicted_Topic,Answer_Length,Faithfulness,Relevance,Context_
 2026-06-09T09:59:38.543645,Undo/Redo Stack ในการ Implement ฟีเจอร์ Undo ของแอพ,4.2 การดำเนินการของสแตก,66,0.0,0.0,0.0,C:\Users\Admin\data_structure_rag\indexes,True,,True,,True,
 2026-06-09T10:00:26.611987,Cartesian Tree ในการแก้ Range Minimum Query,5.4 ทรีกับการดำเนินการด้านนิพจน์ (Expression Tree),66,0.0,0.0,0.0,C:\Users\Admin\data_structure_rag\indexes,True,,True,,True,
 2026-06-09T10:01:33.635806,Bitwise Operations ในการ Optimize โปรแกรม (Bitmask DP),1.2.1 บิต (Bit),65,0.0,0.0,0.0,C:\Users\Admin\data_structure_rag\indexes,True,,True,,True,
+2026-06-10T11:37:42.097269,ความหมายของโครงสร้างข้อมูล,1.1.1 ความหมายของโครงสร้างข้อมูล (Data Structure),0,0.0,0.0,0.0,C:\Users\Admin\data_structure_rag\indexes,True,,True,,True,
+2026-06-10T15:37:42.207001,ความหมายของโครงสร้างข้อมูล (Data Structure),1.1.1 ความหมายของโครงสร้างข้อมูล (Data Structure),0,0.0,0.0,0.0,C:\Users\Admin\data_structure_rag\indexes,True,,True,,True,
