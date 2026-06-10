@@ -237,6 +237,7 @@ VISUAL_STANDARD_QUERY_LOG = LOG_DIR / "visual_standard_query_test_latest.json"
 FIGURE_REGION_MANIFEST_FILE = LOG_DIR / "figure_regions_manifest_latest.json"
 EXPANDED_REGION_DIR = LOG_DIR / "expanded_regions"
 EXPANDED_REGION_DIR.mkdir(exist_ok=True)
+IOC_EVAL_FILE = LOG_DIR / "expert_ioc_eval.csv"
 VISUAL_STANDARD_QUERY_CASES = [
     {"query": "โครงสร้างลิงค์ลิสต์แบบทิศทางเดียว", "require_structure": True},
     {"query": "โครงสร้างของการแทนคิวด้วยอาร์เรย์", "require_structure": True},
@@ -5742,83 +5743,85 @@ with tab_chat:
                 })
                 st.rerun()
 
+# Module-level functions for IOC evaluation (moved from inside tab_ioc block)
+def load_ioc_evaluations():
+    """Load IOC evaluations from CSV file."""
+    if not IOC_EVAL_FILE.exists():
+        return []
+    try:
+        with open(IOC_EVAL_FILE, "r", newline="", encoding="utf-8-sig") as f:
+            reader = csv.DictReader(f)
+            rows = []
+            for row in reader:
+                # Clean BOM characters from keys and values
+                cleaned = {}
+                for key, value in row.items():
+                    if key:
+                        clean_key = key.lstrip('\ufeff').strip()
+                        cleaned[clean_key] = value.strip() if value else ""
+                rows.append(cleaned)
+            return rows
+    except Exception as e:
+        st.error(f"Error loading evaluations: {e}")
+        return []
+
+
+def save_ioc_evaluation(data: dict):
+    """Save IOC evaluation to CSV file."""
+    fieldnames = [
+        "timestamp", "evaluator_name", "question", "answer", "question_type",
+        "system_behavior", "ioc_score", "comments"
+    ]
+    file_exists = IOC_EVAL_FILE.exists()
+    try:
+        with open(IOC_EVAL_FILE, "a", newline="", encoding="utf-8-sig") as f:
+            writer = csv.DictWriter(f, fieldnames=fieldnames)
+            if not file_exists:
+                writer.writeheader()
+            writer.writerow(data)
+        return True
+    except Exception as e:
+        st.error(f"❌ บันทึกไม่สำเร็จ: {e}")
+        return False
+
+
+def calculate_confusion_matrix(evaluations):
+    """Calculate confusion matrix metrics from evaluations.
+    
+    Standard Confusion Matrix:
+    - TP: In-Scope + ตอบ (ถูกต้อง)
+    - FN: In-Scope + Abstain (ผิด - ควรตอบแต่ไม่ตอบ)
+    - TN: Out-of-Scope + Abstain (ถูกต้อง - ปฏิเสธถูกต้อง)
+    - FP: Out-of-Scope + ตอบ (ผิด - ไม่ควรตอบแต่ตอบ)
+    """
+    tp = tn = fp = fn = 0
+    for ev in evaluations:
+        q_type = ev.get("question_type", "")
+        behavior = ev.get("system_behavior", "")
+
+        if q_type == "In-Scope (มีในเนื้อหา)":
+            if behavior == "ตอบคำถามปกติ":
+                tp += 1
+            else:  # Abstain
+                fn += 1
+                
+        elif q_type == "Out-of-Scope (ไม่มีในเนื้อหา)":
+            if behavior == "ปฏิเสธการตอบ (Abstain)":
+                tn += 1
+            else:  # ตอบ
+                fp += 1
+                
+    return {"TP": tp, "TN": tn, "FP": fp, "FN": fn}
+
+
+def calculate_confusion_matrix_by_evaluator(evaluations, evaluator_name):
+    """Calculate confusion matrix for a specific evaluator."""
+    evaluator_evals = [ev for ev in evaluations if ev.get("evaluator_name") == evaluator_name]
+    return calculate_confusion_matrix(evaluator_evals)
+
+
 with tab_ioc:
     st.markdown("### 📝 Expert Evaluation (IOC Form)")
-
-    # Load existing IOC evaluations for dashboard
-    IOC_EVAL_FILE = LOG_DIR / "expert_ioc_eval.csv"
-
-    def load_ioc_evaluations():
-        """Load IOC evaluations from CSV file."""
-        if not IOC_EVAL_FILE.exists():
-            return []
-        try:
-            with open(IOC_EVAL_FILE, "r", newline="", encoding="utf-8-sig") as f:
-                reader = csv.DictReader(f)
-                rows = []
-                for row in reader:
-                    # Clean BOM characters from keys and values
-                    cleaned = {}
-                    for key, value in row.items():
-                        if key:
-                            clean_key = key.lstrip('\ufeff').strip()
-                            cleaned[clean_key] = value.strip() if value else ""
-                    rows.append(cleaned)
-                return rows
-        except Exception as e:
-            st.error(f"Error loading evaluations: {e}")
-            return []
-
-    def save_ioc_evaluation(data: dict):
-        """Save IOC evaluation to CSV file."""
-        fieldnames = [
-            "timestamp", "evaluator_name", "question", "answer", "question_type",
-            "system_behavior", "ioc_score", "comments"
-        ]
-        file_exists = IOC_EVAL_FILE.exists()
-        try:
-            with open(IOC_EVAL_FILE, "a", newline="", encoding="utf-8-sig") as f:
-                writer = csv.DictWriter(f, fieldnames=fieldnames)
-                if not file_exists:
-                    writer.writeheader()
-                writer.writerow(data)
-            return True
-        except Exception as e:
-            st.error(f"❌ บันทึกไม่สำเร็จ: {e}")
-            return False
-
-    def calculate_confusion_matrix(evaluations):
-        """Calculate confusion matrix metrics from evaluations.
-        
-        Standard Confusion Matrix:
-        - TP: In-Scope + ตอบ (ถูกต้อง)
-        - FN: In-Scope + Abstain (ผิด - ควรตอบแต่ไม่ตอบ)
-        - TN: Out-of-Scope + Abstain (ถูกต้อง - ปฏิเสธถูกต้อง)
-        - FP: Out-of-Scope + ตอบ (ผิด - ไม่ควรตอบแต่ตอบ)
-        """
-        tp = tn = fp = fn = 0
-        for ev in evaluations:
-            q_type = ev.get("question_type", "")
-            behavior = ev.get("system_behavior", "")
-
-            if q_type == "In-Scope (มีในเนื้อหา)":
-                if behavior == "ตอบคำถามปกติ":
-                    tp += 1
-                else:  # Abstain
-                    fn += 1
-                    
-            elif q_type == "Out-of-Scope (ไม่มีในเนื้อหา)":
-                if behavior == "ปฏิเสธการตอบ (Abstain)":
-                    tn += 1
-                else:  # ตอบ
-                    fp += 1
-                        
-        return {"TP": tp, "TN": tn, "FP": fp, "FN": fn}
-
-    def calculate_confusion_matrix_by_evaluator(evaluations, evaluator_name):
-        """Calculate confusion matrix for a specific evaluator."""
-        evaluator_evals = [ev for ev in evaluations if ev.get("evaluator_name") == evaluator_name]
-        return calculate_confusion_matrix(evaluator_evals)
 
     # Get latest Q&A from session state
     latest_q = ""
