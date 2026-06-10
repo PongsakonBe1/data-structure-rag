@@ -2904,15 +2904,31 @@ def _doc_unique_key(doc) -> str:
     return f"{src}:{page}:{chunk}"
 
 
-def select_context_docs_diverse(docs: list, limit: int, min_unique_pages: int = 2) -> list:
+def select_context_docs_diverse(docs: list, limit: int, min_unique_pages: int = 2, *, target_section_id: str | None = None) -> list:
     """
     Pick context docs with page diversity first, then fill by rank.
     This prevents operation answers from seeing only one repeated page.
+    If target_section_id provided, prioritize chunks containing that section.
     """
     if not docs:
         return []
     k = max(1, int(limit))
     need_pages = max(1, int(min_unique_pages))
+    
+    # PRIORITIZE: If target section specified, move section-matching chunks to front
+    if target_section_id:
+        sid = str(target_section_id).strip()
+        def _has_section(d) -> bool:
+            meta = getattr(d, "metadata", {}) or {}
+            check = " ".join([
+                str(meta.get("H1", "")), str(meta.get("H2", "")), str(meta.get("H3", "")),
+                str(meta.get("section", "")), str(meta.get("best_topic_id", "")),
+                str(getattr(d, "page_content", "")[:200]),
+            ])
+            return sid in check
+        section_docs = [d for d in docs if _has_section(d)]
+        other_docs = [d for d in docs if not _has_section(d)]
+        docs = section_docs + other_docs
 
     selected = []
     used_keys = set()
@@ -4928,6 +4944,7 @@ def generate_response(question, topic_hint: str | None = None, require_structure
             docs,
             context_doc_limit,
             min_unique_pages=min_unique_pages,
+            target_section_id=target_section_id,
         )
         
         # Sort by page number to maintain document reading order (top-to-bottom)
