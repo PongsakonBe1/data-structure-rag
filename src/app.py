@@ -4871,6 +4871,39 @@ def generate_response(question, topic_hint: str | None = None, require_structure
                         after_docs=len(docs),
                         allowed_pages=sorted(allowed_pages),
                     )
+        
+        # FILTER: Prioritize chunks that actually contain the section heading in content
+        # This fixes the issue where a page has multiple sections and wrong chunks are selected
+        if target_section_id and docs:
+            section_heading_patterns = {
+                "1.1.1": ["1.1.1 ความหมาย", "### 1.1.1", "ความหมายโครงสร้างข้อมูล"],
+                "1.1.2": ["1.1.2 อัลกอริทึม", "### 1.1.2"],
+                "1.2.1": ["1.2.1 บิต", "### 1.2.1", "บิต (Bit)"],
+                "1.2.2": ["1.2.2 ไบต์", "1.2.2 เบต์", "### 1.2.2", "ไบต์ (Byte)", "เบต์ (Byte)"],
+            }
+            # Auto-generate pattern for any section ID like "X.X.X"
+            base_patterns = section_heading_patterns.get(target_section_id, [])
+            auto_patterns = [target_section_id, f"### {target_section_id}"]
+            patterns = list(dict.fromkeys(base_patterns + auto_patterns))  # Remove duplicates
+            section_docs = []
+            other_docs = []
+            for d in docs:
+                content = str(getattr(d, "page_content", ""))
+                # Check if content contains section heading
+                has_section = any(p in content for p in patterns)
+                if has_section:
+                    section_docs.append(d)
+                else:
+                    other_docs.append(d)
+            # Prioritize docs with section heading, but keep others as fallback
+            if section_docs:
+                docs = section_docs + other_docs
+                log_event(
+                    "context_docs_section_content_filtered",
+                    target_section_id=target_section_id,
+                    section_docs_count=len(section_docs),
+                    other_docs_count=len(other_docs),
+                )
         context_doc_limit = max(1, CONTEXT_DOC_LIMIT)
         min_unique_pages = 2 if target_section_id else 1
         if target_section_id in OPERATION_HEAVY_SECTION_IDS:
