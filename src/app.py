@@ -22,6 +22,10 @@ from dotenv import load_dotenv
 from huggingface_hub import InferenceClient
 from PIL import Image
 try:
+    import fitz  # PyMuPDF for extracting full page images
+except Exception:
+    fitz = None
+try:
     from pythainlp.tokenize import word_tokenize as thai_word_tokenize
 except Exception:
     thai_word_tokenize = None
@@ -86,7 +90,7 @@ SECTION_CONTINUE_MAX_TOKENS = int(os.getenv("SECTION_CONTINUE_MAX_TOKENS", "420"
 OPERATION_HEAVY_SECTION_IDS = {"3.3.2", "3.3.3", "2.4.2"}
 RETRIEVE_TOP_K = int(os.getenv("RETRIEVE_TOP_K", "20"))
 RETRIEVE_TOP_N = int(os.getenv("RETRIEVE_TOP_N", "8"))
-CONTEXT_DOC_LIMIT = int(os.getenv("CONTEXT_DOC_LIMIT", "5"))
+CONTEXT_DOC_LIMIT = int(os.getenv("CONTEXT_DOC_LIMIT", "12"))
 RETRIEVE_STRICT_TOPIC = os.getenv("RETRIEVE_STRICT_TOPIC", "1").strip().lower() in {"1", "true", "yes", "on"}
 RETRIEVE_STRICT_STRUCTURE = os.getenv("RETRIEVE_STRICT_STRUCTURE", "1").strip().lower() in {"1", "true", "yes", "on"}
 RETRIEVE_ALLOW_OFFTOPIC_DOCS = 0
@@ -755,6 +759,57 @@ def stitch_cross_page_operation_hits(
     return out
 
 
+def get_full_page_image_from_pdf(source: str, page: int, output_dir: Path = None, dpi: int = 150) -> str | None:
+    """
+    Extract a full page image from PDF and save to cache.
+    Returns path to the generated image file.
+    """
+    if not fitz:
+        return None
+    
+    pdf_path = PROJECT_ROOT / "data" / source
+    if not pdf_path.exists():
+        # Try to find the file in other locations
+        pdf_path = PROJECT_ROOT / source
+    if not pdf_path.exists():
+        return None
+    
+    # Create cache directory
+    if output_dir is None:
+        output_dir = PROJECT_ROOT / "assets" / "page_images"
+    output_dir.mkdir(parents=True, exist_ok=True)
+    
+    # Generate output filename
+    safe_source = Path(source).stem
+    output_path = output_dir / f"{safe_source}_page_{page:03d}.png"
+    
+    # Return cached image if exists
+    if output_path.exists():
+        return str(output_path)
+    
+    try:
+        doc = fitz.open(pdf_path)
+        if page < 1 or page > len(doc):
+            doc.close()
+            return None
+        
+        # Get page (0-indexed)
+        page_obj = doc[page - 1]
+        
+        # Render page to image
+        mat = fitz.Matrix(dpi/72, dpi/72)  # Scale by DPI
+        pix = page_obj.get_pixmap(matrix=mat)
+        
+        # Save image
+        pix.save(output_path)
+        doc.close()
+        
+        return str(output_path)
+    except Exception as e:
+        logging.warning(f"Failed to extract page {page} from {source}: {e}")
+        return None
+
+
 def collect_evidence_images_from_sources(
     sources: list[dict],
     max_images: int,
@@ -843,6 +898,32 @@ def collect_evidence_images_from_sources(
         if len(picked) >= limit:
             break
         direct_img_path = str(s.get("image_path", "")).strip()
+        src = str(s.get("source", "")).strip()
+        page = str(s.get("page", "")).strip()
+        
+        # PRIORITY: Always try full page image first for better UX
+        page_num = int(page) if page.isdigit() else 0
+        if page_num > 0 and src:
+            full_page_path = get_full_page_image_from_pdf(src, page_num)
+            if full_page_path and Path(full_page_path).exists():
+                key_full = (full_page_path, str(s.get("citation", "")).strip() or f"{src}:{page}")
+                if key_full not in seen:
+                    picked.append(
+                        {
+                            "path": full_page_path,
+                            "citation": str(s.get("citation", "")).strip() or f"{src}:{page}",
+                            "source": src,
+                            "page": page,
+                            "figure_text": "",
+                            "image_type": "full_page"
+                        }
+                    )
+                    seen.add(key_full)
+                    if len(picked) >= limit:
+                        break
+                    continue
+        
+        # FALLBACK: Use provided image path if full page not available
         if direct_img_path and Path(direct_img_path).exists():
             key_direct = (direct_img_path, str(s.get("citation", "")).strip())
             if key_direct in seen:
@@ -850,9 +931,7 @@ def collect_evidence_images_from_sources(
             img_level = str(s.get("image_level", "")).strip().lower()
             render_path = direct_img_path
             adaptive_pad = None
-            if img_level == "region":
-                adaptive_pad = compute_adaptive_region_pad_ratio(s)
-                render_path = resolve_expanded_region_path(direct_img_path, pad_ratio=adaptive_pad)
+            # Skip region expansion - use full page instead for better UX
             figure_refs = s.get("figure_refs", [])
             figure_text = ""
             if isinstance(figure_refs, list) and figure_refs:
@@ -865,6 +944,7 @@ def collect_evidence_images_from_sources(
                     "page": str(s.get("page", "")).strip(),
                     "figure_text": figure_text,
                     "adaptive_pad_ratio": adaptive_pad,
+                    "image_type": "region" if img_level == "region" else "direct"
                 }
             )
             seen.add(key_direct)
@@ -879,6 +959,27 @@ def collect_evidence_images_from_sources(
         key = (src, page)
         if key in seen:
             continue
+        
+        # PRIORITY: Try to get full page image from PDF first
+        page_num = int(page) if page.isdigit() else 0
+        full_page_path = None
+        if page_num > 0:
+            full_page_path = get_full_page_image_from_pdf(src, page_num)
+        
+        if full_page_path and Path(full_page_path).exists():
+            cite = s.get("citation", f"{src}:{page}")
+            picked.append({
+                "path": full_page_path,
+                "citation": str(cite),
+                "source": src,
+                "page": page,
+                "figure_text": "",
+                "image_type": "full_page"
+            })
+            seen.add(key)
+            continue
+        
+        # FALLBACK: Use cropped regions if full page not available
         paths = figure_index.get(key) or []
         if not paths:
             continue
@@ -886,7 +987,7 @@ def collect_evidence_images_from_sources(
         if not Path(img_path).exists():
             continue
         cite = s.get("citation", f"{src}:{page}")
-        picked.append({"path": img_path, "citation": str(cite), "source": src, "page": page, "figure_text": ""})
+        picked.append({"path": img_path, "citation": str(cite), "source": src, "page": page, "figure_text": "", "image_type": "region"})
         seen.add(key)
     return picked
 
@@ -956,11 +1057,24 @@ def has_image_evidence_for_docs(docs: list) -> bool:
 def render_evidence_images(images: list[dict]) -> None:
     if not images:
         return
-    st.caption("ภาพหลักฐานจากเอกสาร")
+    st.caption("📄 ภาพหลักฐานจากเอกสาร (หน้าเต็ม)")
     for img in images:
         citation_raw = str(img.get("citation", "")).strip()
         page = str(img.get("page", "")).strip()
-        caption = _humanize_citation_token(citation_raw) if citation_raw else (f"หน้า {page}" if page else "")
+        image_type = str(img.get("image_type", "")).strip()
+        
+        # Build caption
+        if citation_raw:
+            caption = _humanize_citation_token(citation_raw)
+        elif page:
+            caption = f"หน้า {page}"
+        else:
+            caption = ""
+        
+        # Add indicator for full page images
+        if image_type == "full_page":
+            caption = f"📄 {caption} (ภาพหน้าเต็ม)"
+        
         figure_text = str(img.get("figure_text", "")).strip()
         if figure_text:
             caption = f"{caption} | {figure_text}"
