@@ -2930,9 +2930,17 @@ def _build_query_anchor_profile_local(query_text: str | None) -> dict:
     linked_list_terms = ["ลิงค์ลิสต์", "ลิงก์ลิสต์", "linked list", "node", "head", "count", "nil"]
     stack_terms = ["สแตก", "stack", "push", "pop", "top"]
     tree_terms = ["ทรี", "tree", "binary", "traversal", "preorder", "inorder", "postorder"]
+    # Section 1.2 - Basic Data Structures (บิต ไบต์ ฟิลด์ เรคอร์ด ไฟล์)
+    basic_data_structure_terms = ["บิต", "bit", "ไบต์", "byte", "ฟิลด์", "field", "เรคอร์ด", "record", "ไฟล์", "file", "ฐานข้อมูล", "database"]
+    # Section number patterns (e.g., "1.2.1", "1.2.2")
+    section_patterns = ["1.2.1", "1.2.2", "1.2.3", "1.2.4", "1.2.5", "1.2.6"]
 
     def has_any(terms: list[str]) -> bool:
         return any(t in text for t in terms)
+
+    def has_section_ref(patterns: list[str]) -> bool:
+        """Check if query contains section number references."""
+        return any(p in text for p in patterns)
 
     enabled = any(
         [
@@ -2941,6 +2949,8 @@ def _build_query_anchor_profile_local(query_text: str | None) -> dict:
             has_any(linked_list_terms),
             has_any(stack_terms),
             has_any(tree_terms),
+            has_any(basic_data_structure_terms),
+            has_section_ref(section_patterns),
         ]
     )
     return {
@@ -2950,11 +2960,15 @@ def _build_query_anchor_profile_local(query_text: str | None) -> dict:
         "linked_list_terms": linked_list_terms,
         "stack_terms": stack_terms,
         "tree_terms": tree_terms,
+        "basic_data_structure_terms": basic_data_structure_terms,
+        "section_patterns": section_patterns,
         "require_queue": has_any(queue_terms),
         "require_circular": has_any(circular_terms),
         "require_linked_list": has_any(linked_list_terms),
         "require_stack": has_any(stack_terms),
         "require_tree": has_any(tree_terms),
+        "require_basic_data_structure": has_any(basic_data_structure_terms),
+        "has_section_ref": has_section_ref(section_patterns),
     }
 
 
@@ -2984,6 +2998,8 @@ def _doc_query_anchor_match_local(doc, profile: dict | None) -> bool:
     if profile.get("require_stack") and not has_any(profile.get("stack_terms", [])):
         return False
     if profile.get("require_tree") and not has_any(profile.get("tree_terms", [])):
+        return False
+    if profile.get("require_basic_data_structure") and not has_any(profile.get("basic_data_structure_terms", [])):
         return False
     return True
 
