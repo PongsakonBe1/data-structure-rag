@@ -95,7 +95,7 @@ RETRIEVE_STRICT_SECTION_ONLY = True
 EVIDENCE_MIN_DOCS = int(os.getenv("EVIDENCE_MIN_DOCS", "1"))
 EVIDENCE_MIN_TOPIC_MATCH_RATIO = float(os.getenv("EVIDENCE_MIN_TOPIC_MATCH_RATIO", "0.5"))
 EVIDENCE_MIN_AVG_RRF = float(os.getenv("EVIDENCE_MIN_AVG_RRF", "0.003"))
-FAST_RETRIEVAL_MODE = os.getenv("FAST_RETRIEVAL_MODE", "1").strip().lower() in {"1", "true", "yes", "on"}
+FAST_RETRIEVAL_MODE = os.getenv("FAST_RETRIEVAL_MODE", "0").strip().lower() in {"1", "true", "yes", "on"}
 STRICT_CITATION_ENFORCEMENT = os.getenv(
     "STRICT_CITATION_ENFORCEMENT",
     "0" if FAST_RETRIEVAL_MODE else "1",
