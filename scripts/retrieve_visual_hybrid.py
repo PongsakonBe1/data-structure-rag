@@ -117,6 +117,45 @@ def normalize_text(text: str) -> str:
     return text
 
 
+def preprocess_thai_for_splade(text: str) -> str:
+    """
+    Preprocess Thai text for SPLADE by word segmentation.
+    This helps SPLADE tokenizer understand Thai word boundaries better.
+    """
+    text = (text or "").strip()
+    if not text:
+        return ""
+    
+    # Check if text contains Thai characters
+    thai_chars = re.compile(r'[\u0E00-\u0E7F]')
+    if not thai_chars.search(text):
+        # No Thai characters, use regular normalization
+        return normalize_text(text)
+    
+    # For Thai text, segment words first then join with spaces
+    if word_tokenize is not None:
+        try:
+            # Segment Thai words
+            tokens = word_tokenize(text, engine="newmm")
+            # Normalize each token
+            normalized_tokens = []
+            for tok in tokens:
+                tok = tok.strip()
+                if not tok:
+                    continue
+                # Clean punctuation but keep Thai characters
+                tok = re.sub(r"[\[\]\(\)\{\},.:;!?/\\|\"'`~@#$%^&*+=<>]+", " ", tok)
+                tok = tok.strip().lower()
+                if tok:
+                    normalized_tokens.append(tok)
+            return " ".join(normalized_tokens)
+        except Exception:
+            pass
+    
+    # Fallback to regular normalization
+    return normalize_text(text)
+
+
 def tokenize(text: str) -> list[str]:
     text = normalize_text(text)
     if not text:
@@ -276,7 +315,8 @@ def run_splade_scores(
     if not records:
         return np.zeros(0, dtype=np.float64), "splade_no_records"
 
-    doc_texts = [_sparse_text_for_record(r) for r in records]
+    # Use Thai preprocessing for SPLADE to improve Thai word segmentation
+    doc_texts = [preprocess_thai_for_splade(_sparse_text_for_record(r)) for r in records]
     if not any(doc_texts):
         return np.zeros(len(records), dtype=np.float64), "splade_no_text"
 
@@ -310,7 +350,8 @@ def run_splade_scores(
             except TypeError:
                 local_client = InferenceClient(api_key=hf_api_key)
         def _call_feature(text: str) -> Any:
-            norm = normalize_text(text)
+            # Use Thai preprocessing for better tokenization
+            norm = preprocess_thai_for_splade(text)
             last_exc: Exception | None = None
             if local_client is not None:
                 for call in (
@@ -331,7 +372,9 @@ def run_splade_scores(
                 raise
 
         try:
-            q_raw = _call_feature(query)
+            # Preprocess query with Thai segmentation
+            q_processed = preprocess_thai_for_splade(query)
+            q_raw = _call_feature(q_processed)
             q_vec = _vec_from_feature(q_raw)
             if q_vec.size == 0:
                 return np.zeros(len(records), dtype=np.float64), "splade_hf_empty_query"
@@ -371,8 +414,9 @@ def run_splade_scores(
         if status != "ok" or tok is None or mdl is None:
             return np.zeros(len(records), dtype=np.float64), status
         try:
+            # Use Thai preprocessing for local SPLADE query encoding
             q_mat = _splade_encode_texts(
-                [normalize_text(query)],
+                [preprocess_thai_for_splade(query)],
                 tokenizer=tok,
                 model=mdl,
                 device=real_device,
