@@ -4889,8 +4889,17 @@ def generate_response(question, topic_hint: str | None = None, require_structure
             other_docs = []
             for d in docs:
                 content = str(getattr(d, "page_content", ""))
-                # Check if content contains section heading
-                has_section = any(p in content for p in patterns)
+                meta = getattr(d, "metadata", {}) or {}
+                # Build text to check from both content and metadata
+                meta_text = " ".join([
+                    str(meta.get("best_topic_id", "")),
+                    str(meta.get("sub_topic_id", "")),
+                    str(meta.get("section", "")),
+                    str(meta.get("topic_path", "")),
+                ])
+                check_text = f"{content} {meta_text}"
+                # Check if contains section heading
+                has_section = any(p in check_text for p in patterns)
                 if has_section:
                     section_docs.append(d)
                 else:
