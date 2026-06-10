@@ -92,15 +92,15 @@ RETRIEVE_STRICT_STRUCTURE = os.getenv("RETRIEVE_STRICT_STRUCTURE", "1").strip().
 RETRIEVE_ALLOW_OFFTOPIC_DOCS = 0
 RETRIEVE_MIN_SECTION_PAGE_DIVERSITY = int(os.getenv("RETRIEVE_MIN_SECTION_PAGE_DIVERSITY", "2"))
 RETRIEVE_STRICT_SECTION_ONLY = True
-EVIDENCE_MIN_DOCS = int(os.getenv("EVIDENCE_MIN_DOCS", "2"))
-EVIDENCE_MIN_TOPIC_MATCH_RATIO = float(os.getenv("EVIDENCE_MIN_TOPIC_MATCH_RATIO", "0.6"))
+EVIDENCE_MIN_DOCS = int(os.getenv("EVIDENCE_MIN_DOCS", "1"))
+EVIDENCE_MIN_TOPIC_MATCH_RATIO = float(os.getenv("EVIDENCE_MIN_TOPIC_MATCH_RATIO", "0.5"))
 EVIDENCE_MIN_AVG_RRF = float(os.getenv("EVIDENCE_MIN_AVG_RRF", "0.003"))
 FAST_RETRIEVAL_MODE = os.getenv("FAST_RETRIEVAL_MODE", "1").strip().lower() in {"1", "true", "yes", "on"}
 STRICT_CITATION_ENFORCEMENT = os.getenv(
     "STRICT_CITATION_ENFORCEMENT",
     "0" if FAST_RETRIEVAL_MODE else "1",
 ).strip().lower() in {"1", "true", "yes", "on"}
-MIN_CITED_CLAIM_RATIO = float(os.getenv("MIN_CITED_CLAIM_RATIO", "0.75"))
+MIN_CITED_CLAIM_RATIO = float(os.getenv("MIN_CITED_CLAIM_RATIO", "0.60"))
 VISUAL_CITATION_MIN_CLAIM_RATIO = max(0.0, min(1.0, float(os.getenv("VISUAL_CITATION_MIN_CLAIM_RATIO", "0.65"))))
 CITATION_REPAIR_ENABLED = os.getenv(
     "CITATION_REPAIR_ENABLED",
@@ -1271,7 +1271,7 @@ def _humanize_citation_token(token: str) -> str:
         page = str(m.group("page") or "").strip()
         chunk = _normalize_chunk_label(m.group("chunk") or "")
         if page and chunk:
-            return f"หน้า {page} | ตอน {chunk}"
+            return f"[หน้า {page}]"
         if page:
             return f"หน้า {page}"
     cm = _CHUNK_ID_RE.search(raw)
@@ -1283,7 +1283,7 @@ def _humanize_citation_token(token: str) -> str:
 def humanize_answer_citations_for_user(answer: str, sources: list[dict]) -> str:
     """
     Convert technical inline citations to compact Thai labels for UI readability.
-    Example: [data.pdf:35|chunk-00118] -> [หน้า 35 | ตอน 00118]
+    Example: [data.pdf:35|chunk-00118] -> [หน้า 35]
     """
     if not answer:
         return answer
@@ -1336,7 +1336,7 @@ def _friendly_source_badge(row: dict) -> str:
     page = str(row.get("page", "")).strip()
     chunk = _normalize_chunk_label(row.get("chunk_id", ""))
     if page and chunk:
-        return f"หน้า {page} | ตอน {chunk}"
+        return f"[หน้า {page}]"
     if page:
         return f"หน้า {page}"
     if chunk:
@@ -5790,45 +5790,35 @@ with tab_ioc:
     def calculate_confusion_matrix(evaluations):
         """Calculate confusion matrix metrics from evaluations.
         
-        Grounded Only Policy:
-        - TP: In-Scope query answered correctly (score +1 or 1)
-        - TN: Out-of-Scope query abstained correctly (score +1, 1, or 0)
-        - FP: Out-of-Scope query answered (hallucination)
-        - FN: In-Scope query abstained or answered incorrectly (score -1 or 0)
+        Standard Confusion Matrix:
+        - TP: In-Scope + ตอบ (ถูกต้อง)
+        - FN: In-Scope + Abstain (ผิด - ควรตอบแต่ไม่ตอบ)
+        - TN: Out-of-Scope + Abstain (ถูกต้อง - ปฏิเสธถูกต้อง)
+        - FP: Out-of-Scope + ตอบ (ผิด - ไม่ควรตอบแต่ตอบ)
         """
         tp = tn = fp = fn = 0
         for ev in evaluations:
             q_type = ev.get("question_type", "")
             behavior = ev.get("system_behavior", "")
-            score = ev.get("ioc_score", "").strip()
-            
-            # Normalize score (handle both "+1" and "1" formats)
-            is_positive = score in ["+1", "1"]
-            is_negative = score == "-1"
-            is_neutral = score == "0"
 
             if q_type == "In-Scope (มีในเนื้อหา)":
-                if behavior == "ตอบคำถามปกติ" and is_positive:
+                if behavior == "ตอบคำถามปกติ":
                     tp += 1
-                else:
-                    # Abstained or wrong score
+                else:  # Abstain
                     fn += 1
                     
             elif q_type == "Out-of-Scope (ไม่มีในเนื้อหา)":
-                if behavior == "ปฏิเสธการตอบ (Abstain)" and (is_positive or is_neutral):
+                if behavior == "ปฏิเสธการตอบ (Abstain)":
                     tn += 1
-                elif behavior == "ตอบคำถามปกติ":
-                    # Answered OOS question = hallucination
+                else:  # ตอบ
                     fp += 1
-                else:
-                    # Other cases
-                    if is_negative:
-                        # Scored -1 for OOS abstain
-                        tn += 1
-                    else:
-                        fp += 1
                         
         return {"TP": tp, "TN": tn, "FP": fp, "FN": fn}
+
+    def calculate_confusion_matrix_by_evaluator(evaluations, evaluator_name):
+        """Calculate confusion matrix for a specific evaluator."""
+        evaluator_evals = [ev for ev in evaluations if ev.get("evaluator_name") == evaluator_name]
+        return calculate_confusion_matrix(evaluator_evals)
 
     # Get latest Q&A from session state
     latest_q = ""
@@ -5935,7 +5925,45 @@ with tab_ioc:
     total = sum(cm.values())
     if total > 0:
         accuracy = (cm["TP"] + cm["TN"]) / total
-        st.metric("🎯 Accuracy", f"{accuracy:.1%}")
+        st.metric("🎯 Accuracy รวม", f"{accuracy:.1%}")
+
+    # Per-Evaluator Confusion Matrix Summary
+    st.markdown("### 📋 สรุปผลรายผู้ประเมิน")
+    
+    # Get unique evaluators
+    evaluators = sorted(set(ev.get("evaluator_name", "") for ev in evaluations if ev.get("evaluator_name")))
+    
+    if evaluators:
+        # Build summary table
+        summary_data = []
+        for evaluator in evaluators:
+            ev_cm = calculate_confusion_matrix_by_evaluator(evaluations, evaluator)
+            ev_total = sum(ev_cm.values())
+            ev_accuracy = (ev_cm["TP"] + ev_cm["TN"]) / ev_total if ev_total > 0 else 0
+            summary_data.append({
+                "ผู้ประเมิน": evaluator,
+                "จำนวนคำถาม": ev_total,
+                "TP": ev_cm["TP"],
+                "TN": ev_cm["TN"],
+                "FP": ev_cm["FP"],
+                "FN": ev_cm["FN"],
+                "Accuracy": f"{ev_accuracy:.1%}"
+            })
+        
+        # Add total row
+        summary_data.append({
+            "ผู้ประเมิน": "**รวม**",
+            "จำนวนคำถาม": total,
+            "TP": cm["TP"],
+            "TN": cm["TN"],
+            "FP": cm["FP"],
+            "FN": cm["FN"],
+            "Accuracy": f"{accuracy:.1%}" if total > 0 else "-"
+        })
+        
+        st.dataframe(summary_data, use_container_width=True, hide_index=True)
+    else:
+        st.info("ยังไม่มีข้อมูลผู้ประเมิน")
 
     # Download button
     if IOC_EVAL_FILE.exists():
