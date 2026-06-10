@@ -52,7 +52,7 @@ QUALITY_REPORT_FILE = BASE_DIR / "logs" / "ingest_quality_report.csv"
 
 HF_API_KEY = (os.getenv("HUGGINGFACE_READ_TOKEN") or os.getenv("HUGGINGFACE_API_KEY") or "").strip()
 EMBEDDING_MODEL = "BAAI/bge-m3"
-VISION_MODEL_ID = os.getenv("VISION_MODEL_ID", "Qwen/Qwen2.5-VL-7B-Instruct").strip()
+VISION_MODEL_ID = os.getenv("VISION_MODEL_ID", "Qwen/Qwen2.5-VL-72B-Instruct").strip()
 INGEST_PAGE_RANGE = os.getenv("INGEST_PAGE_RANGE", "").strip()
 INGEST_CONTEXTUAL_CHUNKING_ENABLED = os.getenv("INGEST_CONTEXTUAL_CHUNKING_ENABLED", "1").strip().lower() in {"1", "true", "yes", "on"}
 INGEST_CONTEXTUAL_CHUNK_MAX_PREFIX_CHARS = max(80, int(os.getenv("INGEST_CONTEXTUAL_CHUNK_MAX_PREFIX_CHARS", "260")))
@@ -348,24 +348,28 @@ def analyze_page_with_qwen(base64_image: str, page_num: int) -> str:
     # Prompt engineering for OCR+table+diagram extraction with low hallucination.
     prompt_text = (
         "You are an OCR + document-structure extraction engine for Thai CS textbook pages.\n"
-        "Return only Markdown. No explanations outside Markdown.\n\n"
-        "Hard constraints:\n"
-        "1) Never output image links (`![...](...)`).\n"
-        "2) Do not invent text that is not visible in the page.\n"
-        "3) Preserve visible section numbering and captions exactly when readable.\n\n"
+        "Your task is to extract ALL visible text EXACTLY as it appears. Be thorough and complete.\n\n"
+        "CRITICAL RULES (DO NOT SKIP ANY TEXT):\n"
+        "1) Extract ALL section numbers like '1.2.1', '1.2.2' EXACTLY as shown - these are IMPORTANT.\n"
+        "2) Extract ALL headings including sub-headings and sub-sub-headings (## 1.2.1, ### 1.2.1.1).\n"
+        "3) Extract ALL small text, metadata, and captions - do not skip anything.\n"
+        "4) Preserve the exact hierarchy: # for main, ## for 1.x, ### for 1.x.x sections.\n"
+        "5) Never output image links (`![...](...)`).\n"
+        "6) Do not invent text that is not visible in the page.\n"
+        "7) If text is unclear, mark `[ไม่ชัดเจน]` but still try to extract it.\n\n"
         "Extraction rules:\n"
-        "- OCR all visible Thai/English text.\n"
+        "- OCR ALL visible Thai/English text including small fonts and section numbers.\n"
         "- If a table is visible, convert it to Markdown table (`| col | ... |`).\n"
         "- If a figure/diagram is visible (nodes/arrows/flow), add a structure block:\n"
         "  > [Structure: <Type>]\n"
         "  > - <relation 1>\n"
-        "  > - <relation 2>\n"
-        "- If uncertainty exists, keep text short and mark `[ไม่ชัดเจน]` instead of guessing.\n\n"
+        "  > - <relation 2>\n\n"
         "Output format:\n"
-        "- Keep normal body text.\n"
-        "- Keep headings using #/##/### when present.\n"
+        "- Use # for main chapter headings\n"
+        "- Use ## for section headings (1.1, 1.2, etc.)\n"
+        "- Use ### for subsection headings (1.2.1, 1.2.2, etc.)\n"
         "- Keep figure/table captions in-line (e.g., ภาพที่ 3.4 ...).\n"
-        "- Return Markdown only."
+        "- Return complete Markdown with ALL text extracted."
     )
 
     print(f"    -> OCR page {page_num} with {VISION_MODEL_ID} ...")
