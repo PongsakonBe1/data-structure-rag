@@ -5110,6 +5110,11 @@ if (
     and VISUAL_ENDPOINT_AUTOWARM_ON_STARTUP
     and not bool(st.session_state.get("visual_endpoint_autowarm_done", False))
 ):
+    # Skip endpoint warm-up if using local backend
+    if FORCED_VISUAL_BACKEND == "local":
+        st.session_state.visual_endpoint_health = {"ok": True, "backend": "local", "note": "Using local backend, endpoint not needed"}
+        st.session_state.visual_endpoint_autowarm_done = True
+        return
     endpoint_for_warm = resolve_colpali_endpoint_url(str(st.session_state.get("visual_endpoint_url", "")))
     if endpoint_for_warm:
         warm = run_visual_endpoint_healthcheck(
@@ -5223,7 +5228,9 @@ with st.sidebar:
 
         health = st.session_state.get("visual_endpoint_health")
         if health:
-            if health.get("ok"):
+            if health.get("backend") == "local":
+                st.success("Using local backend (BM25 + Dense), endpoint not required")
+            elif health.get("ok"):
                 st.success(
                     f"Endpoint พร้อมใช้งาน (latency={health.get('latency_ms', 'n/a')} ms, validation={health.get('validation', 'ok')})"
                 )
