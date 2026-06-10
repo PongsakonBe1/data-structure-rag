@@ -5178,6 +5178,9 @@ with st.sidebar:
     else:
         st.error("ผลตรวจเริ่มระบบ: ล้มเหลว")
 
+    # Version indicator for deployment verification
+    st.caption("Build: 2025-06-10-v3-section-priority")
+    
     st.divider()
     st.markdown(icon_label("image_search", "โหมดค้นคืน", variant="section"), unsafe_allow_html=True)
     if VISUAL_RETRIEVAL_ENABLED:
