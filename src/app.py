@@ -4891,10 +4891,13 @@ def generate_response(question, topic_hint: str | None = None, require_structure
                 content = str(getattr(d, "page_content", ""))
                 meta = getattr(d, "metadata", {}) or {}
                 # Build text to check from both content and metadata
+                # Include H1/H2/H3 and section fields which contain the actual section heading
                 meta_text = " ".join([
-                    str(meta.get("best_topic_id", "")),
-                    str(meta.get("sub_topic_id", "")),
+                    str(meta.get("H1", "")),
+                    str(meta.get("H2", "")),
+                    str(meta.get("H3", "")),
                     str(meta.get("section", "")),
+                    str(meta.get("best_topic_id", "")),
                     str(meta.get("topic_path", "")),
                 ])
                 check_text = f"{content} {meta_text}"
