@@ -5114,23 +5114,23 @@ if (
     if FORCED_VISUAL_BACKEND == "local":
         st.session_state.visual_endpoint_health = {"ok": True, "backend": "local", "note": "Using local backend, endpoint not needed"}
         st.session_state.visual_endpoint_autowarm_done = True
-        return
-    endpoint_for_warm = resolve_colpali_endpoint_url(str(st.session_state.get("visual_endpoint_url", "")))
-    if endpoint_for_warm:
-        warm = run_visual_endpoint_healthcheck(
-            endpoint_for_warm,
-            HF_TOKEN,
-            timeout_sec=VISUAL_ENDPOINT_AUTOWARM_TIMEOUT_SEC,
-        )
-        st.session_state.visual_endpoint_health = warm
-        st.session_state.visual_endpoint_autowarm_done = True
-        log_event(
-            "visual_endpoint_autowarm_startup",
-            ok=warm.get("ok"),
-            endpoint=warm.get("endpoint_url", ""),
-            validation=warm.get("validation", ""),
-            error=warm.get("error", ""),
-        )
+    else:
+        endpoint_for_warm = resolve_colpali_endpoint_url(str(st.session_state.get("visual_endpoint_url", "")))
+        if endpoint_for_warm:
+            warm = run_visual_endpoint_healthcheck(
+                endpoint_for_warm,
+                HF_TOKEN,
+                timeout_sec=VISUAL_ENDPOINT_AUTOWARM_TIMEOUT_SEC,
+            )
+            st.session_state.visual_endpoint_health = warm
+            st.session_state.visual_endpoint_autowarm_done = True
+            log_event(
+                "visual_endpoint_autowarm_startup",
+                ok=warm.get("ok"),
+                endpoint=warm.get("endpoint_url", ""),
+                validation=warm.get("validation", ""),
+                error=warm.get("error", ""),
+            )
 
 # --- Sidebar ---
 with st.sidebar:
