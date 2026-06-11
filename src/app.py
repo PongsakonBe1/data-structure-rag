@@ -6287,184 +6287,271 @@ with tab_evaluators:
 # Research Summary Tab
 with tab_research:
     st.markdown("### 📊 สรุปผลการวิจัย (Research Summary)")
-    st.caption("ผลการประเมินระบบ RAG ตามมาตรฐาน Grounded Only Policy")
-    
-    # Load all evaluations for research stats
+    st.caption("ผลการประเมินความถูกต้อง (Accuracy) ของระบบ RAG จากผู้ประเมินหลายคน")
+
+    # ── Section 1: กรอบแนวคิดการวิจัย (Conceptual Framework) ──
+    st.divider()
+    st.markdown("#### 📐 กรอบแนวคิดการวิจัย (Conceptual Framework)")
+
+    st.markdown("""
+**วัตถุประสงค์:** พัฒนาและประเมินระบบ RAG (Retrieval-Augmented Generation) สำหรับตอบคำถาม
+เรื่องโครงสร้างข้อมูล (Data Structure) จากเอกสารเรียนภาษาไทย
+
+**ตัวแปรต้น (Independent Variables):**
+- เทคโนโลยี Retrieval: BM25 (Sparse) + Dense Embedding (BAAI/bge-m3)
+- เทคนิครวมคะแนน: Reciprocal Rank Fusion (RRF)
+- Cross-Encoder Reranker: BAAI/bge-reranker-v2-m3
+- Large Language Model: Qwen/Qwen2.5-VL-72B-Instruct (Ingestion) + OpenAI GPT (Generation)
+- นโยบาย: Grounded Only Policy (ตอบเฉพาะจากหลักฐานในเอกสาร)
+
+**ตัวแปรตาม (Dependent Variables):**
+- Accuracy = (TP + TN) / Total
+- Precision = TP / (TP + FP)
+- Recall = TP / (TP + FN)
+- F1-Score = 2 × Precision × Recall / (Precision + Recall)
+
+**กลุ่มตัวอย่าง:**
+- คำถาม In-Scope (มีในเนื้อหา): ระบบควรตอบ
+- คำถาม Out-of-Scope (ไม่มีในเนื้อหา): ระบบควร Abstain (ปฏิเสธการตอบ)
+
+**เครื่องมือวัดผล:**
+- Confusion Matrix (TP, TN, FP, FN) จากการประเมินโดยผู้เชี่ยวชาญ
+""")
+
+    st.markdown("""
+| | **ระบบตอบ** | **ระบบ Abstain** |
+|---|---|---|
+| **In-Scope** | TP (ตอบถูก) | FN (พลาด ควรตอบแต่ไม่ตอบ) |
+| **Out-of-Scope** | FP (Hallucination ตอบทั้งที่ไม่ควร) | TN (ปฏิเสธถูกต้อง) |
+""")
+
+    # ── Section 2: Flowchart ระบบจริง ──
+    st.divider()
+    st.markdown("#### 🔄 Flowchart ระบบ RAG (สถาปัตยกรรมที่ใช้จริง)")
+
+    flowchart_dot = """
+    digraph G {
+        rankdir=TB;
+        node [shape=box, style="rounded,filled", fontname="Arial", fontsize=10];
+        edge [fontname="Arial", fontsize=9, color="#555"];
+        newrank=true;
+
+        // Section A - Data Sources
+        subgraph cluster_A {
+            label="A: แหล่งข้อมูล"; style="dashed"; color="#999"; fontname="Arial"; fontsize=11;
+            A1 [label="PDF\\ndata_ch1_to_ch5.pdf", fillcolor="#fff3e0"];
+            A2 [label="สารบัญ\\nlist_hitachi.txt", fillcolor="#fff3e0"];
+            A3 [label="นโยบาย\\nGrounded Only", fillcolor="#fff3e0"];
+        }
+
+        // Section B - Offline Ingestion
+        subgraph cluster_B {
+            label="B: Ingestion (Offline)"; style="dashed"; color="#999"; fontname="Arial"; fontsize=11;
+            B1 [label="OCR + Markdown\\n(Qwen2.5-VL-72B)", fillcolor="#e8f5e9"];
+            B2 [label="Extract Figures\\n& Regions", fillcolor="#e8f5e9"];
+            B3 [label="Cleanup &\\nVisual Anchors", fillcolor="#e8f5e9"];
+            B4 [label="Chunking\\n(Recursive Text)", fillcolor="#e8f5e9"];
+        }
+
+        // Section C - Indexing
+        subgraph cluster_C {
+            label="C: Indexing"; style="dashed"; color="#999"; fontname="Arial"; fontsize=11;
+            C1 [label="FAISS Index\\n(BAAI/bge-m3)", fillcolor="#f3e5f5"];
+            C2 [label="BM25 Index\\n(pythainlp tokenize)", fillcolor="#f3e5f5"];
+            C3 [label="Build Hierarchy\\n& Metadata", fillcolor="#f3e5f5"];
+        }
+
+        // Section D - Online Retrieval
+        subgraph cluster_D {
+            label="D: Retrieval (Online)"; style="dashed"; color="#999"; fontname="Arial"; fontsize=11;
+            D0 [label="User Query", shape=ellipse, fillcolor="#ffebee"];
+            D1 [label="BM25 Search\\n(Sparse)", fillcolor="#e3f2fd"];
+            D2 [label="FAISS Search\\n(Dense)", fillcolor="#e3f2fd"];
+            D3 [label="RRF Fusion\\n(k=60, w=0.5/0.5)", fillcolor="#bbdefb"];
+            D4 [label="Cross-Encoder Reranker\\n(bge-reranker-v2-m3)", fillcolor="#90caf9"];
+        }
+
+        // Section E - Evidence & Generation
+        subgraph cluster_E {
+            label="E: Generation & Delivery"; style="dashed"; color="#999"; fontname="Arial"; fontsize=11;
+            E1 [label="Evidence Gate\\n(min_docs, topic_ratio)", shape=diamond, fillcolor="#ffccbc"];
+            E2 [label="ABSTAIN\\n(หลักฐานไม่เพียงพอ)", fillcolor="#ffcdd2"];
+            E3 [label="Build Context\\n+ Citations", fillcolor="#e0f2f1"];
+            E4 [label="LLM Generate\\n(Temp=0.2, Thai)", fillcolor="#e0f2f1"];
+            E5 [label="Citation Validation", shape=diamond, fillcolor="#ffccbc"];
+            E6 [label="Citation Repair", fillcolor="#fff9c4"];
+            E7 [label="Delivery to UI\\n+ Evidence Images", fillcolor="#b2dfdb"];
+        }
+
+        // Section F - Evaluation
+        subgraph cluster_F {
+            label="F: Expert Evaluation"; style="dashed"; color="#999"; fontname="Arial"; fontsize=11;
+            F1 [label="Expert Form\\n(Question Type + Behavior)", fillcolor="#fce4ec"];
+            F2 [label="Confusion Matrix\\n(TP/TN/FP/FN)", fillcolor="#fce4ec"];
+            F3 [label="Accuracy\\nper Evaluator", fillcolor="#fce4ec"];
+        }
+
+        // Edges - Data flow
+        A1 -> B1;
+        A1 -> B2;
+        A2 -> C3;
+        B1 -> B3;
+        B2 -> B3;
+        B3 -> B4;
+        B4 -> C1;
+        B4 -> C2;
+        B4 -> C3;
+
+        D0 -> D1;
+        D0 -> D2;
+        D1 -> D3;
+        D2 -> D3;
+        D3 -> D4;
+
+        D4 -> E1;
+        E1 -> E3 [label="Pass"];
+        E1 -> E2 [label="Fail"];
+        E3 -> E4;
+        E4 -> E5;
+        E5 -> E7 [label="OK"];
+        E5 -> E6 [label="Fix"];
+        E6 -> E7;
+        E2 -> E7;
+
+        E7 -> F1;
+        F1 -> F2;
+        F2 -> F3;
+
+        // Policy influence
+        A3 -> E1 [style=dashed, color="#999", label="policy"];
+        A3 -> E5 [style=dashed, color="#999"];
+    }
+    """
+    st.graphviz_chart(flowchart_dot, use_container_width=True)
+
+    st.markdown("""
+**คำอธิบาย Flowchart:**
+- **Section A:** แหล่งข้อมูลตั้งต้น — PDF เอกสารเรียน + สารบัญ + นโยบาย Grounded Only
+- **Section B:** Ingestion แบบ Offline — ใช้ Qwen2.5-VL-72B ทำ OCR + Markdown, ดึงรูปภาพ, ทำ Chunking
+- **Section C:** สร้าง Index — FAISS (Dense, BAAI/bge-m3) + BM25 (Sparse, pythainlp) + Metadata
+- **Section D:** Retrieval แบบ Online — ค้นหาพร้อมกันทั้ง BM25 + Dense → รวมด้วย RRF → Rerank ด้วย Cross-Encoder
+- **Section E:** สร้างคำตอบ — ตรวจหลักฐาน (Evidence Gate) → LLM สร้างคำตอบ → ตรวจ Citation → ส่งถึงผู้ใช้
+- **Section F:** ผู้เชี่ยวชาญประเมิน → Confusion Matrix → คำนวณ Accuracy
+""")
+
+    # ── Section 3: Accuracy แต่ละคน + รวม ──
+    st.divider()
+    st.markdown("#### 🎯 ผลการประเมิน Accuracy")
+
     all_evals = load_ioc_evaluations()
-    
+
     if all_evals:
-        # Calculate overall confusion matrix
+        # Overall confusion matrix
         cm_overall = calculate_confusion_matrix(all_evals)
         tp, tn, fp, fn = cm_overall["TP"], cm_overall["TN"], cm_overall["FP"], cm_overall["FN"]
         total = tp + tn + fp + fn
-        
+
         if total > 0:
             accuracy = (tp + tn) / total
             precision = tp / (tp + fp) if (tp + fp) > 0 else 0
             recall = tp / (tp + fn) if (tp + fn) > 0 else 0
             f1 = 2 * precision * recall / (precision + recall) if (precision + recall) > 0 else 0
-            
+
             # Count by question type
             inscope = sum(1 for r in all_evals if r.get("question_type") == "In-Scope (มีในเนื้อหา)")
             oos = sum(1 for r in all_evals if r.get("question_type") == "Out-of-Scope (ไม่มีในเนื้อหา)")
-            
+
+            # Per-evaluator accuracy table
+            evaluators = sorted(set(ev.get("evaluator_name", "") for ev in all_evals if ev.get("evaluator_name")))
+
+            if evaluators:
+                summary_rows = []
+                for evaluator in evaluators:
+                    ev_cm = calculate_confusion_matrix_by_evaluator(all_evals, evaluator)
+                    ev_total = sum(ev_cm.values())
+                    ev_acc = (ev_cm["TP"] + ev_cm["TN"]) / ev_total if ev_total > 0 else 0
+                    ev_prec = ev_cm["TP"] / (ev_cm["TP"] + ev_cm["FP"]) if (ev_cm["TP"] + ev_cm["FP"]) > 0 else 0
+                    ev_rec = ev_cm["TP"] / (ev_cm["TP"] + ev_cm["FN"]) if (ev_cm["TP"] + ev_cm["FN"]) > 0 else 0
+                    ev_f1 = 2 * ev_prec * ev_rec / (ev_prec + ev_rec) if (ev_prec + ev_rec) > 0 else 0
+                    summary_rows.append({
+                        "ผู้ประเมิน": evaluator,
+                        "จำนวน": ev_total,
+                        "TP": ev_cm["TP"],
+                        "TN": ev_cm["TN"],
+                        "FP": ev_cm["FP"],
+                        "FN": ev_cm["FN"],
+                        "Accuracy": f"{ev_acc:.1%}",
+                        "Precision": f"{ev_prec:.1%}",
+                        "Recall": f"{ev_rec:.1%}",
+                        "F1": f"{ev_f1:.1%}",
+                    })
+
+                # Total row
+                summary_rows.append({
+                    "ผู้ประเมิน": "รวมทุกคน",
+                    "จำนวน": total,
+                    "TP": tp,
+                    "TN": tn,
+                    "FP": fp,
+                    "FN": fn,
+                    "Accuracy": f"{accuracy:.1%}",
+                    "Precision": f"{precision:.1%}",
+                    "Recall": f"{recall:.1%}",
+                    "F1": f"{f1:.1%}",
+                })
+
+                st.dataframe(summary_rows, use_container_width=True, hide_index=True)
+            else:
+                st.info("ยังไม่มีข้อมูลผู้ประเมิน")
+
+            # Overall metrics highlight
             st.divider()
-            
-            # Main metrics
-            col1, col2, col3 = st.columns(3)
+            col1, col2, col3, col4 = st.columns(4)
             with col1:
-                st.metric("🎯 IOC (Accuracy)", f"{accuracy:.1%}")
+                st.metric("🎯 Accuracy รวม", f"{accuracy:.1%}")
             with col2:
                 st.metric("📏 Precision", f"{precision:.1%}")
             with col3:
                 st.metric("🔁 Recall", f"{recall:.1%}")
-            
+            with col4:
+                st.metric("📈 F1-Score", f"{f1:.1%}")
+
+            # Overall Confusion Matrix
             st.divider()
-            
-            # Confusion Matrix
-            st.markdown("#### 📋 Confusion Matrix")
+            st.markdown("#### 📋 Confusion Matrix (รวม)")
             col1, col2, col3, col4 = st.columns(4)
             with col1:
-                st.metric("✅ TP", tp, f"{tp/total*100:.1f}%")
+                st.metric("✅ TP", tp)
             with col2:
-                st.metric("✅ TN", tn, f"{tn/total*100:.1f}%")
+                st.metric("✅ TN", tn)
             with col3:
-                st.metric("⚠️ FP", fp, f"{fp/total*100:.1f}%")
+                st.metric("⚠️ FP", fp)
             with col4:
-                st.metric("❌ FN", fn, f"{fn/total*100:.1f}%")
-            
-            st.divider()
-            
-            # Population stats
-            st.markdown(f"**ประชากร (Population):** {total} รายการ")
-            st.markdown(f"- In-Scope: {inscope} รายการ ({inscope/total*100:.1f}%)")
-            st.markdown(f"- Out-of-Scope: {oos} รายการ ({oos/total*100:.1f}%)")
-            
-            # IOC Assessment
-            st.divider()
-            st.markdown("#### 🏆 การประเมิน IOC")
-            if accuracy >= 0.8:
-                st.success(f"✅ ระบบใช้ได้ (IOC = {accuracy:.1%} >= 80%)")
-            elif accuracy >= 0.7:
-                st.warning(f"⚠️ ระบบใช้ได้ (IOC = {accuracy:.1%} >= 70%)")
-            else:
-                st.error(f"❌ ระบบต้องปรับปรุง (IOC = {accuracy:.1%} < 70%)")
-            
-            # Strengths and Weaknesses
-            st.divider()
-            col1, col2 = st.columns(2)
-            with col1:
-                st.markdown("**✅ จุดแข็ง:**")
-                st.markdown(f"- Precision สูง ({precision:.1%})")
-                st.markdown(f"- FP ต่ำ ({fp/total*100:.1f}%)")
-                st.markdown(f"- TN สูง ({tn/total*100:.1f}%)")
-            with col2:
-                st.markdown("**⚠️ จุดอ่อน:**")
-                st.markdown(f"- FN สูง ({fn/total*100:.1f}%)")
-                st.markdown(f"- Recall ต่ำ ({recall:.1f}%)")
-                st.markdown("- Evidence Gate เก็บกว้างไป")
-            
-            # Recommendations
-            st.divider()
-            st.markdown("#### 💡 ข้อเสนอแนะสำหรับการพัฒนาต่อ")
-            with st.expander("ดูข้อเสนอแนะ"):
-                st.markdown("""
-                1. **ปรับลด Evidence Threshold** (ปัจจุบัน 0.8 → แนะนำ 0.6)
-                2. **เพิ่ม Corrective Retrieval Rounds** (ปัจจุบัน 1 → แนะนำ 3)
-                3. **ปรับ ColPali Weight** (ลดลงสำหรับเอกสารข้อความหนาแน่น)
-                4. **เพิ่ม Re-ranker แบบ Cross-encoder**
-                5. **ปรับปรุง Citation Validation**
-                6. **เพิ่ม Query Expansion**
-                """)
-            
-            # Flowchart reference using Graphviz (Streamlit native support)
-            st.divider()
-            st.markdown("#### 🔄 Flowchart ระบบ")
-            
-            flowchart_dot = """
-            digraph G {
-                rankdir=TB;
-                node [shape=box, style="rounded,filled", fillcolor="#e1f5fe", fontname="Arial", fontsize=10];
-                edge [fontname="Arial", fontsize=9, color="#666"];
-                
-                // Section A - Sources
-                A1 [label="PDF: data_ch1_to_ch5.pdf", fillcolor="#fff3e0"];
-                A2 [label="สารบัญ: list_hitachi.txt", fillcolor="#fff3e0"];
-                A3 [label="นโยบาย: Grounded Only", fillcolor="#fff3e0"];
-                
-                // Section B - Preparation
-                B1 [label="OCR Extraction", fillcolor="#e8f5e9"];
-                B2 [label="Extract Figures", fillcolor="#e8f5e9"];
-                B3 [label="Visual Anchors", fillcolor="#e8f5e9"];
-                B4 [label="Cleanup & QA", fillcolor="#e8f5e9"];
-                
-                // Section C - Indexing
-                C1 [label="Build Hierarchy", fillcolor="#f3e5f5"];
-                C2 [label="ColPali Corpus", fillcolor="#f3e5f5"];
-                C3 [label="Hard Negatives", fillcolor="#f3e5f5"];
-                C4 [label="Chapter Calibration", fillcolor="#f3e5f5"];
-                
-                // Section D - Online Retrieval
-                D1 [label="User Query", shape=ellipse, fillcolor="#ffebee"];
-                D2 [label="Query Profiling", fillcolor="#e3f2fd"];
-                D3 [label="ColPali + Lexical\nRetrieval", fillcolor="#e3f2fd"];
-                D4 [label="Late Fusion & RRF", fillcolor="#e3f2fd"];
-                D5 [label="Apply Penalty", fillcolor="#e3f2fd"];
-                
-                // Section E - Validation
-                E1 [label="Adaptive Crop", fillcolor="#fce4ec"];
-                E2 [label="VLM Grounding\nEnsemble", fillcolor="#fce4ec"];
-                E3 [label="Consensus Voting", fillcolor="#fce4ec"];
-                E4 [label="Evidence Gate", shape=diamond, fillcolor="#ffccbc"];
-                E5 [label="ABSTAIN", fillcolor="#ffcdd2"];
-                E6 [label="Corrective Retrieval", fillcolor="#fff9c4"];
-                
-                // Section F - Generation
-                F1 [label="Build Context", fillcolor="#e0f2f1"];
-                F2 [label="Generate Answer\n(Temp=0.2)", fillcolor="#e0f2f1"];
-                F3 [label="Citation Validation", shape=diamond, fillcolor="#ffccbc"];
-                F4 [label="Citation Repair", fillcolor="#fff9c4"];
-                F5 [label="Delivery to UI", fillcolor="#b2dfdb"];
-                
-                // Edges
-                A1 -> B1 -> B4;
-                A1 -> B2 -> B4;
-                A1 -> B3 -> B4;
-                B4 -> C1;
-                B4 -> C2;
-                A2 -> C1;
-                C1 -> C3;
-                C2 -> C3;
-                C1 -> C4;
-                C3 -> D5;
-                C4 -> E4;
-                
-                D1 -> D2 -> D3 -> D4 -> D5;
-                D5 -> E1 -> E2 -> E3 -> E4;
-                E4 -> F1 [label="Yes"];
-                E4 -> E5 [label="Fail"];
-                E4 -> E6 [label="No"];
-                E6 -> D3;
-                E5 -> F5;
-                
-                F1 -> F2 -> F3;
-                F3 -> F5 [label="Yes"];
-                F3 -> F4 [label="No"];
-                F4 -> F5;
-                
-                // Subgraph labels
-                labelloc="t";
-                label="RAG System Architecture";
+                st.metric("❌ FN", fn)
+
+            cm_table = {
+                "": ["In-Scope", "Out-of-Scope"],
+                "ระบบตอบ": [tp, fp],
+                "ระบบ Abstain": [fn, tn],
             }
-            """
-            st.graphviz_chart(flowchart_dot, use_container_width=True)
-            
-            st.caption("📊 สถาปัตยกรรมระบบแบ่งเป็น 6 ส่วนหลัก: Preparation → Indexing → Retrieval → Validation → Generation → Delivery")
-            
-            # Link to full documentation
+            st.dataframe(cm_table, use_container_width=True, hide_index=True)
+
+            st.markdown(f"**จำนวนคำถามทั้งหมด:** {total} (In-Scope: {inscope}, Out-of-Scope: {oos})")
+
+            # Pipeline info
             st.divider()
-            research_doc = PROJECT_ROOT / "docs" / "research_development.md"
-            if research_doc.exists():
-                st.info(f"📄 เอกสารฉบับเต็ม: `{research_doc}`")
+            st.markdown("#### ⚙️ เทคโนโลยีที่ใช้")
+            st.markdown("""
+| ลำดับ | Component | Model / Library |
+|-------|-----------|-----------------|
+| 1 | Ingestion (OCR) | Qwen/Qwen2.5-VL-72B-Instruct |
+| 2 | Embedding (Dense) | BAAI/bge-m3 |
+| 3 | Sparse Retrieval | BM25 (rank_bm25 + pythainlp) |
+| 4 | Index | FAISS (faiss-cpu) |
+| 5 | Fusion | Reciprocal Rank Fusion (RRF, k=60) |
+| 6 | Reranker | BAAI/bge-reranker-v2-m3 |
+| 7 | LLM Generation | OpenAI GPT (Temp=0.2) |
+| 8 | UI | Streamlit |
+""")
     else:
-        st.info("ยังไม่มีข้อมูลการประเมิน")
+        st.info("ยังไม่มีข้อมูลการประเมิน กรุณาใช้แท็บ 📝 ประเมินผล เพื่อเพิ่มข้อมูล")
