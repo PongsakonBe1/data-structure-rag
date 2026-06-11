@@ -5983,7 +5983,20 @@ with tab_chat:
                 })
                 st.rerun()
 
-# Module-level functions for IOC evaluation (moved from inside tab_ioc block)
+# Module-level functions for IOC evaluation (new format: score 1-4)
+# Score mapping:
+#   1 = ถามตรง + ตอบตรง (TP)
+#   2 = ถามตรง + ตอบไม่ได้/ไม่ตอบ/นอกเอกสาร (FN)
+#   3 = ถามกำกวม/OOS + ตอบถูก/ตอบได้ (FP)
+#   4 = ถามกำกวม/OOS + ตอบไม่ได้/ไม่ตอบ (TN)
+
+EVAL_SCORE_LABELS = {
+    "1": "ถามตรง → ตอบตรง (TP)",
+    "2": "ถามตรง → ตอบไม่ได้/นอกเอกสาร (FN)",
+    "3": "ถาม OOS → ตอบได้ (FP)",
+    "4": "ถาม OOS → ไม่ตอบ (TN)",
+}
+
 def load_ioc_evaluations():
     """Load IOC evaluations from CSV file."""
     if not IOC_EVAL_FILE.exists():
@@ -5993,7 +6006,6 @@ def load_ioc_evaluations():
             reader = csv.DictReader(f)
             rows = []
             for row in reader:
-                # Clean BOM characters from keys and values
                 cleaned = {}
                 for key, value in row.items():
                     if key:
@@ -6007,11 +6019,8 @@ def load_ioc_evaluations():
 
 
 def save_ioc_evaluation(data: dict):
-    """Save IOC evaluation to CSV file."""
-    fieldnames = [
-        "timestamp", "evaluator_name", "question", "answer", "question_type",
-        "system_behavior", "ioc_score", "comments"
-    ]
+    """Save IOC evaluation to CSV file (new format)."""
+    fieldnames = ["timestamp", "evaluator_name", "question", "answer", "eval_score"]
     file_exists = IOC_EVAL_FILE.exists()
     try:
         with open(IOC_EVAL_FILE, "a", newline="", encoding="utf-8-sig") as f:
@@ -6026,31 +6035,20 @@ def save_ioc_evaluation(data: dict):
 
 
 def calculate_confusion_matrix(evaluations):
-    """Calculate confusion matrix metrics from evaluations.
-    
-    Standard Confusion Matrix:
-    - TP: In-Scope + ตอบ (ถูกต้อง)
-    - FN: In-Scope + Abstain (ผิด - ควรตอบแต่ไม่ตอบ)
-    - TN: Out-of-Scope + Abstain (ถูกต้อง - ปฏิเสธถูกต้อง)
-    - FP: Out-of-Scope + ตอบ (ผิด - ไม่ควรตอบแต่ตอบ)
+    """Calculate confusion matrix from eval_score (1-4).
+    1=TP, 2=FN, 3=FP, 4=TN
     """
     tp = tn = fp = fn = 0
     for ev in evaluations:
-        q_type = ev.get("question_type", "")
-        behavior = ev.get("system_behavior", "")
-
-        if q_type == "In-Scope (มีในเนื้อหา)":
-            if behavior == "ตอบคำถามปกติ":
-                tp += 1
-            else:  # Abstain
-                fn += 1
-                
-        elif q_type == "Out-of-Scope (ไม่มีในเนื้อหา)":
-            if behavior == "ปฏิเสธการตอบ (Abstain)":
-                tn += 1
-            else:  # ตอบ
-                fp += 1
-                
+        score = str(ev.get("eval_score", "")).strip()
+        if score == "1":
+            tp += 1
+        elif score == "2":
+            fn += 1
+        elif score == "3":
+            fp += 1
+        elif score == "4":
+            tn += 1
     return {"TP": tp, "TN": tn, "FP": fp, "FN": fn}
 
 
@@ -6061,165 +6059,144 @@ def calculate_confusion_matrix_by_evaluator(evaluations, evaluator_name):
 
 
 with tab_ioc:
-    st.markdown("### 📝 Expert Evaluation (IOC Form)")
+    st.markdown("### 📝 ประเมินผลระบบ (Expert Evaluation)")
+    st.markdown("""
+**วิธีใช้:** กรอกชื่อผู้ประเมิน → ไปถามคำถามในแท็บแชท → กลับมากดปุ่ม 1-4 ที่นี่
 
-    # Get latest Q&A from session state
+| ปุ่ม | ความหมาย | ผลลัพธ์ |
+|:---:|-----------|---------|
+| **1** | ถามตรง + ตอบตรง | ✅ TP (ตอบถูก) |
+| **2** | ถามตรง + ตอบไม่ได้/ไม่ตอบ/นอกเอกสาร | ❌ FN (พลาด) |
+| **3** | ถาม OOS/กำกวม + ตอบได้ | ⚠️ FP (ตอบมั่ว) |
+| **4** | ถาม OOS/กำกวม + ไม่ตอบ | ✅ TN (ปฏิเสธถูก) |
+""")
+
+    st.divider()
+
+    # Evaluator name (persists in session)
+    if "evaluator_name" not in st.session_state:
+        st.session_state.evaluator_name = ""
+    
+    evaluator_name = st.text_input(
+        "👤 ชื่อผู้ประเมิน (บังคับกรอก)",
+        value=st.session_state.evaluator_name,
+        placeholder="เช่น ผศ.ดร.สมชาย หรือ EVAL-01",
+        key="eval_name_input"
+    )
+    st.session_state.evaluator_name = evaluator_name
+
+    # Get latest Q&A
     latest_q = ""
     latest_a = ""
     if st.session_state.messages:
-        # Find last user-assistant pair
         for msg in reversed(st.session_state.messages):
-            if msg.get("role") == "assistant":
+            if msg.get("role") == "assistant" and not latest_a:
                 latest_a = msg.get("content", "")
-            elif msg.get("role") == "user":
+            elif msg.get("role") == "user" and not latest_q:
                 latest_q = msg.get("content", "")
                 break
 
-    # Evaluation Form
     if latest_q and latest_a:
-        with st.form("ioc_evaluation_form", clear_on_submit=True):
-            st.markdown("**คำถามล่าสุด:**")
-            st.info(latest_q[:200] + "..." if len(latest_q) > 200 else latest_q)
-            st.markdown("**คำตอบของระบบ:**")
-            st.success(latest_a[:200] + "..." if len(latest_a) > 200 else latest_a)
+        st.divider()
+        st.markdown("**คำถามล่าสุด:**")
+        st.info(latest_q[:300])
+        st.markdown("**คำตอบระบบ:**")
+        st.success(latest_a[:300])
 
-            st.divider()
+        st.divider()
+        st.markdown("**ให้คะแนน:**")
+        
+        col1, col2, col3, col4 = st.columns(4)
+        with col1:
+            btn1 = st.button("1️⃣ ตอบตรง", use_container_width=True, key="eval_btn_1")
+        with col2:
+            btn2 = st.button("2️⃣ พลาด", use_container_width=True, key="eval_btn_2")
+        with col3:
+            btn3 = st.button("3️⃣ ตอบมั่ว", use_container_width=True, key="eval_btn_3")
+        with col4:
+            btn4 = st.button("4️⃣ ปฏิเสธถูก", use_container_width=True, key="eval_btn_4")
 
-            question_type = st.selectbox(
-                "ประเภทคำถามที่ผู้ใช้ถาม",
-                ["In-Scope (มีในเนื้อหา)", "Out-of-Scope (ไม่มีในเนื้อหา)"]
-            )
+        selected_score = None
+        if btn1:
+            selected_score = "1"
+        elif btn2:
+            selected_score = "2"
+        elif btn3:
+            selected_score = "3"
+        elif btn4:
+            selected_score = "4"
 
-            system_behavior = st.selectbox(
-                "การทำงานของระบบ",
-                ["ตอบคำถามปกติ", "ปฏิเสธการตอบ (Abstain)"]
-            )
-
-            ioc_score = st.radio(
-                "IOC Score",
-                ["+1: ตรงประเด็นถูกต้อง", "0: ไม่แน่ใจ/ต้องปรับปรุง", "-1: ผิดพลาด/ไม่ตรงประเด็น"],
-                horizontal=True
-            )
-
-            comments = st.text_area("ข้อเสนอแนะเพิ่มเติม (Comments)", height=80)
-
-            st.divider()
-            st.markdown("**👤 ข้อมูลผู้ประเมิน (บังคับกรอก)**")
-
-            evaluator_name = st.text_input(
-                "ชื่อ-นามสกุล / รหัสผู้ประเมิน",
-                placeholder="เช่น นายสมชาย ใจดี หรือ EVAL-001",
-                help="สำหรับติดตามผู้ประเมินแต่ละคน (Production: ไม่นับผู้พัฒนา)"
-            )
-
-            submitted = st.form_submit_button("📋 บันทึกผลประเมิน", use_container_width=True)
-
-            if submitted:
-                # Validate evaluator name
-                if not evaluator_name or not evaluator_name.strip():
-                    st.error("❌ กรุณากรอกชื่อผู้ประเมินก่อนบันทึก")
-                    st.stop()
-
-                ioc_score_value = ioc_score.split(":")[0]  # Extract +1, 0, or -1
+        if selected_score:
+            if not evaluator_name.strip():
+                st.error("❌ กรุณากรอกชื่อผู้ประเมินก่อน")
+            else:
                 data = {
                     "timestamp": datetime.utcnow().isoformat(),
                     "evaluator_name": evaluator_name.strip(),
                     "question": latest_q,
-                    "answer": latest_a,
-                    "question_type": question_type,
-                    "system_behavior": system_behavior,
-                    "ioc_score": ioc_score_value,
-                    "comments": comments
+                    "answer": latest_a[:500],
+                    "eval_score": selected_score,
                 }
                 if save_ioc_evaluation(data):
-                    st.toast(f"✅ บันทึกผลประเมินสำเร็จ! (โดย: {evaluator_name.strip()})", icon="🎉")
-                    st.success(f"✅ บันทึกสำเร็จ! ผู้ประเมิน: {evaluator_name.strip()}")
+                    label = EVAL_SCORE_LABELS.get(selected_score, "")
+                    st.toast(f"✅ บันทึก: {label}", icon="🎉")
                     st.rerun()
     else:
-        st.info("💬 ยังไม่มีประวัติการสนทนา กรุณาถามคำถามก่อนเพื่อทำการประเมิน")
+        st.info("💬 ยังไม่มีประวัติแชท — ไปถามคำถามก่อนแล้วกลับมาประเมิน")
 
+    # --- Confusion Matrix Dashboard ---
     st.divider()
-
-    # Confusion Matrix Dashboard
-    st.markdown("### 📊 Confusion Matrix Dashboard")
+    st.markdown("### 📊 Confusion Matrix")
 
     evaluations = load_ioc_evaluations()
     cm = calculate_confusion_matrix(evaluations)
 
     col1, col2, col3, col4 = st.columns(4)
     with col1:
-        st.metric("✅ TP (True Positive)", cm["TP"], help="In-Scope + ตอบถูก")
+        st.metric("✅ TP", cm["TP"], help="ถามตรง + ตอบตรง")
     with col2:
-        st.metric("✅ TN (True Negative)", cm["TN"], help="Out-of-Scope + Abstain ถูก")
+        st.metric("✅ TN", cm["TN"], help="ถาม OOS + ไม่ตอบ")
     with col3:
-        st.metric("⚠️ FP (Hallucination)", cm["FP"], help="Out-of-Scope แต่ดันตอบ")
+        st.metric("⚠️ FP", cm["FP"], help="ถาม OOS + ตอบมั่ว")
     with col4:
-        st.metric("❌ FN (Miss)", cm["FN"], help="In-Scope แต่ Abstain/ตอบผิด")
+        st.metric("❌ FN", cm["FN"], help="ถามตรง + ตอบไม่ได้")
 
-    # Confusion Matrix Table
-    cm_data = {
-        "": ["In-Scope", "Out-of-Scope"],
-        "ตอบคำถาม": [cm["TP"], cm["FP"]],
-        "Abstain": [cm["FN"], cm["TN"]]
-    }
-    st.dataframe(cm_data, use_container_width=True, hide_index=True)
-
-    # Calculate and show accuracy/precision
     total = sum(cm.values())
     if total > 0:
         accuracy = (cm["TP"] + cm["TN"]) / total
-        st.metric("🎯 Accuracy รวม", f"{accuracy:.1%}")
+        st.metric("🎯 Accuracy", f"{accuracy:.1%}", help="(TP + TN) / Total")
 
-    # Per-Evaluator Confusion Matrix Summary
-    st.markdown("### 📋 สรุปผลรายผู้ประเมิน")
-    
-    # Get unique evaluators
+    # Per-evaluator summary
     evaluators = sorted(set(ev.get("evaluator_name", "") for ev in evaluations if ev.get("evaluator_name")))
-    
     if evaluators:
-        # Build summary table
         summary_data = []
-        for evaluator in evaluators:
-            ev_cm = calculate_confusion_matrix_by_evaluator(evaluations, evaluator)
+        for ev_name in evaluators:
+            ev_cm = calculate_confusion_matrix_by_evaluator(evaluations, ev_name)
             ev_total = sum(ev_cm.values())
-            ev_accuracy = (ev_cm["TP"] + ev_cm["TN"]) / ev_total if ev_total > 0 else 0
+            ev_acc = (ev_cm["TP"] + ev_cm["TN"]) / ev_total if ev_total > 0 else 0
             summary_data.append({
-                "ผู้ประเมิน": evaluator,
-                "จำนวนคำถาม": ev_total,
+                "ผู้ประเมิน": ev_name,
                 "TP": ev_cm["TP"],
                 "TN": ev_cm["TN"],
                 "FP": ev_cm["FP"],
                 "FN": ev_cm["FN"],
-                "Accuracy": f"{ev_accuracy:.1%}"
+                "รวม": ev_total,
+                "Accuracy": f"{ev_acc:.1%}"
             })
-        
-        # Add total row
-        summary_data.append({
-            "ผู้ประเมิน": "**รวม**",
-            "จำนวนคำถาม": total,
-            "TP": cm["TP"],
-            "TN": cm["TN"],
-            "FP": cm["FP"],
-            "FN": cm["FN"],
-            "Accuracy": f"{accuracy:.1%}" if total > 0 else "-"
-        })
-        
         st.dataframe(summary_data, use_container_width=True, hide_index=True)
-    else:
-        st.info("ยังไม่มีข้อมูลผู้ประเมิน")
 
-    # Download button
+    # Download
     if IOC_EVAL_FILE.exists():
         with open(IOC_EVAL_FILE, "rb") as f:
             st.download_button(
-                label="📥 ดาวน์โหลด CSV สำหรับรายงานวิจัย",
+                "📥 ดาวน์โหลด CSV",
                 data=f,
-                file_name="expert_ioc_eval.csv",
+                file_name="expert_eval.csv",
                 mime="text/csv",
-                use_container_width=True
+                use_container_width=True,
             )
-    else:
-        st.caption("ยังไม่มีข้อมูลประเมินให้ดาวน์โหลด")
+    
+    st.caption(f"จำนวนการประเมินทั้งหมด: {total} รายการ")
 
 # Helper function to render OOS questions
 def render_oos_questions(oos_list, set_name):
@@ -6284,77 +6261,53 @@ with tab_oos_c:
 
 # Per-Evaluator Confusion Matrix Tab
 with tab_evaluators:
-    st.markdown("### 👥 สถิติ Confusion Matrix รายผู้ประเมิน")
-    st.caption("แยกตามผู้ประเมินแต่ละคน (DEV จะถูกกรองออกใน Production)")
+    st.markdown("### 👥 สถิติรายผู้ประเมิน")
     
-    # Load all evaluations
     all_evals = load_ioc_evaluations()
     
     if not all_evals:
         st.info("ยังไม่มีข้อมูลการประเมิน")
     else:
-        # Get unique evaluators
-        evaluators = sorted(set(e.get("evaluator_name", "Unknown") for e in all_evals if e.get("evaluator_name")))
+        evaluators = sorted(set(e.get("evaluator_name", "") for e in all_evals if e.get("evaluator_name")))
         
         if not evaluators:
             st.info("ไม่พบข้อมูลผู้ประเมิน")
         else:
-            st.success(f"พบผู้ประเมิน {len(evaluators)} คน")
-            
-            # Select evaluator
             selected_evaluator = st.selectbox("👤 เลือกผู้ประเมิน", evaluators)
-            
-            # Filter evaluations for selected evaluator
             eval_filtered = [e for e in all_evals if e.get("evaluator_name") == selected_evaluator]
-            
-            # Calculate confusion matrix for this evaluator
             cm_eval = calculate_confusion_matrix(eval_filtered)
             
             st.divider()
             
-            # Show metrics
             col1, col2, col3, col4 = st.columns(4)
             with col1:
-                st.metric("✅ TP (True Positive)", cm_eval["TP"])
+                st.metric("✅ TP", cm_eval["TP"], help="ถามตรง + ตอบตรง")
             with col2:
-                st.metric("✅ TN (True Negative)", cm_eval["TN"])
+                st.metric("✅ TN", cm_eval["TN"], help="ถาม OOS + ไม่ตอบ")
             with col3:
-                st.metric("⚠️ FP (Hallucination)", cm_eval["FP"])
+                st.metric("⚠️ FP", cm_eval["FP"], help="ถาม OOS + ตอบมั่ว")
             with col4:
-                st.metric("❌ FN (Miss)", cm_eval["FN"])
+                st.metric("❌ FN", cm_eval["FN"], help="ถามตรง + ตอบไม่ได้")
             
-            # Confusion matrix table
-            cm_data = {
-                "": ["In-Scope", "Out-of-Scope"],
-                "ตอบคำถาม": [cm_eval["TP"], cm_eval["FP"]],
-                "Abstain": [cm_eval["FN"], cm_eval["TN"]]
-            }
-            st.dataframe(cm_data, use_container_width=True, hide_index=True)
+            ev_total = sum(cm_eval.values())
+            if ev_total > 0:
+                ev_accuracy = (cm_eval["TP"] + cm_eval["TN"]) / ev_total
+                st.metric("🎯 Accuracy", f"{ev_accuracy:.1%}")
             
-            # Accuracy
-            total = sum(cm_eval.values())
-            if total > 0:
-                accuracy = (cm_eval["TP"] + cm_eval["TN"]) / total
-                st.metric("🎯 Accuracy", f"{accuracy:.1%}")
-            
-            # Show evaluation count
-            st.caption(f"จำนวนการประเมินทั้งหมด: {len(eval_filtered)} รายการ")
+            st.caption(f"จำนวนการประเมิน: {len(eval_filtered)} รายการ")
             
             # Show recent evaluations
             with st.expander("📋 รายการประเมินล่าสุด"):
-                for ev in eval_filtered[-5:]:  # Last 5
-                    q_type = ev.get("question_type", "-")
-                    behavior = ev.get("system_behavior", "-")
-                    score = ev.get("ioc_score", "-")
-                    
-                    # Color code based on score
-                    if score in ["+1", "1"]:
-                        st.success(f"**{q_type}** | {behavior} | **{score}**")
-                    elif score == "-1":
-                        st.error(f"**{q_type}** | {behavior} | **{score}**")
+                for ev in eval_filtered[-10:]:
+                    score = str(ev.get("eval_score", "")).strip()
+                    label = EVAL_SCORE_LABELS.get(score, f"score={score}")
+                    q_text = ev.get("question", "-")[:80]
+                    if score in ["1", "4"]:
+                        st.success(f"**[{score}]** {label} — Q: {q_text}")
+                    elif score == "2":
+                        st.error(f"**[{score}]** {label} — Q: {q_text}")
                     else:
-                        st.warning(f"**{q_type}** | {behavior} | **{score}**")
-                    st.caption(f"Q: {ev.get('question', '-')[:80]}...")
+                        st.warning(f"**[{score}]** {label} — Q: {q_text}")
 
 # Research Summary Tab
 with tab_research:
@@ -6569,9 +6522,9 @@ $$\\text{Accuracy} = \\frac{\\text{จำนวนครั้งที่ระ
         if total > 0:
             accuracy = (tp + tn) / total
 
-            # Count by question type
-            inscope = sum(1 for r in all_evals if r.get("question_type") == "In-Scope (มีในเนื้อหา)")
-            oos = sum(1 for r in all_evals if r.get("question_type") == "Out-of-Scope (ไม่มีในเนื้อหา)")
+            # Count by question type from eval_score
+            inscope = sum(1 for r in all_evals if str(r.get("eval_score", "")).strip() in ["1", "2"])
+            oos = sum(1 for r in all_evals if str(r.get("eval_score", "")).strip() in ["3", "4"])
 
             # Per-evaluator accuracy table
             evaluators = sorted(set(ev.get("evaluator_name", "") for ev in all_evals if ev.get("evaluator_name")))
@@ -6617,16 +6570,16 @@ $$\\text{Accuracy} = \\frac{\\text{จำนวนครั้งที่ระ
             st.markdown("#### 📋 Confusion Matrix (รวม)")
             col1, col2, col3, col4 = st.columns(4)
             with col1:
-                st.metric("✅ ตอบถูก (TP)", tp, help="คำถาม In-Scope + ระบบตอบ = ถูกต้อง")
+                st.metric("✅ ตอบถูก (TP)", tp, help="ถามตรง + ระบบตอบได้ = ถูกต้อง")
             with col2:
-                st.metric("✅ ปฏิเสธถูก (TN)", tn, help="คำถาม Out-of-Scope + ระบบปฏิเสธ = ถูกต้อง")
+                st.metric("✅ ปฏิเสธถูก (TN)", tn, help="ถาม OOS + ระบบไม่ตอบ = ถูกต้อง")
             with col3:
-                st.metric("❌ ตอบมั่ว (FP)", fp, help="คำถาม Out-of-Scope + ระบบดันตอบ = ผิด")
+                st.metric("❌ ตอบมั่ว (FP)", fp, help="ถาม OOS + ระบบดันตอบ = ผิด")
             with col4:
-                st.metric("❌ พลาด (FN)", fn, help="คำถาม In-Scope + ระบบไม่ตอบ = ผิด")
+                st.metric("❌ พลาด (FN)", fn, help="ถามตรง + ระบบไม่ตอบ = ผิด")
 
             cm_table = {
-                "ประเภทคำถาม": ["In-Scope (มีในเอกสาร)", "Out-of-Scope (ไม่มีในเอกสาร)"],
+                "ประเภทคำถาม": ["In-Scope (ถามตรง)", "Out-of-Scope (ถามนอก/กำกวม)"],
                 "ระบบตอบ": [tp, fp],
                 "ระบบปฏิเสธ (Abstain)": [fn, tn],
             }
