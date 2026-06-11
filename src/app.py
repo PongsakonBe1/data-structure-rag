@@ -784,28 +784,29 @@ def get_full_page_image_from_pdf(source: str, page: int, output_dir: Path = None
     Extract a full page image from PDF and save to cache.
     Returns path to the generated image file.
     """
-    if not fitz:
-        return None
-    
-    pdf_path = PROJECT_ROOT / "data" / source
-    if not pdf_path.exists():
-        # Try to find the file in other locations
-        pdf_path = PROJECT_ROOT / source
-    if not pdf_path.exists():
-        return None
-    
-    # Create cache directory
+    # Create cache directory path
     if output_dir is None:
         output_dir = PROJECT_ROOT / "assets" / "page_images"
-    output_dir.mkdir(parents=True, exist_ok=True)
     
     # Generate output filename
     safe_source = Path(source).stem
     output_path = output_dir / f"{safe_source}_page_{page:03d}.png"
     
-    # Return cached image if exists
+    # Return cached image if exists (works even without fitz/PyMuPDF)
     if output_path.exists():
         return str(output_path)
+    
+    # Need fitz to generate new images from PDF
+    if not fitz:
+        return None
+    
+    pdf_path = PROJECT_ROOT / "data" / source
+    if not pdf_path.exists():
+        pdf_path = PROJECT_ROOT / source
+    if not pdf_path.exists():
+        return None
+    
+    output_dir.mkdir(parents=True, exist_ok=True)
     
     try:
         doc = fitz.open(pdf_path)
@@ -813,14 +814,9 @@ def get_full_page_image_from_pdf(source: str, page: int, output_dir: Path = None
             doc.close()
             return None
         
-        # Get page (0-indexed)
         page_obj = doc[page - 1]
-        
-        # Render page to image
-        mat = fitz.Matrix(dpi/72, dpi/72)  # Scale by DPI
+        mat = fitz.Matrix(dpi/72, dpi/72)
         pix = page_obj.get_pixmap(matrix=mat)
-        
-        # Save image
         pix.save(output_path)
         doc.close()
         
