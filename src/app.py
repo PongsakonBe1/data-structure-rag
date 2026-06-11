@@ -4168,8 +4168,10 @@ def call_hf_api(messages, model, stream=False, max_tokens=None, temperature=0.2)
                 temperature=temperature,
             )
     except Exception as e:
+        err_msg = f"HF API Error ({model}, stream={stream}): {str(e)}"
         log_event("hf_api_error", model=model, stream=stream, error=str(e))
-        st.error(f"เกิดข้อผิดพลาดชั่วคราวจาก API: {str(e)}")
+        # Persist error so it survives st.rerun()
+        st.session_state["_last_api_error"] = err_msg
         return None
 
 
@@ -5460,6 +5462,13 @@ tab_chat, tab_oos_a, tab_oos_b, tab_oos_c, tab_ioc, tab_evaluators, tab_research
 ])
 
 with tab_chat:
+    # Show persistent API error if any
+    if st.session_state.get("_last_api_error"):
+        st.error(f"⚠️ {st.session_state['_last_api_error']}")
+        if st.button("ล้าง error", key="clear_api_error"):
+            del st.session_state["_last_api_error"]
+            st.rerun()
+
     inline_image_limit = INLINE_EVIDENCE_IMAGE_MAX
     if st.session_state.get("retrieval_mode") == "visual" and inline_image_limit <= 0:
         inline_image_limit = 2
@@ -5646,6 +5655,13 @@ with tab_chat:
                                 log_event("stream_empty_fallback_success", answer_len=len(full_response))
                     except Exception as fb_err:
                         log_event("stream_empty_fallback_error", error=str(fb_err))
+
+                # If still empty after fallback, show error message
+                if not full_response.strip():
+                    api_err = st.session_state.get("_last_api_error", "")
+                    full_response = f"⚠️ ไม่สามารถสร้างคำตอบได้ในขณะนี้ กรุณาลองใหม่อีกครั้ง\n\n{api_err}" if api_err else "⚠️ ไม่สามารถสร้างคำตอบได้ในขณะนี้ กรุณาลองใหม่อีกครั้ง"
+                    answer_placeholder.warning(full_response)
+                    log_event("generate_response_empty_final", api_error=api_err)
 
                 target_sid_for_turn = str((sources[0] if sources else {}).get("target_section_id", "")).strip()
                 auto_continue_enabled = bool(
