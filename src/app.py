@@ -4155,6 +4155,7 @@ def call_hf_api(messages, model, stream=False, max_tokens=None, temperature=0.2)
             stream=stream,
             max_tokens=token_budget,
             temperature=temperature,
+            extra_body={"chat_template_kwargs": {"enable_thinking": False}},
         )
     except Exception as e:
         log_event("hf_api_error", model=model, stream=stream, error=str(e))
@@ -5047,7 +5048,7 @@ def generate_response(question, topic_hint: str | None = None, require_structure
             "Use the original wording from context as much as possible, preserving the author's language. "
             "Include inline citation [หน้า X] for key claims. "
             "Do NOT generate Mermaid, flowcharts, code blocks, or ASCII diagrams unless explicitly present in context. "
-            "If evidence is insufficient, say you do not know."
+            "If evidence is insufficient, say you do not know. /no_think"
         )
         if weak_evidence_mode:
             system_instr += (
@@ -5571,6 +5572,7 @@ with tab_chat:
                 def stream_parser(stream):
                     if stream is None:
                         return
+                    in_think = False
                     for chunk in stream:
                         try:
                             if hasattr(chunk, 'choices') and chunk.choices and len(chunk.choices) > 0:
@@ -5583,7 +5585,18 @@ with tab_chat:
                                 if delta:
                                     content = getattr(delta, 'content', None)
                                     if content:
-                                        yield clean_icon_text(content)
+                                        # Strip <think>...</think> blocks from Qwen3 thinking mode
+                                        if "<think>" in content:
+                                            in_think = True
+                                            content = content.split("<think>")[0]
+                                        if in_think:
+                                            if "</think>" in content:
+                                                in_think = False
+                                                content = content.split("</think>", 1)[-1]
+                                            else:
+                                                continue
+                                        if content:
+                                            yield clean_icon_text(content)
                         except (IndexError, AttributeError):
                             continue
 
