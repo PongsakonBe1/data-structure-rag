@@ -1018,23 +1018,44 @@ def collect_evidence_images_from_sources(
 def extract_cited_source_page_keys(answer: str, sources: list[dict]) -> list[str]:
     """
     Parse inline citations in the final answer and return preferred source:page keys
-    for evidence-image rendering.
+    for evidence-image rendering. Supports both [source:page|chunk] and [[หน้า X]] formats.
     """
     text = str(answer or "")
     if not text:
         return []
 
     chunk_to_page = {}
+    page_to_source_key = {}  # map page number -> source:page key
     for s in sources or []:
         src = str(s.get("source", "")).strip()
         page = str(s.get("page", "")).strip()
         chunk = str(s.get("chunk_id", "")).strip().lower()
-        if src and page and chunk:
-            chunk_to_page[chunk] = f"{src}:{page}"
+        if src and page:
+            page_to_source_key[page] = f"{src}:{page}"
+            if chunk:
+                chunk_to_page[chunk] = f"{src}:{page}"
 
     page_keys: list[str] = []
     seen = set()
 
+    # Match [[หน้า X]] format (Thai page citations from LLM)
+    for m in re.finditer(r"\[\[หน้า\s*(\d+)\]\]", text):
+        page_num = m.group(1).strip()
+        key = page_to_source_key.get(page_num)
+        if key and key not in seen:
+            seen.add(key)
+            page_keys.append(key)
+        elif page_num not in seen:
+            # Fallback: use first source's filename with the page number
+            if sources:
+                fallback_src = str(sources[0].get("source", "")).strip()
+                if fallback_src:
+                    fkey = f"{fallback_src}:{page_num}"
+                    if fkey not in seen:
+                        seen.add(fkey)
+                        page_keys.append(fkey)
+
+    # Match [source:page|chunk] format
     for m in _INLINE_CITATION_RE.finditer(text):
         raw = m.group(1)
         parts = [p.strip() for p in re.split(r"[;,]", raw) if p.strip()]
@@ -4767,39 +4788,23 @@ def should_use_visual_path(question: str, require_structure: bool = False) -> bo
 
 
 def generate_response(question, topic_hint: str | None = None, require_structure: bool = False):
-    # Policy in this phase: text-first for latency/reliability, visual when query clearly needs structure/operation evidence.
-    if VISUAL_RETRIEVAL_ENABLED and should_use_visual_path(question, require_structure=require_structure):
+    # User-selectable retrieval mode from sidebar
+    user_mode = str(st.session_state.get("user_retrieval_mode", "hybrid")).strip().lower()
+    log_event("generate_response_mode", user_mode=user_mode, question_len=len(question))
+
+    if user_mode == "bm25_only":
+        # BM25 Only: always use text path
+        st.session_state.retrieval_mode = "text"
+    elif user_mode == "colpali_only":
+        # ColPali Only: always use visual path
         st.session_state.retrieval_mode = "visual"
         return generate_response_visual(question, topic_hint=topic_hint, require_structure=require_structure)
-    st.session_state.retrieval_mode = "text"
-
-    retrieval_mode = str(st.session_state.get("retrieval_mode", "text")).strip().lower()
-    if retrieval_mode == "visual":
-        return generate_response_visual(question, topic_hint=topic_hint, require_structure=require_structure)
-    if (
-        retrieval_mode == "text"
-        and VISUAL_RETRIEVAL_ENABLED
-        and not FAST_RETRIEVAL_MODE
-        and TEXT_MODE_PROMOTE_VISUAL_FOR_STRUCTURE
-        and bool(require_structure)
-    ):
-        visual_stream, visual_sources, visual_context = generate_response_visual(
-            question,
-            topic_hint=topic_hint,
-            require_structure=True,
-        )
-        if not (isinstance(visual_stream, str) and (visual_stream.startswith("ERROR:") or visual_stream.startswith("ABSTAIN:"))):
-            log_event(
-                "text_mode_promoted_to_visual",
-                question_len=len(question),
-                visual_sources=len(visual_sources),
-            )
-            return visual_stream, visual_sources, visual_context
-        log_event(
-            "text_mode_visual_promotion_fallback",
-            reason=str(visual_stream)[:200],
-            question_len=len(question),
-        )
+    else:
+        # Hybrid: use visual for structure/operation queries, text for others
+        if VISUAL_RETRIEVAL_ENABLED and should_use_visual_path(question, require_structure=require_structure):
+            st.session_state.retrieval_mode = "visual"
+            return generate_response_visual(question, topic_hint=topic_hint, require_structure=require_structure)
+        st.session_state.retrieval_mode = "text"
 
     try:
         if rag is None:
@@ -5202,26 +5207,34 @@ with st.sidebar:
     st.divider()
     st.markdown(icon_label("image_search", "โหมดค้นคืน", variant="section"), unsafe_allow_html=True)
     if VISUAL_RETRIEVAL_ENABLED:
-        st.session_state.retrieval_mode = "auto"
-        if FAST_RETRIEVAL_MODE:
-            st.caption("Retrieval Mode (เร็ว): `Text-first, Visual only whenถามหา 'ภาพ/แผนภาพ' ชัดเจน`")
-        else:
-            st.caption("Retrieval Mode (อัตโนมัติ): `Text-first, Visual when structure/operation query`")
+        # User-selectable retrieval mode
+        retrieval_mode_options = {
+            "bm25_only": "🔍 BM25 Only (Fast)",
+            "colpali_only": "🖼️ ColPali Only",
+            "hybrid": "⚡ BM25 + ColPali (Hybrid)",
+        }
+        default_mode = "hybrid"
+        if "user_retrieval_mode" not in st.session_state:
+            st.session_state.user_retrieval_mode = default_mode
+        selected_mode = st.radio(
+            "เลือกโหมดค้นคืน",
+            options=list(retrieval_mode_options.keys()),
+            format_func=lambda x: retrieval_mode_options[x],
+            index=list(retrieval_mode_options.keys()).index(st.session_state.user_retrieval_mode),
+            key="radio_retrieval_mode",
+            horizontal=True,
+        )
+        st.session_state.user_retrieval_mode = selected_mode
 
-        st.session_state.visual_backend = FORCED_VISUAL_BACKEND
-        st.caption(f"Visual Backend (บังคับ): `{FORCED_VISUAL_BACKEND}`")
-        # Fast path in current phase: force BM25 and disable heavy post-retrieval steps.
+        # Always disable grounding (degrades answer quality)
         st.session_state.visual_use_vlm_rerank = False
         st.session_state.visual_use_grounding = False
         st.session_state.visual_sparse_strategy = "bm25"
-        st.caption("Sparse Fusion Mode (บังคับ): `CoPali + BM25`")
-        if st.session_state.visual_use_vlm_rerank:
-            st.caption("VLM Re-rank: `on`")
-        if st.session_state.visual_use_grounding:
-            st.caption("Visual Grounding: `on`")
-        st.caption(f"Fast Retrieval Mode: `{'on' if FAST_RETRIEVAL_MODE else 'off'}`")
+        st.session_state.visual_backend = FORCED_VISUAL_BACKEND
         st.session_state.visual_endpoint_url = resolve_colpali_endpoint_url("")
-        st.caption(f"endpoint (บังคับจาก .env): `{st.session_state.visual_endpoint_url or 'not set'}`")
+
+        st.caption(f"Visual Grounding: `off` (ปิดเพื่อคุณภาพคำตอบ)")
+        st.caption(f"Endpoint: `{st.session_state.visual_endpoint_url or 'not set'}`")
 
         if st.button("Run Visual Endpoint Health Check", use_container_width=True):
             endpoint_for_health = resolve_colpali_endpoint_url(str(st.session_state.get("visual_endpoint_url", "")))
