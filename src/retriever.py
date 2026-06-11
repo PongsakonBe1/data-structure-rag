@@ -38,9 +38,9 @@ DEFAULT_INDEX_DIR = BASE_DIR / "indexes"
 
 EMBEDDING_MODEL = "BAAI/bge-m3"
 DEFAULT_RERANKER_CANDIDATES = [
-    "cross-encoder/ms-marco-MiniLM-L-6-v2",
-    "cross-encoder/mmarco-mMiniLMv2-L12-H384-v1",
     "BAAI/bge-reranker-v2-m3",
+    "cross-encoder/mmarco-mMiniLMv2-L12-H384-v1",
+    "cross-encoder/ms-marco-MiniLM-L-6-v2",
 ]
 LOGGER = logging.getLogger(__name__)
 
