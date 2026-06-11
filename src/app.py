@@ -60,15 +60,24 @@ DOTENV_PATH = PROJECT_ROOT / ".env"
 load_dotenv(DOTENV_PATH)
 
 # อ่าน HF Token จาก Streamlit Secrets ก่อน แล้ว fallback ไป .env (สำหรับ local dev)
-HF_TOKEN = (
-    st.secrets.get("huggingface", {}).get("token") 
-    or st.secrets.get("huggingface", {}).get("api_key")
-    or st.secrets.get("HUGGINGFACE_READ_TOKEN")
-    or st.secrets.get("HUGGINGFACE_API_KEY")
-    or os.getenv("HUGGINGFACE_READ_TOKEN")
-    or os.getenv("HUGGINGFACE_API_KEY")
-    or ""
-).strip()
+try:
+    HF_TOKEN = (
+        st.secrets.get("huggingface", {}).get("token") 
+        or st.secrets.get("huggingface", {}).get("api_key")
+        or st.secrets.get("HUGGINGFACE_READ_TOKEN")
+        or st.secrets.get("HUGGINGFACE_API_KEY")
+        or os.getenv("HUGGINGFACE_READ_TOKEN")
+        or os.getenv("HUGGINGFACE_API_KEY")
+        or ""
+    ).strip()
+except Exception:
+    # Fallback to .env only when secrets.toml is not present (local dev)
+    HF_TOKEN = (
+        os.getenv("HUGGINGFACE_READ_TOKEN")
+        or os.getenv("HUGGINGFACE_API_KEY")
+        or os.getenv("HF_TOKEN")
+        or ""
+    ).strip()
 
 if not HF_TOKEN:
     st.error("❌ ไม่พบ HUGGINGFACE_READ_TOKEN หรือ HUGGINGFACE_API_KEY")
