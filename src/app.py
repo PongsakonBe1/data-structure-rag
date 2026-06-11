@@ -100,8 +100,9 @@ OPERATION_HEAVY_SECTION_IDS = {"3.3.2", "3.3.3", "2.4.2"}
 RETRIEVE_TOP_K = int(os.getenv("RETRIEVE_TOP_K", "20"))
 RETRIEVE_TOP_N = int(os.getenv("RETRIEVE_TOP_N", "8"))
 CONTEXT_DOC_LIMIT = int(os.getenv("CONTEXT_DOC_LIMIT", "12"))
-RETRIEVE_STRICT_TOPIC = os.getenv("RETRIEVE_STRICT_TOPIC", "1").strip().lower() in {"1", "true", "yes", "on"}
-RETRIEVE_STRICT_STRUCTURE = os.getenv("RETRIEVE_STRICT_STRUCTURE", "1").strip().lower() in {"1", "true", "yes", "on"}
+# Relaxed evidence gate to reduce false abstains
+RETRIEVE_STRICT_TOPIC = os.getenv("RETRIEVE_STRICT_TOPIC", "0").strip().lower() in {"1", "true", "yes", "on"}
+RETRIEVE_STRICT_STRUCTURE = os.getenv("RETRIEVE_STRICT_STRUCTURE", "0").strip().lower() in {"1", "true", "yes", "on"}
 RETRIEVE_ALLOW_OFFTOPIC_DOCS = 0
 RETRIEVE_MIN_SECTION_PAGE_DIVERSITY = int(os.getenv("RETRIEVE_MIN_SECTION_PAGE_DIVERSITY", "2"))
 RETRIEVE_STRICT_SECTION_ONLY = os.getenv("RETRIEVE_STRICT_SECTION_ONLY", "0").strip().lower() in {"1", "true", "yes", "on"}
