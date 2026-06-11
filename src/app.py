@@ -110,8 +110,8 @@ EVIDENCE_MIN_DOCS = int(os.getenv("EVIDENCE_MIN_DOCS", "1"))
 EVIDENCE_MIN_TOPIC_MATCH_RATIO = float(os.getenv("EVIDENCE_MIN_TOPIC_MATCH_RATIO", "0.25"))
 EVIDENCE_MIN_AVG_RRF = float(os.getenv("EVIDENCE_MIN_AVG_RRF", "0.001"))
 # FAST_RETRIEVAL_MODE = os.getenv("FAST_RETRIEVAL_MODE", "0").strip().lower() in {"1", "true", "yes", "on"}
-# Hardcode to False for better quality retrieval
-FAST_RETRIEVAL_MODE = False
+# Fast mode enabled for local development
+FAST_RETRIEVAL_MODE = True
 STRICT_CITATION_ENFORCEMENT = os.getenv(
     "STRICT_CITATION_ENFORCEMENT",
     "0",  # Disabled by default for better UX
