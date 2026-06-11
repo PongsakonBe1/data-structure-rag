@@ -1,4 +1,4 @@
-﻿"""
+"""
 app.py — ระบบแชทบอทช่วยสอนวิชาโครงสร้างข้อมูล (Interactive UI & Dropdown Edition)
 โมเดล: Qwen3-4B (Responder) และ Llama-3.2-3B (Judge) ผ่าน Hugging Face
 การแก้ไข: ปรับปรุงการแสดงผล Sidebar ให้ถูกต้อง, ใช้ Emoji แทนไอคอนที่พัง, และจัดการ Token
