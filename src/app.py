@@ -86,8 +86,8 @@ if not HF_TOKEN:
 
 CHAT_MODEL_ID = "Qwen/Qwen3-4B-Instruct-2507" 
 JUDGE_MODEL_ID = "meta-llama/Llama-3.2-3B-Instruct"
-CHAT_MAX_TOKENS = int(os.getenv("CHAT_MAX_TOKENS", "900"))
-TEXT_SECTION_MAX_TOKENS = int(os.getenv("TEXT_SECTION_MAX_TOKENS", "620"))
+CHAT_MAX_TOKENS = int(os.getenv("CHAT_MAX_TOKENS", "1400"))
+TEXT_SECTION_MAX_TOKENS = int(os.getenv("TEXT_SECTION_MAX_TOKENS", "1200"))
 SECTION_CONCISE_TRIGGER_CHARS = int(os.getenv("SECTION_CONCISE_TRIGGER_CHARS", "900"))
 SECTION_CONCISE_MAX_TOKENS = int(os.getenv("SECTION_CONCISE_MAX_TOKENS", "320"))
 OPERATION_SECTION_MAX_TOKENS = int(os.getenv("OPERATION_SECTION_MAX_TOKENS", "1800"))
@@ -128,7 +128,7 @@ QUERY_REWRITE_USE_LLM = os.getenv("QUERY_REWRITE_USE_LLM", "0").strip().lower() 
 QUERY_REWRITE_MODEL = os.getenv("QUERY_REWRITE_MODEL", CHAT_MODEL_ID).strip()
 QUERY_REWRITE_MAX_TOKENS = max(64, int(os.getenv("QUERY_REWRITE_MAX_TOKENS", "96")))
 QUERY_REWRITE_MAX_KEYWORDS = max(2, int(os.getenv("QUERY_REWRITE_MAX_KEYWORDS", "6")))
-SELF_CHECK_ENABLED = os.getenv("SELF_CHECK_ENABLED", "1").strip().lower() in {"1", "true", "yes", "on"}
+SELF_CHECK_ENABLED = os.getenv("SELF_CHECK_ENABLED", "0").strip().lower() in {"1", "true", "yes", "on"}
 SELF_CHECK_MAX_TOKENS = max(180, int(os.getenv("SELF_CHECK_MAX_TOKENS", "420")))
 SELF_CHECK_MIN_ANSWER_CHARS = max(40, int(os.getenv("SELF_CHECK_MIN_ANSWER_CHARS", "90")))
 SELF_CHECK_CONTEXT_MAX_CHARS = max(800, int(os.getenv("SELF_CHECK_CONTEXT_MAX_CHARS", "2600")))
@@ -208,11 +208,11 @@ VISUAL_LINKEDLIST_OPERATION_TOPIC_PREFIX = os.getenv("VISUAL_LINKEDLIST_OPERATIO
 VISUAL_TOPIC_ADJACENT_PAGE_GAP = max(0, int(os.getenv("VISUAL_TOPIC_ADJACENT_PAGE_GAP", "3")))
 VISUAL_TOPIC_ADJACENT_MAX_EXTRA_PAGES = max(0, int(os.getenv("VISUAL_TOPIC_ADJACENT_MAX_EXTRA_PAGES", "8")))
 VISUAL_DYNAMIC_TOKEN_ENABLED = os.getenv("VISUAL_DYNAMIC_TOKEN_ENABLED", "1").strip().lower() in {"1", "true", "yes", "on"}
-VISUAL_DYNAMIC_TOKEN_BASE = int(os.getenv("VISUAL_DYNAMIC_TOKEN_BASE", "520"))
+VISUAL_DYNAMIC_TOKEN_BASE = int(os.getenv("VISUAL_DYNAMIC_TOKEN_BASE", "800"))
 VISUAL_DYNAMIC_TOKEN_PER_SOURCE = int(os.getenv("VISUAL_DYNAMIC_TOKEN_PER_SOURCE", "110"))
 VISUAL_DYNAMIC_TOKEN_PER_FIGURE = int(os.getenv("VISUAL_DYNAMIC_TOKEN_PER_FIGURE", "80"))
 VISUAL_DYNAMIC_TOKEN_OPERATION_BONUS = int(os.getenv("VISUAL_DYNAMIC_TOKEN_OPERATION_BONUS", "180"))
-VISUAL_DYNAMIC_TOKEN_CAP = int(os.getenv("VISUAL_DYNAMIC_TOKEN_CAP", "1700"))
+VISUAL_DYNAMIC_TOKEN_CAP = int(os.getenv("VISUAL_DYNAMIC_TOKEN_CAP", "2400"))
 VISUAL_CORRECTIVE_RETRIEVAL_ENABLED = os.getenv("VISUAL_CORRECTIVE_RETRIEVAL_ENABLED", "0").strip().lower() in {"1", "true", "yes", "on"}
 VISUAL_CORRECTIVE_MAX_RETRIES = max(0, int(os.getenv("VISUAL_CORRECTIVE_MAX_RETRIES", "2")))
 VISUAL_CORRECTIVE_TOPK_MULTIPLIER = max(1.0, float(os.getenv("VISUAL_CORRECTIVE_TOPK_MULTIPLIER", "2.0")))
@@ -268,7 +268,7 @@ VISUAL_STANDARD_QUERY_CASES = [
     {"query": "การดำเนินการแทนคิวด้วยวงกลม", "require_structure": True},
 ]
 # Disabled by default: page-level evidence images were too coarse for the target UX.
-INLINE_EVIDENCE_IMAGE_MAX = int(os.getenv("INLINE_EVIDENCE_IMAGE_MAX", "0"))
+INLINE_EVIDENCE_IMAGE_MAX = int(os.getenv("INLINE_EVIDENCE_IMAGE_MAX", "4"))
 IMAGE_ASSISTED_FALLBACK = os.getenv("IMAGE_ASSISTED_FALLBACK", "0").strip().lower() in {"1", "true", "yes", "on"}
 RESEARCH_FIELDNAMES = [
     "Timestamp",
@@ -914,6 +914,7 @@ def collect_evidence_images_from_sources(
             _int_or(s.get("retrieval_rank", 9999), 9999),
         ),
     )
+    seen_pages = set()  # deduplicate by page number
     for s in ordered_sources:
         if len(picked) >= limit:
             break
@@ -924,24 +925,26 @@ def collect_evidence_images_from_sources(
         # PRIORITY: Always try full page image first for better UX
         page_num = int(page) if page.isdigit() else 0
         if page_num > 0 and src:
+            # Deduplicate by page number — same page = same image
+            if page in seen_pages:
+                continue
             full_page_path = get_full_page_image_from_pdf(src, page_num)
             if full_page_path and Path(full_page_path).exists():
-                key_full = (full_page_path, str(s.get("citation", "")).strip() or f"{src}:{page}")
-                if key_full not in seen:
-                    picked.append(
-                        {
-                            "path": full_page_path,
-                            "citation": str(s.get("citation", "")).strip() or f"{src}:{page}",
-                            "source": src,
-                            "page": page,
-                            "figure_text": "",
-                            "image_type": "full_page"
-                        }
-                    )
-                    seen.add(key_full)
-                    if len(picked) >= limit:
-                        break
-                    continue
+                picked.append(
+                    {
+                        "path": full_page_path,
+                        "citation": str(s.get("citation", "")).strip() or f"{src}:{page}",
+                        "source": src,
+                        "page": page,
+                        "figure_text": "",
+                        "image_type": "full_page"
+                    }
+                )
+                seen_pages.add(page)
+                seen.add((full_page_path, page))
+                if len(picked) >= limit:
+                    break
+                continue
         
         # FALLBACK: Use provided image path if full page not available
         if direct_img_path and Path(direct_img_path).exists():
