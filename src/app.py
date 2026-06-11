@@ -161,16 +161,20 @@ VISUAL_GROUNDING_ENSEMBLE_RUNS = max(1, int(os.getenv("VISUAL_GROUNDING_ENSEMBLE
 VISUAL_GROUNDING_CONSENSUS_MIN_VOTES = max(1, int(os.getenv("VISUAL_GROUNDING_CONSENSUS_MIN_VOTES", "2")))
 VISUAL_GROUNDING_TEMPERATURE = float(os.getenv("VISUAL_GROUNDING_TEMPERATURE", "0.0"))
 VISUAL_GROUNDING_TOP_P = float(os.getenv("VISUAL_GROUNDING_TOP_P", "0.9"))
-# อ่าน ColPali Endpoint จาก Streamlit Secrets ก่อน แล้ว fallback ไป .env
+# อ่าน ColPali Endpoint จาก Streamlit Secrets ก่อน แล้ว fallback ไป .env หรือใช้ default
+_DEFAULT_COLPALI_ENDPOINT = "https://macza5546-copali-endpoint.hf.space/"
 try:
     VISUAL_RETRIEVAL_ENDPOINT_URL = (
         st.secrets.get("colpali", {}).get("endpoint_url")
         or st.secrets.get("COLPALI_ENDPOINT_URL")
         or os.getenv("COLPALI_ENDPOINT_URL", "")
-        or ""
+        or _DEFAULT_COLPALI_ENDPOINT
     ).strip()
 except Exception:
-    VISUAL_RETRIEVAL_ENDPOINT_URL = os.getenv("COLPALI_ENDPOINT_URL", "").strip()
+    VISUAL_RETRIEVAL_ENDPOINT_URL = (
+        os.getenv("COLPALI_ENDPOINT_URL", "")
+        or _DEFAULT_COLPALI_ENDPOINT
+    ).strip()
 VISUAL_RETRIEVAL_ENDPOINT_TIMEOUT_SEC = int(os.getenv("VISUAL_RETRIEVAL_ENDPOINT_TIMEOUT_SEC", "30"))
 VISUAL_ENDPOINT_AUTOWARM_ON_STARTUP = os.getenv("VISUAL_ENDPOINT_AUTOWARM_ON_STARTUP", "1").strip().lower() in {"1", "true", "yes", "on"}
 VISUAL_ENDPOINT_AUTOWARM_TIMEOUT_SEC = max(5, int(os.getenv("VISUAL_ENDPOINT_AUTOWARM_TIMEOUT_SEC", "20")))
