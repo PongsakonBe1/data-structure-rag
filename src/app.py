@@ -5668,6 +5668,7 @@ with tab_chat:
 
                 full_response = clean_icon_text(full_response)
                 full_response = strip_generated_mermaid_blocks(full_response)
+                streamed_response = full_response  # preserve original streaming output
                 full_response, self_check_meta = self_check_grounded_answer(
                     prompt,
                     full_response,
@@ -5675,6 +5676,10 @@ with tab_chat:
                     sources,
                 )
                 log_event("self_check_grounding", **self_check_meta)
+                # Guard: never replace with a significantly shorter version
+                if len(full_response) < len(streamed_response) * 0.8:
+                    log_event("self_check_rollback", before_len=len(streamed_response), after_len=len(full_response))
+                    full_response = streamed_response
                 answer_placeholder.markdown(full_response)
                 full_response = normalize_answer_citations(full_response, sources)
                 full_response = strip_context_placeholder_citations(full_response)
@@ -5860,8 +5865,8 @@ with tab_chat:
                     (sources[0] if sources else {}).get("target_section_id", "")
                 ).strip()
                 if answer_sid:
-                    should_compact = True
-                    if answer_sid in OPERATION_HEAVY_SECTION_IDS and not OPERATION_SECTION_ENABLE_COMPACTION:
+                    should_compact = False  # Disabled: compaction degrades answer quality
+                    if False:  # was: answer_sid in OPERATION_HEAVY_SECTION_IDS and not OPERATION_SECTION_ENABLE_COMPACTION
                         should_compact = False
                         log_event(
                             "section_answer_compaction_skipped",
