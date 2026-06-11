@@ -110,8 +110,8 @@ EVIDENCE_MIN_DOCS = int(os.getenv("EVIDENCE_MIN_DOCS", "1"))
 EVIDENCE_MIN_TOPIC_MATCH_RATIO = float(os.getenv("EVIDENCE_MIN_TOPIC_MATCH_RATIO", "0.25"))
 EVIDENCE_MIN_AVG_RRF = float(os.getenv("EVIDENCE_MIN_AVG_RRF", "0.001"))
 # FAST_RETRIEVAL_MODE = os.getenv("FAST_RETRIEVAL_MODE", "0").strip().lower() in {"1", "true", "yes", "on"}
-# Fast mode enabled for local development
-FAST_RETRIEVAL_MODE = True
+# Full mode: ColPali active for structure/operation queries
+FAST_RETRIEVAL_MODE = False
 STRICT_CITATION_ENFORCEMENT = os.getenv(
     "STRICT_CITATION_ENFORCEMENT",
     "0",  # Disabled by default for better UX
@@ -4113,7 +4113,7 @@ def build_visual_context_and_sources(
         "grounding_fact_count_raw": grounding_fact_count_raw,
         "grounding_agreement_mean": round(float(grounding_agreement_mean), 4) if isinstance(grounding_agreement_mean, (int, float)) else None,
         "chapter_calibration": {k: v for k, v in calib.items() if k != "resolved_topic_id"},
-        "evidence_ok": len(reasons) == 0,
+        "evidence_ok": doc_count >= 1,
         "reasons": reasons,
     }
     context_text = "\n".join(context_lines).strip()
@@ -4642,7 +4642,8 @@ def generate_response_visual(question, topic_hint: str | None = None, require_st
     if not sources_data:
         return "ABSTAIN: ไม่พบหลักฐานภาพ/เนื้อหาจากเอกสารที่ตรงคำถาม", [], ""
 
-    if not evidence.get("evidence_ok", False):
+    # Relaxed: ไม่ ABSTAIN ถ้ามี context อย่างน้อย 1 รายการ
+    if not evidence.get("evidence_ok", False) and not sources_data:
         reasons = ", ".join(evidence.get("reasons") or []) or "insufficient_evidence"
         return (
             "ABSTAIN: หลักฐานจาก visual retrieval ยังไม่เพียงพอสำหรับการตอบแบบอ้างอิงเอกสารเท่านั้น "
@@ -4678,11 +4679,9 @@ def generate_response_visual(question, topic_hint: str | None = None, require_st
         "Answer using ONLY evidence from the provided context. "
         "The context comes from visual retrieval + grounded document snippets. "
         "Do not introduce facts from outside the context. "
-        "Do not explain beyond explicitly stated evidence. "
-        "Prefer extractive wording from context, avoid paraphrasing that adds new meaning. "
-        "If a claim cannot be traced to an explicit phrase in context, omit that claim. "
+        "Use the original wording from context as much as possible, preserving the author's language. "
         "Do NOT generate Mermaid, flowcharts, code blocks, or ASCII diagrams unless explicitly present in context. "
-        "Every key claim must include an inline citation in format [source:page|chunk_id]. "
+        "Include inline citation [[หน้า X]] for key claims. "
         "If evidence is insufficient, explicitly abstain."
     )
     query_profile = payload.get("query_profile", {}) if isinstance(payload, dict) else {}
@@ -5017,42 +5016,25 @@ def generate_response(question, topic_hint: str | None = None, require_structure
 
         weak_evidence_mode = False
         weak_reasons = []
-        if not evidence.get("evidence_ok", False):
+        # Relaxed: ถ้ามี docs แล้วไม่ ABSTAIN - ให้ LLM ตัดสินใจเอง
+        if not evidence.get("evidence_ok", False) and not docs_for_context:
             reason_list = [str(r) for r in (evidence.get("reasons") or [])]
-            reason_set = set(reason_list)
-            allowed_weak_reasons = {"low_rrf_score", "missing_structure_evidence"}
-            can_use_image_fallback = (
-                IMAGE_ASSISTED_FALLBACK
-                and bool(reason_set)
-                and reason_set.issubset(allowed_weak_reasons)
-                and has_image_evidence_for_docs(docs)
+            reasons = ", ".join(reason_list) or "insufficient_evidence"
+            abstain_msg = (
+                "ABSTAIN: หลักฐานจากเอกสารยังไม่เพียงพอสำหรับการตอบแบบอ้างอิงเอกสารเท่านั้น "
+                f"(เหตุผล: {reasons})"
             )
-            if can_use_image_fallback:
-                weak_evidence_mode = True
-                weak_reasons = sorted(reason_set)
-                log_event(
-                    "image_assisted_fallback_enabled",
-                    reasons=weak_reasons,
-                    retrieved_docs=len(docs),
-                    require_structure=bool(require_structure),
-                )
-            else:
-                reasons = ", ".join(reason_list) or "insufficient_evidence"
-                abstain_msg = (
-                    "ABSTAIN: หลักฐานจากเอกสารยังไม่เพียงพอสำหรับการตอบแบบอ้างอิงเอกสารเท่านั้น "
-                    f"(เหตุผล: {reasons})"
-                )
-                return abstain_msg, sources_data, context_text
+            return abstain_msg, sources_data, context_text
 
         system_instr = (
             "You are an AI tutor for Data Structure. "
+            "Respond in Thai only. "
             "Answer using ONLY evidence from the provided context. "
             "Do not introduce facts from outside the context. "
-            "If evidence is insufficient, say you do not know. "
-            "Every key claim must include an inline citation in format [source:page|chunk_id]. "
-            "If the question asks about structures/graphs/trees, use only structure evidence from the context. "
-            "Use concise Markdown headings only when necessary. "
-            "Do NOT generate Mermaid, flowcharts, code blocks, or ASCII diagrams unless explicitly present in context."
+            "Use the original wording from context as much as possible, preserving the author's language. "
+            "Include inline citation [[หน้า X]] for key claims. "
+            "Do NOT generate Mermaid, flowcharts, code blocks, or ASCII diagrams unless explicitly present in context. "
+            "If evidence is insufficient, say you do not know."
         )
         if weak_evidence_mode:
             system_instr += (
