@@ -193,7 +193,7 @@ VISUAL_HARD_NEGATIVE_RULES = os.getenv(
     str((PROJECT_ROOT / "indexes" / "hierarchical" / "hard_negative_rules.json").as_posix()),
 ).strip()
 VISUAL_HARD_NEGATIVE_PENALTY_MAX = float(os.getenv("VISUAL_HARD_NEGATIVE_PENALTY_MAX", "0.22"))
-FORCED_VISUAL_BACKEND = os.getenv("FORCED_VISUAL_BACKEND", "local")
+FORCED_VISUAL_BACKEND = os.getenv("FORCED_VISUAL_BACKEND", "metadata")
 VISUAL_FORCE_ON_REQUIRE_STRUCTURE = os.getenv("VISUAL_FORCE_ON_REQUIRE_STRUCTURE", "0").strip().lower() in {"1", "true", "yes", "on"}
 TEXT_MODE_PROMOTE_VISUAL_FOR_STRUCTURE = os.getenv(
     "TEXT_MODE_PROMOTE_VISUAL_FOR_STRUCTURE",
