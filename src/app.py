@@ -3342,11 +3342,19 @@ def _convert_hf_space_id_to_url(value: str) -> str:
 
 def resolve_colpali_endpoint_url(preferred: str = "") -> str:
     # ลำดับ priority: preferred > st.secrets > .env > global var
+    # ใช้ try-except เพื่อรองรับ local dev ที่ไม่มี secrets.toml
+    try:
+        secrets_endpoint = (
+            st.secrets.get("colpali", {}).get("endpoint_url")
+            or st.secrets.get("colpali", {}).get("space_id")
+            or st.secrets.get("COLPALI_ENDPOINT_URL")
+        )
+    except Exception:
+        secrets_endpoint = None
+    
     raw = (
         str(preferred or "").strip()
-        or st.secrets.get("colpali", {}).get("endpoint_url")
-        or st.secrets.get("colpali", {}).get("space_id")
-        or st.secrets.get("COLPALI_ENDPOINT_URL")
+        or secrets_endpoint
         or read_dotenv_value("COLPALI_ENDPOINT_URL", DOTENV_PATH)
         or os.getenv("COLPALI_ENDPOINT_URL", "").strip()
         or VISUAL_RETRIEVAL_ENDPOINT_URL
