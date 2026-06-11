@@ -5211,121 +5211,43 @@ with st.sidebar:
     
     st.divider()
     st.markdown(icon_label("image_search", "โหมดค้นคืน", variant="section"), unsafe_allow_html=True)
+    # Fixed mode: BM25 + Dense only (best quality proven)
+    st.session_state.user_retrieval_mode = "bm25_dense"
+    st.session_state.retrieval_mode = "text"
+    st.session_state.visual_use_vlm_rerank = False
+    st.session_state.visual_use_grounding = False
+    st.session_state.visual_sparse_strategy = "bm25"
+    st.markdown("**🔍 BM25 + Dense (Hybrid)**")
+    st.caption("Pipeline: `BM25 (pythainlp) → Dense (BAAI/bge-m3) → RRF Fusion → Cross-Encoder Reranker`")
     if VISUAL_RETRIEVAL_ENABLED:
-        # User-selectable retrieval mode
-        retrieval_mode_options = {
-            "bm25_dense": "🔍 BM25 + Dense (Fast)",
-            "colpali_only": "🖼️ ColPali Only",
-            "splade": "🧠 SPLADE (Neural Sparse)",
-            "hybrid": "⚡ Hybrid (BM25+Dense+ColPali)",
-        }
-        default_mode = "bm25_dense"
-        if "user_retrieval_mode" not in st.session_state:
-            st.session_state.user_retrieval_mode = default_mode
-        selected_mode = st.radio(
-            "เลือกโหมดค้นคืน",
-            options=list(retrieval_mode_options.keys()),
-            format_func=lambda x: retrieval_mode_options[x],
-            index=list(retrieval_mode_options.keys()).index(
-                st.session_state.user_retrieval_mode
-                if st.session_state.user_retrieval_mode in retrieval_mode_options
-                else default_mode
-            ),
-            key="radio_retrieval_mode",
-            horizontal=False,
-        )
-        st.session_state.user_retrieval_mode = selected_mode
-
-        # Always disable grounding (degrades answer quality)
-        st.session_state.visual_use_vlm_rerank = False
-        st.session_state.visual_use_grounding = False
-        # Set sparse strategy based on mode
-        if selected_mode == "splade":
-            st.session_state.visual_sparse_strategy = "splade"
-        else:
-            st.session_state.visual_sparse_strategy = "bm25"
-        st.session_state.visual_backend = FORCED_VISUAL_BACKEND
-        st.session_state.visual_endpoint_url = resolve_colpali_endpoint_url("")
-
-        st.caption(f"Visual Grounding: `off` (ปิดเพื่อคุณภาพคำตอบ)")
-        st.caption(f"Endpoint: `{st.session_state.visual_endpoint_url or 'not set'}`")
-        if selected_mode == "splade":
-            st.caption(f"SPLADE model: `{VISUAL_RETRIEVAL_SPLADE_MODEL}`")
-
-        if st.button("Run Visual Endpoint Health Check", use_container_width=True):
-            endpoint_for_health = resolve_colpali_endpoint_url(str(st.session_state.get("visual_endpoint_url", "")))
-            health = run_visual_endpoint_healthcheck(
-                endpoint_for_health,
-                HF_TOKEN,
-                timeout_sec=VISUAL_RETRIEVAL_ENDPOINT_TIMEOUT_SEC,
-            )
-            st.session_state.visual_endpoint_health = health
-            log_event(
-                "visual_endpoint_healthcheck",
-                ok=health.get("ok"),
-                endpoint=health.get("endpoint_url", ""),
-                validation=health.get("validation", ""),
-                error=health.get("error", ""),
-            )
-
-        health = st.session_state.get("visual_endpoint_health")
-        if health:
-            if health.get("backend") == "local":
-                st.success("Using local backend (BM25 + Dense), endpoint not required")
-            elif health.get("ok"):
-                st.success(
-                    f"Endpoint พร้อมใช้งาน (latency={health.get('latency_ms', 'n/a')} ms, validation={health.get('validation', 'ok')})"
+        with st.expander("🔧 Visual Endpoint (ปิดใช้งาน — สำหรับ debug)", expanded=False):
+            if st.button("Run Visual Endpoint Health Check", use_container_width=True):
+                endpoint_for_health = resolve_colpali_endpoint_url(str(st.session_state.get("visual_endpoint_url", "")))
+                health = run_visual_endpoint_healthcheck(
+                    endpoint_for_health,
+                    HF_TOKEN,
+                    timeout_sec=VISUAL_RETRIEVAL_ENDPOINT_TIMEOUT_SEC,
                 )
-            else:
-                st.warning(f"Endpoint ยังไม่พร้อม: {health.get('error', health.get('validation', 'unknown'))}")
-            st.caption(f"log: {VISUAL_ENDPOINT_HEALTHCHECK_LOG}")
+                st.session_state.visual_endpoint_health = health
+                log_event(
+                    "visual_endpoint_healthcheck",
+                    ok=health.get("ok"),
+                    endpoint=health.get("endpoint_url", ""),
+                    validation=health.get("validation", ""),
+                    error=health.get("error", ""),
+                )
 
-        if st.button("ทดสอบ query มาตรฐาน 3 ข้อ", use_container_width=True):
-            with st.spinner("กำลังทดสอบ retrieval มาตรฐาน 3 ข้อ..."):
-                report = run_visual_standard_query_suite(
-                    backend=str(st.session_state.get("visual_backend", VISUAL_RETRIEVAL_BACKEND)).strip().lower() or "auto",
-                    endpoint_url=str(st.session_state.get("visual_endpoint_url", VISUAL_RETRIEVAL_ENDPOINT_URL)).strip(),
-                    use_vlm_rerank=bool(st.session_state.get("visual_use_vlm_rerank", VISUAL_RETRIEVAL_USE_VLM_RERANK)),
-                    use_visual_grounding=bool(st.session_state.get("visual_use_grounding", VISUAL_RETRIEVAL_USE_GROUNDING)),
-                    sparse_strategy=str(st.session_state.get("visual_sparse_strategy", VISUAL_SPARSE_STRATEGY)),
-                )
-            st.session_state.visual_standard_query_report = report
-            log_event(
-                "visual_standard_query_test",
-                ok=report.get("ok"),
-                summary=report.get("summary", {}),
-                backend=report.get("config", {}).get("backend", ""),
-            )
-
-        suite = st.session_state.get("visual_standard_query_report")
-        if suite:
-            summary = suite.get("summary", {})
-            if suite.get("ok"):
-                st.success(
-                    f"มาตรฐานผ่านทั้งหมด ({summary.get('passed', 0)}/{summary.get('total', 0)})"
-                )
-            else:
-                st.error(
-                    f"มาตรฐานไม่ผ่าน ({summary.get('failed', 0)} fail จาก {summary.get('total', 0)})"
-                )
-            with st.expander("ผลทดสอบมาตรฐาน", expanded=False):
-                for row in suite.get("results", []):
-                    mark = "PASS" if row.get("pass") else "FAIL"
-                    st.markdown(f"- `{mark}` {row.get('query', '')}")
-                    st.caption(
-                        f"backend={row.get('backend', '-')}, colpali_status={row.get('colpali_status', '-')}, "
-                        f"hits={row.get('hits', 0)}, evidence_ok={row.get('evidence_ok', False)}, "
-                        f"latency_ms={row.get('latency_ms', 'n/a')}, error={row.get('error', '-')}, "
-                        f"reasons={row.get('reasons', [])}, "
-                        f"region_hit_ratio_at_k={row.get('region_hit_ratio_at_k', 'n/a')}, "
-                        f"crop_completeness_proxy={row.get('crop_completeness_proxy', 'n/a')}, "
-                        f"small_region_ratio_at_k={row.get('small_region_ratio_at_k', 'n/a')}, "
-                        f"region_quality_mean={row.get('region_quality_mean', 'n/a')}, "
-                        f"unique_figure_refs_at_k={row.get('unique_figure_refs_at_k', 'n/a')}, "
-                        f"page_diversity_at_k={row.get('page_diversity_at_k', 'n/a')}, "
-                        f"procedure_step_coverage_proxy={row.get('procedure_step_coverage_proxy', 'n/a')}"
+            health = st.session_state.get("visual_endpoint_health")
+            if health:
+                if health.get("backend") == "local":
+                    st.success("Using local backend (BM25 + Dense), endpoint not required")
+                elif health.get("ok"):
+                    st.success(
+                        f"Endpoint พร้อมใช้งาน (latency={health.get('latency_ms', 'n/a')} ms, validation={health.get('validation', 'ok')})"
                     )
-                st.caption(f"log: {VISUAL_STANDARD_QUERY_LOG}")
+                else:
+                    st.warning(f"Endpoint ยังไม่พร้อม: {health.get('error', health.get('validation', 'unknown'))}")
+                st.caption(f"log: {VISUAL_ENDPOINT_HEALTHCHECK_LOG}")
     else:
         st.caption("โหมด Visual Retrieval ถูกปิดด้วย environment (`VISUAL_RETRIEVAL_ENABLED=0`)")
 
