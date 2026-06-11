@@ -4149,14 +4149,24 @@ def build_visual_context_and_sources(
 def call_hf_api(messages, model, stream=False, max_tokens=None, temperature=0.2):
     try:
         token_budget = CHAT_MAX_TOKENS if max_tokens is None else int(max_tokens)
-        return hf_client.chat_completion(
-            model=model,
-            messages=messages,
-            stream=stream,
-            max_tokens=token_budget,
-            temperature=temperature,
-            extra_body={"chat_template_kwargs": {"enable_thinking": False}},
-        )
+        try:
+            return hf_client.chat_completion(
+                model=model,
+                messages=messages,
+                stream=stream,
+                max_tokens=token_budget,
+                temperature=temperature,
+                extra_body={"chat_template_kwargs": {"enable_thinking": False}},
+            )
+        except TypeError:
+            # Fallback if extra_body not supported in this huggingface_hub version
+            return hf_client.chat_completion(
+                model=model,
+                messages=messages,
+                stream=stream,
+                max_tokens=token_budget,
+                temperature=temperature,
+            )
     except Exception as e:
         log_event("hf_api_error", model=model, stream=stream, error=str(e))
         st.error(f"เกิดข้อผิดพลาดชั่วคราวจาก API: {str(e)}")
@@ -5603,6 +5613,39 @@ with tab_chat:
                 answer_placeholder = st.empty()
                 full_response = answer_placeholder.write_stream(stream_parser(response_stream))
                 full_response = full_response or ""
+
+                # Fallback: if streaming produced empty response, retry non-streaming
+                if not full_response.strip():
+                    log_event("stream_empty_fallback", reason="write_stream_returned_empty")
+                    _fb_system = (
+                        "You are an AI tutor for Data Structure. "
+                        "Respond in Thai only. "
+                        "Answer using ONLY evidence from the provided context. "
+                        "Include inline citation [หน้า X] for key claims. "
+                        "If evidence is insufficient, say you do not know. /no_think"
+                    )
+                    try:
+                        fallback_res = call_hf_api(
+                            [
+                                {"role": "system", "content": _fb_system},
+                                {"role": "user", "content": f"Provided context:\n{context}\n\nStudent question: {prompt}"},
+                            ],
+                            CHAT_MODEL_ID,
+                            stream=False,
+                            max_tokens=int(CHAT_MAX_TOKENS),
+                            temperature=0.2,
+                        )
+                        if fallback_res and getattr(fallback_res, "choices", None):
+                            fallback_text = (fallback_res.choices[0].message.content or "").strip()
+                            # Strip thinking blocks if present
+                            if "<think>" in fallback_text and "</think>" in fallback_text:
+                                fallback_text = re.sub(r"<think>.*?</think>", "", fallback_text, flags=re.DOTALL).strip()
+                            if fallback_text:
+                                full_response = fallback_text
+                                answer_placeholder.markdown(full_response)
+                                log_event("stream_empty_fallback_success", answer_len=len(full_response))
+                    except Exception as fb_err:
+                        log_event("stream_empty_fallback_error", error=str(fb_err))
 
                 target_sid_for_turn = str((sources[0] if sources else {}).get("target_section_id", "")).strip()
                 auto_continue_enabled = bool(
