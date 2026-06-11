@@ -140,7 +140,7 @@ VISUAL_RETRIEVAL_CANDIDATE_K = int(os.getenv("VISUAL_RETRIEVAL_CANDIDATE_K", "16
 VISUAL_RETRIEVAL_TOPIC_THRESHOLD = float(os.getenv("VISUAL_RETRIEVAL_TOPIC_THRESHOLD", "0.18"))
 VISUAL_RETRIEVAL_USE_VLM_RERANK = os.getenv("VISUAL_RETRIEVAL_USE_VLM_RERANK", "0").strip().lower() in {"1", "true", "yes", "on"}
 VISUAL_RETRIEVAL_USE_GROUNDING = os.getenv("VISUAL_RETRIEVAL_USE_GROUNDING", "0").strip().lower() in {"1", "true", "yes", "on"}
-VISUAL_RETRIEVAL_USE_SPLADE = os.getenv("VISUAL_RETRIEVAL_USE_SPLADE", "0").strip().lower() in {"1", "true", "yes", "on"}
+VISUAL_RETRIEVAL_USE_SPLADE = os.getenv("VISUAL_RETRIEVAL_USE_SPLADE", "1").strip().lower() in {"1", "true", "yes", "on"}
 VISUAL_SPARSE_STRATEGY = "bm25"
 VISUAL_RETRIEVAL_SPLADE_MODE = os.getenv("VISUAL_RETRIEVAL_SPLADE_MODE", "auto").strip().lower()
 VISUAL_RETRIEVAL_SPLADE_PROVIDER = os.getenv("VISUAL_RETRIEVAL_SPLADE_PROVIDER", "hf-inference").strip()
@@ -1038,8 +1038,8 @@ def extract_cited_source_page_keys(answer: str, sources: list[dict]) -> list[str
     page_keys: list[str] = []
     seen = set()
 
-    # Match [[หน้า X]] format (Thai page citations from LLM)
-    for m in re.finditer(r"\[\[หน้า\s*(\d+)\]\]", text):
+    # Match [หน้า X] or [[หน้า X]] format (Thai page citations from LLM)
+    for m in re.finditer(r"\[?\[หน้า\s*(\d+)\]\]?", text):
         page_num = m.group(1).strip()
         key = page_to_source_key.get(page_num)
         if key and key not in seen:
@@ -4705,7 +4705,7 @@ def generate_response_visual(question, topic_hint: str | None = None, require_st
         "Do not introduce facts from outside the context. "
         "Use the original wording from context as much as possible, preserving the author's language. "
         "Do NOT generate Mermaid, flowcharts, code blocks, or ASCII diagrams unless explicitly present in context. "
-        "Include inline citation [[หน้า X]] for key claims. "
+        "Include inline citation [หน้า X] for key claims. "
         "If evidence is insufficient, explicitly abstain."
     )
     query_profile = payload.get("query_profile", {}) if isinstance(payload, dict) else {}
@@ -4789,15 +4789,20 @@ def should_use_visual_path(question: str, require_structure: bool = False) -> bo
 
 def generate_response(question, topic_hint: str | None = None, require_structure: bool = False):
     # User-selectable retrieval mode from sidebar
-    user_mode = str(st.session_state.get("user_retrieval_mode", "hybrid")).strip().lower()
+    user_mode = str(st.session_state.get("user_retrieval_mode", "bm25_dense")).strip().lower()
     log_event("generate_response_mode", user_mode=user_mode, question_len=len(question))
 
-    if user_mode == "bm25_only":
-        # BM25 Only: always use text path
+    if user_mode == "bm25_dense":
+        # BM25 + Dense (FAISS): always use text path
         st.session_state.retrieval_mode = "text"
     elif user_mode == "colpali_only":
-        # ColPali Only: always use visual path
+        # ColPali Only: always use visual path with bm25 sparse
         st.session_state.retrieval_mode = "visual"
+        return generate_response_visual(question, topic_hint=topic_hint, require_structure=require_structure)
+    elif user_mode == "splade":
+        # SPLADE: use visual path with splade sparse strategy
+        st.session_state.retrieval_mode = "visual"
+        st.session_state.visual_sparse_strategy = "splade"
         return generate_response_visual(question, topic_hint=topic_hint, require_structure=require_structure)
     else:
         # Hybrid: use visual for structure/operation queries, text for others
@@ -5040,7 +5045,7 @@ def generate_response(question, topic_hint: str | None = None, require_structure
             "Answer using ONLY evidence from the provided context. "
             "Do not introduce facts from outside the context. "
             "Use the original wording from context as much as possible, preserving the author's language. "
-            "Include inline citation [[หน้า X]] for key claims. "
+            "Include inline citation [หน้า X] for key claims. "
             "Do NOT generate Mermaid, flowcharts, code blocks, or ASCII diagrams unless explicitly present in context. "
             "If evidence is insufficient, say you do not know."
         )
@@ -5209,32 +5214,43 @@ with st.sidebar:
     if VISUAL_RETRIEVAL_ENABLED:
         # User-selectable retrieval mode
         retrieval_mode_options = {
-            "bm25_only": "🔍 BM25 Only (Fast)",
+            "bm25_dense": "🔍 BM25 + Dense (Fast)",
             "colpali_only": "🖼️ ColPali Only",
-            "hybrid": "⚡ BM25 + ColPali (Hybrid)",
+            "splade": "🧠 SPLADE (Neural Sparse)",
+            "hybrid": "⚡ Hybrid (BM25+Dense+ColPali)",
         }
-        default_mode = "hybrid"
+        default_mode = "bm25_dense"
         if "user_retrieval_mode" not in st.session_state:
             st.session_state.user_retrieval_mode = default_mode
         selected_mode = st.radio(
             "เลือกโหมดค้นคืน",
             options=list(retrieval_mode_options.keys()),
             format_func=lambda x: retrieval_mode_options[x],
-            index=list(retrieval_mode_options.keys()).index(st.session_state.user_retrieval_mode),
+            index=list(retrieval_mode_options.keys()).index(
+                st.session_state.user_retrieval_mode
+                if st.session_state.user_retrieval_mode in retrieval_mode_options
+                else default_mode
+            ),
             key="radio_retrieval_mode",
-            horizontal=True,
+            horizontal=False,
         )
         st.session_state.user_retrieval_mode = selected_mode
 
         # Always disable grounding (degrades answer quality)
         st.session_state.visual_use_vlm_rerank = False
         st.session_state.visual_use_grounding = False
-        st.session_state.visual_sparse_strategy = "bm25"
+        # Set sparse strategy based on mode
+        if selected_mode == "splade":
+            st.session_state.visual_sparse_strategy = "splade"
+        else:
+            st.session_state.visual_sparse_strategy = "bm25"
         st.session_state.visual_backend = FORCED_VISUAL_BACKEND
         st.session_state.visual_endpoint_url = resolve_colpali_endpoint_url("")
 
         st.caption(f"Visual Grounding: `off` (ปิดเพื่อคุณภาพคำตอบ)")
         st.caption(f"Endpoint: `{st.session_state.visual_endpoint_url or 'not set'}`")
+        if selected_mode == "splade":
+            st.caption(f"SPLADE model: `{VISUAL_RETRIEVAL_SPLADE_MODEL}`")
 
         if st.button("Run Visual Endpoint Health Check", use_container_width=True):
             endpoint_for_health = resolve_colpali_endpoint_url(str(st.session_state.get("visual_endpoint_url", "")))
