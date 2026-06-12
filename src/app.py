@@ -5454,7 +5454,7 @@ st.markdown("""
 
 # Tabs Layout: Chat | OOS Sets (A,B,C) | Expert Evaluation | Per-Evaluator Matrix | Research Summary
 tab_chat, tab_oos_a, tab_oos_b, tab_oos_c, tab_ioc, tab_evaluators, tab_research = st.tabs([
-    "💬 แชท", "❓ OOS ชุด A", "❓ OOS ชุด B", "❓ OOS ชุด C", "📝 ประเมินผล IOC", "👥 สถิติรายผู้ประเมิน", "📊 สรุปผลวิจัย"
+    "💬 แชท", "❓ OOS ชุด A", "❓ OOS ชุด B", "❓ OOS ชุด C", "📝 ประเมินผล", "👥 สถิติรายผู้ประเมิน", "📊 สรุปผลวิจัย"
 ])
 
 with tab_chat:
@@ -6258,23 +6258,56 @@ with tab_oos_c:
 # Per-Evaluator Confusion Matrix Tab
 with tab_evaluators:
     st.markdown("### 👥 สถิติรายผู้ประเมิน")
-    
+
     all_evals = load_ioc_evaluations()
-    
+
     if not all_evals:
         st.info("ยังไม่มีข้อมูลการประเมิน")
     else:
         evaluators = sorted(set(e.get("evaluator_name", "") for e in all_evals if e.get("evaluator_name")))
-        
+
         if not evaluators:
             st.info("ไม่พบข้อมูลผู้ประเมิน")
         else:
-            selected_evaluator = st.selectbox("👤 เลือกผู้ประเมิน", evaluators)
+            # Summary table for all evaluators
+            st.markdown("#### 📋 ตารางสรุปผลรายผู้ประเมิน")
+            summary_rows = []
+            for ev_name in evaluators:
+                ev_cm = calculate_confusion_matrix_by_evaluator(all_evals, ev_name)
+                ev_total = sum(ev_cm.values())
+                ev_acc = (ev_cm["TP"] + ev_cm["TN"]) / ev_total if ev_total > 0 else 0
+                summary_rows.append({
+                    "ผู้ประเมิน": ev_name,
+                    "จำนวนคำถาม": ev_total,
+                    "TP": ev_cm["TP"],
+                    "TN": ev_cm["TN"],
+                    "FP": ev_cm["FP"],
+                    "FN": ev_cm["FN"],
+                    "Accuracy": f"{ev_acc:.1%}",
+                })
+
+            # Total row
+            cm_all = calculate_confusion_matrix(all_evals)
+            total_all = sum(cm_all.values())
+            all_acc = (cm_all["TP"] + cm_all["TN"]) / total_all if total_all > 0 else 0
+            summary_rows.append({
+                "ผู้ประเมิน": "📊 รวมทุกคน",
+                "จำนวนคำถาม": total_all,
+                "TP": cm_all["TP"],
+                "TN": cm_all["TN"],
+                "FP": cm_all["FP"],
+                "FN": cm_all["FN"],
+                "Accuracy": f"{all_acc:.1%}",
+            })
+
+            st.dataframe(summary_rows, use_container_width=True, hide_index=True)
+
+            # Per-evaluator detail
+            st.divider()
+            selected_evaluator = st.selectbox("👤 เลือกดูรายละเอียดผู้ประเมิน", evaluators)
             eval_filtered = [e for e in all_evals if e.get("evaluator_name") == selected_evaluator]
             cm_eval = calculate_confusion_matrix(eval_filtered)
-            
-            st.divider()
-            
+
             col1, col2, col3, col4 = st.columns(4)
             with col1:
                 st.metric("✅ TP", cm_eval["TP"], help="ถามตรง + ตอบตรง")
@@ -6284,14 +6317,9 @@ with tab_evaluators:
                 st.metric("⚠️ FP", cm_eval["FP"], help="ถาม OOS + ตอบมั่ว")
             with col4:
                 st.metric("❌ FN", cm_eval["FN"], help="ถามตรง + ตอบไม่ได้")
-            
-            ev_total = sum(cm_eval.values())
-            if ev_total > 0:
-                ev_accuracy = (cm_eval["TP"] + cm_eval["TN"]) / ev_total
-                st.metric("🎯 Accuracy", f"{ev_accuracy:.1%}")
-            
+
             st.caption(f"จำนวนการประเมิน: {len(eval_filtered)} รายการ")
-            
+
             # Show recent evaluations
             with st.expander("📋 รายการประเมินล่าสุด"):
                 for ev in eval_filtered[-10:]:
@@ -6368,138 +6396,130 @@ $$\\text{Accuracy} = \\frac{\\text{จำนวนครั้งที่ระ
 
     st.caption("ผู้ประเมิน (ผู้เชี่ยวชาญ) จะเป็นคนตัดสินว่าแต่ละคำถามระบบทำถูกหรือผิด แล้วนำมาคำนวณ Accuracy")
 
-    # ── Section 2: Flowchart ระบบจริง ──
+    # ── Section 2: แผนภาพกรอบแนวคิด (Conceptual Framework Diagram) ──
     st.divider()
-    st.markdown("#### 🔄 Flowchart ระบบ RAG (สถาปัตยกรรมที่ใช้จริง)")
-    st.caption("แผนภาพแสดงขั้นตอนการทำงานตั้งแต่เตรียมข้อมูล → ค้นหา → สร้างคำตอบ → ส่งให้ผู้ใช้ → ผู้เชี่ยวชาญประเมิน")
+    st.markdown("#### 🔄 แผนภาพกรอบแนวคิดการวิจัย (Conceptual Framework Diagram)")
+    st.caption("แผนภาพแสดงความสัมพันธ์ระหว่างตัวแปรต้น (ระบบ RAG) → กระบวนการทดสอบ → ตัวแปรตาม (Accuracy)")
 
-    flowchart_dot = """
-    digraph G {
-        rankdir=TB;
-        node [shape=box, style="rounded,filled", fontname="Arial", fontsize=10];
-        edge [fontname="Arial", fontsize=9, color="#555"];
+    framework_dot = """
+    digraph ConceptualFramework {
+        rankdir=LR;
+        node [shape=box, style="rounded,filled", fontname="Arial", fontsize=11];
+        edge [fontname="Arial", fontsize=10, color="#333"];
         newrank=true;
+        compound=true;
+        nodesep=0.6;
+        ranksep=1.2;
 
-        // Section A - Data Sources
-        subgraph cluster_A {
-            label="A: แหล่งข้อมูลตั้งต้น"; style="dashed"; color="#999"; fontname="Arial"; fontsize=11;
-            A1 [label="PDF ตำราเรียน\\n(5 บท, 66 หน้า)", fillcolor="#fff3e0"];
-            A2 [label="สารบัญ\\n(โครงสร้างบท/หัวข้อ)", fillcolor="#fff3e0"];
-            A3 [label="นโยบาย:\\nตอบเฉพาะจากหลักฐาน", fillcolor="#fff3e0"];
+        // ── ตัวแปรต้น (Independent Variables) ──
+        subgraph cluster_IV {
+            label="ตัวแปรต้น (Independent Variables)"; style="filled"; fillcolor="#EDE7F6"; color="#7E57C2"; fontname="Arial"; fontsize=12; labeljust=l;
+            IV1 [label="ระบบ RAG\\n(Retrieval-Augmented Generation)", fillcolor="#D1C4E9", shape=box];
+            IV2 [label="เทคนิคการค้นหา:\\nBM25 + FAISS + RRF\\n+ Cross-Encoder Reranker", fillcolor="#D1C4E9"];
+            IV3 [label="โมเดลสร้างคำตอบ:\\nQwen3-4B-Instruct", fillcolor="#D1C4E9"];
+            IV4 [label="นโยบาย Grounded Only:\\nตอบเฉพาะจากหลักฐาน\\n/ ปฏิเสธเมื่อไม่แน่ใจ", fillcolor="#D1C4E9"];
+            IV1 -> IV2 [style=invis];
+            IV2 -> IV3 [style=invis];
+            IV3 -> IV4 [style=invis];
         }
 
-        // Section B - Offline Ingestion
-        subgraph cluster_B {
-            label="B: เตรียมข้อมูล (ทำครั้งเดียว)"; style="dashed"; color="#999"; fontname="Arial"; fontsize=11;
-            B1 [label="AI อ่านเอกสาร\\n(OCR → Markdown)", fillcolor="#e8f5e9"];
-            B2 [label="ดึงรูปภาพ\\nจากเอกสาร", fillcolor="#e8f5e9"];
-            B3 [label="ทำความสะอาด\\nข้อความ", fillcolor="#e8f5e9"];
-            B4 [label="ตัดแบ่งเป็นชิ้นเล็กๆ\\n(Chunking)", fillcolor="#e8f5e9"];
+        // ── กระบวนการ (Process) ──
+        subgraph cluster_Process {
+            label="กระบวนการทดสอบ (Process)"; style="filled"; fillcolor="#E3F2FD"; color="#1976D2"; fontname="Arial"; fontsize=12; labeljust=l;
+            P1 [label="คำถาม In-Scope\\n(45 ข้อ/คน)", fillcolor="#BBDEFB"];
+            P2 [label="คำถาม Out-of-Scope\\n(45 ข้อ/คน)", fillcolor="#BBDEFB"];
+            P3 [label="ระบบ RAG\\nประมวลผลคำถาม", fillcolor="#90CAF9"];
+            P4 [label="ผู้เชี่ยวชาญ 3 คน\\nประเมินผล\\n(90 ข้อ × 3 = 270 ข้อ)", fillcolor="#64B5F6"];
+            P1 -> P3;
+            P2 -> P3;
+            P3 -> P4;
         }
 
-        // Section C - Indexing
-        subgraph cluster_C {
-            label="C: สร้างดัชนีค้นหา (ทำครั้งเดียว)"; style="dashed"; color="#999"; fontname="Arial"; fontsize=11;
-            C1 [label="ดัชนีค้นตามความหมาย\\n(FAISS + bge-m3)", fillcolor="#f3e5f5"];
-            C2 [label="ดัชนีค้นตามคำ\\n(BM25 + pythainlp)", fillcolor="#f3e5f5"];
-            C3 [label="ข้อมูลบท/หัวข้อ\\n(Metadata)", fillcolor="#f3e5f5"];
+        // ── ตัวแปรตาม (Dependent Variables) ──
+        subgraph cluster_DV {
+            label="ตัวแปรตาม (Dependent Variables)"; style="filled"; fillcolor="#E8F5E9"; color="#388E3C"; fontname="Arial"; fontsize=12; labeljust=l;
+            DV1 [label="Confusion Matrix\\n(TP, TN, FP, FN)", fillcolor="#C8E6C9"];
+            DV2 [label="Accuracy\\n= (TP+TN) / Total", fillcolor="#A5D6A7", fontsize=12];
+            DV1 -> DV2;
         }
 
-        // Section D - Online Retrieval
-        subgraph cluster_D {
-            label="D: ค้นหาข้อมูล (ทุกครั้งที่ถาม)"; style="dashed"; color="#999"; fontname="Arial"; fontsize=11;
-            D0 [label="ผู้ใช้ถามคำถาม", shape=ellipse, fillcolor="#ffebee"];
-            D1 [label="ค้นตามคำ\\n(BM25)", fillcolor="#e3f2fd"];
-            D2 [label="ค้นตามความหมาย\\n(FAISS)", fillcolor="#e3f2fd"];
-            D3 [label="รวมผลลัพธ์\\n(RRF Fusion)", fillcolor="#bbdefb"];
-            D4 [label="จัดอันดับใหม่\\n(Cross-Encoder Reranker)", fillcolor="#90caf9"];
-        }
-
-        // Section E - Answer Generation
-        subgraph cluster_E {
-            label="E: สร้างคำตอบ"; style="dashed"; color="#999"; fontname="Arial"; fontsize=11;
-            E1 [label="ตรวจว่ามีหลักฐาน\\nเพียงพอหรือไม่", shape=diamond, fillcolor="#ffccbc"];
-            E2 [label="ปฏิเสธการตอบ\\n(ไม่มีข้อมูลเพียงพอ)", fillcolor="#ffcdd2"];
-            E3 [label="รวมข้อมูลที่ค้นเจอ\\nเป็นบริบท", fillcolor="#e0f2f1"];
-            E4 [label="AI สร้างคำตอบ\\n(Qwen3-4B, ภาษาไทย)", fillcolor="#e0f2f1"];
-            E5 [label="ตรวจว่าอ้างอิง\\nหน้าเอกสารถูกไหม", shape=diamond, fillcolor="#ffccbc"];
-            E6 [label="ซ่อมแซมการอ้างอิง", fillcolor="#fff9c4"];
-            E7 [label="แสดงคำตอบ\\n+ ภาพหลักฐาน", fillcolor="#b2dfdb"];
-        }
-
-        // Section F - Evaluation
-        subgraph cluster_F {
-            label="F: ผู้เชี่ยวชาญประเมินผล"; style="dashed"; color="#999"; fontname="Arial"; fontsize=11;
-            F1 [label="ประเมินคำถาม-คำตอบ\\n(In-Scope / Out-of-Scope)", fillcolor="#fce4ec"];
-            F2 [label="บันทึก\\nConfusion Matrix", fillcolor="#fce4ec"];
-            F3 [label="คำนวณ Accuracy\\nแต่ละคน + รวม", fillcolor="#fce4ec"];
-        }
-
-        // Edges - Data flow
-        A1 -> B1;
-        A1 -> B2;
-        A2 -> C3;
-        B1 -> B3;
-        B2 -> B3;
-        B3 -> B4;
-        B4 -> C1;
-        B4 -> C2;
-        B4 -> C3;
-
-        D0 -> D1;
-        D0 -> D2;
-        D1 -> D3;
-        D2 -> D3;
-        D3 -> D4;
-
-        D4 -> E1;
-        E1 -> E3 [label="มีหลักฐาน"];
-        E1 -> E2 [label="ไม่มีข้อมูล"];
-        E3 -> E4;
-        E4 -> E5;
-        E5 -> E7 [label="ถูกต้อง"];
-        E5 -> E6 [label="ต้องซ่อม"];
-        E6 -> E7;
-        E2 -> E7;
-
-        E7 -> F1;
-        F1 -> F2;
-        F2 -> F3;
-
-        // Policy influence
-        A3 -> E1 [style=dashed, color="#999", label="นโยบาย"];
-        A3 -> E5 [style=dashed, color="#999"];
+        // ── Connections between clusters ──
+        IV1 -> P3 [lhead=cluster_Process, ltail=cluster_IV, label="  ระบบที่พัฒนา  ", fontsize=10];
+        P4 -> DV1 [lhead=cluster_DV, ltail=cluster_Process, label="  ผลประเมิน  ", fontsize=10];
     }
     """
-    st.graphviz_chart(flowchart_dot, use_container_width=True)
+    st.graphviz_chart(framework_dot, use_container_width=True)
+
+    # Download button for framework image
+    import io as _io
+    try:
+        import graphviz as _gv
+        _graph = _gv.Source(framework_dot, format="png")
+        _png_bytes = _graph.pipe(format="png")
+        st.download_button(
+            "📥 ดาวน์โหลดภาพกรอบแนวคิด (PNG)",
+            data=_png_bytes,
+            file_name="conceptual_framework.png",
+            mime="image/png",
+            use_container_width=True,
+        )
+    except Exception:
+        st.caption("(ติดตั้ง graphviz python package เพื่อเปิดใช้งานปุ่มดาวน์โหลดภาพ)")
 
     st.markdown("""
-**คำอธิบาย Flowchart (อ่านจากบนลงล่าง):**
+---
 
-**Section A — แหล่งข้อมูลตั้งต้น:**
-นำ PDF ตำราเรียนวิชาโครงสร้างข้อมูล (5 บท, 66 หน้า) มาเป็นฐานความรู้ของระบบ \
-พร้อมกำหนดนโยบายว่า "ห้ามตอบนอกเหนือจากเนื้อหาในเอกสาร"
+**คำอธิบายกรอบแนวคิดการวิจัย (ทีละขั้นตอน):**
 
-**Section B — เตรียมข้อมูล (ทำครั้งเดียว):**
-ใช้ AI (Qwen2.5-VL-72B) อ่าน PDF แปลงเป็นข้อความ, ดึงรูปภาพ, \
-ทำความสะอาด แล้วตัดแบ่งเป็นชิ้นเล็กๆ (Chunk) เพื่อให้ค้นหาได้ง่าย
+---
 
-**Section C — สร้างดัชนีค้นหา (ทำครั้งเดียว):**
-สร้างดัชนี 2 แบบ — (1) ค้นตามคำ (BM25) และ (2) ค้นตามความหมาย (FAISS) \
-เพื่อให้หาข้อมูลได้ทั้งจากคำตรงๆ และจากความหมายที่คล้ายกัน
+**1. ตัวแปรต้น (Independent Variables) — สิ่งที่ผู้วิจัยพัฒนา:**
 
-**Section D — ค้นหาข้อมูล (ทุกครั้งที่ผู้ใช้ถาม):**
-เมื่อผู้ใช้ถามคำถาม ระบบจะค้นทั้ง 2 วิธีพร้อมกัน → รวมผลลัพธ์ (RRF) → \
-แล้วใช้ AI จัดอันดับใหม่ (Reranker) เพื่อเลือกข้อมูลที่ตรงกับคำถามที่สุด
+| ลำดับ | ตัวแปร | คำอธิบาย |
+|:---:|--------|----------|
+| 1.1 | ระบบ RAG | ระบบถาม-ตอบอัตโนมัติที่ค้นหาข้อมูลจากเอกสารก่อนสร้างคำตอบ (Retrieval-Augmented Generation) |
+| 1.2 | เทคนิคการค้นหา | ใช้ BM25 (ค้นตามคำ) + FAISS (ค้นตามความหมาย) → รวมคะแนนด้วย RRF → จัดอันดับใหม่ด้วย Cross-Encoder Reranker |
+| 1.3 | โมเดลสร้างคำตอบ | Qwen3-4B-Instruct — โมเดลภาษาขนาดเล็กที่สร้างคำตอบภาษาไทยจากบริบทที่ค้นเจอ |
+| 1.4 | นโยบาย Grounded Only | ระบบจะตอบเฉพาะเมื่อมีหลักฐานจากเอกสารเท่านั้น ถ้าไม่มีจะปฏิเสธการตอบ (Abstain) เพื่อป้องกัน Hallucination |
 
-**Section E — สร้างคำตอบ:**
-ตรวจว่ามีหลักฐานเพียงพอหรือไม่ — ถ้าไม่มี จะปฏิเสธการตอบ (Abstain) \
-ถ้ามี จะให้ AI (Qwen3-4B) สร้างคำตอบภาษาไทย พร้อมอ้างอิงหน้าเอกสาร [หน้า X] \
-แล้วตรวจสอบว่าอ้างอิงถูกต้องหรือไม่ก่อนส่งให้ผู้ใช้
+---
 
-**Section F — ผู้เชี่ยวชาญประเมินผล:**
-ผู้ประเมิน (ผู้เชี่ยวชาญ) ตรวจสอบว่าระบบตอบถูก/ผิด สำหรับแต่ละคำถาม \
-แล้วบันทึกเป็น Confusion Matrix เพื่อคำนวณค่า Accuracy
+**2. กระบวนการทดสอบ (Process) — วิธีการเก็บข้อมูล:**
+
+| ลำดับ | ขั้นตอน | คำอธิบาย |
+|:---:|---------|----------|
+| 2.1 | ออกแบบคำถาม In-Scope | คำถาม 45 ข้อที่มีคำตอบอยู่ในเอกสารตำราเรียน (ระบบควรตอบได้) |
+| 2.2 | ออกแบบคำถาม Out-of-Scope | คำถาม 45 ข้อที่ไม่มีคำตอบในเอกสาร (ระบบควรปฏิเสธ) |
+| 2.3 | ป้อนคำถามเข้าระบบ RAG | ระบบประมวลผลคำถามทั้ง 90 ข้อ → ค้นหาข้อมูล → สร้างคำตอบหรือปฏิเสธ |
+| 2.4 | ผู้เชี่ยวชาญประเมิน | ผู้เชี่ยวชาญ 3 คน ตรวจสอบคำตอบของระบบ → ให้คะแนน 1-4 (รวม 90 × 3 = 270 ข้อ) |
+
+---
+
+**3. ตัวแปรตาม (Dependent Variables) — สิ่งที่วัดผล:**
+
+| ลำดับ | ตัวชี้วัด | สูตร | ความหมาย |
+|:---:|-----------|------|----------|
+| 3.1 | Confusion Matrix | TP, TN, FP, FN | ตารางแสดงจำนวนครั้งที่ระบบทำถูก/ผิดในแต่ละสถานการณ์ |
+| 3.2 | **Accuracy** | (TP+TN) ÷ Total | สัดส่วนที่ระบบทำถูกต้องจากคำถามทั้งหมด |
+
+---
+
+**4. การให้คะแนนของผู้เชี่ยวชาญ (Scoring Rubric):**
+
+| คะแนน | ประเภทคำถาม | พฤติกรรมของระบบ | ผลลัพธ์ |
+|:---:|---|---|---|
+| **1** | In-Scope (มีในเอกสาร) | ตอบได้ถูกต้อง | ✅ **TP** (True Positive) |
+| **2** | In-Scope (มีในเอกสาร) | ตอบไม่ได้ / ไม่ตอบ / ตอบไม่สมบูรณ์ | ❌ **FN** (False Negative) |
+| **3** | Out-of-Scope (ไม่มีในเอกสาร) | ตอบไปทั้งที่ไม่ควรตอบ | ❌ **FP** (False Positive / Hallucination) |
+| **4** | Out-of-Scope (ไม่มีในเอกสาร) | ปฏิเสธการตอบถูกต้อง | ✅ **TN** (True Negative) |
+
+---
+
+**5. สรุปการออกแบบการวิจัย:**
+- **เครื่องมือวิจัย:** ระบบ RAG Chatbot + แบบประเมิน IOC (คะแนน 1-4)
+- **กลุ่มตัวอย่าง:** คำถาม 90 ข้อ (IS 45 + OOS 45) × ผู้เชี่ยวชาญ 3 คน = **270 การประเมิน**
+- **แหล่งข้อมูล:** PDF ตำราเรียนวิชาโครงสร้างข้อมูล (5 บท, 66 หน้า)
+- **เป้าหมาย:** วัดค่า Accuracy ของระบบ RAG ว่าสามารถตอบคำถามที่มีในเอกสารได้ถูกต้อง และปฏิเสธคำถามนอกเอกสารได้ดีเพียงใด
 """)
 
     # ── Section 3: Accuracy แต่ละคน + รวม ──
@@ -6534,10 +6554,10 @@ $$\\text{Accuracy} = \\frac{\\text{จำนวนครั้งที่ระ
                     summary_rows.append({
                         "ผู้ประเมิน": evaluator,
                         "จำนวนคำถาม": ev_total,
-                        "ตอบถูก (TP)": ev_cm["TP"],
-                        "ปฏิเสธถูก (TN)": ev_cm["TN"],
-                        "ตอบมั่ว (FP)": ev_cm["FP"],
-                        "พลาด (FN)": ev_cm["FN"],
+                        "TP": ev_cm["TP"],
+                        "TN": ev_cm["TN"],
+                        "FP": ev_cm["FP"],
+                        "FN": ev_cm["FN"],
                         "Accuracy": f"{ev_acc:.1%}",
                     })
 
@@ -6545,10 +6565,10 @@ $$\\text{Accuracy} = \\frac{\\text{จำนวนครั้งที่ระ
                 summary_rows.append({
                     "ผู้ประเมิน": "📊 รวมทุกคน",
                     "จำนวนคำถาม": total,
-                    "ตอบถูก (TP)": tp,
-                    "ปฏิเสธถูก (TN)": tn,
-                    "ตอบมั่ว (FP)": fp,
-                    "พลาด (FN)": fn,
+                    "TP": tp,
+                    "TN": tn,
+                    "FP": fp,
+                    "FN": fn,
                     "Accuracy": f"{accuracy:.1%}",
                 })
 
